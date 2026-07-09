@@ -84,15 +84,17 @@ async function get(url, tries = 2) {
         await sleep(Math.min(Number.isFinite(ra) ? ra * 1000 : 500 * (i + 1), 4000));
         continue;
       }
-      // A gzipped sitemap FILE (application/gzip, or .gz served without Content-Encoding) is a
-      // Google-supported format. Node's fetch only auto-decompresses transfer-encoding, so gunzip
-      // the body ourselves -- otherwise r.text() returns binary and 0 <loc> are found, silently.
-      const ct = r.headers.get('content-type') || '';
-      if (/gzip/i.test(ct) || /\.gz(\?|$)/i.test(url)) {
-        try { const buf = Buffer.from(await r.arrayBuffer()); return { status: r.status, body: gunzipSync(buf).toString('utf8'), headers: r.headers, finalUrl: r.url }; }
-        catch { /* not actually gzip; fall through to text */ }
-      }
-      return { status: r.status, body: await r.text(), headers: r.headers, finalUrl: r.url };
+      // Read the body ONCE. A `.gz` sitemap MIGHT be raw-gzip bytes (application/gzip, no
+      // Content-Encoding) OR already auto-decompressed by undici (Content-Encoding: gzip -- the CDN
+      // norm: NYT, MDN). Sniff the gzip magic (1f 8b) and gunzip only then; otherwise decode the
+      // same buffer as text. The old code re-read the stream after arrayBuffer() drained it ->
+      // "Body has already been read" -> status 0, falsely reporting every CDN gzip sitemap broken.
+      const buf = Buffer.from(await r.arrayBuffer());
+      const gz = buf.length > 2 && buf[0] === 0x1f && buf[1] === 0x8b;
+      let body;
+      try { body = gz ? gunzipSync(buf).toString('utf8') : buf.toString('utf8'); }
+      catch { body = buf.toString('utf8'); }
+      return { status: r.status, body, headers: r.headers, finalUrl: r.url };
     } catch (e) { if (i >= tries) return { status: 0, body: '', headers: new Headers(), finalUrl: url, error: String(e.message || e) }; await sleep(300); }
   }
 }
@@ -143,11 +145,19 @@ const metaCRaw = (h, attr, key) => h.match(new RegExp(`<meta[^>]*${KEY(attr, key
   ?? h.match(new RegExp(`<meta[^>]*${KEY(attr, key)}[^>]*${UNQ('content')}`, 'i'))?.[1]
   ?? h.match(new RegExp(`<meta[^>]*${UNQ('content')}[^>]*${KEY(attr, key)}`, 'i'))?.[1] ?? '';
 const metaC = (h, attr, key) => decodeEnts(metaCRaw(h, attr, key));
-const linkHref = (h, rel) => decodeEnts(h.match(new RegExp(`<link[^>]*rel=["']${rel}["'][^>]*${ATTR('href')}`, 'i'))?.[2]
-  ?? h.match(new RegExp(`<link[^>]*${ATTR('href')}[^>]*rel=["']${rel}["']`, 'i'))?.[2] ?? '');
-const allCanonicals = (h) => [...h.matchAll(/<link[^>]*rel=["']canonical["'][^>]*>/gi)].map((m) => m[0]);
-const hreflangs = (h) => [...h.matchAll(/<link[^>]*rel=["']alternate["'][^>]*>/gi)]
-  .map((m) => ({ lang: m[0].match(/hreflang=["']([^"']+)["']/i)?.[1], href: m[0].match(/href=["']([^"']+)["']/i)?.[1] }))
+// <link> attributes may be UNQUOTED (html-minifier removeAttributeQuotes emits `rel=canonical
+// href=...`). meta already handled this; the link helpers didn't, so a minified site's canonical
+// went undetected -- every canonical check silently skipped in raw mode, or a false "only after JS"
+// under --render. REL/AV accept quoted OR unquoted values.
+const REL = (rel) => `rel=["']?${rel}(?=["'\\s>])`;
+const AV = (name) => `${name}=(?:"([^"]*)"|'([^']*)'|([^\\s"'>]+))`;
+const avOf = (m) => (m ? (m[1] ?? m[2] ?? m[3] ?? '') : '');  // AV has 3 alternation groups
+const linkHref = (h, rel) => decodeEnts(avOf(
+  h.match(new RegExp(`<link[^>]*${REL(rel)}[^>]*${AV('href')}`, 'i'))
+  ?? h.match(new RegExp(`<link[^>]*${AV('href')}[^>]*${REL(rel)}`, 'i'))));
+const allCanonicals = (h) => [...h.matchAll(new RegExp(`<link[^>]*${REL('canonical')}[^>]*>`, 'gi'))].map((m) => m[0]);
+const hreflangs = (h) => [...h.matchAll(/<link[^>]*rel=["']?alternate(?=["'\s>])[^>]*>/gi)]
+  .map((m) => ({ lang: avOf(m[0].match(new RegExp(AV('hreflang'), 'i'))), href: avOf(m[0].match(new RegExp(AV('href'), 'i'))) }))
   .filter((x) => x.lang && x.href);
 const jsonLdBlocks = (h) => [...h.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1]);
 

@@ -57,6 +57,7 @@ node audit.mjs https://example.com --noindex-ok /admin,/preview
 |---|---|
 | `--render` | Drive headless Chrome (DevTools Protocol) and diff raw vs rendered `<head>`. Set `CHROME=/path/to/chrome` if not auto-found. |
 | `--max-render <n>` | How many pages to actually render (default **25**). Rendering is slow; the rest are audited raw-only and say so. |
+| `--max-sitemaps <n>` | How many child sitemaps to fetch from an index (default **50**). A 2000-child news index would otherwise fetch every one. |
 | `--json <file>` | Write findings as JSON. |
 | `--max-pages <n>` | Cap pages crawled (default 100). The tool **logs what it skipped** — a partial crawl that reads "all clear" is the worst possible output. |
 | `--noindex-ok a,b` | Paths where `noindex` is deliberate. |

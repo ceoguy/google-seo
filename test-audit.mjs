@@ -59,6 +59,18 @@ const hasViewport = (h) => /<meta[^>]*\bname=["']?viewport(?=["'\s>])/i.test(h);
 t("unquoted name=viewport is detected", hasViewport('<meta name=viewport content="width=device-width">'));
 t("quoted name=\"viewport\" is detected", hasViewport('<meta name="viewport" content="width=device-width">'));
 t("name=viewportx is NOT viewport", !hasViewport('<meta name=viewportx content=x>'));
+// D2: <link> attributes may be unquoted (html-minifier). meta handled it; link helpers must too.
+const REL = (rel) => `rel=["']?${rel}(?=["'\\s>])`;
+const AV = (name) => `${name}=(?:"([^"]*)"|'([^']*)'|([^\\s"'>]+))`;
+const avOf = (m) => (m ? (m[1] ?? m[2] ?? m[3] ?? '') : '');
+const linkHref2 = (h, rel) => avOf(h.match(new RegExp(`<link[^>]*${REL(rel)}[^>]*${AV('href')}`, 'i')) ?? h.match(new RegExp(`<link[^>]*${AV('href')}[^>]*${REL(rel)}`, 'i')));
+t("unquoted <link rel=canonical href=...> is read", linkHref2('<link rel=canonical href=https://x.com/p>', 'canonical') === 'https://x.com/p');
+t("quoted <link> canonical still read", linkHref2('<link rel="canonical" href="https://x.com/q">', 'canonical') === 'https://x.com/q');
+t("reversed unquoted <link> order", linkHref2('<link href=https://x.com/s rel=canonical>', 'canonical') === 'https://x.com/s');
+t("rel=canonical-x is NOT canonical", linkHref2('<link rel=canonical-x href=y>', 'canonical') === '');
+const looksGz = (b) => b.length > 2 && b[0] === 0x1f && b[1] === 0x8b;
+t("plain-XML bytes are not treated as gzip", !looksGz(Buffer.from('<?xml ...')));
+t("real gzip magic is detected", looksGz(gzipSync(Buffer.from('x'))));
 
 // D2: max-image-preview:none is not noindex
 const isNoindex = (r) => /\bnoindex\b|(?<![:\w-])none\b/i.test(r);
@@ -470,9 +482,10 @@ const fmt = createServer((req, res) => {
   const b = `http://127.0.0.1:${fmt.address().port}`;
   const u = req.url.split('?')[0];
   if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${b}/sitemap.xml.gz\n`); }
-  if (u === '/sitemap.xml.gz') { const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/gzpage</loc></url><url><loc>${b}/ratelimited</loc></url></urlset>`; res.writeHead(200, { 'content-type': 'application/gzip' }); return res.end(gzipSync(Buffer.from(xml))); }
+  if (u === '/sitemap.xml.gz') { const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/gzpage</loc></url><url><loc>${b}/ratelimited</loc></url><url><loc>${b}/unq-canon</loc></url></urlset>`; res.writeHead(200, { 'content-type': 'application/gzip' }); return res.end(gzipSync(Buffer.from(xml))); }
   if (u === '/gzpage') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Gz page', '<meta name="description" content="Reached only if the gz sitemap decompressed.">')); }
   if (u === '/ratelimited') { res.writeHead(429, { 'retry-after': '0' }); return res.end('rate limited'); }
+  if (u === '/unq-canon') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(`<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Unquoted canonical</title><meta name="description" content="Its canonical points elsewhere, unquoted."><link rel=canonical href=${b}/elsewhere></head><body><h1>H</h1></body></html>`); }
   res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
 });
 await new Promise((r) => fmt.listen(0, '127.0.0.1', r));
@@ -484,6 +497,7 @@ const fmtFindings = JSON.parse(readFileSync(OUTF, 'utf8')).findings; unlinkSync(
 t('[e2e] a gzipped sitemap is decompressed (its 429 page is reached, proving the loc was parsed)', fmtFindings.some((f) => /ratelimited/.test(String(f.where))));
 t('[e2e] a gzipped sitemap does not fire a false Content-Type finding', !fmtFindings.some((f) => /expected a sitemap format/.test(f.message)));
 t('[e2e] a 429 is a transient handoff, not a critical de-index', fmtFindings.some((f) => /temporarily 429/.test(f.message) && f.class === 'handoff') && !fmtFindings.some((f) => /429/.test(f.message) && f.severity === 'critical'));
+t('[e2e] an UNQUOTED canonical pointing elsewhere is flagged, not silently missed', fmtFindings.some((f) => /\/unq-canon/.test(String(f.where)) && /canonical points at a different URL/.test(f.message)));
 
 // --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
 const allRedir = createServer((req, res) => {

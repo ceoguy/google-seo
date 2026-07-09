@@ -95,7 +95,7 @@ Read `references/essentials-and-content.md` first (Search Essentials + spam poli
 ## audit.mjs
 
 ```
-node audit.mjs <baseUrl> [--render] [--json out.json] [--max-pages N] [--max-render N] [--noindex-ok /a,/b] [--quiet]
+node audit.mjs <baseUrl> [--render] [--json out.json] [--max-pages N] [--max-render N] [--max-sitemaps N] [--noindex-ok /a,/b] [--quiet]
 ```
 
 - Reads `robots.txt` → sitemap(s) → every page. No npm dependencies.
