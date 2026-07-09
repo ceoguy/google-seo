@@ -7,6 +7,7 @@
  *   --json <file>        write findings as JSON
  *   --max-pages <n>      cap pages crawled (default 100)
  *   --max-render <n>     cap pages rendered with --render (default 25); the rest are raw-only
+ *   --max-sitemaps <n>   cap child sitemaps fetched from an index (default 50)
  *   --noindex-ok a,b     paths where noindex is intentional
  *   --render             ALSO fetch each page with headless Chrome and diff raw vs rendered head.
  *                        This is how you catch client-rendered SEO: Google renders JS (with a queue
@@ -44,6 +45,7 @@ const num = (n, d) => {
   return Math.floor(v);
 };
 const MAX_PAGES = num('max-pages', 100);
+const MAX_SITEMAPS = num('max-sitemaps', 50);  // child-sitemap fetch cap; a 2000-child index would otherwise hang
 const NOINDEX_OK = String(flag('noindex-ok', '')).split(',').filter(Boolean);
 const RENDER = has('render');
 const QUIET = has('quiet');
@@ -69,12 +71,33 @@ const norm = (u) => {
   } catch { return u; }
 };
 
-async function get(url) {
-  try {
-    const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en' }, redirect: 'follow' });
-    return { status: r.status, body: await r.text(), headers: r.headers, finalUrl: r.url };
-  } catch (e) { return { status: 0, body: '', headers: new Headers(), finalUrl: url, error: String(e.message || e) }; }
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const { gunzipSync } = await import('node:zlib');
+async function get(url, tries = 2) {
+  for (let i = 0; ; i++) {
+    try {
+      const r = await fetch(url, { headers: { 'User-Agent': UA, 'Accept-Language': 'en' }, redirect: 'follow' });
+      // 429/503 are TRANSIENT (Google retries them for ~2 days and honors Retry-After). Retry once
+      // ourselves before reporting -- a fast crawl self-induces 429s that a real crawler would not.
+      if ((r.status === 429 || r.status === 503) && i < tries) {
+        const ra = Number(r.headers.get('retry-after'));
+        await sleep(Math.min(Number.isFinite(ra) ? ra * 1000 : 500 * (i + 1), 4000));
+        continue;
+      }
+      // A gzipped sitemap FILE (application/gzip, or .gz served without Content-Encoding) is a
+      // Google-supported format. Node's fetch only auto-decompresses transfer-encoding, so gunzip
+      // the body ourselves -- otherwise r.text() returns binary and 0 <loc> are found, silently.
+      const ct = r.headers.get('content-type') || '';
+      if (/gzip/i.test(ct) || /\.gz(\?|$)/i.test(url)) {
+        try { const buf = Buffer.from(await r.arrayBuffer()); return { status: r.status, body: gunzipSync(buf).toString('utf8'), headers: r.headers, finalUrl: r.url }; }
+        catch { /* not actually gzip; fall through to text */ }
+      }
+      return { status: r.status, body: await r.text(), headers: r.headers, finalUrl: r.url };
+    } catch (e) { if (i >= tries) return { status: 0, body: '', headers: new Headers(), finalUrl: url, error: String(e.message || e) }; await sleep(300); }
+  }
 }
+// Google treats 429/503/5xx as temporary; only 4xx (except 429) means the URL is really gone.
+const isTransient = (s) => s === 429 || s === 503 || (s >= 500 && s < 600);
 
 // ---- tiny HTML helpers (raw-HTML view = what a non-rendering crawler sees) ----------------------
 // Comments are NOT markup. Strip them first or a doc-comment that mentions a tag (e.g. an
@@ -202,7 +225,9 @@ const MAX_URLS = 50000, MAX_BYTES = 50 * 1024 * 1024;
 // sails through -- and index-using sites are exactly the large sites that need auditing.
 function auditOneSitemap(url, body, headers, { isIndex }) {
   const ctype = headers.get?.('content-type') || '';
-  if (!/xml/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, `Content-Type is "${ctype}" (expected XML)`, 'sitemaps/build-sitemap');
+  // XML is the common case, but Google also supports gzip (now decompressed in get()), plain-text,
+  // and RSS/Atom. Only complain about a Content-Type that is none of the sanctioned sitemap formats.
+  if (!/xml|gzip|text\/plain/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, `Content-Type is "${ctype}" (expected a sitemap format: XML, text, or gzip)`, 'sitemaps/build-sitemap');
   // XML defaults to UTF-8, so an absent declaration is fine. Only a declared NON-UTF-8 encoding
   // violates "The sitemap file must be UTF-8 encoded."
   const declEnc = body.match(/<\?xml[^>]*encoding=["']([^"']+)["']/i)?.[1];
@@ -224,7 +249,11 @@ function auditOneSitemap(url, body, headers, { isIndex }) {
     }
   }
 
-  const locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((m) => m[1].trim());
+  // XML sitemaps + RSS/Atom feeds use <loc>/<link>; a plain-text sitemap is one URL per line.
+  let locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((m) => m[1].trim());
+  if (!locs.length && !/^\s*</.test(body)) {
+    locs = body.split(/\r?\n/).map((l) => l.trim()).filter((l) => /^https?:\/\//i.test(l));
+  }
   if (locs.length > MAX_URLS) {
     add('critical', 'sitemap', 'auto-fix', url,
       `${locs.length} ${isIndex ? 'child sitemaps' : 'URLs'} in one file (limit 50,000)`,
@@ -253,7 +282,7 @@ function validateLocs(locs, where) {
 // Audit ONE sitemap URL (standalone or index) and return the PAGE urls it yields.
 async function auditSitemapTree(url) {
   const { status, body, headers } = await get(url);
-  if (status !== 200) { add('high', 'sitemap', 'auto-fix', url, `sitemap not 200 (got ${status})`, 'sitemaps/build-sitemap'); return []; }
+  if (status !== 200) { add(isTransient(status) ? 'medium' : 'high', 'sitemap', isTransient(status) ? 'handoff' : 'auto-fix', url, isTransient(status) ? `sitemap temporarily ${status} (transient; re-run slower)` : `sitemap not 200 (got ${status})`, 'sitemaps/build-sitemap'); return []; }
 
   const isIndex = /<sitemapindex/i.test(body);
   const top = auditOneSitemap(url, body, headers, { isIndex });
@@ -265,11 +294,16 @@ async function auditSitemapTree(url) {
     return [...new Set(top)];
   }
 
-  // Index: every child gets the full per-file treatment. No silent truncation.
+  // Index: every child gets the full per-file treatment, but bound the count -- a real news index
+  // can list 2000+ children, and fetching all of them sequentially makes the tool appear to hang
+  // for minutes with no output. Cap, and SAY what was skipped (a silent cap reads as "all clear").
+  const children = [...new Set(top)];
+  const capped = children.slice(0, MAX_SITEMAPS);
+  if (children.length > capped.length) add('low', 'sitemap', 'handoff', url, `sitemap index has ${children.length} children; audited the first ${capped.length} (--max-sitemaps to raise). The rest were not fetched.`, 'sitemaps/large-sitemaps');
   const all = [];
-  for (const child of new Set(top)) {
+  for (const child of capped) {
     const r = await get(child);
-    if (r.status !== 200) { add('high', 'sitemap', 'auto-fix', child, `child sitemap not 200 (got ${r.status})`, 'sitemaps/large-sitemaps'); continue; }
+    if (r.status !== 200) { add(isTransient(r.status) ? 'medium' : 'high', 'sitemap', isTransient(r.status) ? 'handoff' : 'auto-fix', child, isTransient(r.status) ? `child sitemap temporarily ${r.status} (transient; re-run slower)` : `child sitemap not 200 (got ${r.status})`, 'sitemaps/large-sitemaps'); continue; }
     const childIsIndex = /<sitemapindex/i.test(r.body);
     const locs = auditOneSitemap(child, r.body, r.headers, { isIndex: childIsIndex });
     if (childIsIndex) {
@@ -540,7 +574,14 @@ let renderedUrls = new Set();   // pages a headless browser actually returned HT
 for (const u of pages) {
   const { status, body, headers, finalUrl } = await get(u);
   const path = new URL(u).pathname;
-  if (status !== 200) { add('critical', 'indexing', 'auto-fix', path, `sitemap URL returns ${status}`, 'sitemaps/build-sitemap'); continue; }
+  if (status !== 200) {
+    // A 429/503/5xx is temporary -- Google retries these for ~2 days; a maintenance page is
+    // supposed to be 503. Reporting it as a critical de-index (like a 404) is wrong, and the
+    // fast crawl itself can induce 429s. Hand it off to re-run slower, don't fail the page.
+    if (isTransient(status)) add('medium', 'crawling', 'handoff', path, `sitemap URL is temporarily ${status} (transient — Google retries these; re-run slower if the crawl induced it)`, 'crawling-indexing/troubleshoot-crawling-errors');
+    else add('critical', 'indexing', 'auto-fix', path, `sitemap URL returns ${status}`, 'crawling-indexing/troubleshoot-crawling-errors');
+    continue;
+  }
   if (norm(finalUrl) !== norm(u)) {
     // The body belongs to the DESTINATION. Auditing it under the source URL invents a second page:
     // its (correct) canonical looks like it "points elsewhere", and its title/description collide
@@ -550,8 +591,10 @@ for (const u of pages) {
   }
   // A sitemap may legitimately list non-HTML URLs (PDFs, images). Don't score a PDF as an HTML
   // page -- it has no <title>, so every on-page check would fire, including a false CRITICAL.
+  // Only score real HTML pages. The old `xml` allowance also let feeds/SVG through -> a feed <loc>
+  // produced false missing-description/viewport/h1. Allow HTML + XHTML only; skip everything else.
   const ctype = headers.get?.('content-type') || '';
-  if (ctype && !/html|xml/i.test(ctype)) continue;
+  if (ctype && !/text\/html|application\/xhtml\+xml/i.test(ctype)) continue;
   // One malformed page must never abort the crawl. Report it and keep going -- a crash exits 1,
   // which is indistinguishable from "findings remain", so CI would read it as an ordinary red.
   try { rawViews.set(u, auditHtml(body, u, 'raw', headers)); }
