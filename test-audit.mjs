@@ -642,6 +642,42 @@ else {
   t('[e2e]  ...and it is NOT also called another host (www is the same site)', !rdF.some((f) => /another host/.test(f.message)));
 }
 
+// NESTED SITEMAP INDEXES. Jetpack/WordPress emit them. Refusing to recurse reported a HIGH and then
+// audited ZERO pages (ma.tt: 1 page = the homepage). Report it AND follow it — bounded by depth, by
+// a whole-tree fetch budget, and by a cycle guard. Grandchild .xml URLs must never be scored as HTML.
+const nest = createServer((req, res) => {
+  const P = nest.address().port, B = `http://localhost:${P}`;
+  const u = req.url.split('?')[0];
+  const index = (kids) => `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${kids.map((k) => `<sitemap><loc>${B}${k}</loc></sitemap>`).join('')}</sitemapindex>`;
+  const urlset = (ps) => `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${ps.map((x) => `<url><loc>${B}${x}</loc></url>`).join('')}</urlset>`;
+  const xml = (b) => { res.writeHead(200, { 'content-type': 'application/xml' }); res.end(b); };
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${B}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') return xml(index(['/ci.xml', '/cyc.xml', '/d1.xml']));
+  if (u === '/ci.xml') return xml(index(['/leaf.xml']));          // index -> index -> urlset: must reach the pages
+  if (u === '/leaf.xml') return xml(urlset(['/np1', '/np2']));
+  if (u === '/cyc.xml') return xml(index(['/cyc.xml']));          // an index that lists itself
+  if (u === '/d1.xml') return xml(index(['/d2.xml']));            // a chain deeper than MAX_SITEMAP_DEPTH
+  if (u === '/d2.xml') return xml(index(['/d3.xml']));
+  if (u === '/d3.xml') return xml(index(['/leaf2.xml']));
+  if (u === '/leaf2.xml') return xml(urlset(['/toodeep']));       // must NOT be reached
+  if (u === '/np1' || u === '/np2') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page(`Nested ${u}`, `<meta name="description" content="A page reachable only through two levels of sitemap index.">`)); }
+  res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
+});
+await new Promise((r) => nest.listen(0, 'localhost', r));
+const NS = `http://localhost:${nest.address().port}`;
+const OUTNS = path.join(HERE, '.test-findings-ns.json');
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), NS, '--json', OUTNS, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+nest.close();
+const nsD = JSON.parse(readFileSync(OUTNS, 'utf8')); unlinkSync(OUTNS);
+const nsHas = (re) => nsD.findings.some((f) => re.test(f.message));
+
+t('[e2e] a nested sitemap index still yields PAGES (Jetpack: was 0, homepage only)', nsD.pages >= 2);
+t('[e2e]  ...and the nested index is still reported', nsHas(/sitemap index lists another sitemap index/));
+t('[e2e] an index that lists itself is reported as a cycle, and does not hang', nsHas(/sitemap index cycle/));
+t('[e2e] nesting deeper than the depth cap is followed no further, and SAYS so', nsHas(/deeper than 3 levels were not followed/));
+t('[e2e] pages below the depth cap are not silently claimed as audited', !nsD.findings.some((f) => /\/toodeep/.test(String(f.where))));
+t('[e2e] grandchild .xml sitemaps are never scored as HTML pages', !nsD.findings.some((f) => /\.xml$/.test(String(f.where)) && /missing (<title>|meta description)/.test(f.message)));
+
 // --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
 const allRedir = createServer((req, res) => {
   const b = `http://127.0.0.1:${allRedir.address().port}`;

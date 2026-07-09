@@ -324,10 +324,25 @@ function validateLocs(locs, where) {
 }
 
 // Audit ONE sitemap URL (standalone or index) and return the PAGE urls it yields.
+// Nested indexes: the Sitemap Protocol has no nested-index form, but Jetpack/WordPress emit them and
+// Google tolerates them in practice. Refusing to recurse audited ZERO pages on those sites — and "a
+// partial crawl that reads as all clear is the worst possible output". So: report it, then follow it.
+// Bounded three ways, because recursion adds failure modes a flat loop could not have:
+//   depth   — a chain of indexes can't drag us down forever
+//   budget  — MAX_SITEMAPS is a cap on fetches across the WHOLE tree, not per level
+//   seen    — an index that lists itself (or an ancestor) is a cycle, not a sitemap
+const MAX_SITEMAP_DEPTH = 3;
+const seenSitemaps = new Set();
+let sitemapsFetched = 0;
+
 async function auditSitemapTree(url) {
+  seenSitemaps.add(url);
   const { status, body, headers } = await get(url);
   if (status !== 200) { add(isTransient(status) ? 'medium' : 'high', 'sitemap', isTransient(status) ? 'handoff' : 'auto-fix', url, isTransient(status) ? `sitemap temporarily ${status} (transient; re-run slower)` : `sitemap not 200 (got ${status})`, 'sitemaps/build-sitemap'); return []; }
+  return auditSitemapBody(url, body, headers, 0);
+}
 
+async function auditSitemapBody(url, body, headers, depth) {
   const isIndex = /<sitemapindex/i.test(body);
   const top = auditOneSitemap(url, body, headers, { isIndex });
 
@@ -346,21 +361,26 @@ async function auditSitemapTree(url) {
   if (children.length > capped.length) add('low', 'sitemap', 'handoff', url, `sitemap index has ${children.length} children; audited the first ${capped.length} (--max-sitemaps to raise). The rest were not fetched.`, 'sitemaps/large-sitemaps');
   const all = [];
   for (const child of capped) {
+    if (sitemapsFetched >= MAX_SITEMAPS) { add('low', 'sitemap', 'handoff', url, `child-sitemap budget (${MAX_SITEMAPS}) exhausted; the remaining children of this index were NOT fetched (--max-sitemaps to raise)`, 'sitemaps/large-sitemaps'); break; }
+    if (seenSitemaps.has(child)) { add('high', 'sitemap', 'auto-fix', child, 'sitemap index cycle: this sitemap is reachable from itself. Google would fetch it once; the loop wastes crawl budget', 'sitemaps/large-sitemaps'); continue; }
+    seenSitemaps.add(child); sitemapsFetched++;
     const r = await get(child);
     if (r.status !== 200) { add(isTransient(r.status) ? 'medium' : 'high', 'sitemap', isTransient(r.status) ? 'handoff' : 'auto-fix', child, isTransient(r.status) ? `child sitemap temporarily ${r.status} (transient; re-run slower)` : `child sitemap not 200 (got ${r.status})`, 'sitemaps/large-sitemaps'); continue; }
-    const childIsIndex = /<sitemapindex/i.test(r.body);
-    const locs = auditOneSitemap(child, r.body, r.headers, { isIndex: childIsIndex });
-    if (childIsIndex) {
-      // An index whose child is an index. Do NOT treat the grandchild sitemap URLs as pages --
-      // they'd be fetched and scored as HTML ("missing <title>" on an .xml file), while the real
-      // pages never get audited at all.
+
+    if (/<sitemapindex/i.test(r.body)) {
       // Google's page does not itself forbid nesting; it defers the format: the XML "is defined by
       // the Sitemap Protocol". The protocol has no nested-index form. Say that, don't invent a quote.
       add('high', 'sitemap', 'auto-fix', child, 'a sitemap index lists another sitemap index. Google defers the index format to the Sitemap Protocol ("it\'s defined by the Sitemap Protocol"), which has no nested-index form — point the index at urlset sitemaps', 'sitemaps/large-sitemaps');
+      if (depth + 1 >= MAX_SITEMAP_DEPTH) { add('low', 'sitemap', 'handoff', child, `nested sitemap indexes deeper than ${MAX_SITEMAP_DEPTH} levels were not followed — the pages below this point were NOT audited`, 'sitemaps/large-sitemaps'); continue; }
+      // Follow it anyway. Never treat the grandchild sitemap URLs as pages -- they'd be fetched and
+      // scored as HTML ("missing <title>" on an .xml file) while the real pages go unaudited.
+      for (const l of await auditSitemapBody(child, r.body, r.headers, depth + 1)) all.push(l);
       continue;
     }
+
+    const locs = auditOneSitemap(child, r.body, r.headers, { isIndex: false });
     validateLocs(locs, child);
-    for (const l of locs) all.push(l);
+    for (const l of locs) all.push(l);   // NOT all.push(...locs) -- spreading 40k args overflows the stack
   }
   const dupes = all.filter((l, i) => all.indexOf(l) !== i);
   if (dupes.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(dupes).size} duplicate <loc> entries across children`, 'sitemaps/build-sitemap');
