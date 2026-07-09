@@ -91,6 +91,15 @@ t("a valid code point still decodes", cp(39) === "'");
 // decoded canonical must be compared against a decoded <loc>, not the raw escaped one
 t("escaped &amp; in <loc> matches the decoded canonical", decodeEnts('https://x/p?b=1&amp;c=2') === 'https://x/p?b=1&c=2');
 
+// <script>/<style> bodies are not markup: a tag string inside JS must not win over the real tag
+const decomment2 = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
+const descript = (h) => h.replace(/<script\b(?![^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, '<script></script>').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '<style></style>');
+const clean = (h) => descript(decomment2(h));
+const titles = (h) => [...h.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)].map((m) => m[1].trim());
+t("a <title> inside a <script> body does not win", titles(clean('<script>var s = "<title>Fake</title>";</script><title>Real</title>'))[0] === 'Real');
+t("JSON-LD scripts survive stripping", /Product/.test(clean('<script type="application/ld+json">{"@type":"Product"}</script>')));
+t("<style> bodies are stripped", !/h1/.test(clean('<style>h1{color:red}</style>')));
+
 // googlebot-specific noindex must not be hidden by a generic robots meta
 const combined = (h) => [metaC(h, 'name', 'robots'), metaC(h, 'name', 'googlebot')].filter(Boolean).join(' ');
 t("googlebot noindex is seen even when robots=all", /\bnoindex\b/.test(combined('<meta name="robots" content="all"><meta name="googlebot" content="noindex">')));
@@ -146,6 +155,7 @@ const ROUTES = {
 <url><loc>{B}/entity-title</loc></url>
 <url><loc>{B}/gbot-noindex</loc></url>
 <url><loc>{B}/bad-entity</loc></url>
+<url><loc>{B}/script-title</loc></url>
 <url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
@@ -161,6 +171,7 @@ const ROUTES = {
   '/entity-title': ['text/html', page('It&#39;s an entity title', '<meta name="description" content="Title carries an HTML entity apostrophe.">')],
   '/gbot-noindex': ['text/html', page('Googlebot noindex page', '<meta name="robots" content="all"><meta name="googlebot" content="noindex"><meta name="description" content="Noindexed for Googlebot only.">')],
   // a code point above U+10FFFF used to throw RangeError and abort the whole audit
+  '/script-title': ['text/html', '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width"><script>var t = "<title>Fake Script Title</title>";</script><title>The Real Title Here</title><meta name="description" content="A title string hides inside a script body."></head><body><h1>H</h1></body></html>'],
   '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
   // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
   '/amp-canonical': ['text/html', page('Ampersand canonical page', '<meta name="description" content="Canonical and loc both escape the ampersand."><link rel="canonical" href="{B}/amp-canonical?b=1&amp;c=2">')],
@@ -226,6 +237,7 @@ unlinkSync(OUT2);
 t('[e2e] a catch-all 200 site IS reported as a soft 404', spaFindings.some((f) => /soft 404/i.test(f.message)));
 t('[e2e] an out-of-range entity does not abort the audit', findings.length > 0 && !onPage('/bad-entity', /could not parse/));
 t('[e2e] a correctly-escaped &amp; canonical is NOT called a different URL', !onPage('/amp-canonical', /points at a different URL/));
+t('[e2e] a <title> inside a <script> does not create a phantom duplicate', !findings.some((f) => /Fake Script Title/.test(f.message)));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

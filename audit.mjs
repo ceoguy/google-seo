@@ -77,6 +77,13 @@ async function get(url) {
 // explanatory `<!-- no <link rel="canonical"> here -->`) is scored as that tag. Cost me a false
 // "2 canonical tags" on the very first run.
 const decomment = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
+// <script>/<style> BODIES are not markup either. `var s = "<title>Fake</title>"` inside a script
+// otherwise wins over the real <title> (tagText takes the first match) and invents duplicates.
+// Keep JSON-LD: it is read separately, by type, and stripping it would blind the structured-data
+// checks. Replace with a same-length-ish placeholder so offsets stay sane.
+const descript = (h) => h.replace(/<script\b(?![^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, '<script></script>')
+  .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '<style></style>');
+const clean = (h) => descript(decomment(h));
 // Chrome hands back a DECODED DOM (`&#8217;` -> `’`), while a raw fetch keeps the entity. Compare
 // like with like or every static page whose title contains an entity is falsely reported as
 // "differs raw vs rendered -- prerender your head". WordPress emits &#8217; for apostrophes.
@@ -270,7 +277,7 @@ const hreflangGraph = new Map();   // url -> Set(alternate urls it declares)
 const sitemapAlts = new Map();     // url -> [{lang, href}] declared via <xhtml:link> in the sitemap
 
 function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
-  const html = decomment(rawHtml);
+  const html = clean(rawHtml);
   const path = new URL(url).pathname + new URL(url).search;
   const tag = view === 'rendered' ? '[rendered] ' : '';
   const out = {};
@@ -470,7 +477,7 @@ async function siteProbes() {
   const r = await get(GHOST);
   ghostIs200 = r.status === 200;
   if (!ghostIs200) return;
-  if (/\bnoindex\b/i.test(metaC(decomment(r.body), 'name', 'robots'))) return; // already handled in source
+  if (/\bnoindex\b/i.test(metaC(clean(r.body), 'name', 'robots'))) return; // already handled in source
 
   // A client-routed SPA usually CANNOT return 404 -- Google's sanctioned remedy is a JS-injected
   // noindex, which raw HTML can't show. Don't call that broken; say what still needs proving.
@@ -517,7 +524,7 @@ for (const [u, v] of rawViews) {
   const r = await get(amp);
   const p = new URL(u).pathname;
   if (r.status !== 200) { add('high', 'amp', 'auto-fix', p, `rel=amphtml points at ${amp}, which returns ${r.status}`, 'crawling-indexing/amp/validate-amp'); continue; }
-  const back = linkHref(decomment(r.body), 'canonical');
+  const back = linkHref(clean(r.body), 'canonical');
   if (!back) add('high', 'amp', 'auto-fix', amp, 'AMP page has no rel=canonical back to the HTML page', 'crawling-indexing/amp/enhance-amp');
   else if (norm(back) !== norm(u)) add('high', 'amp', 'auto-fix', amp, `AMP page canonicalizes to ${back}, not to its HTML page ${u}`, 'crawling-indexing/amp/validate-amp');
 }
@@ -587,7 +594,7 @@ if (RENDER) {
 
   if (ghostIs200) {
     const gh = rendered.get(GHOST);
-    const ok = gh && /\bnoindex\b/i.test(metaC(decomment(gh), 'name', 'robots'));
+    const ok = gh && /\bnoindex\b/i.test(metaC(clean(gh), 'name', 'robots'));
     if (!ok) add('high', 'crawling', 'auto-fix', GHOST, 'a nonexistent URL returns HTTP 200 and the rendered page carries no noindex — a soft 404 that Google can index', 'crawling-indexing/javascript/javascript-seo-basics');
     rendered.delete(GHOST); // not a real page; keep it out of the head-delta comparison AND the count
   }
@@ -617,7 +624,7 @@ if (RENDER) {
     if (!raw.jsonLdBlockCount && rv.jsonLdTypes?.length) add('high', 'structured-data', 'auto-fix', path, `structured data (${rv.jsonLdTypes.join(', ')}) exists only after JS runs — AI crawlers and social scrapers never see it`, 'structured-data/generate-structured-data-with-javascript');
     if (!raw.hreflang?.length && rv.hreflang?.length) add('high', 'international', 'auto-fix', path, `hreflang exists only after JS runs, and the sitemap does not carry it either. Google sanctions only HTML head / HTTP header / sitemap delivery.`, 'specialty/international/localized-versions');
     if (raw.noRawH1) {
-      if (tagText(decomment(html), 'h1').length) add('medium', 'on-page', 'auto-fix', path, '<h1> only exists after JS runs', 'javascript/javascript-seo-basics');
+      if (tagText(clean(html), 'h1').length) add('medium', 'on-page', 'auto-fix', path, '<h1> only exists after JS runs', 'javascript/javascript-seo-basics');
       else add('low', 'on-page', 'handoff', path, 'no <h1> anywhere, rendered or raw. Google mandates no h1 count; it asks you to "provide headings to help users navigate your pages".', 'fundamentals/seo-starter-guide');
     }
   }
