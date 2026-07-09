@@ -62,34 +62,34 @@ Adding `Article` structured data to your news, blog, and sports
 
 ```
 <html>
- <head>
- <title>Title of a News Article</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "NewsArticle",
- "headline": "Title of a News Article",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "datePublished": "2024-01-05T08:00:00+08:00",
- "dateModified": "2024-02-05T09:20:00+08:00",
- "author": [{
- "@type": "Person",
- "name": "Jane Doe",
- "url": "https://example.com/profile/janedoe123"
- },{
- "@type": "Person",
- "name": "John Doe",
- "url": "https://example.com/profile/johndoe123"
- }]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Title of a News Article</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Title of a News Article",
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "datePublished": "2024-01-05T08:00:00+08:00",
+      "dateModified": "2024-02-05T09:20:00+08:00",
+      "author": [{
+          "@type": "Person",
+          "name": "Jane Doe",
+          "url": "https://example.com/profile/janedoe123"
+        },{
+          "@type": "Person",
+          "name": "John Doe",
+          "url": "https://example.com/profile/johndoe123"
+      }]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -142,41 +142,41 @@ Adding `Article` structured data to your news, blog, and sports
 
 ```
 <html>
- <head>
- <title>Title of a News Article</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/NewsArticle">
- <div itemprop="headline">Title of News Article</div>
- <meta itemprop="image" content="https://example.com/photos/1x1/photo.jpg" />
- <meta itemprop="image" content="https://example.com/photos/4x3/photo.jpg" />
- <img itemprop="image" src="https://example.com/photos/16x9/photo.jpg" />
- <div>
- <span itemprop="datePublished" content="2024-01-05T08:00:00+08:00">
- January 5, 2024 at 8:00am
- </span>
- (last modified
- <span itemprop="dateModified" content="2024-02-05T09:20:00+08:00">
- February 5, 2024 at 9:20am
- </span>
- )
- </div>
- <div>
- by
- <span itemprop="author" itemscope itemtype="https://schema.org/Person">
- <a itemprop="url" href="https://example.com/profile/janedoe123">
- <span itemprop="name">Jane Doe</span>
- </a>
- </span>
- and
- <span itemprop="author" itemscope itemtype="https://schema.org/Person">
- <a itemprop="url" href="https://example.com/profile/johndoe123">
- <span itemprop="name">John Doe</span>
- </a>
- </span>
- </div>
- </div>
- </body>
+  <head>
+    <title>Title of a News Article</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/NewsArticle">
+      <div itemprop="headline">Title of News Article</div>
+      <meta itemprop="image" content="https://example.com/photos/1x1/photo.jpg" />
+      <meta itemprop="image" content="https://example.com/photos/4x3/photo.jpg" />
+      <img itemprop="image" src="https://example.com/photos/16x9/photo.jpg" />
+      <div>
+        <span itemprop="datePublished" content="2024-01-05T08:00:00+08:00">
+          January 5, 2024 at 8:00am
+        </span>
+        (last modified
+        <span itemprop="dateModified" content="2024-02-05T09:20:00+08:00">
+          February 5, 2024 at 9:20am
+        </span>
+        )
+      </div>
+      <div>
+        by
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <a itemprop="url" href="https://example.com/profile/janedoe123">
+            <span itemprop="name">Jane Doe</span>
+          </a>
+        </span>
+        and
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <a itemprop="url" href="https://example.com/profile/johndoe123">
+            <span itemprop="name">John Doe</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -274,116 +274,32 @@ schema.org types: [`Article`](https://schema.org/Article),
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `author` | 
- `[Person](https://schema.org/Person)` or `[Organization](https://schema.org/Organization)`
-
- The author of the article. To help Google best understand authors across various features,
- we recommend following the [author markup best practices](https://developers.google.com#author-bp).
+| `author` | ` Person ` or ` Organization ` The author of the article. To help Google best understand authors across various features, we recommend following the author markup best practices . |
  
-
- | 
+| `author.name` | ` Text ` The name of the author. |
  
-
+| `author.url` | ` URL ` A link to a web page that uniquely identifies the author of the article. For example, the author's social media page, an "about me" page, or a bio page. If the URL is an internal profile page, we recommend marking up that author using profile page structured data . You can use the `sameAs` property as an alternative. Google can understand both `sameAs` and `url` when disambiguating authors. |
  
- `author.name` | 
- `[Text](https://schema.org/Text)`
-
- The name of the author.
- | 
+| `dateModified` | ` DateTime ` The date and time the article was most recently modified, in ISO 8601 format . We recommend that you provide timezone information; otherwise, we will default to the timezone used by Googlebot . Add the `dateModified` property if you want to provide more accurate date information to Google. The Rich Results Test doesn't show a warning for this property, as it's only recommended if you decide that it's applicable to your site. |
  
-
+| `datePublished` | ` DateTime ` The date and time the article was first published, in ISO 8601 format . We recommend that you provide timezone information; otherwise, we will default to the timezone used by Googlebot . Add the `datePublished` property if you want to provide more accurate date information to Google. The Rich Results Test doesn't show a warning for this property, as it's only recommended if you decide that it's applicable to your site. |
  
- `author.url` | 
- `[URL](https://schema.org/URL)`
-
- A link to a web page that uniquely identifies the author of the article. For example, the
- author's social media page, an "about me" page, or a bio page.
-
- If the URL is an internal profile page, we recommend marking up that author using
- [profile page structured data](https://developers.google.com/search/docs/appearance/structured-data/profile-page).
-
- You can use the `sameAs` property as an alternative. Google can
- understand both `sameAs` and `url` when disambiguating authors. | 
+| `headline` | ` Text ` The title of the article. Consider using a concise title, as long titles may be truncated on some devices. |
  
-
- 
- `dateModified` | 
- `[DateTime](https://schema.org/DateTime)`
-
- The date and time the article was most recently modified, in [ISO 8601 format](https://wikipedia.org/wiki/ISO_8601).
- We recommend that you provide timezone information; otherwise, we will default to [the timezone used by Googlebot](https://developers.google.com/search/docs/crawling-indexing/googlebot#timezone).
-
- Add the `dateModified` property if you want to provide more accurate date information to Google.
- The [Rich Results Test](https://search.google.com/test/rich-results) doesn't show a warning for this property,
- as it's only recommended if you decide that it's applicable to your site. | 
- 
-
- 
- `datePublished` | 
- `[DateTime](https://schema.org/DateTime)`
-
- The date and time the article was first published, in
- [ISO 8601 format](https://wikipedia.org/wiki/ISO_8601).
- We recommend that you provide timezone information; otherwise, we will default to [the timezone used by Googlebot](https://developers.google.com/search/docs/crawling-indexing/googlebot#timezone).
-
- Add the `datePublished` property if you want to provide more
- accurate date information to Google. The
- [Rich Results Test](https://search.google.com/test/rich-results) doesn't show a
- warning for this property, as it's only recommended if you decide that it's applicable to your site.
- | 
- 
-
- 
- `headline` | 
- `[Text](https://schema.org/Text)`
-
- The title of the article. Consider using a concise title, as long titles may be truncated on some devices.
- | 
- 
-
- 
- `image` | 
- Repeated `[ImageObject](https://schema.org/ImageObject)` or `[URL](https://schema.org/URL)`
-
- The URL to an image that is representative of the article. Use images that are relevant
- to the article, rather than logos or captions.
-
- 
-Additional image guidelines:
- 
- 
-- Image URLs must be crawlable and indexable. To check if Google can access your URLs, use
- the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289).
- 
-- Images must represent the marked up content.
- 
-- Images must be in a file format that's [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when
- multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
- 
-
- For example:
-
- 
-
+| `image` | Repeated ` ImageObject ` or ` URL ` The URL to an image that is representative of the article. Use images that are relevant to the article, rather than logos or captions. Additional image guidelines: Image URLs must be crawlable and indexable. To check if Google can access your URLs, use the URL Inspection tool . Images must represent the marked up content. Images must be in a file format that's supported by Google Images . For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1. For example: 
 ```
 "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
 ]
 ```
-
- 
- | 
- 
-
+ |
  
 
 ## Author markup best practices
@@ -393,193 +309,103 @@ Additional image guidelines:
 
  
  
- Best practices for author markup | 
- 
-
+| Best practices for author markup |
  
  
  
+| Include all authors in the markup | Make sure that all the authors that are presented as authors on the web page are also included in markup. |
  
-### Include all authors in the markup
- | 
- 
- 
- Make sure that all the authors that are presented as authors on the web page are also included in markup.
- 
-
- | 
- 
-
- 
- 
-### Specifying multiple authors
- | 
- 
- 
- When specifying multiple authors, list each author in their own `author` field:
- 
-
- 
-
+| Specifying multiple authors | When specifying multiple authors, list each author in their own `author` field: 
 ```
 "author": [
- {"name": "Willow Lane"},
- {"name": "Regula Felix"}
+  {"name": "Willow Lane"},
+  {"name": "Regula Felix"}
 ]
 ```
-
- 
- Don't merge multiple authors in the same `author` field:
- 
-
- 
-
+ Don't merge multiple authors in the same `author` field: 
 ```
 "author": {
- "name": "Willow Lane, Regula Felix"
+  "name": "Willow Lane, Regula Felix"
 }
 ```
-
- | 
+ |
  
-
- 
- 
-### Use additional fields
- | 
- 
- 
- To help Google better understand who the author is, we strongly recommend using the
- `type` and `url` (or `sameAs`)
- properties. Use valid URLs for the `url` or `sameAs` properties.
- 
-
- 
- For example, if the author is a person, you could link to an author's page that
- provides more information about the author:
- 
-
- 
-
+| Use additional fields | To help Google better understand who the author is, we strongly recommend using the `type` and `url` (or `sameAs`) properties. Use valid URLs for the `url` or `sameAs` properties. For example, if the author is a person, you could link to an author's page that provides more information about the author: 
 ```
 "author": [
- {
- "@type": "Person",
- "name": "Willow Lane",
- "url": "https://www.example.com/staff/willow_lane"
- }
+  {
+    "@type": "Person",
+    "name": "Willow Lane",
+    "url": "https://www.example.com/staff/willow_lane"
+  }
 ]
 ```
-
- 
- If the author is an organization, you could link to the organization's home page.
- 
-
- 
-
+ If the author is an organization, you could link to the organization's home page. 
 ```
 "author":
- [
- {
- "@type":"Organization",
- "name": "Some News Agency",
- "url": "https://www.example.com/"
- }
+  [
+    {
+      "@type":"Organization",
+      "name": "Some News Agency",
+      "url": "https://www.example.com/"
+  }
 ]
 ```
-
- | 
+ |
  
-
- 
- 
-### Only specify the author's name in the `author.name` property
- | 
- 
- 
- In the `author.name` property, only specify the name of the author. Don't add
- any other piece of information. More specifically, don't add the following information:
- 
-
- 
- 
-- The name of the publisher. Instead, use the `publisher` property.
- 
-- The author's job title. Instead, use the appropriate property if you want to specify
- that information ([`jobTitle`](https://schema.org/jobTitle)).
- 
-- Honorific prefix or suffix. Instead, use the appropriate property if you want to
- specify that information ([`honorificPrefix`](https://schema.org/honorificPrefix)
- or [`honorificSuffix`](https://schema.org/honorificSuffix)).
- 
-- Introductory words (for example, don't include words like "posted by").
- 
-
- 
-
+| Only specify the author's name in the `author.name` property | In the `author.name` property, only specify the name of the author. Don't add any other piece of information. More specifically, don't add the following information: The name of the publisher. Instead, use the `publisher` property. The author's job title. Instead, use the appropriate property if you want to specify that information ( `jobTitle` ). Honorific prefix or suffix. Instead, use the appropriate property if you want to specify that information ( `honorificPrefix` or `honorificSuffix` ). Introductory words (for example, don't include words like "posted by"). 
 ```
 "author":
- [
- {
- "@type": "Person",
- "name": "Echidna Jones",
- "honorificPrefix": "Dr",
- "jobTitle": "Editor in Chief"
- }
- ],
+  [
+    {
+      "@type": "Person",
+      "name": "Echidna Jones",
+      "honorificPrefix": "Dr",
+      "jobTitle": "Editor in Chief"
+    }
+  ],
 "publisher":
- [
- {
- "@type": "Organization",
- "name": "Bugs Daily"
- }
- ]
+  [
+    {
+      "@type": "Organization",
+      "name": "Bugs Daily"
+    }
+  ]
 }
 ```
-
- | 
+ |
  
-
- 
- 
-### Use the appropriate `Type`
- | 
- 
- 
- Use the `Person` type for people, and the `Organization` type
- for organizations. Don't use the `Thing` type, and don't use the wrong type
- (for example, using the `Organization` type for a person).
-
- | 
- 
+| Use the appropriate `Type` | Use the `Person` type for people, and the `Organization` type for organizations. Don't use the `Thing` type, and don't use the wrong type (for example, using the `Organization` type for a person). |
 
  Here's an example that applies the author markup best practices:
 
+
 ```
 "author":
- [
- {
- "@type": "Person",
- "name": "Willow Lane",
- "jobTitle": "Journalist",
- "url": "https://www.example.com/staff/willow-lane"
- },
- {
- "@type": "Person",
- "name": "Echidna Jones",
- "jobTitle": "Editor in Chief",
- "url": "https://www.example.com/staff/echidna-jones"
- }
- ],
+  [
+    {
+      "@type": "Person",
+      "name": "Willow Lane",
+      "jobTitle": "Journalist",
+      "url": "https://www.example.com/staff/willow-lane"
+    },
+    {
+      "@type": "Person",
+      "name": "Echidna Jones",
+      "jobTitle": "Editor in Chief",
+      "url": "https://www.example.com/staff/echidna-jones"
+    }
+  ],
 "publisher":
- {
- "@type": "Organization",
- "name": "The Daily Bug",
- "url": "https://www.example.com"
- },
- // + Other fields related to the article...
+  {
+    "@type": "Organization",
+    "name": "The Daily Bug",
+    "url": "https://www.example.com"
+  },
+  // + Other fields related to the article...
 }
 ```
+
 
  
 ## Troubleshooting

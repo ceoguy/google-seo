@@ -25,6 +25,7 @@ Here's how to make your site eligible for a favicon in Google Search results:
 - Add a `<link>` tag to the header of your [home page](https://developers.google.com#guidelines)
  with the following syntax:
 
+
 ```
 <link rel="icon" href="/path/to/favicon.ico">
 ```
@@ -36,9 +37,7 @@ Here's how to make your site eligible for a favicon in Google Search results:
 
  
  
- Attributes | 
- 
-
+| Attributes |
  
  
  `rel`
@@ -51,60 +50,18 @@ Here's how to make your site eligible for a favicon in Google Search results:
 
  
  
+| `icon` | The icon that represents your site, as defined in the HTML standard . For historical reasons, we also support `shortcut icon`, which is an earlier, alternative version of `icon`. |
  
- `icon`
- | 
+| `apple-touch-icon` | An iOS-friendly icon that represents your site, per Apple's developer documentation . |
  
- 
- The icon that represents your site, as defined in the [HTML standard](https://html.spec.whatwg.org/#rel-icon).
- 
-
- For historical reasons, we also support `shortcut icon`,
- which is an earlier, alternative version of `icon`.
- 
- | 
- 
-
- 
- 
- `apple-touch-icon`
- | 
- 
- An iOS-friendly icon that represents your site, per [Apple's developer documentation](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html).
-
- | 
- 
-
- 
- 
- `apple-touch-icon-precomposed`
- | 
- 
- An alternative icon for earlier versions of iOS, per [Apple's developer documentation](https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html).
-
- | 
- 
-
+| `apple-touch-icon-precomposed` | An alternative icon for earlier versions of iOS, per Apple's developer documentation . |
  
 
  | 
  
 
  
- 
- `href`
- | 
- 
- 
- The URL of the favicon. The URL can be a relative path (`/smile.ico`) or
- absolute path (`https://example.com/smile.ico`). The URL doesn't need to be
- hosted on your site (for example, your favicon could be hosted on a content delivery
- network (CDN)).
- 
-
- | 
- 
-
+| `href` | The URL of the favicon. The URL can be a relative path (`/smile.ico`) or absolute path (`https://example.com/smile.ico`). The URL doesn't need to be hosted on your site (for example, your favicon could be hosted on a content delivery network (CDN)). |
  
 
  

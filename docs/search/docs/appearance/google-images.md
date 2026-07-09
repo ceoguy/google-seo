@@ -74,13 +74,15 @@ fetched: 2026-07-08
  The `srcset` attribute allows specifying different versions of the same image,
  specifically for different screen sizes. For example:
 
+
 ```
 <img
- srcset="maine-coon-nap-320w.jpg 320w, maine-coon-nap-480w.jpg 480w, maine-coon-nap-800w.jpg 800w"
- sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
- src="maine-coon-nap-800w.jpg"
- alt="A watercolor illustration of a maine coon napping leisurely in front of a fireplace">
+  srcset="maine-coon-nap-320w.jpg 320w, maine-coon-nap-480w.jpg 480w, maine-coon-nap-800w.jpg 800w"
+  sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
+  src="maine-coon-nap-800w.jpg"
+  alt="A watercolor illustration of a maine coon napping leisurely in front of a fireplace">
 ```
+
 
  The `<picture>` element is a container that is used to group different
  `<source>` versions of the same image. It offers a fallback approach so the
@@ -93,13 +95,15 @@ fetched: 2026-07-08
  make sure that you provide an `img` element as a fallback with a `src`
  attribute when using the `picture` element using the following format:
 
+
 ```
 <picture>
- <source type="image/svg+xml" srcset="pyramid.svg">
- <source type="image/webp" srcset="pyramid.webp">
- <img src="pyramid.png" alt="An 1800s oil painting of The Great Pyramid">
+  <source type="image/svg+xml" srcset="pyramid.svg">
+  <source type="image/webp" srcset="pyramid.webp">
+  <img src="pyramid.png" alt="An 1800s oil painting of The Great Pyramid">
 </picture>
 ```
+
 
 ### Use supported image formats
 
@@ -112,9 +116,11 @@ fetched: 2026-07-08
  image, inline by setting the `src` attribute of an `img` element as a
  Base64-encoded string using the following format:
 
+
 ```
 <img src="data:image/svg+xml;base64,[data]">
 ```
+
 
  While inlining images can reduce HTTP requests, carefully judge when to use them since it can
  considerably increase the size of the page. For more on this, refer to the
@@ -161,10 +167,10 @@ fetched: 2026-07-08
 
 ```
 <script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "WebPage",
- "url": "https://example.com/url",
- "primaryImageOfPage": "https://example.com/images/cat.png"
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "url": "https://example.com/url",
+  "primaryImageOfPage": "https://example.com/images/cat.png"
 }</script>
 ```
 
@@ -177,10 +183,10 @@ fetched: 2026-07-08
 
 ```
 <script type="application/ld+json">{
- "@context": "https://schema.org",
- "@type": "BlogPosting",
- "mainEntityOfPage": "https://example.com/url",
- "image": "https://example.com/images/cat.png"
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": "https://example.com/url",
+  "image": "https://example.com/images/cat.png"
 }</script>
 ```
 
@@ -291,11 +297,13 @@ fetched: 2026-07-08
  element, while for inline `<svg>` elements, you can use the
  `<title>` element. For example:
 
+
 ```
 <svg aria-labelledby="svgtitle1">
- <title id="svgtitle1">Googlebot wearing an apron and chef hat, struggling to make pancakes on the stovetop</title>
+  <title id="svgtitle1">Googlebot wearing an apron and chef hat, struggling to make pancakes on the stovetop</title>
 </svg>
 ```
+
 
  We recommend testing your content by
  [auditing for accessibility](https://developer.chrome.com/docs/devtools/accessibility/reference)

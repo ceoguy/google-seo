@@ -250,180 +250,182 @@ This example shows for the US and Canada there is free 2-day shipping for orders
  </body>
 </html>
 
+
 ```
- <html>
- <head>
- <title>Our shipping policy</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "https://schema.org/Organization",
- "hasShippingService": {
- "@type": "ShippingService",
- "@id": "#us_ca_mx_standard_shipping",
- "name": "Standard shipping policies for US, Canada and Mexico",
- "description": "US and Canada: Free 2-day shipping for orders over $29.99,
- otherwise 3-day shipping for $3.49.
- Mexico: No shipping to Mexico for orders under $50,
- otherwise 10% shipping cost and 4-day shipping.",
- "fulfillmentType": "FulfillmentTypeDelivery",
- "handlingTime": {
- "@type": "ServicePeriod",
- "cutoffTime": "14:30:00-07:00",
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "businessDays": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday"
- ]
- },
- "shippingConditions": [
- {
- "@type": "ShippingConditions",
- "shippingDestination": [
- {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- {
- "@type": "DefinedRegion",
- "addressCountry": "CA"
- }
- ],
- "orderValue": {
- "@type": "MonetaryAmount",
- "minValue": 0,
- "maxValue": 29.99,
- "currency": "USD"
- },
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": 3.49,
- "currency": "USD"
- },
- "transitTime": {
- "@type": "ServicePeriod",
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 2,
- "unitCode": "DAY"
- },
- "businessDays": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday"
- ]
- }
- },
- {
- "@type": "ShippingConditions",
- "shippingDestination": [
- {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- {
- "@type": "DefinedRegion",
- "addressCountry": "CA"
- }
- ],
- "orderValue": {
- "@type": "MonetaryAmount",
- "minValue": 30,
- "currency": "USD"
- },
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": 0,
- "currency": "USD"
- },
- "transitTime": {
- "@type": "ServicePeriod",
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "businessDays": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday"
- ]
- }
- },
- {
- "@type": "ShippingConditions",
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "MX"
- },
- "orderValue": {
- "@type": "MonetaryAmount",
- "minValue": 0,
- "maxValue": 49.99,
- "currency": "USD"
- },
- "doesNotShip": true
- },
- {
- "@type": "ShippingConditions",
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "MX"
- },
- "orderValue": {
- "@type": "MonetaryAmount",
- "minValue": 50,
- "currency": "USD"
- },
- "shippingRate": {
- "@type": "ShippingRateSettings",
- "orderPercentage": 0.10
- },
- "transitTime": {
- "@type": "ServicePeriod",
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 2,
- "maxValue": 3,
- "unitCode": "DAY"
- },
- "businessDays": [
- "Monday",
- "Tuesday",
- "Wednesday",
- "Thursday",
- "Friday",
- "Saturday"
- ]
- }
- }
- ]
- }
- // Other Organization-level properties
- // ...
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Our shipping policy</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "https://schema.org/Organization",
+        "hasShippingService": {
+            "@type": "ShippingService",
+            "@id": "#us_ca_mx_standard_shipping",
+            "name": "Standard shipping policies for US, Canada and Mexico",
+            "description": "US and Canada: Free 2-day shipping for orders over $29.99,
+                            otherwise 3-day shipping for $3.49.
+                            Mexico: No shipping to Mexico for orders under $50,
+                            otherwise 10% shipping cost and 4-day shipping.",
+            "fulfillmentType": "FulfillmentTypeDelivery",
+            "handlingTime": {
+              "@type": "ServicePeriod",
+              "cutoffTime": "14:30:00-07:00",
+              "duration": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "DAY"
+              },
+              "businessDays": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ]
+            },
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": [
+                  {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "US"
+                  },
+                  {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CA"
+                  }
+                ],
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "minValue": 0,
+                  "maxValue": 29.99,
+                  "currency": "USD"
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 3.49,
+                  "currency": "USD"
+                },
+                "transitTime": {
+                  "@type": "ServicePeriod",
+                  "duration": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 2,
+                    "unitCode": "DAY"
+                  },
+                  "businessDays": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                  ]
+                }
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": [
+                  {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "US"
+                  },
+                  {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "CA"
+                  }
+                ],
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "minValue": 30,
+                  "currency": "USD"
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": 0,
+                  "currency": "USD"
+                },
+                "transitTime": {
+                  "@type": "ServicePeriod",
+                  "duration": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 1,
+                    "unitCode": "DAY"
+                  },
+                  "businessDays": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                  ]
+                }
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "MX"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "minValue": 0,
+                  "maxValue": 49.99,
+                  "currency": "USD"
+                },
+                "doesNotShip": true
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "MX"
+                },
+                "orderValue": {
+                  "@type": "MonetaryAmount",
+                  "minValue": 50,
+                  "currency": "USD"
+                },
+                "shippingRate": {
+                  "@type": "ShippingRateSettings",
+                  "orderPercentage": 0.10
+                },
+                "transitTime": {
+                  "@type": "ServicePeriod",
+                  "duration": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 3,
+                    "unitCode": "DAY"
+                  },
+                  "businessDays": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                  ]
+                }
+              }
+           ]
+        }
+        // Other Organization-level properties
+        // ...
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -463,151 +465,46 @@ You must include the required properties for your structured data to be eligible
  Use the following properties to describe the standard shipping services for your business.
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `shippingConditions` | 
- 
- `[ShippingConditions](https://schema.org/ShippingConditions)`
-
- 
- Specify the shipping cost and/or delivery times that apply for a particular set of conditions, for example,
- a product weight range, product dimensions, order value, or delivery location. A `ShippingService` can have
- multiple `shippingConditions`. If more than one `ShippingConditions` applies to a product,
- we'll use the lowest shipping cost for the product for the given situation and display that rate and the associated
- shipping speed to customers. If the shipping cost is the same, we'll use the shipping information with the
- fastest shipping speed.
- 
-
- | 
- 
-
+| `shippingConditions` | ` ShippingConditions ` Specify the shipping cost and/or delivery times that apply for a particular set of conditions, for example, a product weight range, product dimensions, order value, or delivery location. A `ShippingService` can have multiple `shippingConditions`. If more than one `ShippingConditions` applies to a product, we'll use the lowest shipping cost for the product for the given situation and display that rate and the associated shipping speed to customers. If the shipping cost is the same, we'll use the shipping information with the fastest shipping speed. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `name` | 
+| `name` | ` Text ` A unique name for your shipping service, if applicable. For example, "Standard Shipping". |
  
+| `description` | ` Text ` A description of your shipping service, if applicable. This is typically more comprehensive than the name. |
  
- `[Text](https://schema.org/Text)`
+| `fulfillmentType` | ` FulfillmentTypeEnumeration ` How the product is delivered to the customer for this shipping service, if applicable. `https://schema.org/FulfillmentTypeDelivery`: This service ships the product to the customer's address (this is the default if this property is not specified). `https://schema.org/FulfillmentTypeCollectionPoint`: The product is shipped to a collection point for customer pickup. |
  
-
- A unique name for your shipping service, if applicable. For example, "Standard Shipping".
-
- | 
+| `handlingTime` | ` ServicePeriod ` Optional information about handling times (for example, in a warehouse) after receiving an order, if applicable. See also the list of `ServicePeriod` properties under the `ShippingService` type supported by Google. |
  
-
- 
- `description` | 
- 
- 
- `[Text](https://schema.org/Text)`
- 
-
- A description of your shipping service, if applicable. This is typically more comprehensive than the name.
-
- | 
- 
-
- 
- `fulfillmentType` | 
- 
- `[FulfillmentTypeEnumeration](https://schema.org/FulfillmentTypeEnumeration)`
-
- How the product is delivered to the customer for this shipping service, if applicable.
-
- 
- 
-- `https://schema.org/FulfillmentTypeDelivery`: This service ships the product to the customer's address (this is the default if this property is not specified).
- 
-- `https://schema.org/FulfillmentTypeCollectionPoint`: The product is shipped to a collection point for customer pickup.
- 
-
- | 
- 
-
- 
- `handlingTime` | 
- 
- `[ServicePeriod](https://schema.org/ServicePeriod)`
-
- Optional information about handling times (for example, in a warehouse) after receiving an order, if applicable.
-
- See also the list of [`ServicePeriod`](https://developers.google.com#shipping-service-handling-time-properties)
- properties under the `ShippingService` type supported by Google.
-
- | 
- 
-
- 
- `validForMemberTier` | 
- 
- 
- `[MemberProgramTier](https://schema.org/MemberProgramTier)`
- 
-
- 
- The loyalty program and tier that this shipping service is valid for, if applicable.
- You can specify multiple member tiers if the shipping settings are the same for all of
- the tiers.
- 
-
- 
- If you use the `validForMemberTier` property to designate member shipping benefits,
- you must also provide at least one regular (non-member) shipping service.
- 
-
- 
- The loyalty programs and tiers that you offer for your business can either be
- defined in your Merchant Center account or using the `MemberProgram` structured
- data type nested under `Organization` structured data on a separate page
- that defines your organization's administrative details and policies. See
- [loyalty program markup](https://developers.google.com/search/docs/appearance/structured-data/loyalty-program) for
- information on how to define the member programs and tiers for your organization.
- 
-
- Here's an example of the `validForMemberTier` property referencing a member
- program (member-plus) and tier (silver) defined in Merchant Center:
- 
-
+| `validForMemberTier` | ` MemberProgramTier ` The loyalty program and tier that this shipping service is valid for, if applicable. You can specify multiple member tiers if the shipping settings are the same for all of the tiers. If you use the `validForMemberTier` property to designate member shipping benefits, you must also provide at least one regular (non-member) shipping service. The loyalty programs and tiers that you offer for your business can either be defined in your Merchant Center account or using the `MemberProgram` structured data type nested under `Organization` structured data on a separate page that defines your organization's administrative details and policies. See loyalty program markup for information on how to define the member programs and tiers for your organization. Here's an example of the `validForMemberTier` property referencing a member program ( member-plus ) and tier ( silver ) defined in Merchant Center: 
 ```
 "validForMemberTier": {
- "@type": "MemberProgramTier",
- "name": "silver",
- "isTierOf": {
- "@type": "MemberProgram",
- "name": "member-plus"
- }
+  "@type": "MemberProgramTier",
+  "name": "silver",
+  "isTierOf": {
+    "@type": "MemberProgram",
+    "name": "member-plus"
+  }
 }
 ```
-
- Here's an example of the `validForMemberTier` property referencing
- `MemberProgramTier` structured data nested under
- `MemberProgram` structured data, which is in turn nested under a `Organization` structured
- data type on a separate page. The `MemberProgramTier` instance is
- identified by the `@id` property specifying the unique resource identifier (URI) of its definition:
- `https://www.example.com/com/member-plus#tier_silver`:
- 
-
+ Here's an example of the `validForMemberTier` property referencing `MemberProgramTier` structured data nested under `MemberProgram` structured data, which is in turn nested under a `Organization` structured data type on a separate page. The `MemberProgramTier` instance is identified by the `@id` property specifying the unique resource identifier (URI) of its definition: `https://www.example.com/com/member-plus#tier_silver`: 
 ```
 "validForMemberTier": {
- "@id": "https://www.example.com/com/member-plus#tier_silver"
+  "@id": "https://www.example.com/com/member-plus#tier_silver"
 }
 ```
-
- 
- This property is still in beta. Off-page `MemberProgramTier`
- structured data might not show up in Google Search right away.
- 
- | 
- 
-
+ This property is still in beta. Off-page `MemberProgramTier` structured data might not show up in Google Search right away. |
  
  
 
@@ -629,65 +526,38 @@ You must include the required properties for your structured data to be eligible
  (where a handling time of 0 means orders are processed the same day if received before the cutoff time).
  
 
+
 ```
 "handlingTime": {
- "@type": "ServicePeriod",
- "businessDays": [
- "https://schema.org/Monday",
- "https://schema.org/Tuesday",
- "https://schema.org/Wednesday",
- "https://schema.org/Thursday",
- "https://schema.org/Friday"
- ],
- "cutoffTime": "22:30:00-05:00",
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 2,
- "unitCode": "DAY"
- }
+  "@type": "ServicePeriod",
+  "businessDays": [
+    "https://schema.org/Monday",
+    "https://schema.org/Tuesday",
+    "https://schema.org/Wednesday",
+    "https://schema.org/Thursday",
+    "https://schema.org/Friday"
+  ],
+  "cutoffTime": "22:30:00-05:00",
+  "duration": {
+    "@type": "QuantitativeValue",
+    "minValue": 0,
+    "maxValue": 2,
+    "unitCode": "DAY"
+  }
 }
 ```
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `businessDays` | 
+| `businessDays` | ` DayOfWeek ` The days of the week when received orders are processed, if applicable. |
  
- `[DayOfWeek](https://schema.org/DayOfWeek)`
-
- The days of the week when received orders are processed, if applicable.
-
- | 
+| `cutoffTime` | ` Time ` The time after which orders received on a day are not processed that same day, if applicable. For orders processed after cutoff time, one day gets added to the delivery time estimate. The time is indicated using the ISO-8601 time format, for example "23:30:00-05:00" represents 6:30 pm Eastern Standard Time (EST) which is 5 hours behind Coordinated Universal Time (UTC). |
  
-
- 
- `cutoffTime` | 
- 
- `[Time](https://schema.org/Time)`
-
- The time after which orders received on a day are not processed that same day, if applicable.
- For orders processed after cutoff time, one day gets added to the delivery time estimate.
- The time is indicated using the ISO-8601 time format, for example "23:30:00-05:00"
- represents 6:30 pm Eastern Standard Time (EST) which is 5 hours behind Coordinated
- Universal Time (UTC).
-
- | 
- 
-
- 
- `duration` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The delay between the receipt of an order and the goods leaving the warehouse, if applicable.
-
- | 
- 
-
+| `duration` | ` QuantitativeValue ` The delay between the receipt of an order and the goods leaving the warehouse, if applicable. |
  
  
 
@@ -702,51 +572,17 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `maxValue` | 
+| `maxValue` | ` Number ` The maximum number of days. The value must be a non-negative, whole number. |
  
- `[Number](https://schema.org/Number)`
-
- The maximum number of days. The value must be a non-negative, whole number.
-
- | 
+| `minValue` | ` Number ` The minimum number of days, if applicable. The value must be a non-negative, whole number. |
  
-
+| `unitCode` | ` Text ` The units of the minimum/maximum values. The value must be `DAY` or `d`. |
  
- `minValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum number of days, if applicable. The value must be a non-negative, whole number.
-
- | 
- 
-
- 
- `unitCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- The units of the minimum/maximum values. The value must be `DAY` or `d`.
-
- | 
- 
-
- 
- `value` | 
- 
- `[Number](https://schema.org/Number)`
-
- The exact number of handling days, if known. The value must be a non-negative, whole number.
- If provided, `minValue` and `maxValue` must not be specified.
- 
-
- | 
- 
-
+| `value` | ` Number ` The exact number of handling days, if known. The value must be a non-negative, whole number. If provided, `minValue` and `maxValue` must not be specified. |
  
  
 
@@ -760,135 +596,27 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `doesNotShip` | 
+| `doesNotShip` | ` Boolean ` If applicable, set this to `true` if shipping from a location in the specified `shippingOrigin` to a location in the specified `shippingDestination` isn't available for orders with the specified combination of `weight`, `numItems`, and `orderValue` conditions. |
  
- `[Boolean](https://schema.org/Boolean)`
-
- If applicable, set this to `true` if shipping from a location in the specified `shippingOrigin`
- to a location in the specified `shippingDestination` isn't available for orders with the specified
- combination of `weight`, `numItems`, and `orderValue` conditions.
-
- | 
+| `numItems` | ` QuantitativeValue ` The range of the number of products in the order for this shipping conditions object, if applicable. See also the list of `QuantitativeValue` properties related to the `ShippingConditions` type supported by Google. |
  
-
+| `orderValue` | ` MonetaryAmount ` The range of the cost of the order for this shipping conditions object, if applicable. See also the list of `MonetaryAmount` properties related to the `ShippingConditions` type supported by Google. |
  
- `numItems` | 
+| `shippingDestination` | ` DefinedRegion ` Indicates shipping destination, if applicable. See the list of `DefinedRegion` properties under the `shippingDestination` property supported by Google. |
  
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The range of the number of products in the order for this shipping conditions object, if applicable.
- See also the list of [`QuantitativeValue`](https://developers.google.com#shipping-quantitative-value-properties) properties
- related to the `ShippingConditions` type supported by Google.
-
- | 
+| `shippingOrigin` | ` DefinedRegion ` Indicates shipping origin, if applicable. See the list of `DefinedRegion` properties under the `shippingOrigin` property supported by Google. |
  
-
+| `seasonalOverride` | ` OpeningHoursSpecification ` If applicable, use this property to specify a limited time period for which this shipping conditions object is valid. See also the list of `OpeningHoursSpecification` properties supported for the `ShippingConditions` type by Google. |
  
- `orderValue` | 
+| `shippingRate` | ` ShippingRateSettings ` or ` MonetaryAmount ` If applicable, use this property to specify the shipping cost for shipments from a location in the specified `shippingOrigin` to a location in the specified `shippingDestination` for orders with the specified combination of `weight`, `numItems`, and `orderValue` conditions. See also the list of `ShippingRateSettings` properties and `MonetaryAmount` properties supported for the `ShippingConditions` type by Google. This property should only be specified if `doesNotShip` is absent or set to `false`. |
  
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- The range of the cost of the order for this shipping conditions object, if applicable.
- See also the list of [`MonetaryAmount`](https://developers.google.com#shipping-conditions-monetary-amount-properties)
- properties related to the `ShippingConditions` type supported by Google.
-
- | 
+| `transitTime` | ` ServicePeriod ` If applicable, use to specify the expected transit time between leaving the shipping origin (typically a warehouse) and arriving at the shipping destination (typically the customer). Applies to shipments from a location in the specified `shippingOrigin` property to a location in the specified `shippingDestination` property for orders with the specified combination of `weight`, `numItems`, and `orderValue` conditions. See also the list of `ServicePeriod` properties supported by Google. This property should only be specified if the `doesNotShip` property is absent or set to `false`. |
  
-
- 
- `shippingDestination` | 
- 
- 
- `[DefinedRegion](https://schema.org/DefinedRegion)`
- 
-
- Indicates shipping destination, if applicable. See the list of [`DefinedRegion`](https://developers.google.com#defined-region-properties)
- properties under the `shippingDestination` property supported by Google.
-
- | 
- 
-
- 
- `shippingOrigin` | 
- 
- 
- `[DefinedRegion](https://schema.org/DefinedRegion)`
- 
-
- Indicates shipping origin, if applicable. See the list of [`DefinedRegion`](https://developers.google.com#defined-region-properties)
- properties under the `shippingOrigin` property supported by Google.
-
- | 
- 
-
- 
- `seasonalOverride` | 
- 
- `[OpeningHoursSpecification](https://schema.org/OpeningHoursSpecification)`
-
- If applicable, use this property to specify a limited time period for which this shipping conditions object is valid.
- See also the list of [`OpeningHoursSpecification`](https://developers.google.com#shipping-seasonal-override-properties)
- properties supported for the `ShippingConditions` type by Google.
-
- 
-
- | 
- 
-
- 
- `shippingRate` | 
- 
- `[ShippingRateSettings](https://schema.org/ShippingRateSettings)` or
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
- 
-
- If applicable, use this property to specify the shipping cost for
- shipments from a location in the specified `shippingOrigin` to a location
- in the specified `shippingDestination` for orders with the
- specified combination of `weight`, `numItems`, and `orderValue` conditions.
- See also the list of [`ShippingRateSettings`](https://developers.google.com#shipping-rate-settings-properties) properties and [`MonetaryAmount`](https://developers.google.com#shipping-monetary-amount-properties) properties supported for the `ShippingConditions` type by Google. This property
- should only be specified if `doesNotShip` is absent or set to `false`.
-
- 
-
- | 
- 
-
- 
- `transitTime` | 
- 
- `[ServicePeriod](https://schema.org/ServicePeriod)`
-
- If applicable, use to specify the expected transit time between leaving the shipping origin (typically a warehouse)
- and arriving at the shipping destination (typically the customer). Applies to
- shipments from a location in the specified `shippingOrigin` property to a location
- in the specified `shippingDestination` property for orders with the
- specified combination of `weight`, `numItems`, and `orderValue` conditions.
- See also the list of [`ServicePeriod`](https://developers.google.com#shipping-service-transit-time-properties)
- properties supported by Google. This property should only be specified if the `doesNotShip` property
- is absent or set to `false`.
-
- 
-
- | 
- 
-
- 
- `weight` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The package's weight range for this shipping conditions object, if applicable.
- See also the list of [`QuantitativeValue`](https://developers.google.com#shipping-quantitative-value-properties)
- properties related to the `ShippingConditions` type supported by Google.
-
- | 
- 
-
+| `weight` | ` QuantitativeValue ` The package's weight range for this shipping conditions object, if applicable. See also the list of `QuantitativeValue` properties related to the `ShippingConditions` type supported by Google. |
  
  
 
@@ -901,54 +629,23 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `addressCountry` | 
- 
- `[Text](https://schema.org/Text)`
-
- The two-letter country code, in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1) format.
-
- | 
- 
-
+| `addressCountry` | ` Text ` The two-letter country code, in ISO 3166-1 alpha-2 format. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `addressRegion` | 
+| `addressRegion` | ` Text ` The country-specific region code, if applicable. The region must be a 2- or 3-character ISO 3166-2 subdivision code, without country prefix. Google Search only supports the US, Australia, and Japan. Examples: `NY` (for US, state of New York), `NSW` (for Australia, state of New South Wales), or `03` (for Japan, Iwate prefecture). Don't provide both a region and postal code information. |
  
- `[Text](https://schema.org/Text)`
-
- The country-specific region code, if applicable. The region must be a 2- or 3-character ISO 3166-2
- subdivision code, without country prefix. Google Search only supports
- the US, Australia, and Japan. Examples: `NY` (for US, state of New York),
- `NSW` (for Australia, state of New South Wales), or `03`
- (for Japan, Iwate prefecture).
-
- Don't provide both a region and postal code information.
-
- | 
- 
-
- 
- `postalCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- The country-specific postal code, if applicable. For example, `94043`. Postal codes are supported for
- Australia, Canada, and the US.
-
- | 
- 
-
+| `postalCode` | ` Text ` The country-specific postal code, if applicable. For example, `94043`. Postal codes are supported for Australia, Canada, and the US. |
  
  
 
@@ -964,22 +661,23 @@ You must include the required properties for your structured data to be eligible
  
  Example:
 
+
 ```
 "transitTime": {
- "@type": "ServicePeriod",
- "businessDays": [
- "https://schema.org/Monday",
- "https://schema.org/Tuesday",
- "https://schema.org/Wednesday",
- "https://schema.org/Thursday",
- "https://schema.org/Friday"
- ],
- "duration": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 2,
- "unitCode": "DAY"
- }
+  "@type": "ServicePeriod",
+  "businessDays": [
+    "https://schema.org/Monday",
+    "https://schema.org/Tuesday",
+    "https://schema.org/Wednesday",
+    "https://schema.org/Thursday",
+    "https://schema.org/Friday"
+  ],
+  "duration": {
+    "@type": "QuantitativeValue",
+    "minValue": 0,
+    "maxValue": 2,
+    "unitCode": "DAY"
+  }
 }
 ```
 
@@ -987,31 +685,13 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `businessDays` | 
+| `businessDays` | ` DayOfWeek ` The days of the week when an order is an active transit, if applicable. If your organization's business days are Monday through Saturday, you don't need to add this property. |
  
- `[DayOfWeek](https://schema.org/DayOfWeek)`
-
- The days of the week when an order is an active transit, if applicable. If your organization's
- business days are Monday through Saturday, you don't need to add this property.
- | 
- 
-
- 
- `duration` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The number of business days in transit, if applicable.
- See also the list of [`QuantitativeValue`](https://developers.google.com#shipping-quantitative-value-properties) properties
- for transit times supported by Google.
-
- | 
- 
-
+| `duration` | ` QuantitativeValue ` The number of business days in transit, if applicable. See also the list of `QuantitativeValue` properties for transit times supported by Google. |
  
  
 
@@ -1027,51 +707,17 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `maxValue` | 
+| `maxValue` | ` Number ` The maximum number of days. The value must be a non-negative, whole number. |
  
- `[Number](https://schema.org/Number)`
-
- The maximum number of days. The value must be a non-negative, whole number.
-
- | 
+| `minValue` | ` Number ` The minimum number of days, if applicable. The value must be a non-negative, whole number. |
  
-
+| `unitCode` | ` Text ` The transit time unit. The value must be `DAY` or `d`. |
  
- `minValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum number of days, if applicable. The value must be a non-negative, whole number.
-
- | 
- 
-
- 
- `unitCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- The transit time unit. The value must be `DAY` or `d`.
-
- | 
- 
-
- 
- `value` | 
- 
- `[Number](https://schema.org/Number)`
-
- The exact number of transit days, if known. The value must be a non-negative, whole number.
- If provided, `minValue` and `maxValue` must not be specified.
- 
-
- | 
- 
-
+| `value` | ` Number ` The exact number of transit days, if known. The value must be a non-negative, whole number. If provided, `minValue` and `maxValue` must not be specified. |
  
  
 
@@ -1094,49 +740,15 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `maxValue` | 
+| `maxValue` | ` Number ` The maximum number for the dimension (`weight` or `numItems`), if applicable. Defaults to infinity when not provided. |
  
- `[Number](https://schema.org/Number)`
-
- The maximum number for the dimension (`weight` or `numItems`), if applicable.
- Defaults to infinity when not provided.
+| `minValue` | ` Number ` The minimum number for the dimension (`weight` or `numItems`), if applicable. Must be less than `maxValue`. Defaults to 0 when not provided. |
  
-
- | 
- 
-
- 
- `minValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum number for the dimension (`weight` or `numItems`), if applicable.
- Must be less than `maxValue`. Defaults to 0 when not provided.
-
- | 
- 
-
- 
- `unitCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- A unit relevant to the dimension (`weight` or `numItems`), if applicable.
- in UN/CEFACT Common Code (three characters) format:
- 
- 
-- For weight units, the value must be `LBR` (pound) or `KGM` (kilogram)
- 
-- For number of items, `unitCode` can be omitted. Alternatively, you can use UN/CEFACT Common Code name `H87`.
- 
-
- | 
- 
-
+| `unitCode` | ` Text ` A unit relevant to the dimension (`weight` or `numItems`), if applicable. in UN/CEFACT Common Code (three characters) format: For weight units, the value must be `LBR` (pound) or `KGM` (kilogram) For number of items, `unitCode` can be omitted. Alternatively, you can use UN/CEFACT Common Code name `H87`. |
  
  
 
@@ -1155,39 +767,15 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `currency` | 
+| `currency` | ` Text ` The currency code for the order value in ISO 4217 format. |
  
- `[Text](https://schema.org/Text)`
-
- The currency code for the order value in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
-
- | 
+| `maxValue` | ` Number ` The maximum value of the order. Defaults to infinity when not provided. |
  
-
- 
- `maxValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The maximum value of the order. Defaults to infinity when not provided.
-
- | 
- 
-
- 
- `minValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum value of the order. Defaults to 0 when not provided.
-
- | 
- 
-
+| `minValue` | ` Number ` The minimum value of the order. Defaults to 0 when not provided. |
  
  
 
@@ -1205,40 +793,15 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `currency` | 
+| `currency` | ` Text ` The currency code for the shipping cost in ISO 4217 format. |
  
- `[Text](https://schema.org/Text)`
-
- The currency code for the shipping cost in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
-
- | 
+| `maxValue` | ` Number ` The maximum shipping cost for the given shipping condition. If you specify the `maxValue` property, don't specify the `value` property. |
  
-
- 
- `maxValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The maximum shipping cost for the given shipping condition. If you specify the
- `maxValue` property, don't specify the `value` property.
-
- | 
- 
-
- 
- `value` | 
- 
- `[Number](https://schema.org/Number)`
-
- The fixed shipping cost for the given shipping condition. For free shipping, use `0` as the value.
-
- | 
- 
-
+| `value` | ` Number ` The fixed shipping cost for the given shipping condition. For free shipping, use `0` as the value. |
  
  
 
@@ -1258,31 +821,13 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `orderPercentage` | 
+| `orderPercentage` | ` Number ` The shipping cost for the given shipping condition as a fraction of the order value. Use a value between `0` and `1`. |
  
- `[Number](https://schema.org/Number)`
-
- The shipping cost for the given shipping condition as a fraction of the order value.
- Use a value between `0` and `1`.
-
- | 
- 
-
- 
- `weightPercentage` | 
- 
- `[Number](https://schema.org/Number)`
-
- The shipping cost for the given shipping condition as a fraction of the weight of the shipped goods.
- Use a value between `0` and `1`.
-
- | 
- 
-
+| `weightPercentage` | ` Number ` The shipping cost for the given shipping condition as a fraction of the weight of the shipped goods. Use a value between `0` and `1`. |
  
  
 
@@ -1298,29 +843,13 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `validFrom` | 
+| `validFrom` | ` Date ` The first date when the shipping condition is valid, in ISO 8601 format. |
  
- `[Date](https://schema.org/Date)`
-
- The first date when the shipping condition is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
- | 
- 
-
- 
- `validThrough` | 
- 
- `[Date](https://schema.org/Date)`
-
- The last date when the shipping condition is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
- | 
- 
-
+| `validThrough` | ` Date ` The last date when the shipping condition is valid, in ISO 8601 format. |
  
  
 

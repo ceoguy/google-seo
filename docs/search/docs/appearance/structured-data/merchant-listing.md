@@ -136,57 +136,57 @@ Here's an example of a product page selling a product, with product reviews.
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Executive Anvil",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
- "sku": "0446310786",
- "mpn": "925872",
- "brand": {
- "@type": "Brand",
- "name": "ACME"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "Fred Benson"
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.4,
- "reviewCount": 89
- },
- "offers": {
- "@type": "Offer",
- "url": "https://example.com/anvil",
- "priceCurrency": "USD",
- "price": 119.99,
- "priceValidUntil": "2024-11-20",
- "itemCondition": "https://schema.org/UsedCondition",
- "availability": "https://schema.org/InStock"
- }
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Executive Anvil",
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
+      "sku": "0446310786",
+      "mpn": "925872",
+      "brand": {
+        "@type": "Brand",
+        "name": "ACME"
+      },
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 4,
+          "bestRating": 5
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Fred Benson"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.4,
+        "reviewCount": 89
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://example.com/anvil",
+        "priceCurrency": "USD",
+        "price": 119.99,
+        "priceValidUntil": "2024-11-20",
+        "itemCondition": "https://schema.org/UsedCondition",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -253,57 +253,57 @@ Here's an example of a product page selling a product, with product reviews.
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div typeof="schema:Product">
- <div rel="schema:review">
- <div typeof="schema:Review">
- <div rel="schema:reviewRating">
- <div typeof="schema:Rating">
- <div property="schema:ratingValue" content="4"></div>
- <div property="schema:bestRating" content="5"></div>
- </div>
- </div>
- <div rel="schema:author">
- <div typeof="schema:Person">
- <div property="schema:name" content="Fred Benson"></div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:image" resource="https://example.com/photos/4x3/photo.jpg"></div>
- <div property="schema:mpn" content="925872"></div>
- <div property="schema:name" content="Executive Anvil"></div>
- <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
- <div rel="schema:image" resource="https://example.com/photos/1x1/photo.jpg"></div>
- <div rel="schema:brand">
- <div typeof="schema:Brand">
- <div property="schema:name" content="ACME"></div>
- </div>
- </div>
- <div rel="schema:aggregateRating">
- <div typeof="schema:AggregateRating">
- <div property="schema:reviewCount" content="89"></div>
- <div property="schema:ratingValue" content="4.4"></div>
- </div>
- </div>
- <div rel="schema:offers">
- <div typeof="schema:Offer">
- <div property="schema:price" content="119.99"></div>
- <div property="schema:availability" content="https://schema.org/InStock"></div>
- <div property="schema:priceCurrency" content="USD"></div>
- <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-20"></div>
- <div rel="schema:url" resource="https://example.com/anvil"></div>
- <div property="schema:itemCondition" content="https://schema.org/UsedCondition"></div>
- </div>
- </div>
- <div rel="schema:image" resource="https://example.com/photos/16x9/photo.jpg"></div>
- <div property="schema:sku" content="0446310786"></div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+    <div typeof="schema:Product">
+        <div rel="schema:review">
+          <div typeof="schema:Review">
+            <div rel="schema:reviewRating">
+              <div typeof="schema:Rating">
+                <div property="schema:ratingValue" content="4"></div>
+                <div property="schema:bestRating" content="5"></div>
+              </div>
+            </div>
+            <div rel="schema:author">
+              <div typeof="schema:Person">
+                <div property="schema:name" content="Fred Benson"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div rel="schema:image" resource="https://example.com/photos/4x3/photo.jpg"></div>
+        <div property="schema:mpn" content="925872"></div>
+        <div property="schema:name" content="Executive Anvil"></div>
+        <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
+        <div rel="schema:image" resource="https://example.com/photos/1x1/photo.jpg"></div>
+        <div rel="schema:brand">
+          <div typeof="schema:Brand">
+            <div property="schema:name" content="ACME"></div>
+          </div>
+        </div>
+        <div rel="schema:aggregateRating">
+          <div typeof="schema:AggregateRating">
+            <div property="schema:reviewCount" content="89"></div>
+            <div property="schema:ratingValue" content="4.4"></div>
+          </div>
+        </div>
+        <div rel="schema:offers">
+          <div typeof="schema:Offer">
+            <div property="schema:price" content="119.99"></div>
+            <div property="schema:availability" content="https://schema.org/InStock"></div>
+            <div property="schema:priceCurrency" content="USD"></div>
+            <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-20"></div>
+            <div rel="schema:url" resource="https://example.com/anvil"></div>
+            <div property="schema:itemCondition" content="https://schema.org/UsedCondition"></div>
+          </div>
+        </div>
+        <div rel="schema:image" resource="https://example.com/photos/16x9/photo.jpg"></div>
+        <div property="schema:sku" content="0446310786"></div>
+      </div>
+  </body>
 </html>
 ```
 
@@ -360,47 +360,47 @@ Here's an example of a product page selling a product, with product reviews.
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div>
- <div itemtype="https://schema.org/Product" itemscope>
- <meta itemprop="mpn" content="925872" />
- <meta itemprop="name" content="Executive Anvil" />
- <link itemprop="image" href="https://example.com/photos/16x9/photo.jpg" />
- <link itemprop="image" href="https://example.com/photos/4x3/photo.jpg" />
- <link itemprop="image" href="https://example.com/photos/1x1/photo.jpg" />
- <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
- <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
- <link itemprop="url" href="https://example.com/anvil" />
- <meta itemprop="availability" content="https://schema.org/InStock" />
- <meta itemprop="priceCurrency" content="USD" />
- <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
- <meta itemprop="price" content="119.99" />
- <meta itemprop="priceValidUntil" content="2024-11-20" />
- </div>
- <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
- <meta itemprop="reviewCount" content="89" />
- <meta itemprop="ratingValue" content="4.4" />
- </div>
- <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
- <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Fred Benson" />
- </div>
- <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
- <meta itemprop="ratingValue" content="4" />
- <meta itemprop="bestRating" content="5" />
- </div>
- </div>
- <meta itemprop="sku" content="0446310786" />
- <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
- <meta itemprop="name" content="ACME" />
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+  <div>
+    <div itemtype="https://schema.org/Product" itemscope>
+      <meta itemprop="mpn" content="925872" />
+      <meta itemprop="name" content="Executive Anvil" />
+      <link itemprop="image" href="https://example.com/photos/16x9/photo.jpg" />
+      <link itemprop="image" href="https://example.com/photos/4x3/photo.jpg" />
+      <link itemprop="image" href="https://example.com/photos/1x1/photo.jpg" />
+      <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
+      <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+        <link itemprop="url" href="https://example.com/anvil" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+        <meta itemprop="priceCurrency" content="USD" />
+        <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
+        <meta itemprop="price" content="119.99" />
+        <meta itemprop="priceValidUntil" content="2024-11-20" />
+      </div>
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" />
+        <meta itemprop="ratingValue" content="4.4" />
+      </div>
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+        <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
+          <meta itemprop="name" content="Fred Benson" />
+        </div>
+        <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
+          <meta itemprop="ratingValue" content="4" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+      </div>
+      <meta itemprop="sku" content="0446310786" />
+      <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+        <meta itemprop="name" content="ACME" />
+      </div>
+    </div>
+  </div>
+  </body>
 </html>
 ```
 
@@ -441,29 +441,33 @@ Here's an example of a product page selling a product, with product reviews.
  Here are two examples of encoding the active price in JSON-LD. The active price can be specified
  using the `price` property as follows:
 
+
 ```
 "offers": {
- "@type": "Offer",
- "price": 10.00,
- "priceCurrency": "USD",
- ...
+  "@type": "Offer",
+  "price": 10.00,
+  "priceCurrency": "USD",
+  ...
 }
 ```
+
 
  Alternatively, the active price can be specified using the `priceSpecification`
  property.
 
+
 ```
 "offers": {
- "@type": "Offer",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "price": 10.00,
- "priceCurrency": "USD"
- },
- ...
+  "@type": "Offer",
+  "priceSpecification": {
+    "@type": "UnitPriceSpecification",
+    "price": 10.00,
+    "priceCurrency": "USD"
+  },
+  ...
 }
 ```
+
 
  
  If you use both the `offers.price` and `offers.priceSpecification`
@@ -480,52 +484,56 @@ Here's an example of a product page selling a product, with product reviews.
  value `https://schema.org/StrikethroughPrice`. Don't mark the active price with
  a `priceType` property.
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Nice trinket",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "price": 10.00,
- "priceCurrency": "GBP",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "priceType": "https://schema.org/StrikethroughPrice",
- "price": 15.00,
- "priceCurrency": "GBP"
- }
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Nice trinket",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.example.com/trinket_offer",
+    "price": 10.00,
+    "priceCurrency": "GBP",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "priceType": "https://schema.org/StrikethroughPrice",
+      "price": 15.00,
+      "priceCurrency": "GBP"
+    }
+  }
 }
 ```
+
 
  Alternatively, you can use two `UnitPriceSpecification` objects to specify the sale
  price and the strikethrough price:
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Nice trinket",
- "offers": {
- "@type": "Offer",
- "priceSpecification": [
- {
- "@type": "UnitPriceSpecification",
- "price": 10.00,
- "priceCurrency": "GBP"
- },
- {
- "@type": "UnitPriceSpecification",
- "priceType": "https://schema.org/StrikethroughPrice",
- "price": 15.00,
- "priceCurrency": "GBP"
- }
- ]
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Nice trinket",
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": [
+      {
+        "@type": "UnitPriceSpecification",
+        "price": 10.00,
+        "priceCurrency": "GBP"
+      },
+      {
+        "@type": "UnitPriceSpecification",
+        "priceType": "https://schema.org/StrikethroughPrice",
+        "price": 15.00,
+        "priceCurrency": "GBP"
+      }
+    ]
+  }
 }
 ```
+
 
 ### Sale duration
 
@@ -559,57 +567,61 @@ Here's an example of a product page selling a product, with product reviews.
  The following example shows a product with a sale price. The duration properties are added to the
  `Offer` node, as the `price` property on the `Offer` node holds the sale price.
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Nice trinket",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "price": 10.00,
- "priceCurrency": "GBP",
- "validFrom": "2025-11-20T08:00:00+00:00",
- "priceValidUntil": "2025-11-30T23:59:59+00:00",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "priceType": "https://schema.org/StrikethroughPrice",
- "price": 15.00,
- "priceCurrency": "GBP"
- }
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Nice trinket",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.example.com/trinket_offer",
+    "price": 10.00,
+    "priceCurrency": "GBP",
+    "validFrom": "2025-11-20T08:00:00+00:00",
+    "priceValidUntil": "2025-11-30T23:59:59+00:00",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "priceType": "https://schema.org/StrikethroughPrice",
+      "price": 15.00,
+      "priceCurrency": "GBP"
+    }
+  }
 }
 ```
+
 
  Alternatively, you can use two `UnitPriceSpecification` objects to specify the sale
  price and the strikethrough price. The duration properties are added to the
  `UnitPriceSpecification` object that contains the sale price:
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Nice trinket",
- "offers": {
- "@type": "Offer",
- "priceSpecification": [
- {
- "@type": "UnitPriceSpecification",
- "price": 10.00,
- "priceCurrency": "GBP",
- "validFrom": "2025-11-20T08:00:00+00:00",
- "validThrough": "2025-11-30T23:59:59+00:00"
- },
- {
- "@type": "UnitPriceSpecification",
- "priceType": "https://schema.org/StrikethroughPrice",
- "price": 15.00,
- "priceCurrency": "GBP"
- }
- ]
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "Nice trinket",
+  "offers": {
+    "@type": "Offer",
+    "priceSpecification": [
+      {
+        "@type": "UnitPriceSpecification",
+        "price": 10.00,
+        "priceCurrency": "GBP",
+        "validFrom": "2025-11-20T08:00:00+00:00",
+        "validThrough": "2025-11-30T23:59:59+00:00"
+      },
+      {
+        "@type": "UnitPriceSpecification",
+        "priceType": "https://schema.org/StrikethroughPrice",
+        "price": 15.00,
+        "priceCurrency": "GBP"
+      }
+    ]
+  }
 }
 ```
+
 
 ### Member prices
 
@@ -618,118 +630,126 @@ Here's an example of a product page selling a product, with product reviews.
  in a price specification marked with
  the [`validForMemberTier`](https://developers.google.com#validForMemberTier) property:
 
+
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "price": 10.00,
- "priceCurrency": "GBP",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "price": 8.00,
- "priceCurrency": "GBP",
- "validForMemberTier": {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_gold"
- }
- }
+  "@type": "Offer",
+  "url": "https://www.example.com/trinket_offer",
+  "price": 10.00,
+  "priceCurrency": "GBP",
+  "priceSpecification": {
+    "@type": "UnitPriceSpecification",
+    "price": 8.00,
+    "priceCurrency": "GBP",
+    "validForMemberTier": {
+      "@type": "MemberProgramTier",
+      "@id": "https://www.example.com/com/members#tier_gold"
+    }
+  }
 }
 ```
+
 
  The second example shows both the active price and the member price encoded with price
  specifications:
 
+
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "priceSpecification": [
- {
- "@type": "UnitPriceSpecification",
- "price": 10.00,
- "priceCurrency": "GBP"
- },
- {
- "@type": "UnitPriceSpecification",
- "price": 8.00,
- "priceCurrency": "GBP",
- "validForMemberTier": {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_gold"
- }
- }
- ]
+  "@type": "Offer",
+  "url": "https://www.example.com/trinket_offer",
+  "priceSpecification": [
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 10.00,
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 8.00,
+      "priceCurrency": "GBP",
+      "validForMemberTier": {
+        "@type": "MemberProgramTier",
+        "@id": "https://www.example.com/com/members#tier_gold"
+      }
+    }
+  ]
 }
 ```
+
 
  The third example demonstrates how to encode a sale price, a strikethrough price, and member
  prices for several loyalty program tiers in a single offer:
 
+
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "priceSpecification": [
- {
- "@type": "UnitPriceSpecification",
- "price": 9.00,
- "priceCurrency": "GBP"
- },
- {
- "@type": "UnitPriceSpecification",
- "priceType": "https://schema.org/StrikethroughPrice",
- "price": 10.00,
- "priceCurrency": "GBP"
- },
- {
- "@type": "UnitPriceSpecification",
- "price": 8.00,
- "priceCurrency": "GBP",
- "validForMemberTier": {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_silver"
- }
- },
- {
- "@type": "UnitPriceSpecification",
- "price": 7.00,
- "priceCurrency": "GBP",
- "validForMemberTier": [
- {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_gold"
- },
- {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_platinum"
- }
- ]
- }
- ]
+  "@type": "Offer",
+  "url": "https://www.example.com/trinket_offer",
+  "priceSpecification": [
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 9.00,
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "priceType": "https://schema.org/StrikethroughPrice",
+      "price": 10.00,
+      "priceCurrency": "GBP"
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 8.00,
+      "priceCurrency": "GBP",
+      "validForMemberTier": {
+        "@type": "MemberProgramTier",
+        "@id": "https://www.example.com/com/members#tier_silver"
+      }
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 7.00,
+      "priceCurrency": "GBP",
+      "validForMemberTier": [
+        {
+          "@type": "MemberProgramTier",
+          "@id": "https://www.example.com/com/members#tier_gold"
+        },
+        {
+          "@type": "MemberProgramTier",
+          "@id": "https://www.example.com/com/members#tier_platinum"
+        }
+      ]
+    }
+  ]
 }
 ```
+
 
  The active price could also be encoded at the offer level, as shown in the first example.
 
  In the fourth example, the member price specification shows membership points instead of a member
  price:
 
+
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "price": 10.00,
- "priceCurrency": "GBP",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "membershipPointsEarned": 20,
- "validForMemberTier": {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/members#tier_gold"
- }
- }
+  "@type": "Offer",
+  "url": "https://www.example.com/trinket_offer",
+  "price": 10.00,
+  "priceCurrency": "GBP",
+  "priceSpecification": {
+    "@type": "UnitPriceSpecification",
+    "membershipPointsEarned": 20,
+    "validForMemberTier": {
+      "@type": "MemberProgramTier",
+      "@id": "https://www.example.com/com/members#tier_gold"
+    }
+  }
 }
 ```
+
 
 ### Pricing with unit pricing measures
 
@@ -746,27 +766,29 @@ Here's an example of a product page selling a product, with product reviews.
  [`referenceQuantity`](https://developers.google.com#referenceQuantity) property to provide the unit
  pricing.
 
+
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/perfume_offer",
- "priceSpecification": {
- "@type": "UnitPriceSpecification",
- "price": 200.00,
- "priceCurrency": "EUR",
- "referenceQuantity": {
- "@type": "QuantitativeValue",
- "value": "200",
- "unitCode": "ML",
- "valueReference": {
- "@type": "QuantitativeValue",
- "value": "100",
- "unitCode": "ML"
- }
- }
- }
+  "@type": "Offer",
+  "url": "https://www.example.com/perfume_offer",
+  "priceSpecification": {
+    "@type": "UnitPriceSpecification",
+    "price": 200.00,
+    "priceCurrency": "EUR",
+    "referenceQuantity": {
+      "@type": "QuantitativeValue",
+      "value": "200",
+      "unitCode": "ML",
+      "valueReference": {
+        "@type": "QuantitativeValue",
+        "value": "100",
+        "unitCode": "ML"
+      }
+    }
+  }
 }
 ```
+
 
 ### Shipping details
 
@@ -863,84 +885,84 @@ Here's an example of a product page with shipping details. This example would
  
 
 ```
- <html>
- <head>
- <title>Nice trinket</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "sku": "trinket-12345",
- "gtin14": "00012345600012",
- "image": [
- "https://example.com/photos/16x9/trinket.jpg",
- "https://example.com/photos/4x3/trinket.jpg",
- "https://example.com/photos/1x1/trinket.jpg"
- ],
- "name": "Nice trinket",
- "description": "Trinket with clean lines",
- "brand": {
- "@type": "Brand",
- "name": "MyBrand"
- },
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "price": 39.99,
- "priceCurrency": "USD",
- "priceValidUntil": "2024-11-20",
- "shippingDetails": {
- "@type": "OfferShippingDetails",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": 3.49,
- "currency": "USD"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 5,
- "unitCode": "DAY"
- }
- }
- }
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "Fred Benson"
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.4,
- "reviewCount": 89
- }
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Nice trinket</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "sku": "trinket-12345",
+      "gtin14": "00012345600012",
+      "image": [
+        "https://example.com/photos/16x9/trinket.jpg",
+        "https://example.com/photos/4x3/trinket.jpg",
+        "https://example.com/photos/1x1/trinket.jpg"
+      ],
+      "name": "Nice trinket",
+      "description": "Trinket with clean lines",
+      "brand": {
+        "@type": "Brand",
+        "name": "MyBrand"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.com/trinket_offer",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "price": 39.99,
+        "priceCurrency": "USD",
+        "priceValidUntil": "2024-11-20",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": 3.49,
+            "currency": "USD"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "US"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 1,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 5,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      },
+      "review": {
+        "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 4,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Fred Benson"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.4,
+          "reviewCount": 89
+        }
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -1040,90 +1062,90 @@ Here's an example of a product page with shipping details. This example would
  
 
 ```
- <html>
- <head>
- <title>Nice trinket</title>
- </head>
- <body>
- <div typeof="schema:Product">
- <div property="schema:sku" content="trinket-12345"></div>
- <div property="schema:gtin14" content="00012345600012"></div>
- <div property="schema:name" content="Nice trinket"></div>
- <div rel="schema:image" resource="https://example.com/photos/16x9/trinket.jpg"></div>
- <div rel="schema:image" resource="https://example.com/photos/4x3/trinket.jpg"></div>
- <div rel="schema:image" resource="https://example.com/photos/1x1/trinket.jpg"></div>
- <div property="schema:description" content="Trinket with clean lines"></div>
- <div rel="schema:brand">
- <div typeof="schema:Brand">
- <div property="schema:name" content="MyBrand"></div>
- </div>
- </div>
- <div rel="schema:offers">
- <div typeof="schema:Offer">
- <div rel="schema:url" resource="https://example.com/trinket_offer"></div>
- <div property="schema:itemCondition" content="https://schema.org/NewCondition"></div>
- <div property="schema:availability" content="https://schema.org/InStock"></div>
- <div property="schema:price" content="39.99"></div>
- <div property="schema:priceCurrency" content="USD"></div>
- <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-20"></div>
- <div rel="schema:shippingDetails">
- <div typeof="schema:OfferShippingDetails">
- <div rel="schema:shippingRate">
- <div typeof="schema:MonetaryAmount">
- <div property="schema:value" content="3.49"></div>
- <div property="schema:currency" content="USD"></div>
- </div>
- </div>
- <div rel="schema:shippingDestination">
- <div typeof="schema:DefinedRegion">
- <div property="schema:addressCountry" content="US"></div>
- </div>
- </div>
- <div rel="schema:deliveryTime">
- <div typeof="schema:ShippingDeliveryTime">
- <div rel="schema:handlingTime">
- <div typeof="schema:QuantitativeValue">
- <div property="schema:minValue" content="0"></div>
- <div property="schema:maxValue" content="1"></div>
- <div property="schema:unitCode" content="DAY"></div>
- </div>
- </div>
- <div rel="schema:transitTime">
- <div typeof="schema:QuantitativeValue">
- <div property="schema:minValue" content="1"></div>
- <div property="schema:maxValue" content="5"></div>
- <div property="schema:unitCode" content="DAY"></div>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:review">
- <div typeof="schema:Review">
- <div rel="schema:reviewRating">
- <div typeof="schema:Rating">
- <div property="schema:ratingValue" content="4"></div>
- <div property="schema:bestRating" content="5"></div>
- </div>
- </div>
- <div rel="schema:author">
- <div typeof="schema:Person">
- <div property="schema:name" content="Fred Benson"></div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:aggregateRating">
- <div typeof="schema:AggregateRating">
- <div property="schema:reviewCount" content="89"></div>
- <div property="schema:ratingValue" content="4.4"></div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Nice trinket</title>
+  </head>
+  <body>
+    <div typeof="schema:Product">
+      <div property="schema:sku" content="trinket-12345"></div>
+      <div property="schema:gtin14" content="00012345600012"></div>
+      <div property="schema:name" content="Nice trinket"></div>
+      <div rel="schema:image" resource="https://example.com/photos/16x9/trinket.jpg"></div>
+      <div rel="schema:image" resource="https://example.com/photos/4x3/trinket.jpg"></div>
+      <div rel="schema:image" resource="https://example.com/photos/1x1/trinket.jpg"></div>
+      <div property="schema:description" content="Trinket with clean lines"></div>
+      <div rel="schema:brand">
+        <div typeof="schema:Brand">
+          <div property="schema:name" content="MyBrand"></div>
+        </div>
+      </div>
+      <div rel="schema:offers">
+        <div typeof="schema:Offer">
+          <div rel="schema:url" resource="https://example.com/trinket_offer"></div>
+          <div property="schema:itemCondition" content="https://schema.org/NewCondition"></div>
+          <div property="schema:availability" content="https://schema.org/InStock"></div>
+          <div property="schema:price" content="39.99"></div>
+          <div property="schema:priceCurrency" content="USD"></div>
+          <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-20"></div>
+          <div rel="schema:shippingDetails">
+            <div typeof="schema:OfferShippingDetails">
+              <div rel="schema:shippingRate">
+                <div typeof="schema:MonetaryAmount">
+                  <div property="schema:value" content="3.49"></div>
+                  <div property="schema:currency" content="USD"></div>
+                </div>
+              </div>
+              <div rel="schema:shippingDestination">
+                <div typeof="schema:DefinedRegion">
+                  <div property="schema:addressCountry" content="US"></div>
+                </div>
+              </div>
+              <div rel="schema:deliveryTime">
+                <div typeof="schema:ShippingDeliveryTime">
+                  <div rel="schema:handlingTime">
+                    <div typeof="schema:QuantitativeValue">
+                      <div property="schema:minValue" content="0"></div>
+                      <div property="schema:maxValue" content="1"></div>
+                      <div property="schema:unitCode" content="DAY"></div>
+                    </div>
+                  </div>
+                  <div rel="schema:transitTime">
+                    <div typeof="schema:QuantitativeValue">
+                      <div property="schema:minValue" content="1"></div>
+                      <div property="schema:maxValue" content="5"></div>
+                      <div property="schema:unitCode" content="DAY"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div rel="schema:review">
+        <div typeof="schema:Review">
+          <div rel="schema:reviewRating">
+            <div typeof="schema:Rating">
+              <div property="schema:ratingValue" content="4"></div>
+              <div property="schema:bestRating" content="5"></div>
+            </div>
+          </div>
+          <div rel="schema:author">
+            <div typeof="schema:Person">
+              <div property="schema:name" content="Fred Benson"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div rel="schema:aggregateRating">
+        <div typeof="schema:AggregateRating">
+          <div property="schema:reviewCount" content="89"></div>
+          <div property="schema:ratingValue" content="4.4"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1201,68 +1223,68 @@ Here's an example of a product page with shipping details. This example would
  
 
 ```
- <html>
- <head>
- <title>Nice trinket</title>
- </head>
- <body>
- <div>
- <div itemtype="https://schema.org/Product" itemscope>
- <meta itemprop="sku" content="trinket-12345" />
- <meta itemprop="gtin14" content="00012345600012" />
- <meta itemprop="name" content="Nice trinket" />
- <link itemprop="image" href="https://example.com/photos/16x9/trinket.jpg" />
- <link itemprop="image" href="https://example.com/photos/4x3/trinket.jpg" />
- <link itemprop="image" href="https://example.com/photos/1x1/trinket.jpg" />
- <meta itemprop="description" content="Trinket with clean lines" />
- <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
- <meta itemprop="name" content="MyBrand" />
- </div>
- <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
- <link itemprop="url" href="https://www.example.com/trinket_offer" />
- <meta itemprop="itemCondition" content="https://schema.org/NewCondition" />
- <meta itemprop="availability" content="https://schema.org/InStock" />
- <meta itemprop="price" content="39.99" />
- <meta itemprop="priceCurrency" content="USD" />
- <meta itemprop="priceValidUntil" content="2024-11-20" />
- <div itemprop="shippingDetails" itemtype="https://schema.org/OfferShippingDetails" itemscope>
- <div itemprop="shippingRate" itemtype="https://schema.org/MonetaryAmount" itemscope>
- <meta itemprop="value" content="3.49" />
- <meta itemprop="currency" content="USD" />
- </div>
- <div itemprop="shippingDestination" itemtype="https://schema.org/DefinedRegion" itemscope>
- <meta itemprop="addressCountry" content="US" />
- </div>
- <div itemprop="deliveryTime" itemtype="https://schema.org/ShippingDeliveryTime" itemscope>
- <div itemprop="handlingTime" itemtype="https://schema.org/QuantitativeValue" itemscope>
- <meta itemprop="minValue" content="0" />
- <meta itemprop="maxValue" content="1" />
- <meta itemprop="unitCode" content="DAY" />
- </div>
- <div itemprop="transitTime" itemtype="https://schema.org/QuantitativeValue" itemscope>
- <meta itemprop="minValue" content="1" />
- <meta itemprop="maxValue" content="5" />
- <meta itemprop="unitCode" content="DAY" />
- </div>
- </div>
- </div>
- </div>
- <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
- <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Fred Benson" />
- </div>
- <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
- <meta itemprop="ratingValue" content="4" />
- <meta itemprop="bestRating" content="5" />
- </div>
- </div>
- <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
- <meta itemprop="reviewCount" content="89" />
- <meta itemprop="ratingValue" content="4.4" />
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Nice trinket</title>
+  </head>
+  <body>
+  <div>
+    <div itemtype="https://schema.org/Product" itemscope>
+      <meta itemprop="sku" content="trinket-12345" />
+      <meta itemprop="gtin14" content="00012345600012" />
+      <meta itemprop="name" content="Nice trinket" />
+      <link itemprop="image" href="https://example.com/photos/16x9/trinket.jpg" />
+      <link itemprop="image" href="https://example.com/photos/4x3/trinket.jpg" />
+      <link itemprop="image" href="https://example.com/photos/1x1/trinket.jpg" />
+      <meta itemprop="description" content="Trinket with clean lines" />
+      <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+        <meta itemprop="name" content="MyBrand" />
+      </div>
+      <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+        <link itemprop="url" href="https://www.example.com/trinket_offer" />
+        <meta itemprop="itemCondition" content="https://schema.org/NewCondition" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+        <meta itemprop="price" content="39.99" />
+        <meta itemprop="priceCurrency" content="USD" />
+        <meta itemprop="priceValidUntil" content="2024-11-20" />
+        <div itemprop="shippingDetails" itemtype="https://schema.org/OfferShippingDetails" itemscope>
+          <div itemprop="shippingRate" itemtype="https://schema.org/MonetaryAmount" itemscope>
+            <meta itemprop="value" content="3.49" />
+            <meta itemprop="currency" content="USD" />
+          </div>
+          <div itemprop="shippingDestination" itemtype="https://schema.org/DefinedRegion" itemscope>
+            <meta itemprop="addressCountry" content="US" />
+          </div>
+          <div itemprop="deliveryTime" itemtype="https://schema.org/ShippingDeliveryTime" itemscope>
+            <div itemprop="handlingTime" itemtype="https://schema.org/QuantitativeValue" itemscope>
+              <meta itemprop="minValue" content="0" />
+              <meta itemprop="maxValue" content="1" />
+              <meta itemprop="unitCode" content="DAY" />
+            </div>
+            <div itemprop="transitTime" itemtype="https://schema.org/QuantitativeValue" itemscope>
+              <meta itemprop="minValue" content="1" />
+              <meta itemprop="maxValue" content="5" />
+              <meta itemprop="unitCode" content="DAY" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+        <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
+          <meta itemprop="name" content="Fred Benson" />
+        </div>
+        <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
+          <meta itemprop="ratingValue" content="4" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+      </div>
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" />
+        <meta itemprop="ratingValue" content="4.4" />
+      </div>
+    </div>
+  </div>
+  </body>
 </html>
 ```
 
@@ -1272,23 +1294,25 @@ Here's an example of a product page with shipping details. This example would
 
 Here's an example of providing free shipping to buyers in the US state of New York.
 
+
 ```
 "shippingDetails": {
- "@type": "OfferShippingDetails",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": "0",
- "currency": "USD"
- },
- "shippingDestination": [
- {
- "@type": "DefinedRegion",
- "addressCountry": "US",
- "addressRegion": ["NY"]
- }
- ]
+  "@type": "OfferShippingDetails",
+  "shippingRate": {
+    "@type": "MonetaryAmount",
+    "value": "0",
+    "currency": "USD"
+  },
+  "shippingDestination": [
+    {
+      "@type": "DefinedRegion",
+      "addressCountry": "US",
+      "addressRegion": ["NY"]
+    }
+  ]
 }
 ```
+
 
 ### Return details
 
@@ -1309,164 +1333,169 @@ Here is an example of a product page with return details. The markup matches a r
  
 
 ```
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "sku": "trinket-12345",
- "gtin14": "00012345600012",
- "image": [
- "https://example.com/photos/16x9/trinket.jpg",
- "https://example.com/photos/4x3/trinket.jpg",
- "https://example.com/photos/1x1/trinket.jpg"
- ],
- "name": "Nice trinket",
- "description": "Trinket with clean lines",
- "brand": {
- "@type": "Brand",
- "name": "MyBrand"
- },
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/trinket_offer",
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "priceSpecification": {
- "@type": "PriceSpecification",
- "price": 39.99,
- "priceCurrency": "CHF"
- },
- "hasMerchantReturnPolicy": {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": "CH",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/ReturnShippingFees",
- "returnShippingFeesAmount": {
- "@type": "MonetaryAmount",
- "value": 3.49,
- "currency": "CHF"
- }
- }
- }
- }
- 
+{
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "sku": "trinket-12345",
+      "gtin14": "00012345600012",
+      "image": [
+        "https://example.com/photos/16x9/trinket.jpg",
+        "https://example.com/photos/4x3/trinket.jpg",
+        "https://example.com/photos/1x1/trinket.jpg"
+      ],
+      "name": "Nice trinket",
+      "description": "Trinket with clean lines",
+      "brand": {
+        "@type": "Brand",
+        "name": "MyBrand"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.com/trinket_offer",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": 39.99,
+          "priceCurrency": "CHF"
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "CH",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 60,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnShippingFees",
+          "returnShippingFeesAmount": {
+            "@type": "MonetaryAmount",
+            "value": 3.49,
+            "currency": "CHF"
+          }
+        }
+      }
+    }
 ```
+
 
 ### Certifications
 
 The following examples illustrate how to specify certification information using structured data.
  The first example specifies the German CO2 emissions class "D" for a vehicle.
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "sku": "1234-5678",
- "image": "https://www.example.com/vehicle.jpg",
- "name": "Big Car",
- "description": "Passenger vehicle with combustion engine",
- "gtin14": "00012345600012",
- "mpn": "WH1234",
- "brand": {
- "@type": "Brand",
- "name": "ExampleCarBrand"
- },
- "hasCertification": {
- "@type": "Certification",
- "issuedBy": {
- "@type": "Organization",
- "name": "BMWK"
- },
- "name": "Vehicle_CO2_Class",
- "certificationRating": {
- "@type": "Rating",
- "ratingValue": "D"
- }
- },
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/vehicle",
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "price": 17999.00,
- "priceCurrency": "EUR"
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "sku": "1234-5678",
+  "image": "https://www.example.com/vehicle.jpg",
+  "name": "Big Car",
+  "description": "Passenger vehicle with combustion engine",
+  "gtin14": "00012345600012",
+  "mpn": "WH1234",
+  "brand": {
+    "@type": "Brand",
+    "name": "ExampleCarBrand"
+  },
+  "hasCertification": {
+    "@type": "Certification",
+    "issuedBy": {
+      "@type": "Organization",
+      "name": "BMWK"
+    },
+    "name": "Vehicle_CO2_Class",
+    "certificationRating": {
+      "@type": "Rating",
+      "ratingValue": "D"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.example.com/vehicle",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "price": 17999.00,
+    "priceCurrency": "EUR"
+  }
 }
 ```
 
 The second example specifies an EPREL energy efficiency label for an LED:
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "sku": "1234-5678",
- "image": "https://www.example.com/led.jpg",
- "name": "LED",
- "description": "Dimmable LED",
- "gtin14": "00012345600012",
- "mpn": "WH1234",
- "brand": {
- "@type": "Brand",
- "name": "ExampleLightingBrand"
- },
- "hasCertification": {
- "@type": "Certification",
- "issuedBy": {
- "@type": "Organization",
- "name": "European_Commission"
- },
- "name": "EPREL",
- "certificationIdentification": "123456"
- },
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/led",
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "price": 2.30,
- "priceCurrency": "EUR"
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "sku": "1234-5678",
+  "image": "https://www.example.com/led.jpg",
+  "name": "LED",
+  "description": "Dimmable LED",
+  "gtin14": "00012345600012",
+  "mpn": "WH1234",
+  "brand": {
+    "@type": "Brand",
+    "name": "ExampleLightingBrand"
+  },
+  "hasCertification": {
+    "@type": "Certification",
+    "issuedBy": {
+      "@type": "Organization",
+      "name": "European_Commission"
+    },
+    "name": "EPREL",
+    "certificationIdentification": "123456"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.example.com/led",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "price": 2.30,
+    "priceCurrency": "EUR"
+  }
 }
 ```
+
 
 ### 3D model
 
 This example shows how to link a 3D model to a product with the `subjectOf` property
  and the `3DModel` type.
 
+
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Product",
- "sku": "1234-5678",
- "image": "https://www.example.com/sofa.jpg",
- "name": "Water heater",
- "description": "White 3-Seat Sofa",
- "gtin14": "00012345600012",
- "mpn": "S1234W3",
- "brand": {
- "@type": "Brand",
- "name": "ExampleSofaBrand"
- },
- "subjectOf": {
- "@type": "3DModel",
- "encoding": {
- "@type": "MediaObject",
- "contentUrl": "https://example.com/sofa.gltf"
- }
- },
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/whitechaiselongue",
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "price": 1299.00,
- "priceCurrency": "USD"
- }
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "sku": "1234-5678",
+  "image": "https://www.example.com/sofa.jpg",
+  "name": "Water heater",
+  "description": "White 3-Seat Sofa",
+  "gtin14": "00012345600012",
+  "mpn": "S1234W3",
+  "brand": {
+    "@type": "Brand",
+    "name": "ExampleSofaBrand"
+  },
+  "subjectOf": {
+    "@type": "3DModel",
+    "encoding": {
+      "@type": "MediaObject",
+      "contentUrl": "https://example.com/sofa.gltf"
+    }
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://www.example.com/whitechaiselongue",
+    "itemCondition": "https://schema.org/NewCondition",
+    "availability": "https://schema.org/InStock",
+    "price": 1299.00,
+    "priceCurrency": "USD"
+  }
 }
 ```
+
 
 ## Guidelines
 
@@ -1514,11 +1543,10 @@ For your `Product` markup to be eligible for merchant listing experiences, you m
 
 ```
 {
- "@context": "https://schema.org",
- "@type": ["Product", "Car"],
- ...
+  "@context": "https://schema.org",
+  "@type": ["Product", "Car"],
+  ...
 }
- 
 ```
 
  
@@ -1557,406 +1585,101 @@ The full definition of `Product` is available at
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `name` | 
+| `name` | ` Text ` The name of the product. |
  
- `[Text](https://schema.org/Text)`
-
- The name of the product.
-
- | 
- 
-
- 
- `image` | 
- 
- Repeated `[ImageObject](https://schema.org/ImageObject)` or
- `[URL](https://schema.org/URL)`
-
- The URL of a product photo. Pictures clearly showing the product (for example, against
- a white background) are preferred.
-
- 
-Additional image guidelines:
- 
- 
-- Image URLs must be crawlable and indexable. To check if Google can access your URLs, use
- the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289).
- 
-- Images must represent the marked up content.
- 
-- Images must be in a file format that's [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when
- multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
- 
-
- For example:
-
- 
-
+| `image` | Repeated ` ImageObject ` or ` URL ` The URL of a product photo. Pictures clearly showing the product (for example, against a white background) are preferred. Additional image guidelines: Image URLs must be crawlable and indexable. To check if Google can access your URLs, use the URL Inspection tool . Images must represent the marked up content. Images must be in a file format that's supported by Google Images . For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1. For example: 
 ```
 "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
 ]
 ```
-
+ |
  
- | 
- 
-
- 
- `offers` | 
- 
- `[Offer](https://schema.org/Offer)`
-
- A nested `Offer` to sell the product.
-
- Product snippets accept an [`Offer`](https://developers.google.com#offer-properties)
- or `AggregateOffer`
- but merchant listings require an [`Offer`](https://developers.google.com#offer-properties)
- as the merchant has to be the seller of the product in order to be eligible
- for merchant listing experiences.
- 
-
- | 
- 
-
+| `offers` | ` Offer ` A nested `Offer` to sell the product. Product snippets accept an `Offer` or `AggregateOffer` but merchant listings require an `Offer` as the merchant has to be the seller of the product in order to be eligible for merchant listing experiences. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `aggregateRating` | 
+| `aggregateRating` | ` AggregateRating ` A nested `aggregateRating` of the product. Follow the Review snippet guidelines and the list of required and recommended `AggregateRating` properties . |
  
- `[AggregateRating](https://schema.org/AggregateRating)`
-
- A nested `aggregateRating` of the product. Follow the
- [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines)
- and the list of required and recommended
- [`AggregateRating` properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition).
-
- | 
+| `audience` | ` PeopleAudience ` Optional information about the suggested audience for the product, such as the suggested gender and age group. Only the `PeopleAudience` type is supported. See the list of `PeopleAudience` properties supported by Google. |
  
-
+| `brand.name` | ` Text ` Include the brand of the product in the ` name ` property of the ` Brand ` type if known. Include at most one brand name. |
  
- `audience` | 
- 
- `[PeopleAudience](https://schema.org/PeopleAudience)`
-
- Optional information about the suggested audience for the product, such as the
- suggested gender and age group. Only the `PeopleAudience` type is supported.
- See the list of [`PeopleAudience` properties](https://developers.google.com#people-audience-properties)
- supported by Google.
-
- | 
- 
-
- 
- `brand.name` | 
- 
- `[Text](https://schema.org/Text)`
-
- Include the brand of the product in the
- `[name](https://schema.org/PeopleAudience)`
- property of the
- `[Brand](https://schema.org/Brand)`
- type if known. Include at most one brand name.
-
- | 
- 
-
- 
- `category` | 
- 
- `[Text](https://schema.org/Text)` or `[CategoryCode](https://schema.org/CategoryCode)`
-
- Specifies the product's categories. This property can accept an array of values, mixing plain text strings and `CategoryCode` objects.
-
- 
- 
-- Custom product types: Plain `Text` values represent your custom product category, similar to the [`product_type` attribute](https://support.google.com/merchants/answer/6324406) in product feeds. We recommend keeping custom product types under the 750-character limit.
- 
-- Google Product Category (GPC): To specify a GPC, similar to the [`google_product_category` attribute](https://support.google.com/merchants/answer/6324436) in product feeds, use the `CategoryCode` type.
- 
- 
-- Set `@type` to `CategoryCode`.
- 
-- Set `inCodeSet` to a Google Product Taxonomy URL (for example, `"https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt"`).
- 
-- Set `codeValue` to the GPC ID (for example, `"2271"`) or the full category path (for example, `"Apparel & Accessories > Clothing > Dresses"`).
- 
-- When using the path format, use `>` as the separator between levels. Each segment in the path must contain at least one letter. Numeric IDs are also accepted.
- 
-
- 
- 
-
- You can provide multiple category values. For example, you can include several GPC codes or paths and several custom product type strings.
-
- 
-
+| `category` | ` Text ` or ` CategoryCode ` Specifies the product's categories. This property can accept an array of values, mixing plain text strings and `CategoryCode` objects. Custom product types: Plain `Text` values represent your custom product category, similar to the `product_type` attribute in product feeds. We recommend keeping custom product types under the 750-character limit. Google Product Category (GPC): To specify a GPC, similar to the `google_product_category` attribute in product feeds, use the `CategoryCode` type. Set `@type` to `CategoryCode`. Set `inCodeSet` to a Google Product Taxonomy URL (for example, `"https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt"`). Set `codeValue` to the GPC ID (for example, `"2271"`) or the full category path (for example, `"Apparel & Accessories > Clothing > Dresses"`). When using the path format, use `>` as the separator between levels. Each segment in the path must contain at least one letter. Numeric IDs are also accepted. You can provide multiple category values. For example, you can include several GPC codes or paths and several custom product type strings. 
 ```
 "category": [
- {
- "@type": "CategoryCode",
- "inCodeSet": "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt",
- "codeValue": "2271"
- },
- {
- "@type": "CategoryCode",
- "inCodeSet": "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt",
- "codeValue": "Apparel & Accessories > Clothing > Dresses"
- },
- "Dresses",
- "Special Occasion > Wedding & Bridal Party Dresses"
+  {
+    "@type": "CategoryCode",
+    "inCodeSet": "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt",
+    "codeValue": "2271"
+  },
+  {
+    "@type": "CategoryCode",
+    "inCodeSet": "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt",
+    "codeValue": "Apparel & Accessories > Clothing > Dresses"
+  },
+  "Dresses",
+  "Special Occasion > Wedding & Bridal Party Dresses"
 ]
- 
 ```
-
- | 
+ |
  
-
+| `color` | ` Text ` The color or color combination of the product (for example, "red" or "yellow/sky blue"). See also the Color attribute in Google Merchant Center Help. |
  
- `color` | 
+| `description` | ` Text ` The product description. While the product description is not mandatory, it is strongly recommended to provide a description of the product in this property. |
  
- `[Text](https://schema.org/Text)`
-
- The color or color combination of the product (for example, "red" or "yellow/sky blue").
- See also the
- [Color attribute](https://support.google.com/merchants/answer/6324487)
- in Google Merchant Center Help.
-
- | 
- 
-
- 
- `description` | 
- 
- `[Text](https://schema.org/Text)`
-
- The product description. While the product description is not mandatory, it is strongly recommended to
- provide a description of the product in this property.
-
- | 
- 
-
- 
- `gtin | gtin8 | gtin12 | gtin13 | gtin14 | isbn` | 
- 
- `[Text](https://schema.org/Text)`
-
- Include all applicable global identifiers; these are described at
- [schema.org/Product](https://schema.org/Product).
- While you can use the generic `gtin` property for all GTINs, we recommend that you
- use the most specific GTIN that applies to your product, as this is the most accurate
- representation of the product. Make sure the GTIN value is in the numerical form; we don't
- support the URL form for GTINs.
-
- `isbn` is only a valid property on
- `[Book](https://schema.org/Book)`. For
- best results, use ISBN-13 format. To use `Book` correctly, co-type with the
- `Product`. This will let you
- use properties of both types on the node. For example:
-
- 
-
+| `gtin | gtin8 | gtin12 | gtin13 | gtin14 | isbn` | ` Text ` Include all applicable global identifiers; these are described at schema.org/Product . While you can use the generic `gtin` property for all GTINs, we recommend that you use the most specific GTIN that applies to your product, as this is the most accurate representation of the product. Make sure the GTIN value is in the numerical form; we don't support the URL form for GTINs. `isbn` is only a valid property on ` Book `. For best results, use ISBN-13 format. To use `Book` correctly, co-type with the `Product`. This will let you use properties of both types on the node. For example: 
 ```
 {
- "@context": "https://schema.org",
- "@type": ["Product", "Book"],
- ...
+  "@context": "https://schema.org",
+  "@type": ["Product", "Book"],
+  ...
 }
- 
 ```
-
- | 
+ |
  
-
+| `hasAdultConsideration` | ` AdultOrientedEnumeration ` Indicates that the product is designated as adult-oriented for example, because it contains nudity or sexual content. If you sell products that are considered adult-oriented according to Google's adult-oriented content policy , you must use this property to label them as adult-oriented. While these products are eligible to be shown in Shopping ads and free listings, they are subject to age- and country-based restrictions. Labelling them ensures that Google can apply these restrictions and show appropriate and legally compliant content to people shopping online. While schema.org defines multiple values for `AdultOrientedEnumeration`, Google Search only supports the value `https://schema.org/SexualContentConsideration` for this property. |
  
- `hasAdultConsideration` | 
- `[AdultOrientedEnumeration](https://schema.org/AdultOrientedEnumeration)`
-
- Indicates that the product is designated as adult-oriented for example, because it
- contains nudity or sexual content. If you sell products that are considered adult-oriented according to Google's
- [adult-oriented content policy](https://support.google.com/merchants/answer/12073010#res),
- you must use this property to label them as adult-oriented. While these products
- are eligible to be shown in Shopping ads and free listings, they are subject to age- and
- country-based restrictions. Labelling them ensures that Google can apply these
- restrictions and show appropriate and legally compliant content to people shopping online.
- While schema.org defines multiple values for `AdultOrientedEnumeration`,
- Google Search only supports the value `https://schema.org/SexualContentConsideration` for this property.
-
- | 
- 
-
- 
- `hasCertification` | 
- `[Certification](https://schema.org/Certification)`
-
- Certifications, such as energy efficiency ratings, associated with a product. Up to
- 10 certifications can be specified. This property is particularly relevant in
- European countries. See also the list of [`Certification` properties](https://developers.google.com#certification-properties)
- supported by Google.
-
- 
- Backwards compatibility: Upon the initial launch of merchant listing, we recommended
- the `hasEnergyConsumptionDetails` property. While we continue to support the
- earlier markup pattern, we recommend using the new `hasCertification` property
- instead, if possible, with the required [`Certification` properties](https://developers.google.com#certification-properties)
- supported by Google. Here's an example that shows the original markup style:
- 
-
+| `hasCertification` | ` Certification ` Certifications, such as energy efficiency ratings, associated with a product. Up to 10 certifications can be specified. This property is particularly relevant in European countries. See also the list of `Certification` properties supported by Google. Backwards compatibility : Upon the initial launch of merchant listing, we recommended the `hasEnergyConsumptionDetails` property. While we continue to support the earlier markup pattern, we recommend using the new `hasCertification` property instead, if possible, with the required `Certification` properties supported by Google. Here's an example that shows the original markup style: 
 ```
 "hasEnergyConsumptionDetails": {
- "@type": "EnergyConsumptionDetails",
- "hasEnergyEfficiencyCategory": "https://schema.org/EUEnergyEfficiencyCategoryC",
- "energyEfficiencyScaleMin": "https://schema.org/EUEnergyEfficiencyCategoryF",
- "energyEfficiencyScaleMax": "https://schema.org/EUEnergyEfficiencyCategoryA1Plus"
+  "@type": "EnergyConsumptionDetails",
+  "hasEnergyEfficiencyCategory": "https://schema.org/EUEnergyEfficiencyCategoryC",
+  "energyEfficiencyScaleMin": "https://schema.org/EUEnergyEfficiencyCategoryF",
+  "energyEfficiencyScaleMax": "https://schema.org/EUEnergyEfficiencyCategoryA1Plus"
 }
 ```
-
+ |
  
- | 
+| `inProductGroupWithID` | ` Text ` The ID of a product group that this product variant belongs to. See also `Item Group Id` in Google Merchant Center Help. Specify at most one value. For details on how to add markup for product variants, refer to product variant structured data documentation . |
  
-
+| `isVariantOf` | ` ProductGroup ` A product group that this product variant belongs to, if applicable. For details on how to add markup for product variants, refer to product variant structured data documentation . |
  
- `inProductGroupWithID` | 
+| `material` | ` Text ` The material or material combination the product is made from, such as "Leather" or "Cotton/Polyester". See also ` Material ` in Google Merchant Center help. |
  
- `[Text](https://schema.org/Text)`
-
- The ID of a product group that this product variant belongs to. See also
- [`Item Group Id`](https://support.google.com/merchants/answer/6324507)
- in Google Merchant Center Help. Specify at most one value.
-
- For details on how to add markup for product variants, refer to
- [product variant structured data documentation](https://developers.google.com/search/docs/appearance/structured-data/product-variants).
- | 
+| `mpn` | ` Text ` The manufacturer part number. This property uniquely identifies the product for a given manufacturer. |
  
-
+| `pattern` | ` Text ` The pattern of the product, such as "polka dots" or "striped". See also ` Pattern ` on the Google Merchant Center Product Data Specification page. |
  
- `isVariantOf` | 
+| `review` | ` Review ` A nested `Review` of the product. Follow the Review snippet guidelines and the list of required and recommended review properties . See also the list of additional `Review` properties specific to the `Product` schema.org type. If you add a review for the product, the reviewer's name must be a valid name for a `Person` or `Team`. Not recommended : 50% off on Black Friday Recommended : "James Smith" or "CNET Reviewers" |
  
- `[ProductGroup](https://schema.org/ProductGroup)`
-
- A product group that this product variant belongs to, if applicable. For details on
- how to add markup for product variants, refer to
- [product variant structured data documentation](https://developers.google.com/search/docs/appearance/structured-data/product-variants).
+| `size` | ` Text ` or ` SizeSpecification ` The size of the product, such as "XL" or "medium". See also `size` in the Google Merchant Center Product Data Specification page . See the list of `SizeSpecification` properties supported by Google. Specify at most one value. |
  
-
- | 
+| `sku` | ` Text ` The merchant-specific identifier for the product. Specify at most one value. The `sku` value must use unicode characters that are valid for interchange. The `sku` value must not contain any whitespace characters (as defined by the Unicode whitespace property ). We recommend that the `sku` value only contain ASCII characters. |
  
-
- 
- `material` | 
- 
- `[Text](https://schema.org/Text)`
-
- The material or material combination the product is made from, such as "Leather"
- or "Cotton/Polyester". See also
- `[Material](https://support.google.com/merchants/answer/6324410)`
- in Google Merchant Center help.
-
- | 
- 
-
- 
- `mpn` | 
- 
- `[Text](https://schema.org/Text)`
-
- The manufacturer part number. This property uniquely identifies the product
- for a given manufacturer.
-
- | 
- 
-
- 
- `pattern` | 
- 
- `[Text](https://schema.org/Text)`
-
- The pattern of the product, such as "polka dots" or "striped". See also
- `[Pattern](https://support.google.com/merchants/answer/6324483)`
- on the Google Merchant Center Product Data Specification page.
-
- | 
- 
-
- 
- `review` | 
- 
- `[Review](https://schema.org/Review)`
-
- A nested `Review` of the product. Follow the
- [Review snippet
- guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and the list of required and recommended
- [review properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties).
- See also the list of additional [`Review` properties](https://developers.google.com#/search/docs/appearance/structured-data/product-snippet#review-properties)
- specific to the `Product` schema.org type.
-
- If you add a review for the product, the reviewer's name must be a valid name for a `Person` or
- `Team`.
-
- Not recommended: 50% off on Black Friday
-
- Recommended: "James Smith" or "CNET Reviewers"
-
- | 
- 
-
- 
- `size` | 
- 
- `[Text](https://schema.org/Text)` or `[SizeSpecification](https://schema.org/SizeSpecification)`
-
- The size of the product, such as "XL" or "medium". See also `size` in the
- [Google Merchant Center Product Data Specification page](https://support.google.com/merchants/answer/7052112).
- See the list of [`SizeSpecification` properties](https://developers.google.com#size-specification-properties)
- supported by Google. Specify at most one value.
-
- | 
- 
-
- 
- `sku` | 
- 
- `[Text](https://schema.org/Text)`
-
- The merchant-specific identifier for the product. Specify at most one value.
-
- 
- 
-- The `sku` value must use unicode characters that are valid for interchange.
- 
-- The `sku` value must not contain any whitespace characters (as defined by
- the [Unicode whitespace property](https://en.wikipedia.org/wiki/Unicode_character_property#Whitespace)).
- 
-- We recommend that the `sku` value only contain ASCII characters.
- 
-
- | 
- 
-
- 
- `subjectOf` | 
- 
- `[3DModel](https://schema.org/3DModel)`
-
- A 3D model for the product, if applicable. See the list of [`3DModel` properties](https://developers.google.com#3d-model-properties) properties supported by Google. Specify at most one `3DModel` value.
-
- | 
- 
-
+| `subjectOf` | ` 3DModel ` A 3D model for the product, if applicable. See the list of `3DModel` properties properties supported by Google. Specify at most one `3DModel` value. |
  
  
 
@@ -1972,29 +1695,13 @@ Additional image guidelines:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `encoding` | 
+| `encoding` | ` MediaObject ` The media for the 3D model. |
  
- `[MediaObject](https://schema.org/MediaObject)`
-
- The media for the 3D model.
-
- | 
- 
-
- 
- `encoding.contentUrl` | 
- 
- `[URL](https://schema.org/URL)`
-
- The link to a 3D model definition file in [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) format. The file must have a `.gltf` or `.glb` suffix.
-
- | 
- 
-
+| `encoding.contentUrl` | ` URL ` The link to a 3D model definition file in glTF format. The file must have a `.gltf` or `.glb` suffix. |
  
  
 
@@ -2012,288 +1719,70 @@ Additional image guidelines:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `price` or `priceSpecification.price` | 
- 
- `[Number](https://schema.org/Number)`
-
- The current, active offer price of a product. Follow the
- [schema.org usage
- guidelines](https://schema.org/price).
-
- 
- Here's an example of the `price` property:
- 
-
- 
-
+| `price` or `priceSpecification.price` | ` Number ` The current, active offer price of a product. Follow the schema.org usage guidelines . Here's an example of the `price` property: 
 ```
 "offers": {
- "@type": "Offer",
- "price": 39.99,
- "priceCurrency": "USD"
+  "@type": "Offer",
+  "price": 39.99,
+  "priceCurrency": "USD"
 }
- 
 ```
-
+ Unlike product snippets, merchant listing experiences require a price greater than zero. The active price is required but may be nested inside a `priceSpecification` property instead of being provided at the `Offer` level. If you use both the `offers.price` and `offers.priceSpecification` properties to encode an active price, Google will use the price provided through the `offers.price` property and ignore the `offers.priceSpecification` property. |
  
- Unlike product snippets, merchant listing experiences require a price greater than zero.
+| `priceCurrency` or `priceSpecification.priceCurrency` | ` Text ` The currency used to describe the product price, in three-letter ISO 4217 format. `priceCurrency` is required if `price` is specified, otherwise `priceSpecification.priceCurrency` is required if `priceSpecification.price` is specified. |
  
-
- 
- The active price is required but may be nested inside a
- `priceSpecification` property instead of being provided at the
- `Offer` level.
- 
-
- 
- 
- If you use both the `offers.price` and `offers.priceSpecification`
- properties to encode an active price, Google will use the price provided through
- the `offers.price` property and ignore the `offers.priceSpecification`
- property.
- 
- | 
- 
-
- 
- `priceCurrency` or `priceSpecification.priceCurrency` | 
- 
- `[Text](https://schema.org/Text)`
-
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
-
- 
- `priceCurrency` is required if `price` is specified, otherwise
- `priceSpecification.priceCurrency` is required if
- `priceSpecification.price` is specified.
- 
-
- | 
- 
-
- 
- `priceSpecification` | 
- 
- `[UnitPriceSpecification](https://schema.org/UnitPriceSpecification)`
-
- The active price can also be specified using `price`
- and `priceCurrency` inside a `priceSpecification` property.
-
- 
- 
- If you use both the `offers.price` and `offers.priceSpecification`
- properties to encode an active price, Google will use the price provided through
- the `offers.price` property and ignore the `offers.priceSpecification`
- property.
- 
- The `priceSpecification` property allows the specification of complex prices
- by using `UnitPriceSpecification` objects. See the list of supported
- [`UnitPriceSpecification`](https://developers.google.com#unit-price-specification-properties)
- properties and the [pricing examples](https://developers.google.com#pricing-examples) of how to mark up
- various kinds of prices.
-
- | 
- 
-
+| `priceSpecification` | ` UnitPriceSpecification ` The active price can also be specified using `price` and `priceCurrency` inside a `priceSpecification` property. If you use both the `offers.price` and `offers.priceSpecification` properties to encode an active price, Google will use the price provided through the `offers.price` property and ignore the `offers.priceSpecification` property. The `priceSpecification` property allows the specification of complex prices by using `UnitPriceSpecification` objects. See the list of supported `UnitPriceSpecification` properties and the pricing examples of how to mark up various kinds of prices. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `availability` | 
+| `availability` | ` ItemAvailability ` The possible product availability options. The short names without the URL prefix are also supported (for example `BackOrder`). `https://schema.org/BackOrder`: The item is on back order. `https://schema.org/Discontinued`: The item has been discontinued. `https://schema.org/InStock`: The item is in stock. `https://schema.org/InStoreOnly`: The item is only available for purchase in store. `https://schema.org/LimitedAvailability`: The item has limited availability. `https://schema.org/OnlineOnly`: The item is available online only. `https://schema.org/OutOfStock`: The item is currently out of stock. `https://schema.org/PreOrder`: The item is available for pre-order. `https://schema.org/PreSale`: The item is available for ordering and delivery before general availability. `https://schema.org/SoldOut`: The item has been sold out. Don't specify more than one value. |
  
- `[ItemAvailability](https://schema.org/ItemAvailability)`
-
- The possible product availability options. The short names without the URL prefix
- are also supported (for example `BackOrder`).
-
- 
- 
-- `https://schema.org/BackOrder`: The item is on back order.
- 
-- `https://schema.org/Discontinued`: The item has been discontinued.
- 
-- `https://schema.org/InStock`: The item is in stock.
- 
-- `https://schema.org/InStoreOnly`: The item is only available for purchase in store.
- 
-- `https://schema.org/LimitedAvailability`: The item has limited availability.
- 
-- `https://schema.org/OnlineOnly`: The item is available online only.
- 
-- `https://schema.org/OutOfStock`: The item is currently out of stock.
- 
-- `https://schema.org/PreOrder`: The item is available for pre-order.
- 
-- `https://schema.org/PreSale`: The item is available for ordering and delivery before general availability.
- 
-- `https://schema.org/SoldOut`: The item has been sold out.
- 
-
- 
- Don't specify more than one value.
- 
-
- | 
- 
-
- 
- `hasMerchantReturnPolicy` | 
- 
- `[MerchantReturnPolicy](https://schema.org/MerchantReturnPolicy)`
-
- Nested information about the return policies associated with an `Offer`.
- Add the [required and recommended
- `MerchantReturnPolicy` properties](https://developers.google.com#merchant-return-policy-properties) for individual offers.
-
- 
-
- 
- We recommend you provide a global return policy for your business under `Organization` markup instead,
- as documented under the [Organization documentation](https://developers.google.com/search/docs/appearance/structured-data/organization) and
- the [Merchant return policy documentation](https://developers.google.com/search/docs/appearance/structured-data/return-policy).
- Only if some of your products have specific return policies for which you need to override your
- global return policy, or if you don't provide standard return policy for your business, use
- this property under `Offer`. Note that the
- properties supported for offer-level return policies are a subset of the properties
- supported for organization-level return policies.
- To unambiguously reference your global return policy (located on a different page) from an `Offer`,
- using only the `@id` keyword. For example:
-
+| `hasMerchantReturnPolicy` | ` MerchantReturnPolicy ` Nested information about the return policies associated with an `Offer`. Add the required and recommended `MerchantReturnPolicy` properties for individual offers. We recommend you provide a global return policy for your business under `Organization` markup instead, as documented under the Organization documentation and the Merchant return policy documentation . Only if some of your products have specific return policies for which you need to override your global return policy, or if you don't provide standard return policy for your business, use this property under `Offer`. Note that the properties supported for offer-level return policies are a subset of the properties supported for organization-level return policies. To unambiguously reference your global return policy (located on a different page) from an `Offer`, using only the `@id` keyword. For example: 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Offer",
- "hasMerchantReturnPolicy": {
- "@id": "https://example.com/returns#policy"
- }
+  "@context": "https://schema.org",
+  "@type": "Offer",
+  "hasMerchantReturnPolicy": {
+    "@id": "https://example.com/returns#policy"
+  }
 }
 ```
-
+ |
  
+| `itemCondition` | ` OfferItemCondition ` Condition of the item offered for sale. The short names without the URL prefix are also supported (for example `NewCondition`). `https://schema.org/NewCondition`: The item is new. `https://schema.org/RefurbishedCondition`: The item has been refurbished. `https://schema.org/UsedCondition`: The item is used (it is not new). Don't specify more than one value. |
  
- | 
+| `priceValidUntil` | ` Date ` The date and time after which the price will no longer be available, in ISO 8601 format. Your listing may not display if the `priceValidUntil` property indicates a past date. For details and markup examples, see Sale duration . |
  
-
- 
- `itemCondition` | 
- 
- `[OfferItemCondition](https://schema.org/OfferItemCondition)`
-
- Condition of the item offered for sale. The short names without the URL prefix
- are also supported (for example `NewCondition`).
-
- 
- 
-- `https://schema.org/NewCondition`: The item is new.
- 
-- `https://schema.org/RefurbishedCondition`: The item has been refurbished.
- 
-- `https://schema.org/UsedCondition`: The item is used (it is not new).
- 
-
- 
- Don't specify more than one value.
- 
-
- | 
- 
-
- 
- `priceValidUntil` | 
- 
- `[Date](https://schema.org/Date)`
-
- The date and time after which the price will no longer be available, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Your listing may not display if the `priceValidUntil` property indicates a past date. For details and markup examples, see [Sale duration](https://developers.google.com#sale-duration).
-
- | 
- 
-
- 
- `shippingDetails` | 
- 
- `[OfferShippingDetails](https://schema.org/OfferShippingDetails)`
-
- Nested information about the shipping policy associated with an
- `Offer`. If you decide to add `shippingDetails`, add
- the [required and recommended
- `OfferShippingDetails` properties](https://developers.google.com#offer-shipping-details-properties).
-
- 
- We recommend you provide a global shipping policy for your business under `Organization` markup instead,
- as documented under the [Organization documentation](https://developers.google.com/search/docs/appearance/structured-data/organization) and
- the [Merchant shipping policy documentation](https://developers.google.com/search/docs/appearance/structured-data/shipping-policy).
- Only if some of your products have specific shipping policies for which you need to override your
- global shipping policy, or if you don't provide a standard shipping policy for your business, use
- this property under `Offer`. Note that the
- properties supported for offer-level shipping policies are a subset of the properties
- supported for organization-level shipping policies.
- To unambiguously reference your global shipping policy (located on a different page) from an `Offer`, use only
- the `hasShippingService` property under the `OfferShippingDetails` type
- using only the `@id` keyword. For example:
-
+| `shippingDetails` | ` OfferShippingDetails ` Nested information about the shipping policy associated with an `Offer`. If you decide to add `shippingDetails`, add the required and recommended `OfferShippingDetails` properties . We recommend you provide a global shipping policy for your business under `Organization` markup instead, as documented under the Organization documentation and the Merchant shipping policy documentation . Only if some of your products have specific shipping policies for which you need to override your global shipping policy, or if you don't provide a standard shipping policy for your business, use this property under `Offer`. Note that the properties supported for offer-level shipping policies are a subset of the properties supported for organization-level shipping policies. To unambiguously reference your global shipping policy (located on a different page) from an `Offer`, use only the `hasShippingService` property under the `OfferShippingDetails` type using only the `@id` keyword. For example: 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Offer",
- "shippingDetails": {
- "@type": "OfferShippingDetails",
- "hasShippingService": {
- "@id": "https://example.com/shipping#policy"
- }
- }
+  "@context": "https://schema.org",
+  "@type": "Offer",
+  "shippingDetails": {
+    "@type": "OfferShippingDetails",
+    "hasShippingService": {
+      "@id": "https://example.com/shipping#policy"
+    }
+  }
 }
 ```
-
+ |
  
- | 
+| `url` | ` URL ` A URL of the product web page from which a shopper can purchase the product. This URL may be the preferred URL for the current page with all variant options appropriately selected. The URL can be omitted. Don't provide multiple URLs. For details on how to add markup for product variants, refer to product variant structured data documentation . |
  
-
+| `validFrom` | ` DateTime ` or ` Date ` The start date and time when the price is valid, in ISO 8601 format. For details and markup examples, see Sale duration . |
  
- `url` | 
- 
- `[URL](https://schema.org/URL)`
-
- A URL of the product web page from which a shopper can purchase the product.
- This URL may be the preferred URL for the current page with all variant options
- appropriately selected. The URL can be omitted. Don't provide multiple URLs.
-
- For details on how to add markup for product variants, refer to
- [product variant structured data documentation](https://developers.google.com/search/docs/appearance/structured-data/product-variants).
- 
-
- | 
- 
-
- 
- `validFrom` | 
- 
- `[DateTime](https://schema.org/DateTime)` or `[Date](https://schema.org/Date)`
-
- The start date and time when the price is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For details and markup examples, see [Sale duration](https://developers.google.com#sale-duration).
-
- | 
- 
-
- 
- `validThrough` | 
- 
- `[DateTime](https://schema.org/DateTime)` or `[Date](https://schema.org/Date)`
-
- The end date and time when the price is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For details and markup examples, see [Sale duration](https://developers.google.com#sale-duration).
-
- | 
- 
-
+| `validThrough` | ` DateTime ` or ` Date ` The end date and time when the price is valid, in ISO 8601 format. For details and markup examples, see Sale duration . |
  
  
 
@@ -2308,189 +1797,51 @@ Additional image guidelines:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `price` | 
+| `price` | ` Number ` The offer price of a product. See also the `price` property of `Offer`. |
  
- `[Number](https://schema.org/Number)`
-
- 
- The offer price of a product. See also the `price` property of `Offer`.
- 
-
- | 
- 
-
- 
- `priceCurrency` | 
- 
- `[Text](https://schema.org/Text)`
-
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
- See also the `priceCurrency` property of `Offer`.
-
- | 
- 
-
+| `priceCurrency` | ` Text ` The currency used to describe the product price, in three-letter ISO 4217 format. See also the `priceCurrency` property of `Offer`. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `membershipPointsEarned` | 
+| `membershipPointsEarned` | ` Number ` Beta : This property is in beta, and you may not see an effect in Google Search right away. The (whole) number of points that members of a particular loyalty program earn with this purchase. Use this property only together with `validForMemberTier`. See the fourth example in member price examples and the article Loyalty program in Google Merchant Center Help. Refer to loyalty program markup for information on how to define member programs and tiers for your organization. |
  
- `[Number](https://schema.org/Number)`
-
- Beta: This property is in beta, and you may not see an
- effect in Google Search right away.
- The (whole) number of points that members of a particular loyalty program earn with
- this purchase. Use this property only together with `validForMemberTier`.
- See the fourth example in [member price examples](https://developers.google.com#member-price-example)
- and the article [Loyalty program](https://support.google.com/merchants/answer/12922446) in Google Merchant Center Help.
-
- Refer to
- [loyalty program markup](https://developers.google.com/search/docs/appearance/structured-data/loyalty-program) for
- information on how to define member programs and tiers for your organization.
- | 
+| `priceType` | ` PriceTypeEnumeration ` The presence of this property marks the full, original listing price of a product, if applicable. Only use this property if you want Google to show sale pricing for your product. You must set the `priceType` to the `https://schema.org/StrikethroughPrice` value (no other values are supported). If you use the `priceType` property to designate a list price, you must also provide a current sale price with the `price` or `priceSpecification` property on the `Offer` object. Don't mark the current sale price with the `priceType` property. See the sale price examples . |
  
-
+| `referenceQuantity` | ` QuantitativeValue ` (for unit pricing) The quantity of the product offered for the given price. See the example Pricing with unit pricing measures and the article Unit pricing measure in Google Merchant Center Help for a detailed discussion of unit pricing. |
  
- `priceType` | 
- 
- 
- `[PriceTypeEnumeration](https://schema.org/PriceTypeEnumeration)`
- 
-
- 
- The presence of this property marks the full, original listing price of a product,
- if applicable. Only use this property if you want Google to show sale pricing for
- your product. You must set the `priceType` to
- the `https://schema.org/StrikethroughPrice` value (no other values are
- supported).
- 
-
- 
- If you use the `priceType` property to designate a list price,
- you must also provide a current sale price with the [`price`](https://developers.google.com#price) or
- [`priceSpecification`](https://developers.google.com#pricespecification) property on
- the `Offer` object. Don't mark the current sale price with
- the `priceType` property. See the [sale
- price examples](https://developers.google.com#sale-pricing-example).
- 
-
- | 
- 
-
- 
- `referenceQuantity` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
- (for unit pricing)
-
- The quantity of the product offered for the given price. See the
- example [Pricing with unit pricing measures](https://developers.google.com#unit-pricing-example) and the
- article [Unit pricing measure](https://support.google.com/merchants/answer/6324455) in Google Merchant Center Help for a
- detailed discussion of unit pricing.
-
- | 
- 
-
- 
- `validForMemberTier` | 
- 
- 
- `[MemberProgramTier](https://schema.org/MemberProgramTier)`
- 
-
- 
- The presence of this property indicates that this price is valid for members of a
- particular loyalty program. You can specify multiple member tiers if
- the price is the same for them and multiple price specifications with this property
- if the price is different for different member tiers.
- 
-
- 
- If you use the `validForMemberTier` property to designate a member price,
- you must also provide a current regular price with
- the [`price`](https://developers.google.com#price) or
- [`priceSpecification`](https://developers.google.com#pricespecification) property on
- the `Offer` object. See the [member price
- examples](https://developers.google.com#member-price-example).
- 
-
- 
- The loyalty programs and tiers that you offer for your business should either be
- defined in your Merchant Center account or using the `MemberProgram` structured
- data type nested under `Organization` structured data on a separate page
- that defines your Organization's administrative details and policies. See
- [loyalty program markup](https://developers.google.com/search/docs/appearance/structured-data/loyalty-program) for
- information on how to define the member programs and tiers for your organization.
- 
-
- Here's an example of the `validForMemberTier` property referencing a member
- program and tier defined in Merchant Center:
- 
-
+| `validForMemberTier` | ` MemberProgramTier ` The presence of this property indicates that this price is valid for members of a particular loyalty program. You can specify multiple member tiers if the price is the same for them and multiple price specifications with this property if the price is different for different member tiers. If you use the `validForMemberTier` property to designate a member price, you must also provide a current regular price with the `price` or `priceSpecification` property on the `Offer` object. See the member price examples . The loyalty programs and tiers that you offer for your business should either be defined in your Merchant Center account or using the `MemberProgram` structured data type nested under `Organization` structured data on a separate page that defines your Organization's administrative details and policies. See loyalty program markup for information on how to define the member programs and tiers for your organization. Here's an example of the `validForMemberTier` property referencing a member program and tier defined in Merchant Center: 
 ```
 "validForMemberTier": {
- "@type": "MemberProgramTier",
- "name": "silver",
- "isTierOf": {
- "@type": "MemberProgram",
- "name": "member-plus"
- }
+  "@type": "MemberProgramTier",
+  "name": "silver",
+  "isTierOf": {
+    "@type": "MemberProgram",
+    "name": "member-plus"
+  }
 }
 ```
-
- Here's an example of the `validForMemberTier` property referencing
- `MemberProgramTier` structured data nested under
- `MemberProgram` structured data, which is in turn nested under a `Organization` structured
- data type on a separate page. The `MemberProgramTier` instance is
- identified by the `@id` property specifying the unique resource identifier (URI) of its definition:
- `https://www.example.com/com/member-plus#tier_silver`:
- 
-
+ Here's an example of the `validForMemberTier` property referencing `MemberProgramTier` structured data nested under `MemberProgram` structured data, which is in turn nested under a `Organization` structured data type on a separate page. The `MemberProgramTier` instance is identified by the `@id` property specifying the unique resource identifier (URI) of its definition: `https://www.example.com/com/member-plus#tier_silver`: 
 ```
 "validForMemberTier": {
- "@type": "MemberProgramTier",
- "@id": "https://www.example.com/com/member-plus#tier_silver"
+  "@type": "MemberProgramTier",
+  "@id": "https://www.example.com/com/member-plus#tier_silver"
 }
 ```
-
+ This property is still in Beta. Off-page `MemberProgramTier` structured data might not show up in Google Search right away. |
  
- This property is still in Beta. Off-page `MemberProgramTier`
- structured data might not show up in Google Search right away.
+| `validFrom` | ` DateTime ` or ` Date ` The start date and time when the price is valid, in ISO 8601 format. For details and markup examples, see Sale duration . |
  
- | 
- 
-
- 
- `validFrom` | 
- 
- `[DateTime](https://schema.org/DateTime)` or `[Date](https://schema.org/Date)`
-
- The start date and time when the price is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For details and markup examples, see [Sale duration](https://developers.google.com#sale-duration).
-
- | 
- 
-
- 
- `validThrough` | 
- 
- `[DateTime](https://schema.org/DateTime)` or `[Date](https://schema.org/Date)`
-
- The end date and time when the price is valid, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For details and markup examples, see [Sale duration](https://developers.google.com#sale-duration).
-
- | 
- 
-
+| `validThrough` | ` DateTime ` or ` Date ` The end date and time when the price is valid, in ISO 8601 format. For details and markup examples, see Sale duration . |
  
  
 
@@ -2525,53 +1876,23 @@ Additional image guidelines:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `unitCode` | 
+| `unitCode` | ` Text ` or ` URL ` The unit of measurement. Either the UN/CEFACT codes or their human-readable equivalents as listed in Google Merchant Center Help Unit pricing measure are supported (except `sheet` and `item`; these two codes are only supported by Merchant Center feeds). |
  
- `[Text](https://schema.org/Text)` or `[URL](https://schema.org/URL)`
-
- 
- The unit of measurement. Either the UN/CEFACT codes or their human-readable
- equivalents as listed in Google Merchant Center Help
- [Unit pricing measure](https://support.google.com/merchants/answer/6324455)
- are supported (except `sheet` and `item`; these two codes are
- only supported by Merchant Center feeds).
- 
-
- | 
- 
-
- 
- `value` | 
- 
- `[Text](https://schema.org/Text)`
-
- The numeric value of the unit sold.
-
- | 
- 
-
+| `value` | ` Text ` The numeric value of the unit sold. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `valueReference` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The base quantity in which the product is priced.
-
- | 
- 
-
+| `valueReference` | ` QuantitativeValue ` The base quantity in which the product is priced. |
  
  
 
@@ -2586,102 +1907,15 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `name` | 
+| `name` | ` Text ` A human readable name for the size, such as "XL" . See the size attribute in Google Merchant Center Help for more details. |
  
- `[Text](https://schema.org/Text)`
-
- A human readable name for the size, such as "XL". See the
- [size attribute](https://support.google.com/merchants/answer/6324492)
- in Google Merchant Center Help for more details.
-
- | 
+| `sizeGroup` | ` WearableSizeGroupEnumeration ` or ` Text ` The suggested size group for the product, if applicable. The interpretation of the group is defined by the `sizeGroup` property. At most two size groups can be provided. Supported values are: `https://schema.org/WearableSizeGroupRegular`: The item size is "regular". `https://schema.org/WearableSizeGroupPetite`: The item size is "petite". `https://schema.org/WearableSizeGroupPlus`: The item size is "plus". `https://schema.org/WearableSizeGroupTall`: The item size is "tall". `https://schema.org/WearableSizeGroupBig`: The item size is "big". `https://schema.org/WearableSizeGroupMaternity`: The item size is "maternity". The short names without the URL prefix are also supported (for example, `WearableSizeGroupRegular`). See also `size_type` in Google Merchant Center Help and Supported structured data types and values in Google Merchant Center Help for more information about supported size systems. Google understands the text values for `size_type` as well (`regular`, `petite`, `plus`, `tall`, `big`, and `maternity`), but other search engines may not, so it is recommended to use the standard `schema.org` enumeration values. |
  
-
- 
- `sizeGroup` | 
- 
- `[WearableSizeGroupEnumeration](https://schema.org/WearableSizeGroupEnumeration)` or `[Text](https://schema.org/Text)`
-
- The suggested size group for the product, if applicable. The interpretation of
- the group is defined by the `sizeGroup` property.
- At most two size groups can be provided. Supported values are:
-
- 
- 
-- `https://schema.org/WearableSizeGroupRegular`: The item size is "regular".
- 
-- `https://schema.org/WearableSizeGroupPetite`: The item size is "petite".
- 
-- `https://schema.org/WearableSizeGroupPlus`: The item size is "plus".
- 
-- `https://schema.org/WearableSizeGroupTall`: The item size is "tall".
- 
-- `https://schema.org/WearableSizeGroupBig`: The item size is "big".
- 
-- `https://schema.org/WearableSizeGroupMaternity`: The item size is "maternity".
- 
-
- The short names without the URL prefix are also supported (for example, `WearableSizeGroupRegular`).
-
- See also [`size_type`](https://support.google.com/merchants/answer/6324497)
- in Google Merchant Center Help and
- [Supported structured data types and values](https://support.google.com/merchants/answer/6386198)
- in Google Merchant Center Help for more information about supported size systems.
- Google understands the text values for `size_type` as well
- (`regular`, `petite`, `plus`, `tall`,
- `big`, and `maternity`), but other search engines may not,
- so it is recommended to use the standard `schema.org` enumeration values.
-
- | 
- 
-
- 
- `sizeSystem` | 
- 
- `[WearableSizeSystemEnumeration](https://schema.org/WearableSizeSystemEnumeration)` or `[Text](https://schema.org/Text)`
-
- The size system for the product, if applicable. Supported values are:
-
- 
- 
-- `https://schema.org/WearableSizeSystemAU`: The size system in Australia.
- 
-- `https://schema.org/WearableSizeSystemBR`: The size system in Brazil.
- 
-- `https://schema.org/WearableSizeSystemCN`: The size system in China.
- 
-- `https://schema.org/WearableSizeSystemDE`: The size system in Germany.
- 
-- `https://schema.org/WearableSizeSystemEurope`: The size system in Europe.
- 
-- `https://schema.org/WearableSizeSystemFR`: The size system in France.
- 
-- `https://schema.org/WearableSizeSystemIT`: The size system in Italy.
- 
-- `https://schema.org/WearableSizeSystemJP`: The size system in Japan.
- 
-- `https://schema.org/WearableSizeSystemMX`: The size system in Mexico.
- 
-- `https://schema.org/WearableSizeSystemUK`: The size system in the United Kingdom.
- 
-- `https://schema.org/WearableSizeSystemUS`: The size system in the United States.
- 
-
- The short names without the URL prefix are also supported (for example, `WearableSizeSystemAU`).
-
- See also [`size_system`](https://support.google.com/merchants/answer/6324502)
- in Google Merchant Center Help.
- Google understands the text values for `size_system` as well
- (for example, `UR`, `BR`, `CN`, `DE`, `EU`), but other search engines may not,
- so it is recommended to use the standard `schema.org` enumeration values.
-
- | 
- 
-
+| `sizeSystem` | ` WearableSizeSystemEnumeration ` or ` Text ` The size system for the product, if applicable. Supported values are: `https://schema.org/WearableSizeSystemAU`: The size system in Australia. `https://schema.org/WearableSizeSystemBR`: The size system in Brazil. `https://schema.org/WearableSizeSystemCN`: The size system in China. `https://schema.org/WearableSizeSystemDE`: The size system in Germany. `https://schema.org/WearableSizeSystemEurope`: The size system in Europe. `https://schema.org/WearableSizeSystemFR`: The size system in France. `https://schema.org/WearableSizeSystemIT`: The size system in Italy. `https://schema.org/WearableSizeSystemJP`: The size system in Japan. `https://schema.org/WearableSizeSystemMX`: The size system in Mexico. `https://schema.org/WearableSizeSystemUK`: The size system in the United Kingdom. `https://schema.org/WearableSizeSystemUS`: The size system in the United States. The short names without the URL prefix are also supported (for example, `WearableSizeSystemAU`). See also `size_system` in Google Merchant Center Help. Google understands the text values for `size_system` as well (for example, `UR`, `BR`, `CN`, `DE`, `EU`), but other search engines may not, so it is recommended to use the standard `schema.org` enumeration values. |
  
  
 
@@ -2699,83 +1933,15 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `suggestedGender` | 
+| `suggestedGender` | ` Text ` or ` GenderType ` The suggested gender the product is suitable for. Must be one of the following values: `https://schema.org/Male` `https://schema.org/Female` `Unisex`: This (case-insensitive) value is not in the schema.org standard and must not have a `https://schema.org/` prefix. See `Gender` in Google Merchant Center Help for more details. Note that Google will complete `GenderType` values without schema.org prefix, therefore raw `male` and `female` values are also accepted. |
  
- `[Text](https://schema.org/Text)` or `[GenderType](https://schema.org/GenderType)`
-
- The suggested gender the product is suitable for. Must be one of the following values:
-
+| `suggestedMaxAge` (or `suggestedAge.maxValue`) | ` Number ` The suggested maximum age for the product, in years. Google maps the maximum suggested ages for products onto the following fixed set of numerical values: `0.25`: For newborns `1.0`: For infants `5.0`: For toddlers `13.0`: For kids For adults, you don't need to provide the `suggestedMaxAge` (or `suggestedAge.maxValue`) property. |
  
- 
-- `https://schema.org/Male`
- 
-- `https://schema.org/Female`
- 
-- `Unisex`: This (case-insensitive) value is not in the schema.org standard and must not have a `https://schema.org/` prefix.
- 
-
- See [`Gender`](https://support.google.com/merchants/answer/6324479) in
- Google Merchant Center Help for more details.
-
- Note that Google will complete `GenderType` values without schema.org prefix,
- therefore raw `male` and `female` values are also accepted.
-
- | 
- 
-
- 
- `suggestedMaxAge` (or `suggestedAge.maxValue`) | 
- 
- `[Number](https://schema.org/Number)`
-
- The suggested maximum age for the product, in years. Google maps the maximum
- suggested ages for products onto the following fixed set of numerical values:
-
- 
- 
-- `0.25`: For newborns
- 
-- `1.0`: For infants
- 
-- `5.0`: For toddlers
- 
-- `13.0`: For kids
- 
-
- For adults, you don't need to provide the `suggestedMaxAge`
- (or `suggestedAge.maxValue`)
- property.
- | 
- 
-
- 
- `suggestedMinAge` (or `suggestedAge.minValue`) | 
- 
- `[Number](https://schema.org/Number)`
-
- The suggested minimum age for the product, in years. Google maps the minimum suggested ages for
- products onto the following fixed set of numerical values:
-
- 
- 
-- `0`: For newborns
- 
-- `0.25`: For infants
- 
-- `1.0`: For toddlers
- 
-- `5.0`: For kids
- 
-- `13.0`: For adults
- 
-
- | 
- 
-
+| `suggestedMinAge` (or `suggestedAge.minValue`) | ` Number ` The suggested minimum age for the product, in years. Google maps the minimum suggested ages for products onto the following fixed set of numerical values: `0`: For newborns `0.25`: For infants `1.0`: For toddlers `5.0`: For kids `13.0`: For adults |
  
  
 
@@ -2788,27 +1954,11 @@ Additional image guidelines:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `issuedBy` | 
- 
- `[Organization](https://schema.org/Organization)`
-
- The authority or certification body responsible for issuing the certification. Use the property `name` to specify the organization. At this time, we support the following names:
-
- 
- 
-- `EC` or `European_Commission` for energy labels in the EU
- 
-- `ADEME` for French CO2 emissions classes for vehicles
- 
-- `BMWK` for German CO2 emissions classes for vehicles
- 
-
- | 
-
+| `issuedBy` | ` Organization ` The authority or certification body responsible for issuing the certification. Use the property `name` to specify the organization. At this time, we support the following names: `EC` or `European_Commission` for energy labels in the EU `ADEME` for French CO2 emissions classes for vehicles `BMWK` for German CO2 emissions classes for vehicles |
  `name` | 
  
  `[Text](https://schema.org/Text)`
@@ -2831,98 +1981,49 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `certificationIdentification` | 
+| `certificationIdentification` | ` Text ` The code of the certification. For example, for the EPREL certificate with the link `https://example.com/product/dishwashers2019/123456` the code is `123456.` The code is required for European Energy Labels. If you're a merchant serving customers in NO, CH, or the UK and you don't have EPREL codes, you can use the `certificationRating` property instead of the `certificationIdentification` property. |
  
- `[Text](https://schema.org/Text)`
-
- The code of the certification. For example, for the EPREL certificate with the link
- `https://example.com/product/dishwashers2019/123456` the code is
- `123456.` The code is required for European Energy Labels.
-
- If you're a merchant serving customers in NO, CH, or the UK and
- you don't have EPREL codes, you can use the [`certificationRating` property](https://developers.google.com#certification-rating)
- instead of the `certificationIdentification` property.
- | 
- 
-
- 
- `certificationRating` | 
- 
- `[Rating](https://schema.org/Rating)`
-
- The value of the certification. This property is ignored for certifications that
- have the `certificationIdentification` property (for example, an EPREL
- code). You can use the `certificationRating` property to provide the CO2
- Emissions class that's required when listing vehicles in certain countries, or the
- energy efficiency rating when an EPREL code is not available. The following
- properties can be nested in the `certificationRating` property:
-
- 
- 
-- `ratingValue`
- 
-- `bestRating`
- 
-- `worstRating`
- 
-
- The `ratingValue` property is required when the `certificationRating`
- property is used. For EU energy efficiency ratings, the `bestRating` and
- `worstRating` properties are also required.
-
- Here's an example of the `certificationRating` property with nested
- properties that specify an EU energy efficiency rating:
-
- 
-
+| `certificationRating` | ` Rating ` The value of the certification. This property is ignored for certifications that have the `certificationIdentification` property (for example, an EPREL code). You can use the `certificationRating` property to provide the CO2 Emissions class that's required when listing vehicles in certain countries, or the energy efficiency rating when an EPREL code is not available. The following properties can be nested in the `certificationRating` property: `ratingValue` `bestRating` `worstRating` The `ratingValue` property is required when the `certificationRating` property is used. For EU energy efficiency ratings, the `bestRating` and `worstRating` properties are also required. Here's an example of the `certificationRating` property with nested properties that specify an EU energy efficiency rating: 
 ```
 hasCertification": {
- "@type": "Certification",
- "issuedBy": {
- "@type": "Organization",
- "name": "European_Commission"
- }
- "name": "EPREL",
- "url": "https://eprel.ec.europa.eu/screen/product/ovens/53553",
- "certificationIdentification": "53553",
- "certificationRating": {
- "@type": "Rating",
- "ratingValue": "A+",
- "bestRating": "A++",
- "worstRating": "D"
- }
+  "@type": "Certification",
+  "issuedBy": {
+    "@type": "Organization",
+    "name": "European_Commission"
+  }
+  "name": "EPREL",
+  "url": "https://eprel.ec.europa.eu/screen/product/ovens/53553",
+  "certificationIdentification": "53553",
+  "certificationRating": {
+    "@type": "Rating",
+    "ratingValue": "A+",
+    "bestRating": "A++",
+    "worstRating": "D"
+  }
 }
 ```
-
- Here's an example of the `certificationRating` property with nested
- properties that specify a CO2 emissions class:
-
- 
-
+ Here's an example of the `certificationRating` property with nested properties that specify a CO2 emissions class: 
 ```
 "hasCertification": {
- "@type": "Certification",
- "issuedBy": {
- "@type": "Organization",
- "name": "ADEME"
- }
- "name": "Vehicle_CO2_Class",
- "certificationRating": {
- "@type": "Rating",
- "ratingValue": "E",
- "bestRating": "A",
- "worstRating": "G"
- }
+  "@type": "Certification",
+  "issuedBy": {
+    "@type": "Organization",
+    "name": "ADEME"
+  }
+  "name": "Vehicle_CO2_Class",
+  "certificationRating": {
+    "@type": "Rating",
+    "ratingValue": "E",
+    "bestRating": "A",
+    "worstRating": "G"
+  }
 }
 ```
-
- | 
- 
-
+ |
  
  
 
@@ -2958,88 +2059,19 @@ hasCertification": {
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `deliveryTime` | 
+| `deliveryTime` | ` ShippingDeliveryTime ` The total delay between the receipt of the order and the goods reaching the final customer. The following properties can be nested in the `deliveryTime` property: `handlingTime` `transitTime` Don't provide more than one `deliveryTime`. See also the list of `ShippingDeliveryTime` properties supported by Google. |
  
- `[ShippingDeliveryTime](https://schema.org/ShippingDeliveryTime)`
-
- The total delay between the receipt of the order and the goods reaching the final
- customer. The following properties can be nested in the `deliveryTime`
- property:
-
+| `shippingDestination` | ` DefinedRegion ` Indicates shipping destinations. Specify the `shippingDestination.addressCountry` information. See also the list of `DefinedRegion` properties supported by Google. |
  
+| `shippingRate` | ` MonetaryAmount ` Information about the cost of shipping to the specified destination. At least one of `shippingRate.value` or `shippingRate.maxValue` must be specified, along with `shippingRate.currency`. You can only specify one `shippingRate` per `OfferShippingDetails` property. To indicate multiple rates for your product, specify multiple `OfferShippingDetail` properties. |
  
-- `handlingTime`
+| `shippingRate.currency` | ` Text ` The currency of the shipping cost, in 3-letter ISO 4217 format. The currency must be the same as the currency of the offer. |
  
-- `transitTime`
- 
-
- Don't provide more than one `deliveryTime`.
- See also the list of [`ShippingDeliveryTime` properties](https://developers.google.com#shipping-delivery-time-properties)
- supported by Google.
-
- | 
- 
-
- 
- `shippingDestination` | 
- 
- `[DefinedRegion](https://schema.org/DefinedRegion)`
-
- Indicates shipping destinations. Specify the
- `shippingDestination.addressCountry` information.
- See also the list of [`DefinedRegion` properties](https://developers.google.com#defined-region-properties)
- supported by Google.
-
- | 
- 
-
- 
- `shippingRate` | 
- 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- Information about the cost of shipping to the specified destination.
- At least one of `shippingRate.value` or `shippingRate.maxValue`
- must be specified, along with `shippingRate.currency`.
-
- You can only specify one
- `shippingRate` per `OfferShippingDetails`
- property. To indicate multiple rates for your product, specify multiple
- `OfferShippingDetail` properties.
-
- | 
- 
-
- 
- `shippingRate.currency` | 
- 
- `[Text](https://schema.org/Text)`
-
- The currency of the shipping cost, in 3-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
- The currency must be the same as the currency of the offer.
-
- | 
- 
-
- 
- `shippingRate.value` or `shippingRate.maxValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The cost of shipping to the `shippingDestination`.
- If a string is used to provide the value, don't
- include currency symbols, thousands separators, or spaces.
-
- To specify free shipping, set the value to `0`.
-
- | 
- 
-
+| `shippingRate.value` or `shippingRate.maxValue` | ` Number ` The cost of shipping to the `shippingDestination`. If a string is used to provide the value, don't include currency symbols, thousands separators, or spaces. To specify free shipping, set the value to `0`. |
  
  
 
@@ -3056,66 +2088,25 @@ hasCertification": {
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `addressCountry` | 
- 
- `[Text](https://schema.org/Text)`
-
- The two-letter country code, in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
- format.
-
- | 
- 
-
+| `addressCountry` | ` Text ` The two-letter country code, in ISO 3166-1 alpha-2 format. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- Choose either `addressRegion` or `postalCode` | 
+| Choose either `addressRegion` or `postalCode` | Identifies the region for the customer delivery area. If omitted, the whole country is the defined region. Multiple regions can be listed, but you cannot mix different ways of specifying the regions in one `DefinedRegion` instance. |
  
- Identifies the region for the customer delivery area. If omitted,
- the whole country is the defined region. Multiple regions can be listed,
- but you cannot mix different ways of specifying the regions in one
- `DefinedRegion` instance.
-
- | 
+| `addressRegion` | ` Text ` If you include this property, the region must be a 2- or 3-digit ISO 3166-2 subdivision code, without country prefix. Currently, Google Search only supports the US, Australia, and Japan. Examples: "NY" (for US, state of New York), "NSW" (for Australia, state of New South Wales), or "03" (for Japan, Iwate prefecture). Do not provide both a region and postal code information. |
  
-
- 
- `addressRegion` | 
- 
- `[Text](https://schema.org/Text)`
-
- If you include this property, the region must be a 2- or 3-digit ISO 3166-2
- subdivision code, without country prefix. Currently, Google Search only supports
- the US, Australia, and Japan. Examples: "NY" (for US, state of New York),
- "NSW" (for Australia, state of New South Wales), or "03" (for Japan,
- Iwate prefecture).
-
- Do not provide both a region and postal code information.
-
- | 
- 
-
- 
- `postalCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- The postal code. For example, 94043. Currently postal codes are supported for
- Australia, Canada, and the US.
-
- | 
- 
-
+| `postalCode` | ` Text ` The postal code. For example, 94043. Currently postal codes are supported for Australia, Canada, and the US. |
  
  
 
@@ -3130,31 +2121,13 @@ hasCertification": {
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `handlingTime` | 
+| `handlingTime` | ` QuantitativeValue ` (for shipping times) The typical delay between the receipt of the order and the goods leaving the warehouse. |
  
- `[QuantitativeValue](https://schema.org/QuantitativeValue)` (for shipping times)
-
- The typical delay between the receipt of the order and the goods leaving the
- warehouse.
-
- | 
- 
-
- 
- `transitTime` | 
- 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)` (for shipping times)
-
- The typical delay between when the order has been sent for delivery and when
- the goods reach the final customer.
-
- | 
- 
-
+| `transitTime` | ` QuantitativeValue ` (for shipping times) The typical delay between when the order has been sent for delivery and when the goods reach the final customer. |
  
  
 
@@ -3169,39 +2142,15 @@ hasCertification": {
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `maxValue` | 
+| `maxValue` | ` Number ` The maximum number of days. The value must be a non-negative, whole number. |
  
- `[Number](https://schema.org/Number)`
-
- The maximum number of days. The value must be a non-negative, whole number.
-
- | 
+| `minValue` | ` Number ` The minimum number of days. The value must be a non-negative, whole number. |
  
-
- 
- `minValue` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum number of days. The value must be a non-negative, whole number.
-
- | 
- 
-
- 
- `unitCode` | 
- 
- `[Text](https://schema.org/Text)`
-
- The units of the minimum/maximum values. The value must be `DAY` or `d`.
-
- | 
- 
-
+| `unitCode` | ` Text ` The units of the minimum/maximum values. The value must be `DAY` or `d`. |
  
  
 
@@ -3220,126 +2169,29 @@ hasCertification": {
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `applicableCountry` | 
+| `applicableCountry` | ` Text ` The country code that the return policy applies to, using the two-letter ISO 3166-1 alpha-2 country code formatting. You can specify up to 50 countries. |
  
- `[Text](https://schema.org/Text)`
-
- The country code that the return policy applies to, using the two-letter
- [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
- country code formatting. You can specify up to 50 countries.
-
- | 
- 
-
- 
- `returnPolicyCategory` | 
- 
- `[MerchantReturnEnumeration](https://schema.org/MerchantReturnEnumeration)`
-
- The type of return policy. Use one of the following values:
-
- 
- 
-- `https://schema.org/MerchantReturnFiniteReturnWindow`: There's a set number of days to return a product.
- 
-- `https://schema.org/MerchantReturnNotPermitted`: Returns aren't permitted.
- 
-- `https://schema.org/MerchantReturnUnlimitedWindow`: There's an unlimited amount of time to return a product.
- 
-
- 
- If you use `MerchantReturnFiniteReturnWindow`, the
- [`merchantReturnDays`](https://developers.google.com#merchant-return-days) property is required.
- 
-
- | 
- 
-
+| `returnPolicyCategory` | ` MerchantReturnEnumeration ` The type of return policy. Use one of the following values: `https://schema.org/MerchantReturnFiniteReturnWindow`: There's a set number of days to return a product. `https://schema.org/MerchantReturnNotPermitted`: Returns aren't permitted. `https://schema.org/MerchantReturnUnlimitedWindow`: There's an unlimited amount of time to return a product. If you use `MerchantReturnFiniteReturnWindow`, the `merchantReturnDays` property is required. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `merchantReturnDays` | 
+| `merchantReturnDays` | ` Integer ` The number of days from the delivery date that a product can be returned. This property is required if you set the `returnPolicyCategory` to `MerchantReturnFiniteReturnWindow`. |
  
- `[Integer](https://schema.org/Integer)`
-
- The number of days from the delivery date that a product can be returned. This
- property is required if you set the [`returnPolicyCategory`](https://developers.google.com#return-policy-category) to `MerchantReturnFiniteReturnWindow`.
-
- | 
+| `returnFees` | ` ReturnFeesEnumeration ` The type of return fees. Use one of the following supported values: `https://schema.org/FreeReturn`: There's no charge to the consumer to return the product. If used, don't include the `returnShippingFeesAmount` property. `https://schema.org/ReturnFeesCustomerResponsibility`: The consumer needs to handle and pay for the return shipping themselves. If used, don't include the `returnShippingFeesAmount` property. `https://schema.org/ReturnShippingFees`: There's a shipping fee charged by the merchant to the consumer to return the product. Specify the (non-zero) shipping fee using the `returnShippingFeesAmount` property. |
  
-
+| `returnMethod` | ` ReturnMethodEnumeration ` The type of return method offered. This is only recommended if you set the `returnPolicyCategory` to either `MerchantReturnFiniteReturnWindow` or `MerchantReturnUnlimitedWindow`. Use one or more of the following values: `https://schema.org/ReturnAtKiosk`: The item can be returned at a kiosk. `https://schema.org/ReturnByMail`: The item can be returned by mail. `https://schema.org/ReturnInStore`: The item can be returned in a store. |
  
- `returnFees` | 
- 
- `[ReturnFeesEnumeration](https://schema.org/ReturnFeesEnumeration)`
-
- The type of return fees. Use one of the following supported values:
-
- 
- 
-- `https://schema.org/FreeReturn`: There's no charge to the consumer to
- return the product. If used, don't include the [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount)
- property.
- 
-- `https://schema.org/ReturnFeesCustomerResponsibility`: The consumer
- needs to handle and pay for the return shipping themselves. If used, don't include
- the [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount)
- property.
- 
-- `https://schema.org/ReturnShippingFees`: There's a shipping fee
- charged by the merchant to the consumer to return the product. Specify the
- (non-zero) shipping fee using the
- [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount) property.
- 
-
- | 
- 
-
- 
- `returnMethod` | 
- 
- `[ReturnMethodEnumeration](https://schema.org/ReturnMethodEnumeration)`
-
- The type of return method offered. This is only recommended if you set the
- `returnPolicyCategory` to either `MerchantReturnFiniteReturnWindow`
- or `MerchantReturnUnlimitedWindow`. Use one or more of the following values:
-
- 
- 
-- `https://schema.org/ReturnAtKiosk`: The item can be returned at a kiosk.
- 
-- `https://schema.org/ReturnByMail`: The item can be returned by mail.
- 
-- `https://schema.org/ReturnInStore`: The item can be returned in a store.
- 
-
- | 
- 
-
- 
- `returnShippingFeesAmount` | 
- 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- The cost of shipping for returning a product. This property is only required if there's a
- non-zero shipping fee to be paid by the consumer to the merchant to return a product, in which case [`returnFees`](https://developers.google.com#return-fees) must be set to `https://schema.org/ReturnShippingFees`.
- If the return is free, [`returnFees`](https://developers.google.com#return-fees) must be set to `https://schema.org/FreeReturn`.
- If the consumer needs to handle, and pay for, the return shipping cost, [`returnFees`](https://developers.google.com#return-fees) must be set to `https://schema.org/ReturnFeesCustomerResponsibility`.
- 
-
- | 
- 
-
+| `returnShippingFeesAmount` | ` MonetaryAmount ` The cost of shipping for returning a product. This property is only required if there's a non-zero shipping fee to be paid by the consumer to the merchant to return a product, in which case `returnFees` must be set to `https://schema.org/ReturnShippingFees`. If the return is free, `returnFees` must be set to `https://schema.org/FreeReturn`. If the consumer needs to handle, and pay for, the return shipping cost, `returnFees` must be set to `https://schema.org/ReturnFeesCustomerResponsibility`. |
  
  
 

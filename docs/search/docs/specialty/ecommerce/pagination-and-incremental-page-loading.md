@@ -100,9 +100,7 @@ fetched: 2026-07-08
  
  
  
- UX Pattern | 
- 
-
+| UX Pattern |
  
  
  Pagination
@@ -110,42 +108,7 @@ fetched: 2026-07-08
  
  
  
- 
- 
- Pros:
- 
-
- 
- 
-- 
- Gives users insight into result size and current position
- 
- 
-
- | 
- 
- 
- Cons:
- 
-
- 
- 
-- 
- More complex controls for users to navigate through results
- 
- 
-- 
- Content is split across multiple pages rather than being a single continuous list
- 
- 
-- 
- Viewing more requires new page loads
- 
- 
-
- | 
- 
-
+| Pros: Gives users insight into result size and current position | Cons: More complex controls for users to navigate through results Content is split across multiple pages rather than being a single continuous list Viewing more requires new page loads |
  
 
  | 
@@ -158,38 +121,7 @@ fetched: 2026-07-08
  
  
  
- 
- 
- Pros:
- 
-
- 
- 
-- 
- Uses a single page for all content
- 
- 
-- 
- Can inform user of total result size (on or near the button)
- 
- 
-
- | 
- 
- 
- Cons:
- 
-
- 
- 
-- 
- Can't handle very large numbers of results as all of the results are included on a single web page
- 
- 
-
- | 
- 
-
+| Pros: Uses a single page for all content Can inform user of total result size (on or near the button) | Cons: Can't handle very large numbers of results as all of the results are included on a single web page |
  
 
  | 
@@ -202,42 +134,7 @@ fetched: 2026-07-08
  
  
  
- 
- 
- Pros:
- 
-
- 
- 
-- 
- Uses a single page for all content
- 
- 
-- 
- Intuitive – the user just keeps scrolling to view more content
- 
- 
-
- | 
- 
- 
- Cons:
- 
-
- 
- 
-- 
- Can lead to "scrolling fatigue" because of unclear result size
- 
- 
-- 
- Can't handle very large numbers of results
- 
- 
-
- | 
- 
-
+| Pros: Uses a single page for all content Intuitive – the user just keeps scrolling to view more content | Cons: Can lead to "scrolling fatigue" because of unclear result size Can't handle very large numbers of results |
  
 
  | 

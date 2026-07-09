@@ -137,62 +137,64 @@ Here's an example of structured data on the page that hosts this fact check:
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>The world is flat</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ClaimReview",
- "url": "https://example.com/news/science/worldisflat.html",
- "claimReviewed": "The world is flat",
- "itemReviewed": {
- "@type": "Claim",
- "author": {
- "@type": "Organization",
- "name": "Square World Society",
- "sameAs": "https://example.flatworlders.com/we-know-that-the-world-is-flat"
- },
- "datePublished": "2024-06-20",
- "appearance": {
- "@type": "OpinionNewsArticle",
- "url": "https://example.com/news/a122121",
- "headline": "Square Earth - Flat earthers for the Internet age",
- "datePublished": "2024-06-22",
- "author": {
- "@type": "Person",
- "name": "T. Tellar"
- },
- "image": "https://example.com/photos/1x1/photo.jpg",
- "publisher": {
- "@type": "Organization",
- "name": "Skeptical News",
- "logo": {
- "@type": "ImageObject",
- "url": "https://example.com/logo.jpg"
- }
- }
- }
- },
- "author": {
- "@type": "Organization",
- "name": "Example.com science watch"
- },
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 1,
- "bestRating": 5,
- "worstRating": 1,
- "alternateName": "False"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The world is flat</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ClaimReview",
+      "url": "https://example.com/news/science/worldisflat.html",
+      "claimReviewed": "The world is flat",
+      "itemReviewed": {
+        "@type": "Claim",
+        "author": {
+          "@type": "Organization",
+          "name": "Square World Society",
+          "sameAs": "https://example.flatworlders.com/we-know-that-the-world-is-flat"
+        },
+        "datePublished": "2024-06-20",
+        "appearance": {
+          "@type": "OpinionNewsArticle",
+          "url": "https://example.com/news/a122121",
+          "headline": "Square Earth - Flat earthers for the Internet age",
+          "datePublished": "2024-06-22",
+          "author": {
+            "@type": "Person",
+            "name": "T. Tellar"
+          },
+          "image": "https://example.com/photos/1x1/photo.jpg",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Skeptical News",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://example.com/logo.jpg"
+            }
+          }
+        }
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Example.com science watch"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 1,
+        "bestRating": 5,
+        "worstRating": 1,
+        "alternateName": "False"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Eligibility guidelines
 
@@ -282,71 +284,24 @@ The full definition of `ClaimReview` is available at
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `claimReviewed` | 
- `[Text](https://schema.org/Text)`
-
- A short summary of the claim being evaluated. Try to keep this less than 75 characters
- to minimize wrapping when displayed on a mobile device.
-
- Don't include the rating in the `claimReviewed` field.
- Instead, specify the rating in the `reviewRating` field.
- | 
+| `claimReviewed` | ` Text ` A short summary of the claim being evaluated. Try to keep this less than 75 characters to minimize wrapping when displayed on a mobile device. Don't include the rating in the `claimReviewed` field. Instead, specify the rating in the `reviewRating` field. |
  
-
+| `reviewRating` | ` Rating ` The assessment of the claim. This object supports both a numeric and a textual assessment. The textual value is currently the only value shown in search results. Different fact-checking projects have a variety of rating schemes which can have subtle differences, particularly for intermediate values. It is important to document such rating schemes to clarify the meaning of the numeric ratings. Minimally, there must be a number to text rating system for all your fact checks that carry numeric scores. 1 = "False" 2 = "Mostly false" 3 = "Half true" 4 = "Mostly true" 5 = "True" For more information, see Rating . |
  
- `reviewRating` | 
- `[Rating](https://schema.org/Rating)`
-
- The assessment of the claim. This object supports both a numeric and a textual assessment.
- The textual value is currently the only value shown in search results.
-
- Different fact-checking projects have a variety of rating schemes which can have subtle differences,
- particularly for intermediate values. It is important to document such rating schemes to clarify
- the meaning of the numeric ratings. Minimally, there must be a number to text rating system
- for all your fact checks that carry numeric scores.
-
- 
- 
-- 1 = "False"
- 
-- 2 = "Mostly false"
- 
-- 3 = "Half true"
- 
-- 4 = "Mostly true"
- 
-- 5 = "True"
- 
-
- For more information, see [Rating](https://developers.google.com#rating).
- | 
- 
-
- 
- `url` | 
- `[URL](https://schema.org/URL)`
-
- Link to the page hosting the full article of the fact check.
-
- The domain of this URL value must be the same domain as, or a subdomain of, the
- page hosting this `ClaimReview` element. Redirects or shortened URLs (such
- as g.co/searchconsole) are not resolved, and so will not work here.
- | 
- 
-
+| `url` | ` URL ` Link to the page hosting the full article of the fact check. The domain of this URL value must be the same domain as, or a subdomain of, the page hosting this `ClaimReview` element. Redirects or shortened URLs (such as g.co/searchconsole) are not resolved, and so will not work here. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
@@ -364,28 +319,9 @@ The full definition of `ClaimReview` is available at
  
  
  
+| `name` | ` Text ` Name of the organization that is publishing the fact check. |
  
- `name`
- | 
- 
- `[Text](https://schema.org/Text)`
- Name of the organization that is publishing the fact check.
-
- | 
- 
-
- 
- `url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The URL of the publisher of the fact check. This can be a home page, contact page,
- or other appropriate page.
-
- | 
- 
-
+| `url` | ` URL ` The URL of the publisher of the fact check. This can be a home page, contact page, or other appropriate page. |
  
  
 
@@ -399,61 +335,7 @@ The full definition of `ClaimReview` is available at
  
 
  
- `itemReviewed` | 
- `[Claim](https://schema.org/Claim)`
-
- An object describing the claim being made. For more information, see
- [`Claim`.](https://developers.google.com#claim)
-
- Backwards compatibility: Upon the initial launch
- of fact check, Google Search recommended `CreativeWork` as the
- `itemReviewed`. Google Search continues to support earlier markup patterns.
- Here's an example that shows the original markup style:
- 
-
- <html>
- <head>
- <title>The world is flat</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ClaimReview",
- "datePublished": "2024-06-22",
- "url": "https://example.com/news/science/worldisflat.html",
- "itemReviewed":
- {
- "@type": "CreativeWork",
- "author":
- {
- "@type": "Organization",
- "name": "Square World Society",
- "sameAs": "https://example.flatworlders.com/we-know-that-the-world-is-flat"
- },
- "datePublished": "2024-06-20"
- },
- "claimReviewed": "The world is flat",
- "author":
- {
- "@type": "Organization",
- "name": "Example.com science watch"
- },
- "reviewRating":
- {
- "@type": "Rating",
- "ratingValue": 1,
- "bestRating": 5,
- "worstRating": 1,
- "alternateName" : "False"
- }
- }
- </script>
- </head>
- <body>
- </body>
-</html>
- | 
- 
-
+| `itemReviewed` | ` Claim ` An object describing the claim being made. For more information, see `Claim`. Backwards compatibility : Upon the initial launch of fact check, Google Search recommended `CreativeWork` as the `itemReviewed`. Google Search continues to support earlier markup patterns. Here's an example that shows the original markup style: <html> <head> <title>The world is flat</title> <script type="application/ld+json"> { "@context": "https://schema.org", "@type": "ClaimReview", "datePublished": "2024-06-22", "url": "https://example.com/news/science/worldisflat.html", "itemReviewed": { "@type": "CreativeWork", "author": { "@type": "Organization", "name": "Square World Society", "sameAs": "https://example.flatworlders.com/we-know-that-the-world-is-flat" }, "datePublished": "2024-06-20" }, "claimReviewed": "The world is flat", "author": { "@type": "Organization", "name": "Example.com science watch" }, "reviewRating": { "@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName" : "False" } } </script> </head> <body> </body> </html> |
  
  
 
@@ -465,25 +347,12 @@ The full definition of `ClaimReview` is available at
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `appearance` | 
- 
- `[URL](https://schema.org/URL)` or
- `[CreativeWork](https://schema.org/CreativeWork)`
-
- A link to, or inline description of, a `CreativeWork` in which this claim
- appears.
-
- We recommend that you add either `appearance` or `firstAppearance`.
- You don't need to add both.
-
- | 
- 
-
+| `appearance` | ` URL ` or ` CreativeWork ` A link to, or inline description of, a `CreativeWork` in which this claim appears. We recommend that you add either `appearance` or `firstAppearance`. You don't need to add both. |
  
  `author` | 
  
@@ -500,32 +369,9 @@ The full definition of `ClaimReview` is available at
  
  
  
- `name` | `[Text](https://schema.org/Text)`, required
- The publisher of the claim. The publisher can be a person or organization.
- | 
-
- `sameAs` | 
- `[URL](https://schema.org/URL)`, recommended
- Indicates the party that is making the claim, regardless of whether the party
- is a `[Person](https://schema.org/Person)` or
- `[Organization](https://schema.org/Organization)`. When multiple publishers
- report on the same claim, the `appearance` property can be repeated. When
- multiple parties are making essentially the same claim, the `author`
- property can be repeated.
-
- The URL can be:
-
+| `name` | ` Text `, required The publisher of the claim. The publisher can be a person or organization. |
  
- 
-- The home page of the organization that is making the claim. 
- 
-- Another definitive URL that provides information about the party that is making
- the claim, such as a person or organization's Wikipedia or Wikidata entry.
- 
-
- | 
- 
-
+| `sameAs` | ` URL `, recommended Indicates the party that is making the claim, regardless of whether the party is a ` Person ` or ` Organization `. When multiple publishers report on the same claim, the `appearance` property can be repeated. When multiple parties are making essentially the same claim, the `author` property can be repeated. The URL can be: The home page of the organization that is making the claim. Another definitive URL that provides information about the party that is making the claim, such as a person or organization's Wikipedia or Wikidata entry. |
  
  
 
@@ -533,31 +379,9 @@ The full definition of `ClaimReview` is available at
  
 
  
- `datePublished` | 
- `[DateTime](https://schema.org/DateTime)`
- or `[Date](https://schema.org/Date)`
-
- The date when the claim was made or entered public discourse (for example, when it became
- popular in social networks).
-
- | 
+| `datePublished` | ` DateTime ` or ` Date ` The date when the claim was made or entered public discourse (for example, when it became popular in social networks). |
  
-
- 
- `firstAppearance` | 
- 
- `[URL](https://schema.org/URL)` or
- `[CreativeWork](https://schema.org/CreativeWork)`
-
- A link to, or inline description of, a `CreativeWork` in which this specific
- claim first appears.
-
- We recommend that you add either `appearance` or `firstAppearance`.
- You don't need to add both.
-
- | 
- 
-
+| `firstAppearance` | ` URL ` or ` CreativeWork ` A link to, or inline description of, a `CreativeWork` in which this specific claim first appears. We recommend that you add either `appearance` or `firstAppearance`. You don't need to add both. |
  
 
  
@@ -567,77 +391,25 @@ The full definition of `ClaimReview` is available at
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `alternateName` | 
- `[Text](https://schema.org/Text)`
-
- The truthfulness rating assigned to `ClaimReview.reviewRating`, as a human-readible
- short word or phrase. This value is displayed
- in the fact check in search results. Examples: "True" or
- "Mostly true".
-
- If using a longer sentence, be sure that the beginning of the sentence
- expresses the meaning, in case the sentence is truncated to fit the display. For example:
- "Mostly true in the specifics, although the overall claim is somewhat misleading"
- | 
+| `alternateName` | ` Text ` The truthfulness rating assigned to `ClaimReview.reviewRating`, as a human-readible short word or phrase. This value is displayed in the fact check in search results. Examples: "True" or "Mostly true". If using a longer sentence, be sure that the beginning of the sentence expresses the meaning, in case the sentence is truncated to fit the display. For example: "Mostly true in the specifics, although the overall claim is somewhat misleading" |
  
 
  
-
- Recommended properties | 
-
- 
- `bestRating` | 
- 
- 
- `[Number](https://schema.org/Number)`
- 
-
- For numeric ratings, the best value possible in the scale from worst to best. Must be greater than
- `worstRating`. Must be able to be evaluated as a number. Example: 4
-
- | 
- 
+| Recommended properties |
 
  
- `name` | 
- `[Text](https://schema.org/Text)`
-
- Same as `alternateName`, and used when `alternateName` is not
- provided, but we recommend that you specify `alternateName` instead of `name`.
+| `bestRating` | ` Number ` For numeric ratings, the best value possible in the scale from worst to best. Must be greater than `worstRating`. Must be able to be evaluated as a number. Example : 4 |
  
-
- | 
+| `name` | ` Text ` Same as `alternateName`, and used when `alternateName` is not provided, but we recommend that you specify `alternateName` instead of `name`. |
  
-
+| `ratingValue` | ` Number ` A numeric rating of this claim, in the range `worstRating` — `bestRating` inclusive. Integer values are recommended but not required. The closer the numeric rating is to `bestRating`, the more true it is; the closer this value is to `worstRating`, the more false it is. The numeric rating must be able to be evaluated as a number. Example : 4 |
  
- `ratingValue` | 
- `[Number](https://schema.org/Number)`
-
- A numeric rating of this claim, in the range `worstRating` —
- `bestRating` inclusive. Integer values are recommended but not required. The closer the numeric
- rating is to `bestRating`, the more true it is; the closer this value is to
- `worstRating`, the more false it is. The numeric rating must be able to
- be evaluated as a number. Example: 4 
-
- | 
- 
-
- 
- `worstRating` | 
- `[Number](https://schema.org/Number)`
-
- For numeric ratings, the worst value possible in a scale from worst to best. Must be less than
- `bestRating`. Must be able to be evaluated as a number. Must have a minimum value
- of 1. Example: 1
-
- | 
- 
-
+| `worstRating` | ` Number ` For numeric ratings, the worst value possible in a scale from worst to best. Must be less than `bestRating`. Must be able to be evaluated as a number. Must have a minimum value of 1. Example : 1 |
  
 
 ## Monitor rich results with Search Console

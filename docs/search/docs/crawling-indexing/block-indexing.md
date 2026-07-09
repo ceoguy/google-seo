@@ -54,17 +54,19 @@ fetched: 2026-07-08
  `<head>` section of your page:
  
 
-```
 
+```
 <meta name="robots" content="noindex">
 ```
 
+
  To prevent only Google web crawlers from indexing a page:
 
-```
 
+```
 <meta name="googlebot" content="noindex">
 ```
+
 
  
  Be aware that some search engines might interpret the
@@ -103,13 +105,14 @@ fetched: 2026-07-08
  instructing search engines not to index a page:
  
 
-```
 
+```
 HTTP/1.1 200 OK
 (...)
 X-Robots-Tag: noindex
 (...)
 ```
+
 
  
  [Read more about the `noindex` response header](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#xrobotstag).

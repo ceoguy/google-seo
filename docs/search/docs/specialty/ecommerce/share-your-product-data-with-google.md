@@ -132,32 +132,16 @@ fetched: 2026-07-08
 
  
  
- Experience | Structured Data | Google Merchant Center | 
-
  
- Product rich results in Google Search | 
- Google Search uses [Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product) to display product rich results. | 
- Google Search may use Google Merchant Center data to display product rich results. | 
+| Experience | Structured Data | Google Merchant Center |
  
-
+| Product rich results in Google Search | Google Search uses Product structured data to display product rich results. | Google Search may use Google Merchant Center data to display product rich results. |
  
- Google Images results with product annotations | 
- Google Images uses [Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product) to display product annotations on images. | 
- Google Images uses images listed in Google Merchant Center. | 
+| Google Images results with product annotations | Google Images uses Product structured data to display product annotations on images. | Google Images uses images listed in Google Merchant Center. |
  
-
+| Google Shopping tab | Adding structured data can help Google Merchant Center in some cases (for example, during data verification). | Participation in Google Merchant Center is required to appear in the Google Shopping tab. |
  
- Google Shopping tab | 
- Adding structured data can help Google Merchant Center in some cases (for example, during data verification). | 
- Participation in Google Merchant Center is required to appear in the Google Shopping tab. | 
- 
-
- 
- Google Lens image search results | 
- Google Lens uses [image structured data properties](https://developers.google.com/search/docs/appearance/structured-data/sd-policies#images) where available. | 
- Google Images uses images listed in Google Merchant Center. | 
- 
-
+| Google Lens image search results | Google Lens uses image structured data properties where available. | Google Images uses images listed in Google Merchant Center. |
  
  
 

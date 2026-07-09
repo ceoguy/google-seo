@@ -68,28 +68,29 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>World's Best Coffee Shop</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org/",
- "@type": "EmployerAggregateRating",
- "itemReviewed": {
- "@type": "Organization",
- "name" : "World's Best Coffee Shop",
- "sameAs" : "https://example.com"
- },
- "ratingValue": 91,
- "bestRating": 100,
- "worstRating": 1,
- "ratingCount" : "10561"
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>World's Best Coffee Shop</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type": "EmployerAggregateRating",
+      "itemReviewed": {
+        "@type": "Organization",
+        "name" : "World's Best Coffee Shop",
+        "sameAs" : "https://example.com"
+      },
+      "ratingValue": 91,
+      "bestRating": 100,
+      "worstRating": 1,
+      "ratingCount" : "10561"
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
  
@@ -195,97 +196,43 @@ This section describes the structured data types related to employer aggregate r
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `itemReviewed` | 
- `[Organization](https://schema.org/Organization)`
-
- The organization that is being rated. The `itemReviewed` property must point to a [schema.org/Organization](https://schema.org/Organization) that represents the company being rated.
- For example:
-
+| `itemReviewed` | ` Organization ` The organization that is being rated. The `itemReviewed` property must point to a schema.org/Organization that represents the company being rated. For example: 
 ```
 {
- "@context" : "https://schema.org/",
- "@type": "EmployerAggregateRating",
- "itemReviewed": {
- "@type": "Organization",
- "name" : "World's Best Coffee Shop",
- "sameAs" : "https://www.worlds-best-coffee-shop.example.com"
- }
+  "@context" : "https://schema.org/",
+  "@type": "EmployerAggregateRating",
+  "itemReviewed": {
+    "@type": "Organization",
+    "name" : "World's Best Coffee Shop",
+    "sameAs" : "https://www.worlds-best-coffee-shop.example.com"
+  }
 }
 ```
-
- | 
+ |
  
-
+| `ratingCount` | ` Number ` The total number of ratings of the organization on your site. At least one of `ratingCount` or `reviewCount` is required. |
  
- `ratingCount` | 
- `[Number](https://schema.org/Number)`
-
- The total number of ratings of the organization on your site. At least one of `ratingCount` or `reviewCount` is required.
- | 
+| `ratingValue` | ` Number ` or ` Text ` A numerical quality rating for the item, either a number, fraction, or percentage (for example, "4", "60%", or "6 / 10"). Google understands the scale for fractions and percentages, since the scale is implied in the fraction itself or the percentage. The default scale for numbers is a 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is intended, use `bestRating` and `worstRating`. |
  
-
- 
- `ratingValue` | 
- `[Number](https://schema.org/Number)` or
- `[Text](https://schema.org/Text)`
-
- A numerical quality rating for the item, either a number, fraction, or percentage (for example, "4", "60%", or "6 / 10").
- Google understands the scale for fractions and percentages, since the scale is
- implied in the fraction itself or the percentage. The default scale for numbers is a
- 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is
- intended, use `bestRating`
- and `worstRating`.
-
- | 
- 
-
- 
- 
- `reviewCount`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- Specifies the number of people who provided a review with or without an accompanying
- rating. At least one of `ratingCount` or `reviewCount` is required.
- 
-
- | 
- 
-
+| `reviewCount` | ` Number ` Specifies the number of people who provided a review with or without an accompanying rating. At least one of `ratingCount` or `reviewCount` is required. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `bestRating` | 
- `[Number](https://schema.org/Number)`
-
- The highest value allowed in this rating system. If `bestRating`
- is omitted, 5 is assumed.
+| `bestRating` | ` Number ` The highest value allowed in this rating system. If `bestRating` is omitted, 5 is assumed. |
  
- | 
- 
-
- 
- `worstRating` | 
- `[Number](https://schema.org/Number)`
-
- The lowest value allowed in this rating system. If `worstRating`
- is omitted, 1 is assumed. 
- | 
- 
-
+| `worstRating` | ` Number ` The lowest value allowed in this rating system. If `worstRating` is omitted, 1 is assumed. |
  
  
 

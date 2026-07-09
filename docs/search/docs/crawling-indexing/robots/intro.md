@@ -37,86 +37,15 @@ fetched: 2026-07-08
 
  
  
- robots.txt effect on different file types | 
- 
-
+| robots.txt effect on different file types |
  
  
  
- Web page | 
+| Web page | You can use a robots.txt file for web pages (HTML, PDF, or other non-media formats that Google can read ), to manage crawling traffic if you think your server will be overwhelmed by requests from Google's crawler, or to avoid crawling unimportant or similar pages on your site. Warning : Don't use a robots.txt file as a means to hide your web pages (including PDFs and other text-based formats supported by Google) from Google Search results. If other pages point to your page with descriptive text, Google could still index the URL without visiting the page. If you want to block your page from search results, use another method such as password protection or `noindex` . If your web page is blocked with a robots.txt file , its URL can still appear in search results, but the search result won't have a description . Image files, video files, PDFs, and other non-HTML files embedded in the blocked page will be excluded from crawling, too, unless they're referenced by other pages that are allowed for crawling. If you see this search result for your page and want to fix it, remove the robots.txt entry blocking the page. If you want to hide the page completely from Search, use another method . |
  
+| Media file | Use a robots.txt file to manage crawl traffic, and also to prevent image, video, and audio files from appearing in Google Search results. This won't prevent other pages or users from linking to your image, video, or audio file. Read more about preventing images from appearing on Google. Read more about how to remove or restrict your video files from appearing on Google. |
  
- You can use a robots.txt file for web pages (HTML, PDF, or other
- [non-media formats that Google can read](https://developers.google.com/search/docs/crawling-indexing/indexable-file-types)),
- to manage crawling traffic if you think your server will be overwhelmed by requests
- from Google's crawler, or to avoid crawling unimportant or similar pages on your site.
- 
-
- 
- 
- Warning: Don't use a robots.txt file as a means to hide your web pages
- (including PDFs and other text-based formats supported by Google) from Google Search
- results.
- 
-
- 
- If other pages point to your page with descriptive text, Google could still index
- the URL without visiting the page. If you want to block your page from search
- results, use another method such as password protection or
- [`noindex`](https://developers.google.com/search/docs/crawling-indexing/block-indexing).
- 
-
- 
- 
- If your web page is blocked with a robots.txt file, its URL can still
- appear in search results, but the search result
- [won't have a description](https://support.google.com/webmasters/answer/7489871).
- Image files, video files, PDFs, and other non-HTML files embedded in the blocked page will
- be excluded from crawling, too, unless they're referenced by other pages that are allowed
- for crawling. If you see this search result for your page and want to fix it, remove the
- robots.txt entry blocking the page. If you want to hide the page completely from Search,
- use
- [another method](https://developers.google.com/search/docs/crawling-indexing/remove-information#i-control-the-web-page).
- 
-
- | 
- 
-
- 
- Media file | 
- 
- 
- Use a robots.txt file to manage crawl traffic, and also to prevent image, video, and
- audio files from appearing in Google Search results. This won't prevent other pages or
- users from linking to your image, video, or audio file.
- 
-
- 
- 
-- 
- [Read more about preventing images from appearing on Google.](https://developers.google.com/search/docs/crawling-indexing/prevent-images-on-your-page)
- 
- 
-- 
- [Read more about how to remove or restrict your video files from appearing on Google.](https://developers.google.com/search/docs/appearance/video#remove)
- 
- 
-
- | 
- 
-
- 
- Resource file | 
- 
- You can use a robots.txt file to block resource files such as unimportant image, script,
- or style files, if you think that pages loaded without these resources won't
- be significantly affected by the loss. However, if the absence of these
- resources make the page harder for Google's crawler to understand the page, don't block
- them, or else Google won't do a good job of analyzing pages that depend on
- those resources.
- | 
- 
-
+| Resource file | You can use a robots.txt file to block resource files such as unimportant image, script, or style files, if you think that pages loaded without these resources won't be significantly affected by the loss . However, if the absence of these resources make the page harder for Google's crawler to understand the page, don't block them, or else Google won't do a good job of analyzing pages that depend on those resources. |
  
 
 ## Understand the limitations of a robots.txt file

@@ -111,24 +111,7 @@ fetched: 2026-07-08
  
  
  
- 
- Pros
- 
- None of your content is known ahead of launch, which may be important for your
- marketing campaign.
- 
-
- | 
- 
- Cons
- 
- It can take longer for your site to get visibility in Google Search results and the
- Google Shopping tab.
- 
-
- | 
- 
-
+| Pros None of your content is known ahead of launch, which may be important for your marketing campaign. | Cons It can take longer for your site to get visibility in Google Search results and the Google Shopping tab. |
  
  
 
@@ -151,25 +134,7 @@ fetched: 2026-07-08
  
  
  
- 
- Pros
- 
- This approach allows you to register your store, drive awareness of your domain name,
- and start allowing others to link to your site. It also means when you launch, your
- store name can be found on Google Search, even if your products aren't available yet.
- 
-
- | 
- 
- Cons
- 
- The detailed information won't be available in Google Search and the Shopping tab until
- your entire site is launched and Google is able to crawl and index it.
- 
-
- | 
- 
-
+| Pros This approach allows you to register your store, drive awareness of your domain name, and start allowing others to link to your site. It also means when you launch, your store name can be found on Google Search, even if your products aren't available yet. | Cons The detailed information won't be available in Google Search and the Shopping tab until your entire site is launched and Google is able to crawl and index it. |
  
  
 
@@ -200,24 +165,7 @@ fetched: 2026-07-08
  
  
  
- 
- Pros
- 
- Your content is indexed as soon as you launch your site.
- 
-
- | 
- 
- Cons
- 
- Your site will seem live to customers, but they will be unable to place orders. We
- recommend that you make it clear to shoppers that the site has not yet been fully
- launched to avoid unhappy customers, as they cannot complete a purchase transaction.
- 
-
- | 
- 
-
+| Pros Your content is indexed as soon as you launch your site. | Cons Your site will seem live to customers, but they will be unable to place orders. We recommend that you make it clear to shoppers that the site has not yet been fully launched to avoid unhappy customers, as they cannot complete a purchase transaction. |
  
  
 
@@ -239,24 +187,7 @@ fetched: 2026-07-08
  
  
  
- 
- Pros
- 
- This approach has the advantage of simplicity. The site is also fully live, allowing
- real user testing at lower traffic levels.
- 
-
- | 
- 
- Cons
- 
- Your site may be promoted or referenced by users on social media, drawing attention to
- your site before your planned launch.
- 
-
- | 
- 
-
+| Pros This approach has the advantage of simplicity. The site is also fully live, allowing real user testing at lower traffic levels. | Cons Your site may be promoted or referenced by users on social media, drawing attention to your site before your planned launch. |
  
  
 

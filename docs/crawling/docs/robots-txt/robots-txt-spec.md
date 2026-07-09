@@ -28,6 +28,7 @@ fetched: 2026-07-08
  crawlers may access which parts of a site. For example, the robots.txt file for example.com
  may look like this:
 
+
 ```
 # This robots.txt file controls crawling of URLs under https://example.com.
 # All crawlers are disallowed to crawl files in the "includes" directory, such
@@ -41,6 +42,7 @@ Allow: /includes/
 
 Sitemap: https://example.com/sitemap.xml
 ```
+
 
  If you're new to robots.txt, start with our
  [intro to robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro). You can also find
@@ -64,183 +66,25 @@ The following table contains examples of robots.txt URLs and what URL paths they
 
  
  
- Robots.txt URL examples | 
+| Robots.txt URL examples |
  
-
  
  
+| `https://example.com/robots.txt` | This is the general case. It's not valid for other subdomains, protocols, or port numbers. It's valid for all files in all subdirectories on the same host, protocol, and port number. Valid for: `https://example.com/` `https://example.com/folder/file` Not valid for: `https://other.example.com/` `http://example.com/` `https://example.com:8181/` |
  
- `https://example.com/robots.txt` | 
+| `https://www.example.com/robots.txt` | A robots.txt on a subdomain is only valid for that subdomain. Valid for: `https://www.example.com/` Not valid for: `https://example.com/` `https://shop.www.example.com/` `https://www.shop.example.com/` |
  
+| `https://example.com/folder/robots.txt` | Not a valid robots.txt file. Crawlers don't check for robots.txt files in subdirectories. |
  
- This is the general case. It's not valid for other subdomains, protocols, or port
- numbers. It's valid for all files in all subdirectories on the same host, protocol,
- and port number.
+| `https://www.ex&auml;mple.com/robots.txt` | IDNs are equivalent to their punycode versions. See also RFC 3492 . Valid for: `https://www.ex&auml;mple.com/` `https://xn--exmple-cua.com/` Not valid for: `https://www.example.com/` |
  
-
- Valid for:
+| `ftp://example.com/robots.txt` | Valid for: `ftp://example.com/` Not valid for: `https://example.com/` |
  
+| `https://212.96.82.21/robots.txt` | A robots.txt with an IP-address as the hostname is only valid for crawling of that IP address as the hostname. It isn't automatically valid for all websites hosted on that IP address (though it's possible that the robots.txt file is shared, in which case it would also be available under the shared hostname). Valid for: `https://212.96.82.21/` Not valid for: `https://example.com/` (even if hosted on `212.96.82.21`) |
  
-- `https://example.com/`
+| `https://example.com:443/robots.txt` | Standard port numbers (`80` for HTTP, `443` for HTTPS, `21` for FTP) are equivalent to their default hostnames. Valid for: `https://example.com:443/` `https://example.com/` Not valid for: `https://example.com:444/` |
  
-- `https://example.com/folder/file`
- 
-
- Not valid for:
- 
- 
-- `https://other.example.com/`
- 
-- `http://example.com/`
- 
-- `https://example.com:8181/`
- 
-
- | 
- 
-
- 
- `https://www.example.com/robots.txt` | 
- 
- 
- A robots.txt on a subdomain is only valid for that subdomain.
- 
-
- 
- Valid for:
- `https://www.example.com/`
- 
-
- Not valid for:
-
- 
- 
-- `https://example.com/`
- 
-- `https://shop.www.example.com/`
- 
-- `https://www.shop.example.com/`
- 
-
- | 
- 
-
- 
- `https://example.com/folder/robots.txt` | 
- 
- Not a valid robots.txt file. Crawlers don't check for robots.txt files in subdirectories.
- | 
- 
-
- 
- `https://www.ex&auml;mple.com/robots.txt` | 
- 
- 
- IDNs are equivalent to their punycode versions. See also
- [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt).
- 
-
- Valid for:
- 
- 
-- `https://www.ex&auml;mple.com/`
- 
-- `https://xn--exmple-cua.com/`
- 
-
- 
- Not valid for:
- `https://www.example.com/`
- 
-
- | 
- 
-
- 
- `ftp://example.com/robots.txt` | 
- 
- 
- Valid for:
- `ftp://example.com/`
- 
-
- 
- Not valid for:
- `https://example.com/`
- 
-
- | 
- 
-
- 
- `https://212.96.82.21/robots.txt` | 
- 
- 
- A robots.txt with an IP-address as the hostname is only valid for crawling of that
- IP address as the hostname. It isn't automatically valid for all websites hosted on that
- IP address (though it's possible that the robots.txt file is shared, in which case it
- would also be available under the shared hostname).
- 
-
- 
- Valid for:
- `https://212.96.82.21/`
- 
-
- 
- Not valid for:
- `https://example.com/` (even if hosted on `212.96.82.21`)
- 
-
- | 
- 
-
- 
- `https://example.com:443/robots.txt` | 
- 
- 
- Standard port numbers (`80` for HTTP, `443` for HTTPS,
- `21` for FTP) are equivalent to their default hostnames.
- 
-
- Valid for:
-
- 
- 
-- `https://example.com:443/`
- 
-- `https://example.com/`
- 
-
- 
- Not valid for:
- `https://example.com:444/`
- 
-
- | 
- 
-
- 
- `https://example.com:8181/robots.txt` | 
- 
- 
- Robots.txt files on non-standard port numbers are only valid for content made
- available through those port numbers.
- 
-
- 
- Valid for:
- `https://example.com:8181/`
- 
-
- 
- Not valid for:
- `https://example.com/`
- 
-
- | 
- 
-
+| `https://example.com:8181/robots.txt` | Robots.txt files on non-standard port numbers are only valid for content made available through those port numbers. Valid for: `https://example.com:8181/` Not valid for: `https://example.com/` |
  
 
 ## Handling of errors and HTTP status codes
@@ -251,102 +95,19 @@ The following table contains examples of robots.txt URLs and what URL paths they
 
  
  
- Handling of errors and HTTP status codes | 
- 
-
+| Handling of errors and HTTP status codes |
  
  
  
- `2xx (success)` | 
+| `2xx (success)` | HTTP status codes that signal success prompt Google's crawlers to process the robots.txt file as provided by the server. |
  
- HTTP status codes that signal success prompt Google's crawlers to process the robots.txt
- file as provided by the server.
- | 
+| `3xx (redirection)` | Google follows at least five redirect hops as defined by RFC 1945 and then stops and treats it as a `404` for the robots.txt file. This also applies to any disallowed URLs in the redirect chain, since the crawler couldn't fetch rules due to the redirects. Google doesn't follow logical redirects in robots.txt files (frames, JavaScript, or meta refresh-type redirects). |
  
-
+| `4xx (client errors)` | Google's crawlers treat all `4xx` errors, except `429`, as if a valid robots.txt file didn't exist. This means that Google assumes that there are no crawl restrictions. Don't use `401` and `403` status codes for limiting the crawl rate. The `4xx` status codes, except `429`, have no effect on crawl rate. Learn how to limit your crawl rate . |
  
- `3xx (redirection)` | 
+| `5xx (server errors)` | If Google finds a robots.txt file but can't fetch it, Google follows this behavior: For the first 12 hours, Google stops crawling the site but keeps trying to fetch the robots.txt file. If Google can't fetch a new version, for the next 30 days Google will use the last good version, while still trying to fetch a new version. A `503 (service unavailable)` error results in fairly frequent retrying. If there's no cached version available, Google assumes there's no crawl restrictions. If the errors are still not fixed after 30 days: If the site is generally available to Google, Google will behave as if there is no robots.txt file (but still keep checking for a new version). If the site has general availability problems, Google will stop crawling the site, while still periodically requesting a robots.txt file. |
  
- 
- Google follows at least five redirect hops as defined by
- [RFC 1945](https://www.ietf.org/rfc/rfc1945.txt) and then
- stops and treats it as a `404` for the robots.txt file. This also applies to any
- disallowed URLs in the redirect chain, since the crawler couldn't fetch rules due to
- the redirects.
- 
-
- 
- Google doesn't follow logical redirects in robots.txt files (frames, JavaScript, or
- meta refresh-type redirects).
- 
-
- | 
- 
-
- 
- `4xx (client errors)` | 
- 
- 
- Google's crawlers treat all `4xx` errors, except `429`, as if a
- valid robots.txt file didn't exist. This means that Google assumes that there are no crawl
- restrictions.
- 
-
- 
- Don't use `401` and `403` status codes for limiting the crawl rate.
- The `4xx` status codes, except `429`, have no effect on crawl rate.
- [Learn how to limit your crawl rate](https://developers.google.com/crawling/docs/crawlers-fetchers/reduce-crawl-rate).
- 
- | 
- 
-
- 
- `5xx (server errors)` | 
- 
- 
- If Google finds a robots.txt file but can't fetch it, Google follows this behavior:
- 
-
- 
- 
-- For the first 12 hours, Google stops crawling the site but keeps trying to fetch the
- robots.txt file.
- 
- 
-- If Google can't fetch a new version, for the next 30 days Google will use the last good
- version, while still trying to fetch a new version. A `503 (service unavailable)`
- error results in fairly frequent retrying. If there's no cached version available,
- Google assumes there's no crawl restrictions.
- 
- 
-- If the errors are still not fixed after 30 days:
- 
- 
-- If the site is generally available to Google, Google will behave as if there is no
- robots.txt file (but still keep checking for a new version).
- 
- 
-- 
- If the site has general availability problems, Google will stop crawling the site,
- while still periodically requesting a robots.txt file.
- 
- 
-
- 
- 
-
- | 
- 
-
- 
- Other errors | 
- 
- A robots.txt file which cannot be fetched due to DNS or networking issues, such as
- timeouts, invalid responses, reset or interrupted connections, and HTTP chunking errors,
- is treated as a [server error](https://developers.google.com#server-error).
- | 
- 
-
+| Other errors | A robots.txt file which cannot be fetched due to DNS or networking issues, such as timeouts, invalid responses, reset or interrupted connections, and HTTP chunking errors, is treated as a server error . |
  
 
 ## Caching
@@ -437,11 +198,11 @@ The following table contains examples of robots.txt URLs and what URL paths they
 
 Usage:
 
-```
 
+```
 disallow: [path]
-
 ```
+
 
 ### `allow`
 
@@ -452,11 +213,11 @@ disallow: [path]
 
 Usage:
 
-```
 
+```
 allow: [path]
-
 ```
+
 
 ### `sitemap`
 
@@ -467,10 +228,11 @@ allow: [path]
 
 Usage:
 
-```
 
+```
 sitemap: [absoluteURL]
 ```
+
 
  The `[absoluteURL]` line points to the location of a sitemap or sitemap index file.
  It must be a fully qualified URL, including the protocol and host, and doesn't have to be
@@ -481,8 +243,8 @@ sitemap: [absoluteURL]
 
 For example:
 
-```
 
+```
 user-agent: otherbot
 disallow: /kale
 
@@ -491,6 +253,7 @@ sitemap: https://cdn.example.org/other-sitemap.xml
 sitemap: https://ja.example.org/テスト-サイトマップ.xml
 ```
 
+
 ## Grouping of lines and rules
 
  You can group together rules that apply to multiple user agents by repeating
@@ -498,8 +261,8 @@ sitemap: https://ja.example.org/テスト-サイトマップ.xml
 
 For example:
 
-```
 
+```
 user-agent: a
 disallow: /c
 
@@ -511,8 +274,8 @@ user-agent: f
 disallow: /g
 
 user-agent: h
-
 ```
+
 
 In this example there are four distinct rule groups:
 
@@ -545,8 +308,8 @@ In this example there are four distinct rule groups:
 
 #### Matching of `user-agent` fields
 
-```
 
+```
 user-agent: googlebot-news
 (group 1)
 
@@ -555,61 +318,28 @@ user-agent: *
 
 user-agent: googlebot
 (group 3)
-
 ```
+
 
 This is how the crawlers would choose the relevant group:
 
  
  
- Group followed per crawler | 
- 
-
+| Group followed per crawler |
  
  
  
- Googlebot News | 
+| Googlebot News | `googlebot-news` follows group 1, because group 1 is the most specific group. |
  
- `googlebot-news` follows group 1, because group 1 is the most specific group.
- | 
+| Googlebot (web) | `googlebot` follows group 3. |
  
-
+| Googlebot Storebot | `Storebot-Google` follows group 2, because there is no specific `Storebot-Google` group. |
  
- Googlebot (web) | 
- `googlebot` follows group 3. | 
+| Googlebot News (when crawling images) | When crawling images, `googlebot-news` follows group 1. `googlebot-news` doesn't crawl the images for Google Images, so it only follows group 1. |
  
-
+| Otherbot (web) | Other Google crawlers follow group 2. |
  
- Googlebot Storebot | 
- 
- `Storebot-Google` follows group 2, because there is no specific
- `Storebot-Google` group.
- | 
- 
-
- 
- Googlebot News (when crawling images) | 
- 
- When crawling images, `googlebot-news` follows group 1.
- `googlebot-news` doesn't crawl the images for Google Images, so it only
- follows group 1.
- | 
- 
-
- 
- Otherbot (web) | 
- Other Google crawlers follow group 2. | 
- 
-
- 
- Otherbot (news) | 
- 
- Other Google crawlers that crawl news content, but don't identify as
- `googlebot-news` follow group 2. Even if there is an entry for a related
- crawler, it is only valid if it's specifically matching.
- | 
- 
-
+| Otherbot (news) | Other Google crawlers that crawl news content, but don't identify as `googlebot-news` follow group 2. Even if there is an entry for a related crawler, it is only valid if it's specifically matching. |
  
 
 #### Grouping of rules
@@ -617,8 +347,8 @@ This is how the crawlers would choose the relevant group:
  If there are multiple groups in a robots.txt file that are relevant to a specific user agent,
  Google's crawlers internally merge the groups. For example:
 
-```
 
+```
 user-agent: googlebot-news
 disallow: /fish
 
@@ -627,29 +357,29 @@ disallow: /carrots
 
 user-agent: googlebot-news
 disallow: /shrimp
-
 ```
+
 
 The crawlers internally group the rules based on user agent, for example:
 
-```
 
+```
 user-agent: googlebot-news
 disallow: /fish
 disallow: /shrimp
 
 user-agent: *
 disallow: /carrots
-
 ```
+
 
  Rules other than `allow`, `disallow`, and `user-agent` are
  ignored by the robots.txt parser. This means that the following robots.txt snippet is treated
  as one group, and thus both `user-agent` `a` and `b` are
  affected by the `disallow: /` rule:
 
-```
 
+```
 user-agent: a
 sitemap: https://example.com/sitemap.xml
 
@@ -657,15 +387,17 @@ user-agent: b
 disallow: /
 ```
 
+
  When the crawlers process the robots.txt rules, they ignore the `sitemap` line.
  For example, this is how the crawlers would understand the previous robots.txt snippet:
 
-```
 
+```
 user-agent: a
 user-agent: b
 disallow: /
 ```
+
 
 ## URL matching based on path values
 
@@ -688,232 +420,27 @@ disallow: /
 
  
  
- Example path matches | 
+| Example path matches |
  
-
  
  
+| `/` | Matches the root and any lower level URL. |
  
- `/` | 
- Matches the root and any lower level URL. | 
+| `/*` | Equivalent to `/`. The trailing wildcard is ignored. |
  
-
+| `/$` | Matches only the root. Any lower level URL is allowed for crawling. |
  
+| `/fish` | Matches any path that starts with `/fish`. Note that the matching is case-sensitive. Matches: `/fish` `/fish.html` `/fish/salmon.html` `/fishheads` `/fishheads/yummy.html` `/fish.php?id=anything` Doesn't match: `/Fish.asp` `/catfish` `/?id=fish` `/desert/fish` |
  
- `/*` | 
- Equivalent to `/`. The trailing wildcard is ignored. | 
+| `/fish*` | Equivalent to `/fish`. The trailing wildcard is ignored. Matches: `/fish` `/fish.html` `/fish/salmon.html` `/fishheads` `/fishheads/yummy.html` `/fish.php?id=anything` Doesn't match: `/Fish.asp` `/catfish` `/?id=fish` `/desert/fish` |
  
-
+| `/fish/` | Matches anything in the `/fish/` folder. Matches: `/fish/` `/fish/?id=anything` `/fish/salmon.htm` Doesn't match: `/fish` `/fish.html` `/animals/fish/` `/Fish/Salmon.asp` |
  
- `/$` | 
- Matches only the root. Any lower level URL is allowed for crawling. | 
+| `/*.php` | Matches any path that contains `.php`. Matches: `/index.php` `/filename.php` `/folder/filename.php` `/folder/filename.php?parameters` `/folder/any.php.file.html` `/filename.php/` Doesn't match: `/` (even if it maps to /index.php) `/windows.PHP` |
  
-
+| `/*.php$` | Matches any path that ends with `.php`. Matches: `/filename.php` `/folder/filename.php` Doesn't match: `/filename.php?parameters` `/filename.php/` `/filename.php5` `/windows.PHP` |
  
- `/fish` | 
- 
- 
- Matches any path that starts with `/fish`. Note that the matching is case-sensitive.
- 
-
- Matches:
-
- 
- 
-- `/fish`
- 
-- `/fish.html`
- 
-- `/fish/salmon.html`
- 
-- `/fishheads`
- 
-- `/fishheads/yummy.html`
- 
-- `/fish.php?id=anything`
- 
-
- Doesn't match:
-
- 
- 
-- `/Fish.asp`
- 
-- `/catfish`
- 
-- `/?id=fish`
- 
-- `/desert/fish`
- 
-
- | 
- 
-
- 
- `/fish*` | 
- 
- 
- Equivalent to `/fish`. The trailing wildcard is ignored.
- 
-
- Matches:
-
- 
- 
-- `/fish`
- 
-- `/fish.html`
- 
-- `/fish/salmon.html`
- 
-- `/fishheads`
- 
-- `/fishheads/yummy.html`
- 
-- `/fish.php?id=anything`
- 
-
- Doesn't match:
-
- 
- 
-- `/Fish.asp`
- 
-- `/catfish`
- 
-- `/?id=fish`
- 
-- `/desert/fish`
- 
-
- | 
- 
-
- 
- `/fish/` | 
- 
- 
- Matches anything in the `/fish/` folder.
- 
-
- Matches:
-
- 
- 
-- `/fish/`
- 
-- `/fish/?id=anything`
- 
-- `/fish/salmon.htm`
- 
-
- Doesn't match:
-
- 
- 
-- `/fish`
- 
-- `/fish.html`
- 
-- `/animals/fish/`
- 
-- `/Fish/Salmon.asp`
- 
-
- | 
- 
-
- 
- `/*.php` | 
- 
- 
- Matches any path that contains `.php`.
- 
-
- Matches:
-
- 
- 
-- `/index.php`
- 
-- `/filename.php`
- 
-- `/folder/filename.php`
- 
-- `/folder/filename.php?parameters`
- 
-- `/folder/any.php.file.html`
- 
-- `/filename.php/`
- 
-
- Doesn't match:
-
- 
- 
-- `/` (even if it maps to /index.php)
- 
-- `/windows.PHP`
- 
-
- | 
- 
-
- 
- `/*.php$` | 
- 
- 
- Matches any path that ends with `.php`.
- 
-
- Matches:
-
- 
- 
-- `/filename.php`
- 
-- `/folder/filename.php`
- 
-
- Doesn't match:
-
- 
- 
-- `/filename.php?parameters`
- 
-- `/filename.php/`
- 
-- `/filename.php5`
- 
-- `/windows.PHP`
- 
-
- | 
- 
-
- 
- `/fish*.php` | 
- 
- 
- Matches any path that contains `/fish` and `.php`, in that order.
- 
-
- Matches:
-
- 
- 
-- `/fish.php`
- 
-- `/fishheads/catfish.php?parameters`
- 
-
- 
- Doesn't match:
-
- `/Fish.PHP`
- | 
- 
-
+| `/fish*.php` | Matches any path that contains `/fish` and `.php`, in that order. Matches: `/fish.php` `/fishheads/catfish.php?parameters` Doesn't match: `/Fish.PHP` |
  
 
 ## Order of precedence for rules
@@ -926,111 +453,51 @@ disallow: /
 
  
  
- Sample situations | 
- 
-
+| Sample situations |
  
  
  
- `https://example.com/page` | 
- 
-
+| `https://example.com/page` | 
 ```
 allow: /p
 disallow: /
 ```
-
+ Applicable rule : `allow: /p`, because it's more specific. |
  
- Applicable rule: `allow: /p`, because it's more specific.
- 
-
- | 
- 
-
- 
- `https://example.com/folder/page` | 
- 
-
+| `https://example.com/folder/page` | 
 ```
 allow: /folder
 disallow: /folder
 ```
-
+ Applicable rule : `allow: /folder`, because in case of conflicting rules, Google uses the least restrictive rule. |
  
- Applicable rule: `allow: /folder`, because in case of
- conflicting rules, Google uses the least restrictive rule.
- 
-
- | 
- 
-
- 
- `https://example.com/page.htm` | 
- 
-
+| `https://example.com/page.htm` | 
 ```
 allow: /page
 disallow: /*.htm
 ```
-
+ Applicable rule : `disallow: /*.htm`, because the rule path is longer and it matches more characters in the URL, so it's more specific. |
  
- Applicable rule: `disallow: /*.htm`, because the rule path is longer and
- it matches more characters in the URL, so it's more specific.
- 
-
- | 
- 
-
- 
- `https://example.com/page.php5` | 
- 
-
+| `https://example.com/page.php5` | 
 ```
 allow: /page
 disallow: /*.ph
 ```
-
+ Applicable rule : `allow: /page`, because in case of conflicting rules, Google uses the least restrictive rule. |
  
- Applicable rule: `allow: /page`, because in case of
- conflicting rules, Google uses the least restrictive rule.
- 
-
- | 
- 
-
- 
- `https://example.com/` | 
- 
-
+| `https://example.com/` | 
 ```
 allow: /$
 disallow: /
 ```
-
+ Applicable rule : `allow: /$`, because it's more specific. |
  
- Applicable rule: `allow: /$`, because it's more specific.
- 
-
- | 
- 
-
- 
- `https://example.com/page.htm` | 
- 
-
+| `https://example.com/page.htm` | 
 ```
 allow: /$
 disallow: /
 ```
-
- 
- Applicable rule: `disallow: /`, because the
- `allow` rule only applies on the root URL.
- 
-
- | 
- 
-
+ Applicable rule : `disallow: /`, because the `allow` rule only applies on the root URL. |
  
 
  

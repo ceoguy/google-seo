@@ -70,10 +70,13 @@ fetched: 2026-07-08
  which can be implemented as a `meta` tag or an HTTP header:
  
 
+
 ```
 <!-- opt out of translation features on all search engines that support this rule -->
 <meta name="robots" content="notranslate">
 ```
+
+
 
 ```
 <!-- opt out of translation features on Google -->
@@ -82,6 +85,7 @@ fetched: 2026-07-08
 
  Alternatively, you can specify the rule as an HTTP response header:
 
+
 ```
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
@@ -89,6 +93,7 @@ Date: Tue, 25 May 2010 21:42:43 GMT
 X-Robots-Tag: notranslate
 (...)
 ```
+
 
  
  

@@ -378,109 +378,7 @@ If you use a CMS, you might not need to do anything technical to your
  elaborate on a few specific points here:
 
  
- | 
- 
- 
- 
- Meta keywords
- 
- 
- Google Search
- [doesn't use the keywords meta tag](https://developers.google.com/search/blog/2009/09/google-does-not-use-keywords-meta-tag).
- 
- 
- Keyword stuffing
- 
- 
- Excessively repeating the same words over and over (even in
- variations) is tiring for users, and [keyword stuffing is against Google's spam policies](https://developers.google.com/search/docs/essentials/spam-policies#keyword-stuffing).
- 
- 
- Keywords in the domain name or URL path
- 
- 
- When picking the name of your site, do what's
- best for your business. Users will use this name to find you, so we recommend following general
- marketing best practices. From a ranking perspective, the keywords in the name of the domain (or
- URL path) alone have hardly any effect beyond appearing in
- [breadcrumbs](https://developers.google.com/search/docs/appearance/visual-elements-gallery#breadcrumb).
- 
-
- 
- And while still on the topic of domain names: the TLD (the domain name ending like ".com" or
- ".guru") only matters if you're targeting a specific country's users, and even then it's
- usually a low impact signal. For example, if you're trying to sell Dutch cheese to people
- searching from Switzerland, it makes some sense (both from business and
- [SEO point of view](https://developers.google.com/search/docs/specialty/international/managing-multi-regional-sites#geotargeting))
- to use a .ch domain name. Otherwise Google Search doesn't care which TLD you're using (whether
- it's a .com or .org or .asia).
-
- 
- 
- Minimum or maximum content length
- 
- 
- The length of the content alone doesn't matter for
- ranking purposes (there's no magical word count target, minimum or maximum, though you
- probably want to have at least one word). If you are varying the words (writing naturally to
- not be repetitive), you have more chances to show up in Search simply because you are using
- more keywords.
- 
- 
- | 
- 
- 
- 
- Subdomains versus subdirectories
- 
- 
- From a business point of view, do whatever makes sense
- for your business. For example, it might be easier to manage the site if it's segmented by
- subdirectories, but other times it might make sense to partition topics into subdomains,
- depending on your site's topic or industry.
- 
- 
- PageRank
- 
- 
- While [PageRank](https://developers.google.com/search/docs/appearance/ranking-systems-guide#link-analysis)
- uses links and is one of the fundamental algorithms at Google, there's much more to Google Search
- than just links. We have many ranking signals, and PageRank is just one of those.
- 
- 
- Duplicate content "penalty"
- 
- 
- If you have some content that's accessible under multiple
- URLs, it's fine; don't fret about it. It's inefficient, but it's not something that will cause
- a manual action. [Copying others' content, however, is a different story.](https://developers.google.com/search/docs/essentials/spam-policies#scraped-content)
- 
- 
- Number and order of headings
- 
- 
- 
- Having your headings in semantic order is
- fantastic for screen readers, but from Google Search perspective, it doesn't matter if
- you're using them out of order. The web in general is not valid HTML, so Google Search can
- rarely depend on semantic meanings hidden in the HTML specification.
- 
-
- 
- There's also no magical, ideal amount of headings a given page should have. However, if you
- think it's too much, then it probably is.
- 
-
- 
- 
- Thinking E-E-A-T is a ranking factor
- 
- 
- [No, it's not.](https://developers.google.com/search/docs/fundamentals/creating-helpful-content#eat)
- 
- 
- | 
- 
+| | Meta keywords Google Search doesn't use the keywords meta tag . Keyword stuffing Excessively repeating the same words over and over (even in variations) is tiring for users, and keyword stuffing is against Google's spam policies . Keywords in the domain name or URL path When picking the name of your site, do what's best for your business. Users will use this name to find you, so we recommend following general marketing best practices. From a ranking perspective, the keywords in the name of the domain (or URL path) alone have hardly any effect beyond appearing in breadcrumbs . And while still on the topic of domain names: the TLD (the domain name ending like ".com" or ".guru") only matters if you're targeting a specific country's users, and even then it's usually a low impact signal. For example, if you're trying to sell Dutch cheese to people searching from Switzerland, it makes some sense (both from business and SEO point of view ) to use a .ch domain name. Otherwise Google Search doesn't care which TLD you're using (whether it's a .com or .org or .asia). Minimum or maximum content length The length of the content alone doesn't matter for ranking purposes (there's no magical word count target, minimum or maximum, though you probably want to have at least one word). If you are varying the words (writing naturally to not be repetitive), you have more chances to show up in Search simply because you are using more keywords. | Subdomains versus subdirectories From a business point of view, do whatever makes sense for your business. For example, it might be easier to manage the site if it's segmented by subdirectories, but other times it might make sense to partition topics into subdomains, depending on your site's topic or industry. PageRank While PageRank uses links and is one of the fundamental algorithms at Google, there's much more to Google Search than just links. We have many ranking signals, and PageRank is just one of those. Duplicate content "penalty" If you have some content that's accessible under multiple URLs, it's fine; don't fret about it. It's inefficient, but it's not something that will cause a manual action. Copying others' content, however, is a different story. Number and order of headings Having your headings in semantic order is fantastic for screen readers, but from Google Search perspective, it doesn't matter if you're using them out of order. The web in general is not valid HTML, so Google Search can rarely depend on semantic meanings hidden in the HTML specification. There's also no magical, ideal amount of headings a given page should have. However, if you think it's too much, then it probably is. Thinking E-E-A-T is a ranking factor No, it's not. |
 
 ## Next steps
 
@@ -508,38 +406,7 @@ If you use a CMS, you might not need to do anything technical to your
  changes and new resources we publish:
 
  
- | 
- 
- 
- 
-- [Google Search Central blog](https://developers.google.com/search/blog): Get the latest information from our
- Google Search Central blog. You can find information about updates to Google Search, new
- Search Console features, and much more.
- 
- 
-- Google Search Central on [LinkedIn](https://www.linkedin.com/showcase/googlesearchcentral/) and [X (Twitter)](https://twitter.com/googlesearchc):
- Follow us for updates on Google Search and resources to help you make a great site.
- 
- 
-
- | 
- 
- 
- 
-- [Google Search Central Help Forum](https://support.google.com/webmasters/community):
- Post questions about your site's SEO issues and find tips to create high quality sites from the
- product forum for website owners. There are many experienced contributors in the forum, including
- [Product Experts](https://productexperts.withgoogle.com/) and
- occasionally Googlers.
- 
- 
-- [Google Search Central YouTube Channel](https://www.youtube.com/c/GoogleSearchCentral):
- Watch hundreds of helpful videos created for website owners.
- 
- 
-
- | 
- 
+| | Google Search Central blog : Get the latest information from our Google Search Central blog. You can find information about updates to Google Search, new Search Console features, and much more. Google Search Central on LinkedIn and X (Twitter) : Follow us for updates on Google Search and resources to help you make a great site. | Google Search Central Help Forum : Post questions about your site's SEO issues and find tips to create high quality sites from the product forum for website owners. There are many experienced contributors in the forum, including Product Experts and occasionally Googlers. Google Search Central YouTube Channel : Watch hundreds of helpful videos created for website owners. |
 
  
  

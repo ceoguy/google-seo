@@ -22,121 +22,21 @@ fetched: 2026-07-08
  
  
  
- 
- Surfaces
- | 
- 
-
+| Surfaces |
  
  
  
+| Google Search To learn more about techniques that can improve your ranking in Google Search, see the Search Engine Optimization (SEO) Starter Guide . For examples of different ways Google can present your results, explore the list of structured data markup that Google Search supports . | |
  
+| Google Images For guidance on how best to prepare your images for indexing by Google, see Google Image best practices . | |
  
-#### Google Search
-
+| Google Lens If you want your products to be found in Google Lens search results, make sure your product details are uploaded to Google Merchant Center , opt in to product listings , and follow the Google Image best practices . | |
  
- To learn more about techniques that can improve your ranking in Google Search, see the
- [Search Engine Optimization (SEO) Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide).
- For examples of different ways Google can present your results, explore the
- [list of structured data markup that Google Search supports](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
+| Google Shopping tab If you want your products to be found in the Google Shopping tab, upload your products to Google Merchant Center . | |
  
-
- | 
+| Business Profile To provide your business details to Google, claim your Business Profile and Link Business Profiles and Merchant Center . | |
  
- 
- | 
- 
-
- 
- 
- 
-#### Google Images
-
- 
- For guidance on how best to prepare your images for indexing by Google, see
- [Google Image best practices](https://developers.google.com/search/docs/appearance/google-images).
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-#### Google Lens
-
- 
- If you want your products to be found in
- [Google Lens](https://lens.google/)
- search results, make sure your product details are
- [uploaded to Google Merchant Center](https://support.google.com/merchants/answer/7439058),
- [opt in to product listings](https://support.google.com/merchants/answer/9455788),
- and follow the
- [Google Image best practices](https://developers.google.com/search/docs/appearance/google-images).
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-#### Google Shopping tab
-
- 
- If you want your products to be found in the Google Shopping tab, upload your products to
- [Google Merchant Center](https://support.google.com/merchants/answer/188924).
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-#### Business Profile
-
- 
- To provide your business details to Google,
- [claim your Business Profile](https://www.google.com/business/)
- and
- [Link Business Profiles and Merchant Center](https://support.google.com/merchants/answer/7454171).
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-#### Google Maps
-
- 
- To make your products available in
- [Google Maps](https://maps.google.com/) search results,
- upload your products with inventory location data to Google Merchant Center. See the
- [Local inventory ads onboarding guide](https://support.google.com/merchants/answer/7023001)
- for details.
- 
-
- | 
- 
- 
- | 
- 
-
+| Google Maps To make your products available in Google Maps search results, upload your products with inventory location data to Google Merchant Center. See the Local inventory ads onboarding guide for details. | |
  
  
 

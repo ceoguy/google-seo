@@ -165,166 +165,21 @@ fetched: 2026-07-08
 
  
  
- Common issues | 
+| Common issues |
  
-
+| Half-empty `<title>` elements | When part of the title text is missing. For example: <title> | Site Name </title> Google Search looks at information in header elements or other large and prominent text on the page to produce a title link: Product Name | Site Name |
  
+| Obsolete `<title>` elements | When the same page is used year-after-year for recurring information, but the `<title>` element didn't get updated to reflect the latest date. For example: <title> 2020 admissions criteria - University of Awesome </title> In this example, the page has a large, visible title that says "2021 admissions criteria", and the `<title>` element wasn't updated to the current date. Google Search may detect this inconsistency and uses the right date from the visible title on the page in the title link: 2021 admissions criteria - University of Awesome |
  
-### Half-empty `<title>` elements
- | 
+| Inaccurate `<title>` elements | When the `<title>` elements don't accurately reflect what the page is about. For example, the page could have dynamic content with the following `<title>` element: `<title>`Giant stuffed animals, teddy bears, polar bears - Site Name </title> Google Search tries to determine if the `<title>` element isn't accurately showing what a page is about. Google Search might modify the title link to better help users if it determines that the page title doesn't reflect the page content. For example: Stuffed animals - Site Name |
  
+| Micro-boilerplate text in `<title>` elements | When there are repeated boilerplate text in `<title>` elements for a subset of pages within a site. For example, a television website has multiple pages that share the same `<title>` element that omits the season numbers, and it's not clear which page is for what season. That produces duplicate `<title>` elements like this: <title> My so-called amazing TV show </title> <title> My so-called amazing TV show </title> <title> My so-called amazing TV show </title> Google Search can detect the season number used in large, prominent title text and insert the season number in the title link: Season 1 - My so-called amazing TV show Season 2 - My so-called amazing TV show Season 3 - My so-called amazing TV show |
  
- When part of the title text is missing. For example:
+| No clear main title | When there's more than one large, prominent heading, and it isn't clear which text is the main title of the page. For example, a page has two or more headings that use the same styling or heading level. If Google Search detects that there are multiple large, prominent headings, it may use the first heading as the text for the title link. Consider ensuring that your main heading is distinctive from other text on a page and stands out as being the most prominent on the page (for example, using a larger font, putting the title text in the first visible `<h1>` element on the page, etc). |
  
-
+| Mismatch of writing system or language used in `<title>` elements | When the writing system or language of the text in `<title>` elements doesn't match the writing system or language of the primary text on a page. For example, when a page is in written in Hindi, but the title includes text in English or is transliterated into Latin characters. If Google detects a mismatch, it may generate a title link that better matches the primary content. Consider ensuring that the script and language matches what is most prominent on the page. |
  
- <title>| Site Name</title>
- 
- 
- Google Search looks at information in header elements or other large and prominent text on
- the page to produce a title link:
- 
-
- Product Name | Site Name
- | 
- 
-
- 
- 
- 
-### Obsolete `<title>` elements
-
- | 
- 
- 
- When the same page is used year-after-year for recurring information, but the
- `<title>` element didn't get updated to reflect the latest date. For example:
- 
-
- 
- <title>2020 admissions criteria - University of Awesome</title>
- 
- 
- In this example, the page has a large, visible title that says "2021 admissions
- criteria", and the `<title>` element wasn't updated to
- the current date. Google Search may detect this inconsistency and uses the right date from
- the visible title on the page in the title link:
- 
-
- 2021 admissions criteria - University of Awesome
- | 
- 
-
- 
- 
- 
-### Inaccurate `<title>` elements
-
- | 
- 
- 
- When the `<title>` elements don't accurately reflect what the page is
- about. For example, the page could have dynamic content with the following `<title>` element:
- 
-
- 
- `<title>`Giant stuffed animals, teddy bears, polar bears - Site Name</title>
- 
- 
- Google Search tries to determine if the `<title>` element isn't
- accurately showing what a page is about. Google Search might modify the title link to
- better help users if it determines that the page title doesn't reflect the page content. For example:
- 
-
- Stuffed animals - Site Name
- | 
- 
-
- 
- 
- 
-### Micro-boilerplate text in `<title>` elements
-
- | 
- 
- 
- When there are repeated boilerplate text in `<title>` elements for a subset of
- pages within a site. For example, a television website has multiple pages that share the same `<title>`
- element that omits the season numbers, and it's not clear which page is for what season.
- That produces duplicate `<title>` elements like this:
- 
-
- 
- <title>My so-called amazing TV show</title>
- 
- 
- <title>My so-called amazing TV show</title>
- 
- 
- <title>My so-called amazing TV show</title>
- 
- 
- Google Search can detect the season number used in large, prominent title text and insert
- the season number in the title link:
- 
-
- Season 1 - My so-called amazing TV show
- Season 2 - My so-called amazing TV show
- Season 3 - My so-called amazing TV show
- | 
- 
-
- 
- 
- 
-### No clear main title
-
- | 
- 
- When there's more than one large, prominent heading, and it isn't clear which text is the
- main title of the page. For example, a page has two or more
- headings that use the same styling or heading level. If Google Search detects that
- there are multiple large, prominent headings, it may use the first heading as the text
- for the title link. Consider ensuring that your main heading is distinctive from other text on a
- page and stands out as being the most prominent on the page (for example, using a larger
- font, putting the title text in the first visible `<h1>` element on the page, etc).
- 
-
- | 
- 
-
- 
- 
- 
-### Mismatch of writing system or language used in `<title>` elements
-
- | 
- 
- When the writing system or language of the text in `<title>` elements doesn't
- match the writing system or language of the primary text on a page. For example, when a page is
- in written in Hindi, but the title includes text in English or is transliterated into
- Latin characters. If Google detects a mismatch, it may generate a title link that
- better matches the primary content. Consider ensuring that the script and language
- matches what is most prominent on the page.
- 
-
- | 
- 
-
- 
- 
- 
-### Duplication of the site name in the `<title>` element
-
- | 
- 
- In the case of domain-level site names, Google may omit the
- site name from the title link, if it's repetitive with the [site name that's already shown in the search result](https://developers.google.com/search/docs/appearance/site-names).
- 
-
- | 
- 
-
+| Duplication of the site name in the `<title>` element | In the case of domain-level site names, Google may omit the site name from the title link, if it's repetitive with the site name that's already shown in the search result . |
  
 
  

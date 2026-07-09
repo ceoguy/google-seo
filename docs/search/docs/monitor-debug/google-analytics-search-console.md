@@ -54,29 +54,7 @@ Just getting started? You'll need Search Console and Google Analytics
  as they're the most comparable:
 
  
- 
- 
- Search Console Clicks
- 
-
- 
- A [click](https://support.google.com/webmasters/answer/7042828#click)
- happens when a person clicks on a link in a Google Search result leading to your website.
- 
-
- | 
- 
- 
- Google Analytics Sessions
- 
-
- 
- A [session](https://support.google.com/analytics/answer/9191807)
- is a period of time during which a user interacts with your website or app.
- 
-
- | 
- 
+| Search Console Clicks A click happens when a person clicks on a link in a Google Search result leading to your website. | Google Analytics Sessions A session is a period of time during which a user interacts with your website or app. |
 
 Clicks and sessions are calculated differently, which means that when you
  compare the data, you'll likely see different numbers. To learn more about why the numbers are
@@ -156,84 +134,19 @@ The dashboard includes the following filters and data controls to help you contr
 
  
  
- Metrics in the dashboard | 
- 
-
+| Metrics in the dashboard |
  
  
  
- 1. Sessions
+| 1. Sessions (Google Analytics) | A period of time during which a user interacts with your website. In the context of a website, a session starts when a user views a page or screen on your website and no session is active (for example, their previous session has timed out). This shows the volume of traffic on your website that is attributed to organic search. Learn more about how sessions are counted . |
  
-(Google Analytics)
- | 
- A period of time during which a user interacts with your website. In the context of a
- website, a session starts when a user views a page or screen on your website and no session
- is active (for example, their previous session has timed out). This shows the
- volume of traffic on your website that is attributed to organic search. Learn more about
- [how sessions are counted](https://support.google.com/analytics/answer/9191807).
- | 
+| 2. Engagement rate (Google Analytics) | The percentage of sessions that engage with your content. An engaged session is one that meets any of the following criteria: A session that had a key event A session that lasted longer than 10 seconds A session that had 2 or more page views Learn more about engagement rate . |
  
-
+| 3. Returning users (Google Analytics) | The percentage of users who have initiated at least one previous session and came back to your website. This shows whether people come back to your website through organic Search. Learn more about returning users . |
  
- 2. Engagement rate
+| 4. Clicks (Search Console) | The total number of clicks from Google Search results leading the user to your website. Learn more about how clicks are counted . |
  
-(Google Analytics)
- | 
- 
- 
- The percentage of sessions that engage with your content. An engaged session is one that
- meets any of the following criteria:
- 
-
- 
- 
-- A session that had a [key event](https://support.google.com/analytics/answer/9355848)
- 
-- A session that lasted longer than 10 seconds
- 
-- A session that had 2 or more page views
- 
-
- 
- Learn more [about engagement rate](https://support.google.com/analytics/answer/11109416).
- 
-
- | 
- 
-
- 
- 3. Returning users
- 
-
- (Google Analytics)
- | 
- The percentage of users who have initiated at least one previous session and came back to
- your website. This shows whether people come back to your website through organic Search.
- Learn more [about returning users](https://support.google.com/analytics/answer/12253918).
- | 
- 
-
- 
- 4. Clicks
- 
-(Search Console)
- | 
- The total number of clicks from Google Search results leading the user to your website.
- Learn more about [how clicks are counted](https://support.google.com/webmasters/answer/7042828#click).
- | 
- 
-
- 
- 5. Click-through rate (CTR)
- 
-
- (Search Console)
- | 
- The click count divided by the impression count. This shows how often users who see your
- website on Google Search results click a link to visit it.
- | 
- 
-
+| 5. Click-through rate (CTR) (Search Console) | The click count divided by the impression count. This shows how often users who see your website on Google Search results click a link to visit it. |
  
 
 #### Charts
@@ -355,118 +268,25 @@ This list includes the most common issues, but some of these reasons can't
 
  
  
- Reasons for a big discrepancy in clicks and sessions | 
- 
-
+| Reasons for a big discrepancy in clicks and sessions |
  
  
  
- Implementation in Google Analytics | 
+| Implementation in Google Analytics | Google Analytics is a tool that lets you collect behavioral data by implementing a tag on your website or app — so it depends on what and how you implement it. In Google Analytics, there are implementation and configuration issues that can affect your data quality. For example, there could be pages on your website where the Analytics tag is missing. To make sure your Analytics is set up properly, follow the steps in the set up guide . On the other hand, Search Console is a tool that gives you access to Google Search data, which is processed by Google for all properties uniformly. This means that the way you configure your settings will have less impact on the data. |
  
+| Cookies or tracking | If your site is asking users to accept tracking, and users opt out, that can skew Google Analytics data. Read this introduction to user consent management to learn more about how to handle this from an Analytics perspective. |
  
- Google Analytics is a tool that lets you collect behavioral data by implementing a
- tag on your website or app — so it depends on what and how you implement it. In
- Google Analytics, there are implementation and configuration issues that can affect your
- data quality. For example, there could be pages on your website where the Analytics tag is
- missing. To make sure your Analytics is set up properly, follow the steps in the
- [set up guide](https://support.google.com/analytics/answer/9304153).
+| Timezone | You can choose your timezone in Google Analytics, but you can't customize that in Search Console, where the default time zone is Pacific Time (PT) . This is particularly noticeable if you set your timezone in Google Analytics to a location that has a big offset from PT (for example, if your site primarily serves users in Australia). |
  
-
+| Attribution | There are three attribution models available to you in Google Analytics, while Search Console counts every click in Google Search. The closest attribution model available is the default model in Google Analytics. |
  
- On the other hand, Search Console is a tool that gives you access to Google Search data,
- which is processed by Google for all properties uniformly. This means that the way you
- configure your settings will have less impact on the data.
+| Canonical URLs | Search Console reports only on the Google Search canonical URL , whereas Google Analytics reports on any URL that includes the tracking code. That means that you'll likely see higher numbers of URLs in Google Analytics. |
  
-
- | 
+| Traffic breakdowns | Search Console breaks down the traffic by web, image, video, news and Discover. These category breakdowns are different in Google Analytics. |
  
-
+| Non-HTML pages | If your site has non-HTML pages (for example, PDFs), Search Console includes these pages by default if they're shown or clicked in Search. Your Google Analytics may not be configured to measure them — a good place to start is turning on the enhanced measurement events. |
  
- Cookies or tracking | 
- 
- 
- If your site is asking users to accept tracking, and users opt out, that can skew Google
- Analytics data. Read this
- [introduction to user consent management](https://support.google.com/analytics/answer/12329599)
- to learn more about how to handle this from an Analytics perspective.
- 
-
- | 
- 
-
- 
- Timezone | 
- 
- 
- You can choose your timezone in Google Analytics, but you can't customize that in Search
- Console, where the [default time zone is Pacific Time (PT)](https://support.google.com/webmasters/answer/7576553#timezone).
- This is particularly noticeable if you set
- your timezone in Google Analytics to a location that has a big offset from PT (for
- example, if your site primarily serves users in Australia).
- 
-
- | 
- 
-
- 
- Attribution | 
- 
- 
- There are [three attribution models](https://support.google.com/analytics/answer/10596866)
- available to you in Google Analytics, while Search Console counts every click in Google
- Search. The closest attribution model available is the default model in Google Analytics.
- 
-
- | 
- 
-
- 
- Canonical URLs | 
- 
- 
- Search Console [reports only on the Google Search canonical URL](https://support.google.com/webmasters/answer/7042828#url),
- whereas Google Analytics reports on any URL that includes the tracking code. That means
- that you'll likely see higher numbers of URLs in Google Analytics.
- 
-
- | 
- 
-
- 
- Traffic breakdowns | 
- 
- 
- Search Console breaks down the traffic by web, image, video, news and Discover. These
- category breakdowns are different in Google Analytics.
- 
-
- | 
- 
-
- 
- Non-HTML pages | 
- 
- 
- If your site has non-HTML pages (for example, PDFs), Search Console includes
- these pages by default if they're shown or clicked in Search. Your Google Analytics may
- not be configured to measure them — a good place to start is turning on the
- [enhanced measurement events.](https://support.google.com/analytics/answer/9216061)
- 
-
- | 
- 
-
- 
- Bot traffic | 
- 
- 
- Google Analytics [automatically excludes traffic from known bots](https://support.google.com/analytics/answer/9888366)
- and spiders automatically, while Search Console doesn't necessarily filter them out.
- 
-
- | 
- 
-
+| Bot traffic | Google Analytics automatically excludes traffic from known bots and spiders automatically, while Search Console doesn't necessarily filter them out. |
  
 
 ## Resources for using Search Console and Google Analytics together

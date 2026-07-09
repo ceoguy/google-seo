@@ -26,77 +26,33 @@ fetched: 2026-07-08
 
  
  
- Search operators | 
- 
-
+| Search operators |
  
  
  
- 
-## `filetype:`
- | 
- 
- 
- Find search results in a
- [specific file type](https://developers.google.com/search/docs/crawling-indexing/indexable-file-types)
- as defined by the `content-type` HTTP header, or file extension.
- For example, you can search for RTF files and URLs ending in `.rtf` whose
- content contains the term "galway":
- 
-
+| `filetype:` | Find search results in a specific file type as defined by the `content-type` HTTP header, or file extension. For example, you can search for RTF files and URLs ending in `.rtf` whose content contains the term " galway ": 
 ```
 filetype:rtf galway
 ```
-
- | 
+ |
  
-
- 
- 
-## `imagesize:`
- | 
- 
- 
- Find pages that contain images of a specific dimension. This search operator only works on Google Images. For example:
- 
-
+| `imagesize:` | Find pages that contain images of a specific dimension. This search operator only works on Google Images. For example: 
 ```
 imagesize:1200x800
 ```
-
- | 
+ |
  
-
- 
- 
-## `site:`
- | 
- 
- 
- Find search results from a particular domain, URL, or URL prefix. For example:
- 
-
+| `site:` | Find search results from a particular domain, URL, or URL prefix. For example: 
 ```
 site:https://www.google.com/
 ```
-
- | 
+ |
  
-
- 
- 
-## `src:`
- | 
- 
- Find pages that reference a particular image URL in the `src` attribute. This search operator only works on Google Images. For example:
-
+| `src:` | Find pages that reference a particular image URL in the `src` attribute. This search operator only works on Google Images. For example: 
 ```
 src:https://www.example.com/images/peanut-butter.png
 ```
-
- | 
- 
-
+ |
  
 
  

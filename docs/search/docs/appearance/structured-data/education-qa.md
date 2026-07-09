@@ -46,44 +46,15 @@ fetched: 2026-07-08
 
  
  
- Language | 
- Available regions | 
+| Language | Available regions |
  
-
+| English | All regions where Google Search is available |
  
+| Portuguese | All regions where Google Search is available |
  
- English
- | 
+| Spanish | Mexico |
  
- All regions where Google Search is available
- | 
- 
-
- 
- Portuguese | 
- 
- All regions where Google Search is available
- | 
- 
-
- 
- 
- Spanish
- | 
- 
- Mexico
- | 
- 
-
- 
- 
- Vietnamese
- | 
- 
- All regions where Google Search is available
- | 
- 
-
+| Vietnamese | All regions where Google Search is available |
  
 
  
@@ -191,48 +162,48 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>Cell Transport</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Quiz",
- "about": {
- "@type": "Thing",
- "name": "Cell Transport"
- },
- "educationalAlignment": [
- {
- "@type": "AlignmentObject",
- "alignmentType": "educationalSubject",
- "targetName": "Biology"
- }
- ],
- "hasPart": [
- {
- "@context": "https://schema.org/",
- "@type": "Question",
- "eduQuestionType": "Flashcard",
- "text": "This is some fact about receptor molecules.",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "receptor molecules"
- }
- },
- {
- "@context": "https://schema.org/",
- "@type": "Question",
- "eduQuestionType": "Flashcard",
- "text": "This is some fact about the cell membrane.",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "cell membrane"
- }
- }
- ]
- }
- </script>
- </head>
+  <head>
+    <title>Cell Transport</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Quiz",
+      "about": {
+        "@type": "Thing",
+        "name": "Cell Transport"
+      },
+      "educationalAlignment": [
+        {
+          "@type": "AlignmentObject",
+          "alignmentType": "educationalSubject",
+          "targetName": "Biology"
+        }
+      ],
+      "hasPart": [
+        {
+          "@context": "https://schema.org/",
+          "@type": "Question",
+          "eduQuestionType": "Flashcard",
+          "text": "This is some fact about receptor molecules.",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "receptor molecules"
+          }
+        },
+        {
+          "@context": "https://schema.org/",
+          "@type": "Question",
+          "eduQuestionType": "Flashcard",
+          "text": "This is some fact about the cell membrane.",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "cell membrane"
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
 </html>
 ```
 
@@ -358,175 +329,98 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `hasPart` | 
- `[Question](https://schema.org/Question)`
-
- Nested information about the specific flashcard question for the quiz. Use one `hasPart`
- property to represent a single flashcard.
-
- 
- To include multiple flashcards, repeat this property.
- 
-
- 
-
+| `hasPart` | ` Question ` Nested information about the specific flashcard question for the quiz. Use one `hasPart` property to represent a single flashcard. To include multiple flashcards, repeat this property. 
 ```
 {
- "@type": "Quiz",
- "hasPart": {
- "@type": "Question"
- }
+  "@type": "Quiz",
+  "hasPart": {
+    "@type": "Question"
+  }
 }
 ```
-
- | 
- 
-
+ |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `about` | 
- `[Thing](https://schema.org/Thing)`
-
- Nested information about the underlying concept behind the `Quiz`. 
-
- 
-
+| `about` | ` Thing ` Nested information about the underlying concept behind the `Quiz`. 
 ```
 {
- "@type": "Quiz",
- "about": {
- "@type": "Thing"
- }
+  "@type": "Quiz",
+  "about": {
+    "@type": "Thing"
+  }
 }
 ```
-
- | 
+ |
  
-
- 
- `about.name` | 
- `[Text](https://schema.org/Text)`
-
- Nested information about the underlying concept behind the `Quiz`. Multiple entries of this property are allowed.
-
- 
-
+| `about.name` | ` Text ` Nested information about the underlying concept behind the `Quiz`. Multiple entries of this property are allowed. 
 ```
 {
- "@type": "Quiz",
- "about": {
- "@type": "Thing",
- "name": "Cell transport"
- }
+  "@type": "Quiz",
+  "about": {
+    "@type": "Thing",
+    "name": "Cell transport"
+  }
 }
 ```
-
- | 
+ |
  
-
- 
- `educationalAlignment` | 
- `[AlignmentObject](https://schema.org/AlignmentObject)`
-
- The quiz's alignment to an established educational framework. This property can be repeated
- to align the quiz with a field of study or domain, and the target grade or
- [educational standard](https://developers.google.com#mark-up-educational-standards).
-
- 
-
+| `educationalAlignment` | ` AlignmentObject ` The quiz's alignment to an established educational framework. This property can be repeated to align the quiz with a field of study or domain, and the target grade or educational standard . 
 ```
 {
- "@type": "Quiz",
- "educationalAlignment": []
+  "@type": "Quiz",
+  "educationalAlignment": []
 }
 ```
-
- | 
+ |
  
-
- 
- `educationalAlignment.alignmentType` | 
- `[Text](https://schema.org/Text)`
-
- A category of alignment between the learning resource and the framework node for the quiz.
- Google Search uses the [LRMI standard](https://www.dublincore.org/specifications/lrmi/lrmi_1/).
-
- 
- Repeat the `alignmentType` property to specify both the field of study and the target grade or educational standard.
- 
-
- 
- 
-- To specify the field of study or domain of the quiz, set the `alignmentType` property to the `educationalSubject` value.
- 
-- To specify the target grade or educational standard of the quiz, set the `alignmentType` property to the `educationalLevel` value.
- 
-
- 
- Here's how to specify both the `educationalSubject` and `educationalLevel` properties.
- 
-
- 
-
+| `educationalAlignment.alignmentType` | ` Text ` A category of alignment between the learning resource and the framework node for the quiz. Google Search uses the LRMI standard . Repeat the `alignmentType` property to specify both the field of study and the target grade or educational standard. To specify the field of study or domain of the quiz, set the `alignmentType` property to the `educationalSubject` value. To specify the target grade or educational standard of the quiz, set the `alignmentType` property to the `educationalLevel` value. Here's how to specify both the `educationalSubject` and `educationalLevel` properties. 
 ```
 {
- "@type": "Quiz",
- "educationalAlignment": [
- {
- "@type": "AlignmentObject",
- "alignmentType": "educationalSubject",
- "targetName": "Biology"
- },
- {
- "@type": "AlignmentObject",
- "alignmentType": "educationalLevel",
- "targetName": "Fifth grade"
- }
+  "@type": "Quiz",
+  "educationalAlignment": [
+     {
+       "@type": "AlignmentObject",
+       "alignmentType": "educationalSubject",
+       "targetName": "Biology"
+     },
+     {
+       "@type": "AlignmentObject",
+       "alignmentType": "educationalLevel",
+       "targetName": "Fifth grade"
+     }
 
- ]
+  ]
 }
 ```
-
- | 
+ |
  
-
- 
- `educationalAlignment.targetName` | 
- `[Text](https://schema.org/Text)`
-
- The name of a node of an established educational framework. For example: "Grade 7: Cell Structure". 
-
- 
-
+| `educationalAlignment.targetName` | ` Text ` The name of a node of an established educational framework. For example: "Grade 7: Cell Structure". 
 ```
 {
- "@type": "Quiz",
- "educationalAlignment": [
- {
- "@type": "AlignmentObject",
- "targetName": "Grade 7: Cell Structure"
- }
- ]
+  "@type": "Quiz",
+  "educationalAlignment": [
+     {
+       "@type": "AlignmentObject",
+       "targetName": "Grade 7: Cell Structure"
+     }
+  ]
 }
 ```
-
- | 
- 
-
+ |
  
  
 
@@ -545,68 +439,40 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `acceptedAnswer` | 
- `[Answer](https://schema.org/Answer)`
-
- The full text of the answer to a flashcard. There must only be one `acceptedAnswer`
- property per `Question` type.
-
- 
-
+| `acceptedAnswer` | ` Answer ` The full text of the answer to a flashcard. There must only be one `acceptedAnswer` property per `Question` type. 
 ```
 {
- "@type": "Question",
- "acceptedAnswer": {
- "@type": "Answer",
- "text": "cell membranes"
- }
+  "@type": "Question",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "cell membranes"
+  }
 }
 ```
-
- | 
+ |
  
-
- 
- `eduQuestionType` | 
- `[Text](https://schema.org/Text)`
-
- The type of question. You must use this fixed value: `Flashcard`.
-
- 
-
+| `eduQuestionType` | ` Text ` The type of question. You must use this fixed value: `Flashcard`. 
 ```
 {
- "@type": "Question",
- "eduQuestionType": "Flashcard”
+  "@type": "Question",
+  "eduQuestionType": "Flashcard”
 }
 ```
-
- | 
+ |
  
-
- 
- `text` | 
- `[Text](https://schema.org/Text)`
-
- The full text of the flashcard question.
-
- 
-
+| `text` | ` Text ` The full text of the flashcard question. 
 ```
 {
- "@type": "Question",
- "text": "A protein on the surface of HIV can attach to proteins on the surface of healthy human cells. What are the attachment sites on the surface of the cells known as?"
+  "@type": "Question",
+  "text": "A protein on the surface of HIV can attach to proteins on the surface of healthy human cells. What are the attachment sites on the surface of the cells known as?"
 }
 ```
-
- | 
- 
-
+ |
  
  
 

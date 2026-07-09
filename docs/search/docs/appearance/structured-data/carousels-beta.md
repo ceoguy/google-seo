@@ -266,88 +266,88 @@ The following is a high level structure of the carousel. The order specified in 
  </html>
  
 
+
+```
+<html>
+    <head>
+      <title>Top 5 Restaurants in Italy</title>
+      <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Restaurant",
+                  "name": "Trattoria Luigi",
+                  "image": [
+                    "https://example.com/photos/1x1/photo.jpg",
+                    "https://example.com/photos/4x3/photo.jpg",
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "priceRange": "$$$",
+                  "servesCuisine": "Italian",
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.5,
+                    "reviewCount": 250
+                  },
+                "url": "https://www.example.com/trattoria-luigi"
+              }
+            },
+            {
+              "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "Restaurant",
+                  "name": "La Pergola",
+                  "image": [
+                    "https://example.com/photos/1x1/photo.jpg",
+                    "https://example.com/photos/4x3/photo.jpg",
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "priceRange": "$$$",
+                  "servesCuisine": "Italian",
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.9,
+                    "reviewCount": 1150
+                  },
+                "url": "https://www.example.com/la-pergola"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Pasta e Basta",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "priceRange": "$$$",
+                "servesCuisine": "Italian",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.2,
+                  "reviewCount": 690
+                },
+              "url": "https://www.example.com/pasta-e-basta"
+              }
+            }
+          ]
+        }
+      </script>
+    </head>
+    <body>
+    </body>
+  </html>
 ```
 
- <html>
- <head>
- <title>Top 5 Restaurants in Italy</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Restaurant",
- "name": "Trattoria Luigi",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.5,
- "reviewCount": 250
- },
- "url": "https://www.example.com/trattoria-luigi"
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Restaurant",
- "name": "La Pergola",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 1150
- },
- "url": "https://www.example.com/la-pergola"
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Restaurant",
- "name": "Pasta e Basta",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.2,
- "reviewCount": 690
- },
- "url": "https://www.example.com/pasta-e-basta"
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
- </html>
- 
-```
 
 ## Structured data type definitions
 
@@ -365,75 +365,16 @@ You must include the required properties for your content to be eligible for dis
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `itemListElement` | 
+| `itemListElement` | `ListItem` List of items. To specify a list, define an `ItemList` that contains at least three `itemListElement.item` elements. |
  
- [`ListItem`](https://schema.org/ListItem)
+| `itemListElement.item` | Subtype of `LocalBusiness`, `Product`, or `Event` An individual item in a list. Populate this object with: The general properties that all carousels must have (`image`, `url`, `name`) Any other properties required for this data type, as described for your content type: `LocalBusiness` and its subtypes `Product` `Event` Example : For a hotel, provide `priceRange` and `amenityFeature` properties. |
  
-
- 
- List of items. To specify a list, define an `ItemList` that contains at least
- three `itemListElement.item` elements.
- 
-
- | 
- 
-
- 
- `itemListElement.item`
- | 
- 
- Subtype of `LocalBusiness`, `Product`, or `Event`
- 
-
- 
- An individual item in a list. Populate this object with:
- 
-
- 
- 
-- The [general properties](https://developers.google.com#common) that all carousels must have (`image`,
- `url`, `name`)
- 
-- Any other properties required for this data type, as described for your content type:
- 
- 
-- [`LocalBusiness` and its subtypes](https://developers.google.com#localbusiness)
- 
-- [`Product`](https://developers.google.com#product)
- 
-- [`Event`](https://developers.google.com#event)
- 
-
- 
- 
-
- 
- Example: For a hotel, provide `priceRange` and `amenityFeature` properties.
- 
-
- | 
- 
-
- 
- `itemListElement.position`
- | 
- 
- 
- [`Integer`](https://schema.org/Integer)
- 
-
- 
- The item's position in the carousel. This is a 1-based number.
- 
-
- | 
- 
-
+| `itemListElement.position` | `Integer` The item's position in the carousel. This is a 1-based number. |
  
 
 ### Common list item properties (`LocalBusiness`, `Product,` or `Event`)
@@ -442,159 +383,42 @@ You must include the required properties for your content to be eligible for dis
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `image` | 
- 
- Repeated `[URL](https://schema.org/URL)` or
- `[ImageObject](https://schema.org/ImageObject)`
- 
-
- 
- One or more images of the entity or item (for example, an image of the hotel). Don't include
- logos in this image property.
- 
-
- 
-Additional image guidelines:
- 
- 
-- Image URLs must be crawlable and indexable. To check if Google can access your URLs, use
- the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289).
- 
-- Images must represent the marked up content.
- 
-- Images must be in a file format that's [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when
- multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
- 
-
- For example:
-
- 
-
+| `image` | Repeated ` URL ` or ` ImageObject ` One or more images of the entity or item (for example, an image of the hotel). Don't include logos in this image property. Additional image guidelines: Image URLs must be crawlable and indexable. To check if Google can access your URLs, use the URL Inspection tool . Images must represent the marked up content. Images must be in a file format that's supported by Google Images . For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1. For example: 
 ```
 "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
 ]
 ```
-
+ |
  
- | 
+| `name` | `Text` The string name of the entity or item. For example, the name of a hotel or a vacation listing. The `item.name` is displayed as the title of an individual item in the carousel. HTML formatting is ignored. |
  
-
- 
- `name` | 
- 
- 
- [`Text`](https://schema.org/Text)
- 
-
- 
- The string name of the entity or item. For example, the name of a hotel or a vacation
- listing. The `item.name` is displayed as the title of an individual item in
- the carousel. HTML formatting is ignored.
- 
-
- | 
- 
-
- 
- `url` | 
- 
- 
- [`URL`](https://schema.org/URL)
- 
-
- 
- The canonical URL of the item detail page (for example, the standalone page for a single
- hotel or vacation listing that was referenced in the summary page). All URLs in the
- list must be unique, but live on the same domain (the same domain, or sub or super domain
- as the summary page).
- 
-
- Anchor links within a summary or category page aren't supported; your
- site must have standalone detail pages for each item in the list.
- | 
- 
-
+| `url` | `URL` The canonical URL of the item detail page (for example, the standalone page for a single hotel or vacation listing that was referenced in the summary page). All URLs in the list must be unique, but live on the same domain (the same domain, or sub or super domain as the summary page). Anchor links within a summary or category page aren't supported; your site must have standalone detail pages for each item in the list. |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
+| `aggregateRating.bestRating` | `Number` The highest value allowed in this rating system (for example, `5 / 10`). If `bestRating` is omitted, `5` is assumed. |
  
- `aggregateRating.bestRating`
- | 
+| `aggregateRating.ratingCount` | `Number` The total number of ratings for the item on your site. |
  
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The highest value allowed in this rating system (for example, `5 / 10`). If
- `bestRating` is omitted, `5` is assumed.
- 
-
- | 
- 
-
- 
- 
- `aggregateRating.ratingCount`
- | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The total number of ratings for the item on your site.
- 
-
- | 
- 
-
- 
- 
- `aggregateRating.ratingValue`
- | 
- 
- `[Number](https://schema.org/Number)` or
- `[Text](https://schema.org/Text)`
-
- A numerical quality rating for the item, either a number, fraction, or percentage (for
- example, `4`, `60%`, or `6 / 10`).
- Google understands the scale for fractions and percentages, since the scale is
- implied in the fraction itself or the percentage. The default scale for numbers is a
- 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is
- intended, use `bestRating` and `worstRating`.
-
- For decimal numbers, use a dot instead of a comma to specify the value (for example
- `4.4` instead of `4,4`). In Microdata and RDFa, you can use
- `content` attributes to override the visible content. That way, you can show
- the user whatever style convention you want, while also satisfying the dot requirement
- for structured data. For example:
-
- 
-
+| `aggregateRating.ratingValue` | ` Number ` or ` Text ` A numerical quality rating for the item, either a number, fraction, or percentage (for example, `4`, `60%`, or `6 / 10`). Google understands the scale for fractions and percentages, since the scale is implied in the fraction itself or the percentage. The default scale for numbers is a 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is intended, use `bestRating` and `worstRating`. For decimal numbers, use a dot instead of a comma to specify the value (for example `4.4` instead of `4,4`). In Microdata and RDFa, you can use `content` attributes to override the visible content. That way, you can show the user whatever style convention you want, while also satisfying the dot requirement for structured data. For example: 
 ```
 <span itemprop="ratingValue" content="4.4">4,4</span> stars
 ```
-
- | 
- 
-
+ |
  
 
 ### Additional type-specific properties definitions
@@ -607,72 +431,24 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `amenityFeature` | 
- 
- 
- [`LocationFeatureSpecification`](https://schema.org/LocationFeatureSpecification)
- 
-
- For `LodgingBusiness` only: An amenity feature (for example, a
- characteristic or service) of the accommodation.
-
- 
-
+| `amenityFeature` | `LocationFeatureSpecification` For `LodgingBusiness` only : An amenity feature (for example, a characteristic or service) of the accommodation. 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "beachAccess",
- "value": true
+  "@type": "LocationFeatureSpecification",
+  "name" : "beachAccess",
+  "value": true
 }
 ```
-
- | 
+ |
  
-
+| `priceRange` | `Text` The relative price range of a business, commonly specified by a normalized number of currency signs. Provide the price range in either of the following formats: Price level: for example, "$", "$$", "$$$" Range: for example, "$-$$" This field must be shorter than 12 characters. If it's longer than 12 characters, Google won't show a price range for the business. |
  
- `priceRange` | 
- 
- 
- [`Text`](https://schema.org/Text)
- 
-
- 
- The relative price range of a business, commonly specified by a normalized number of
- currency signs. Provide the price range in either of the following formats:
- 
-
- 
- 
-- Price level: for example, "$", "$$", "$$$"
- 
-- Range: for example, "$-$$"
- 
-
- 
- This field must be shorter than 12 characters. If it's longer than 12 characters, Google
- won't show a price range for the business.
- 
-
- | 
- 
-
- 
- `servesCuisine` | 
- 
- 
- [`Text`](https://schema.org/Text)
- 
-
- For restaurants only: The type of cuisine the restaurant serves.
-
- | 
- 
-
+| `servesCuisine` | `Text` For restaurants only : The type of cuisine the restaurant serves. |
  
 
 #### `Product`
@@ -683,107 +459,20 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `offers` | 
+| `offers` | `Offer` or `AggregateOffer` A nested `Offer` or `AggregateOffer` to sell the product. Include the recommended properties for either `Offer` or `AggregateOffer` (whichever is applicable to your content). If you're using `Offer`, including the following properties: `offers.price` `offers.priceCurrency` If you're using `AggregateOffer`, including the following properties: `offers.highPrice` `offers.lowPrice` `offers.priceCurrency` |
  
- [`Offer`](https://schema.org/Offer) or
- [`AggregateOffer`](https://schema.org/AggregateOffer)
-
- A nested `Offer` or `AggregateOffer` to sell the product. Include
- the recommended properties for either `Offer` or `AggregateOffer`
- (whichever is applicable to your content).
-
- If you're using `Offer`, including the following properties:
-
+| `offers.highPrice` | `Number` The highest price of all offers available. If you're specifying a single price with `price`, don't need to include the `highPrice` and `lowPrice` properties. |
  
+| `offers.lowPrice` | `Number` The lowest price of all offers available. If you're specifying a single price with `price`, don't need to include the `highPrice` and `lowPrice` properties. |
  
-- `offers.price`
+| `offers.price` | `Number` The offer price of a product, or of a price component when attached to `PriceSpecification` and its subtypes. If you're specifying a price range with `lowPrice` and `highPrice`, don't include the `price` property. |
  
-- `offers.priceCurrency`
- 
-
- If you're using `AggregateOffer`, including the following properties:
-
- 
- 
-- `offers.highPrice`
- 
-- `offers.lowPrice`
- 
-- `offers.priceCurrency`
- 
-
- | 
- 
-
- 
- `offers.highPrice` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The highest price of all offers available. If you're specifying a single price with
- `price`, don't need to include the `highPrice` and `lowPrice`
- properties.
- 
-
- | 
- 
-
- 
- `offers.lowPrice` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The lowest price of all offers available. If you're specifying a single price with
- `price`, don't need to include the `highPrice` and `lowPrice`
- properties.
- 
-
- | 
- 
-
- 
- `offers.price` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The offer price of a product, or of a price component when attached to `PriceSpecification`
- and its subtypes. If you're specifying a price range with `lowPrice` and `highPrice`,
- don't include the `price` property.
- 
-
- | 
- 
-
- 
- `offers.priceCurrency` | 
- 
- 
- [`Text`](https://schema.org/Text)
- 
-
- 
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If a currency is
- not provided, Google defaults to `USD`.
- 
-
- | 
- 
-
+| `offers.priceCurrency` | `Text` The currency used to describe the product price, in three-letter ISO 4217 format. If a currency is not provided, Google defaults to `USD`. |
  
 
 #### `Event`
@@ -794,120 +483,27 @@ Additional image guidelines:
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `offers` | 
+| `offers` | `Offer` or `AggregateOffer` A nested `Offer` or `AggregateOffer` to sell the event. Include the recommended propeties for either `Offer` or `AggregateOffer` (whichever is applicable to your content). If you're using `Offer`, including the following properties: `offers.price` `offers.priceCurrency` If you're using `AggregateOffer`, including the following properties: `offers.highPrice` `offers.lowPrice` `offers.priceCurrency` |
  
- `Offer` or `AggregateOffer`
-
- A nested `Offer` or `AggregateOffer` to sell the event. Include
- the recommended propeties for either `Offer` or `AggregateOffer`
- (whichever is applicable to your content).
-
- If you're using `Offer`, including the following properties:
-
+| `offers.highPrice` | `Number` The highest price of all offers available. If you're specifying a single price with `price`, don't need to include the `highPrice` and `lowPrice` properties. |
  
+| `offers.lowPrice` | `Number` The lowest price of all offers available. If you're specifying a single price with `price`, don't need to include the `highPrice` and `lowPrice` properties. |
  
-- `offers.price`
- 
-- `offers.priceCurrency`
- 
-
- If you're using `AggregateOffer`, including the following properties:
-
- 
- 
-- `offers.highPrice`
- 
-- `offers.lowPrice`
- 
-- `offers.priceCurrency`
- 
-
- | 
- 
-
- 
- `offers.highPrice` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The highest price of all offers available. If you're specifying a single price with
- `price`, don't need to include the `highPrice` and `lowPrice`
- properties.
- 
-
- | 
- 
-
- 
- `offers.lowPrice` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The lowest price of all offers available. If you're specifying a single price with
- `price`, don't need to include the `highPrice` and `lowPrice`
- properties.
- 
-
- | 
- 
-
- 
- `offers.price` | 
- 
- 
- [`Number`](https://schema.org/Number)
- 
-
- 
- The price for your tickets, including service charges and fees. Don't forget to update it
- as prices change or tickets sell out. If you're specifying a price range with
- `lowPrice` and `highPrice`, don't include the `price` property.
- 
-
- 
- If the event is available without payment, fees, or service charges, set the
- `price` to `0`.
- 
-
- 
-
+| `offers.price` | `Number` The price for your tickets, including service charges and fees. Don't forget to update it as prices change or tickets sell out. If you're specifying a price range with `lowPrice` and `highPrice`, don't include the `price` property. If the event is available without payment, fees, or service charges, set the `price` to `0`. 
 ```
 "offers": {
- "@type": "Offer",
- "price": 0
+  "@type": "Offer",
+  "price": 0
 }
 ```
-
- | 
+ |
  
-
- 
- `offers.priceCurrency` | 
- 
- 
- [`Text`](https://schema.org/Text)
- 
-
- 
- The currency used to describe the event price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format. If a currency is
- not provided, Google defaults to `USD`.
- 
-
- | 
- 
-
+| `offers.priceCurrency` | `Text` The currency used to describe the event price, in three-letter ISO 4217 format. If a currency is not provided, Google defaults to `USD`. |
  
 
 ## Examples for common scenarios
@@ -995,86 +591,88 @@ Here is an example of a restaurant carousel in JSON-LD.
  </body>
  </html>
 
+
 ```
 <html>
- <head>
- <title>Top 5 Restaurants in Paris</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Restaurant",
- "name": "Trattoria Luigi",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.5,
- "reviewCount": 250
- },
- "url": "https://www.example.com/restaurant-location-1"
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Restaurant",
- "name": "La Pergola",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 1150
- },
- "url": "https://www.example.com/restaurant-location-2"
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Restaurant",
- "name": "Pasta e Basta",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$",
- "servesCuisine": "Italian",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.2,
- "reviewCount": 690
- },
- "url": "https://www.example.com/restaurant-location-3"
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
- </html>
+    <head>
+      <title>Top 5 Restaurants in Paris</title>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Trattoria Luigi",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "priceRange": "$$$",
+                "servesCuisine": "Italian",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.5,
+                  "reviewCount": 250
+                },
+                "url": "https://www.example.com/restaurant-location-1"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Restaurant",
+                "name": "La Pergola",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "priceRange": "$$$",
+                "servesCuisine": "Italian",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.9,
+                  "reviewCount": 1150
+                },
+                "url": "https://www.example.com/restaurant-location-2"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Restaurant",
+                "name": "Pasta e Basta",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "priceRange": "$$$",
+                "servesCuisine": "Italian",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.2,
+                  "reviewCount": 690
+                },
+                "url": "https://www.example.com/restaurant-location-3"
+              }
+            }
+          ]
+        }
+      </script>
+    </head>
+    <body>
+    </body>
+  </html>
 ```
+
 
 ### Lodging (`Hotels` and `VacationRental`) example
 
@@ -1171,98 +769,100 @@ Here is an example of a lodging carousel in JSON-LD.
  </body>
  </html>
 
+
 ```
 <html>
- <head>
- <title>Top 5 Hotels in Paris</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Hotel",
- "name": "Four Seasons Hotel George V, Paris",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$$",
- "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "internetType",
- "value": "Free"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 50
- },
- "url": "https://www.example.com/four-seasons"
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "VacationRental",
- "name": "Downtown Condo",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$",
- "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "instantBookable",
- "value": true
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.7,
- "reviewCount": 827
- },
- "url": "https://www.example.com/downtown-condo"
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Hotel",
- "name": "Ritz Paris",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$$$$",
- "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "freeBreakfast",
- "value": true
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 1290
- },
- "url": "https://www.example.com/ritz-paris"
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
- </html>
+    <head>
+      <title>Top 5 Hotels in Paris</title>
+      <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@type": "Hotel",
+                  "name": "Four Seasons Hotel George V, Paris",
+                  "image": [
+                    "https://example.com/photos/1x1/photo.jpg",
+                    "https://example.com/photos/4x3/photo.jpg",
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "priceRange": "$$$$",
+                  "amenityFeature": {
+                      "@type": "LocationFeatureSpecification",
+                      "name" : "internetType",
+                      "value": "Free"
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.9,
+                    "reviewCount": 50
+                  },
+                  "url": "https://www.example.com/four-seasons"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "item": {
+                  "@type": "VacationRental",
+                  "name": "Downtown Condo",
+                  "image": [
+                    "https://example.com/photos/1x1/photo.jpg",
+                    "https://example.com/photos/4x3/photo.jpg",
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "priceRange": "$$",
+                  "amenityFeature": {
+                    "@type": "LocationFeatureSpecification",
+                    "name" : "instantBookable",
+                    "value": true
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.7,
+                    "reviewCount": 827
+                  },
+                  "url": "https://www.example.com/downtown-condo"
+                }
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "item": {
+                  "@type": "Hotel",
+                  "name": "Ritz Paris",
+                  "image": [
+                    "https://example.com/photos/1x1/photo.jpg",
+                    "https://example.com/photos/4x3/photo.jpg",
+                    "https://example.com/photos/16x9/photo.jpg"
+                  ],
+                  "priceRange": "$$$$",
+                  "amenityFeature": {
+                    "@type": "LocationFeatureSpecification",
+                    "name" : "freeBreakfast",
+                    "value": true
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.9,
+                  "reviewCount": 1290
+                },
+                "url": "https://www.example.com/ritz-paris"
+              }
+            }
+          ]
+        }
+      </script>
+    </head>
+    <body>
+    </body>
+  </html>
 ```
+
 
 ### Things to do example example
 
@@ -1353,92 +953,93 @@ Here is an example of a things to do carousel in JSON-LD.
  </html>
  
 
+
 ```
 <html>
- <head>
- <title>Top 5 Things To Do in Paris</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Event",
- "name": "Paris Seine River Dinner Cruise",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "offers": {
- "@type": "Offer",
- "price": 45.00,
- "priceCurrency": "EUR"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.2,
- "reviewCount": 690
- },
- "url": "https://www.example.com/event-location1"
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "LocalBusiness",
- "name": "Notre-Dame Cathedral",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "priceRange": "$",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.8,
- "reviewCount": 4220
- },
- "url": "https://www.example.com/localbusiness-location"
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Event",
- "name": "Eiffel Tower With Host Summit Tour",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "offers": {
- "@type": "Offer",
- "price": 59.00,
- "priceCurrency": "EUR"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 652
- },
- "url": "https://www.example.com/event-location2"
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
- </html>
- 
+    <head>
+      <title>Top 5 Things To Do in Paris</title>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Event",
+                "name": "Paris Seine River Dinner Cruise",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "price": 45.00,
+                  "priceCurrency": "EUR"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.2,
+                  "reviewCount": 690
+                },
+                "url": "https://www.example.com/event-location1"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "LocalBusiness",
+                "name": "Notre-Dame Cathedral",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "priceRange": "$",
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.8,
+                  "reviewCount": 4220
+                },
+                "url": "https://www.example.com/localbusiness-location"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Event",
+                "name": "Eiffel Tower With Host Summit Tour",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "price": 59.00,
+                  "priceCurrency": "EUR"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.9,
+                  "reviewCount": 652
+                },
+                "url": "https://www.example.com/event-location2"
+              }
+            }
+          ]
+        }
+      </script>
+    </head>
+    <body>
+    </body>
+  </html>
 ```
+
 
 ### `Product` example
 
@@ -1535,98 +1136,99 @@ Here is an example of a product carousel in JSON-LD.
  </html>
  
 
+
 ```
 <html>
- <head>
- <title>Top coats of the season</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Product",
- "name": "Puffy Coat Series by Goat Coat",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "offers": {
- "@type": "AggregateOffer",
- "lowPrice": 45.00,
- "highPrice": 60.00,
- "priceCurrency": "EUR"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 50
- },
- "url": "https://www.example.com/puffy-coats"
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Product",
- "name": "Wool Coat Series by Best Coats Around",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "offers": {
- "@type": "AggregateOffer",
- "lowPrice": 189.00,
- "highPrice": 200.00,
- "priceCurrency": "EUR"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.7,
- "reviewCount": 827
- },
- "url": "https://www.example.com/wool-coats"
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Product",
- "name": "Antarctic Coat by Cold Coats",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "offers": {
- "@type": "Offer",
- "price": 45.00,
- "priceCurrency": "EUR"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.9,
- "reviewCount": 1290
- },
- "url": "https://www.example.com/antarctic-coat"
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
- </html>
- 
+    <head>
+      <title>Top coats of the season</title>
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "Product",
+                "name": "Puffy Coat Series by Goat Coat",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "lowPrice": 45.00,
+                  "highPrice": 60.00,
+                  "priceCurrency": "EUR"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.9,
+                  "reviewCount": 50
+                },
+                "url": "https://www.example.com/puffy-coats"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "Product",
+                "name": "Wool Coat Series by Best Coats Around",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "offers": {
+                  "@type": "AggregateOffer",
+                  "lowPrice": 189.00,
+                  "highPrice": 200.00,
+                  "priceCurrency": "EUR"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.7,
+                  "reviewCount": 827
+                },
+                "url": "https://www.example.com/wool-coats"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "Product",
+                "name": "Antarctic Coat by Cold Coats",
+                "image": [
+                  "https://example.com/photos/1x1/photo.jpg",
+                  "https://example.com/photos/4x3/photo.jpg",
+                  "https://example.com/photos/16x9/photo.jpg"
+                ],
+                "offers": {
+                  "@type": "Offer",
+                  "price": 45.00,
+                  "priceCurrency": "EUR"
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": 4.9,
+                  "reviewCount": 1290
+                },
+                "url": "https://www.example.com/antarctic-coat"
+              }
+            }
+          ]
+        }
+      </script>
+    </head>
+    <body>
+    </body>
+  </html>
 ```
+
 
  
 ## Troubleshooting

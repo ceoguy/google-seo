@@ -37,19 +37,21 @@ fetched: 2026-07-08
 
  The following example shows a sitemap index in XML format that lists two sitemaps:
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- <sitemap>
- <loc>https://www.example.com/sitemap1.xml.gz</loc>
- <lastmod>2024-08-15</lastmod>
- </sitemap>
- <sitemap>
- <loc>https://www.example.com/sitemap2.xml.gz</loc>
- <lastmod>2022-06-05</lastmod>
- </sitemap>
+  <sitemap>
+    <loc>https://www.example.com/sitemap1.xml.gz</loc>
+    <lastmod>2024-08-15</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.example.com/sitemap2.xml.gz</loc>
+    <lastmod>2022-06-05</lastmod>
+  </sitemap>
 </sitemapindex>
 ```
+
 
 ## Sitemap index reference
 
@@ -58,41 +60,21 @@ fetched: 2026-07-08
 
 To make sure Google can use your sitemap index, you must use the following required tags:
 
- Required tags | 
-
  
- `sitemapindex` | 
- The root tag of the XML tree. It contains all the other tags. | 
+| Required tags |
  
-
+| `sitemapindex` | The root tag of the XML tree. It contains all the other tags. |
  
- `sitemap` | 
+| `sitemap` | The parent tag for each sitemap listed in the file. It's the only direct child of the `sitemapindex` tag. |
  
- The parent tag for each sitemap listed in the file. It's the only direct child of the `sitemapindex`
- tag.
- | 
- 
-
- 
- `loc` | 
- 
- The location (URL) of the sitemap. It's a child of the `sitemap` tag. A sitemap
- index file may have up to 50,000 `loc` tags.
- | 
- 
+| `loc` | The location (URL) of the sitemap. It's a child of the `sitemap` tag. A sitemap index file may have up to 50,000 `loc` tags. |
 
  Additionally, the following optional tags may help Google schedule your sitemaps for crawling:
 
- Optional tags | 
-
  
- `lastmod` | 
+| Optional tags |
  
- Identifies the time that the corresponding sitemap file was modified. It
- can be a child of a `sitemap` tag. The value for the `lastmod` tag must be in
- [W3C Datetime format](https://www.w3.org/TR/NOTE-datetime).
- | 
- 
+| `lastmod` | Identifies the time that the corresponding sitemap file was modified. It can be a child of a `sitemap` tag. The value for the `lastmod` tag must be in W3C Datetime format . |
 
  
 ## Troubleshooting sitemaps

@@ -22,18 +22,20 @@ fetched: 2026-07-08
  support. `meta` tags are added to the `<head>` section of
  your HTML page and generally look like this:
 
+
 ```
 <!DOCTYPE html>
- <html>
- <head>
- <meta charset="utf-8">
- <meta name="description" content="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price: £9.24, Length: 784 pages">
- <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34=">
- <title>Example Books - high-quality used books for children</title>
- <meta name="robots" content="noindex,nofollow">
- </head>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages">
+    <meta name="google-site-verification" content="+nxGUDJ4QpAZ5l9Bsjdi102tLVC21AIh5d1Nl23908vVuFHs34=">
+    <title>Example Books - high-quality used books for children</title>
+    <meta name="robots" content="noindex,nofollow">
+  </head>
 </html>
 ```
+
 
  
  
@@ -53,237 +55,76 @@ fetched: 2026-07-08
 Google supports the following `meta` tags:
 
  
- List of `meta` tags that Google supports | 
-
+ 
+| List of `meta` tags that Google supports |
  
  
  
- 
-### description
-
- | 
- 
- 
-
+| description | 
 ```
 <meta name="description" content="A description of the page">
 ```
-
- Use this tag to provide a short description of the page. In some situations, this
- description is used in the
- [snippet shown in search results](https://developers.google.com/search/docs/appearance/snippet). | 
+ Use this tag to provide a short description of the page. In some situations, this description is used in the snippet shown in search results . |
  
-
- 
- 
-### robots and googlebot
- | 
- 
- 
-
+| robots and googlebot | 
 ```
 <meta name="robots" content="..., ...">
 ```
-
  
-
 ```
 <meta name="googlebot" content="..., ...">
 ```
-
+ These `meta` tags control the behavior of search engine crawling and indexing. The `<meta name="robots" ...` tag applies to all search engines, while the `<meta name="googlebot ...` tag is specific to Google. In the case of conflicting `robots` (or `googlebot`) `meta` tags, the more restrictive tag applies. For example, if a page has both the `max-snippet:50` and `nosnippet` tags, the `nosnippet` tag will apply. The default values are `index, follow` and don't need to be specified. For a full list of values that Google supports, see the list of valid rules . You can also specify this information in the header of your pages using the `X-Robots-Tag` HTTP header rule. This is particularly useful if you wish to limit indexing of non-HTML files like graphics or other kinds of documents. More information about robots `meta` tags . |
  
- These `meta` tags control the behavior of search engine crawling and
- indexing.
- 
-
- The `<meta name="robots" ...` tag applies to all search engines, while
- the `<meta name="googlebot ...` tag is specific to Google.
-
- In the case of conflicting `robots` (or `googlebot`)
- `meta` tags, the more restrictive tag applies. For example, if a page has
- both the `max-snippet:50` and `nosnippet` tags, the
- `nosnippet` tag will apply.
-
- The default values are `index, follow` and don't need to be specified.
- For a full list of values that Google supports, see the
- [list of valid rules](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#directives).
- 
-
- You can also specify this information in the header of your pages using the
- `X-Robots-Tag` HTTP header rule. This is particularly useful if you wish to limit
- indexing of non-HTML files like graphics or other kinds of documents.
- [More information about robots `meta` tags](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
-
- | 
- 
-
- 
- 
- 
-### notranslate
-
- | 
- 
- 
-
+| notranslate | 
 ```
 <meta name="googlebot" content="notranslate">
 ```
-
+ When Google recognizes that the contents of a page aren't in the language that the user likely wants to read, Google may provide a translated title link and snippet in search results. If the user clicks the translated title link, all further user interaction with the page is through Google Translate, which will automatically translate any links followed. In general, this gives you the chance to provide your unique and compelling content to a much larger group of users. However, there may be situations where this is not desired. This `meta` tag tells Google that you don't want us to provide a translation for this page. |
  
- When Google recognizes that the contents of a page aren't in the language that the
- user likely wants to read, Google may provide a [translated title link and snippet](https://developers.google.com/search/docs/appearance/translated-results) in search results.
- If the user clicks the translated title link, all further user interaction with the page
- is through Google Translate, which will automatically translate any links followed. In
- general, this gives you the chance to provide your unique and
- compelling content to a much larger group of users. However, there may be situations
- where this is not desired. This `meta` tag tells Google that you don't want
- us to provide a translation for this page.
- 
-
- | 
- 
-
- 
- 
-### nopagereadaloud
- | 
- 
- 
-
+| nopagereadaloud | 
 ```
 <meta name="google" content="nopagereadaloud">
 ```
-
- Prevents various [Google text-to-speech services](https://developers.google.com/search/docs/crawling-indexing/read-aloud-user-agent)
- from reading aloud web pages using text-to-speech (TTS).
-
- | 
+ Prevents various Google text-to-speech services from reading aloud web pages using text-to-speech (TTS). |
  
-
- 
- 
-### google-site-verification
- | 
- 
- 
-
+| google-site-verification | 
 ```
 <meta name="google-site-verification" content="...">
 ```
-
+ You can use this tag on the top-level page of your site to verify ownership for Search Console . Note that while the values of the `name` and `content` attributes must match exactly what is provided to you (including upper and lower case), it doesn't matter if you change the tag from XHTML to HTML or if the format of the tag matches the format of your page. |
  
- You can use this tag on the top-level page of your site to [verify ownership for Search Console](https://support.google.com/webmasters/answer/9008080).
- Note that while the values of the `name` and
- `content` attributes must match exactly what is provided to you (including
- upper and lower case), it doesn't matter if you change the tag from XHTML to HTML or
- if the format of the tag matches the format of your page.
- 
-
- | 
- 
-
- 
- 
- 
-### Content-Type and charset
-
- | 
- 
- 
-
+| Content-Type and charset | 
 ```
 <meta http-equiv="Content-Type" content="...; charset=...">
 ```
-
  
-
 ```
 <meta charset="...">
 ```
-
+ These tags define the page's content type and character set respectively. Make sure that you surround the value of the `content` attribute in the `http-equiv` `meta` tag with quotes—otherwise the `charset` attribute may be interpreted incorrectly. We recommend using Unicode/UTF-8 where possible. |
  
- These tags define the page's content type and character set respectively. Make sure that you
- surround the value of the `content` attribute in the
- [`http-equiv`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#attr-http-equiv)
- `meta` tag with quotes—otherwise the
- [`charset`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#charset)
- attribute may be interpreted incorrectly. We recommend using Unicode/UTF-8 where possible.
- 
-
- | 
- 
-
- 
- 
-### refresh
- | 
- 
- 
-
+| refresh | 
 ```
 <meta http-equiv="refresh" content="...;url=...">
 ```
-
+ This tag, commonly called meta-refresh, sends the user to a new URL after a certain amount of time, and is sometimes used as a simple form of redirection. However, it is not supported by all browsers and can be confusing to the user . We recommend using a server-side `301` redirect instead. |
  
- This tag, commonly called meta-refresh, sends the user to a new URL after a certain
- amount of time, and is sometimes used as a simple form of redirection. However, it is
- [not supported by all browsers and can be confusing to the user](https://www.w3.org/TR/WCAG10-HTML-TECHS/#meta-element).
- We recommend using a server-side
- [`301` redirect](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
- instead.
- 
-
- | 
- 
-
- 
- 
-### viewport
- | 
- 
- 
-
+| viewport | 
 ```
 <meta name="viewport" content="...">
 ```
-
+ This tag tells the browser how to render a page on a mobile device. Presence of this tag indicates to Google that the page is mobile friendly. Read more about how to configure the `viewport` `meta` tag. |
  
- This tag tells the browser how to render a page on a mobile device. Presence of this tag
- indicates to Google that the page is mobile friendly.
- [Read more about how to configure the `viewport` `meta` tag.](https://web.dev/articles/responsive-web-design-basics#size-content)
- 
-
- | 
- 
-
- 
- 
- 
-### rating
-
- | 
- 
- 
-
+| rating | 
 ```
 <meta name="rating" content="adult">
 ```
-
  
-
 ```
 <meta name="rating" content="RTA-5042-1996-1400-1577-RTA">
 ```
-
- 
- Labels a page as containing sexually-explicit adult content, to signal that it be filtered by SafeSearch
- results. [Learn more about labeling SafeSearch pages.](https://developers.google.com/search/docs/crawling-indexing/safesearch)
- 
-
- | 
- 
-
+ Labels a page as containing sexually-explicit adult content, to signal that it be filtered by SafeSearch results. Learn more about labeling SafeSearch pages. |
  
 
 ## HTML tag attributes
@@ -352,70 +193,27 @@ Google supports the following `meta` tags:
  
  
  
- Unsupported tags and attributes | 
+| Unsupported tags and attributes |
  
-
+| meta-keyword tag | `<meta name="keywords" content="...">` The meta-keyword tag is not used by Google Search, and it has no effect on indexing and ranking at all. |
  
- meta-keyword tag | 
+| HTML tag `lang` attributes | Google Search detects the language of a page based on the textual content of the page. It doesn't rely on code annotations such as the `lang`. |
  
- `<meta name="keywords" content="...">`
- The meta-keyword tag is not used by Google Search, and it has no effect on indexing and
- ranking at all. | 
- 
-
- 
- HTML tag `lang` attributes | 
- Google Search detects the language of a page
- based on the textual content of the page. It doesn't rely on code annotations such as the
- `lang`. | 
- 
-
- 
- 
- `next` and `prev` `rel` attribute values
- | 
- 
- 
-
+| `next` and `prev` `rel` attribute values | 
 ```
 <link rel="next" href="...">
 ```
-
  
-
 ```
 <link rel="prev" href="...">
 ```
-
+ Google no longer uses these HTML `<link>` tags, and they have no effect on indexing. |
  
- Google no longer uses these HTML `<link>` tags, and they have no effect on
- indexing.
- 
-
- | 
- 
-
- 
- 
- 
-### nositelinkssearchbox
-
- | 
- 
- 
-
+| nositelinkssearchbox | 
 ```
 <meta name="google" content="nositelinkssearchbox">
 ```
-
- 
- The `nositelinkssearchbox` rule is no longer used by Google Search to control
- whether the sitelink search box is shown for a given page, as the feature no longer exists.
- 
-
- | 
- 
-
+ The `nositelinkssearchbox` rule is no longer used by Google Search to control whether the sitelink search box is shown for a given page, as the feature no longer exists. |
  
 
  

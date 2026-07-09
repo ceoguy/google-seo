@@ -19,9 +19,7 @@ fetched: 2026-07-08
  sitemap formats:
 
  
- Sitemaps comparison | 
- 
-
+| Sitemaps comparison |
  
  
  [XML sitemap](https://developers.google.com#xml)
@@ -40,34 +38,7 @@ fetched: 2026-07-08
 
  
  
- 
- Pros:
- 
- 
-- Extensible and versatile.
- 
-- It can provide the most information about your URLs.
- 
-- Most content management systems (CMS) automatically generate sitemaps or CMS users
- can find plenty of sitemap plugins.
- 
-
- | 
- 
- Cons:
- 
- 
-- Can be cumbersome to work with.
- 
-- 
- Can be complex to maintain the mapping on larger sites, or sites where the URLs
- change often.
- 
- 
-
- | 
- 
-
+| Pros: Extensible and versatile. It can provide the most information about your URLs. Most content management systems (CMS) automatically generate sitemaps or CMS users can find plenty of sitemap plugins. | Cons: Can be cumbersome to work with. Can be complex to maintain the mapping on larger sites, or sites where the URLs change often. |
  
 
  | 
@@ -83,32 +54,7 @@ fetched: 2026-07-08
 
  
  
- 
- Pros:
- 
- 
-- Most CMSes automatically generate RSS and Atom feeds.
- 
-- Can be used to provide Google information about your videos.
- 
-
- | 
- 
- Cons:
- 
- 
-- 
- Besides
- [HTML and other indexable textual content](https://developers.google.com/search/docs/crawling-indexing/indexable-file-types),
- it can only provide information about videos, not images or news.
- 
- 
-- Can be cumbersome to work with.
- 
-
- | 
- 
-
+| Pros: Most CMSes automatically generate RSS and Atom feeds. Can be used to provide Google information about your videos. | Cons: Besides HTML and other indexable textual content , it can only provide information about videos, not images or news. Can be cumbersome to work with. |
  
 
  | 
@@ -124,28 +70,7 @@ fetched: 2026-07-08
 
  
  
- 
- Pros:
-
- 
- 
-- Simple to do and maintain, especially on large sites.
- 
-
- | 
- 
- Cons:
-
- 
- 
-- 
- Limited to HTML and other indexable textual content.
- 
- 
-
- | 
- 
-
+| Pros: Simple to do and maintain, especially on large sites. | Cons: Limited to HTML and other indexable textual content. |
  
 
  | 
@@ -202,15 +127,17 @@ fetched: 2026-07-08
 
 Here is a very basic XML sitemap that includes the location of a single URL:
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
- <url>
- <loc>https://www.example.com/foo.html</loc>
- <lastmod>2022-06-04</lastmod>
- </url>
+  <url>
+    <loc>https://www.example.com/foo.html</loc>
+    <lastmod>2022-06-04</lastmod>
+  </url>
 </urlset>
 ```
+
 
  You can find more complex examples and full documentation at
  [sitemaps.org](https://www.sitemaps.org/protocol.html).
@@ -268,10 +195,12 @@ Here is a very basic XML sitemap that includes the location of a single URL:
  per line and submit that to Google. For example, if you have two pages on your site, you could add
  them to your text sitemap located at `https://www.example.com/sitemap.txt` as follows:
 
+
 ```
 https://www.example.com/file1.html
 https://www.example.com/file2.html
 ```
+
 
 ### Additional notes for text file sitemaps
 
@@ -476,6 +405,7 @@ Sitemap: https://example.com/my_sitemap.xml
  and you're hosting the sitemap at
  `https://sitemaps.example.com/sitemap-example-com.xml`, reference the sitemap in
  the robots.txt file at `https://example.com/robots.txt`.
+
 
 ```
 # robots.txt file of https://example.com/

@@ -60,47 +60,47 @@ fetched: 2026-07-08
 
 ```
 function decodeHostname(proxyUrl) {
- const parsedProxyUrl = new URL(proxyUrl);
- const fullHost = parsedProxyUrl.hostname;
- // 1. Extract the domain prefix from the hostname, by removing the
- ".translate.goog" suffix
- let domainPrefix = fullHost.substring(0, fullHost.indexOf('.'));
+  const parsedProxyUrl = new URL(proxyUrl);
+  const fullHost = parsedProxyUrl.hostname;
+  // 1. Extract the domain prefix from the hostname, by removing the
+        ".translate.goog" suffix
+  let domainPrefix = fullHost.substring(0, fullHost.indexOf('.'));
 
- // 2. Split _x_tr_enc parameter by "," (comma), save as encodingList
- const encodingList = parsedProxyUrl.searchParams.has('_x_tr_enc') ?
- parsedProxyUrl.searchParams.get('_x_tr_enc').split(',') :
- [];
+  // 2. Split _x_tr_enc parameter by "," (comma), save as encodingList
+  const encodingList = parsedProxyUrl.searchParams.has('_x_tr_enc') ?
+      parsedProxyUrl.searchParams.get('_x_tr_enc').split(',') :
+      [];
 
- // 3. Prepend value of _x_tr_hp parameter to the domain prefix, if it exists
- if (parsedProxyUrl.searchParams.has('_x_tr_hp')) {
- domainPrefix = parsedProxyUrl.searchParams.get('_x_tr_hp') + domainPrefix;
- }
+  // 3. Prepend value of _x_tr_hp parameter to the domain prefix, if it exists
+  if (parsedProxyUrl.searchParams.has('_x_tr_hp')) {
+    domainPrefix = parsedProxyUrl.searchParams.get('_x_tr_hp') + domainPrefix;
+  }
 
- // 4. Remove '1-' prefix from the output of step 2 if encodingList contains
- // '1' and the output begins with '1-'.
- if (encodingList.includes('1') && domainPrefix.startsWith('1-')) {
- domainPrefix = domainPrefix.substring(2);
- }
+  // 4. Remove '1-' prefix from the output of step 2 if encodingList contains
+  //    '1' and the output begins with '1-'.
+  if (encodingList.includes('1') && domainPrefix.startsWith('1-')) {
+    domainPrefix = domainPrefix.substring(2);
+  }
 
- // 5. Remove '0-' prefix from the output of step 3 if encodingList contains
- // '0' and the output begins with '0-'.
- // Set isIdn to true if removed, false otherwise.
- let isIdn = false;
- if (encodingList.includes('0') && domainPrefix.startsWith('0-')) {
- isIdn = true;
- domainPrefix = domainPrefix.substring(2);
- }
+  // 5. Remove '0-' prefix from the output of step 3 if encodingList contains
+  //    '0' and the output begins with '0-'.
+  //    Set isIdn to true if removed, false otherwise.
+  let isIdn = false;
+  if (encodingList.includes('0') && domainPrefix.startsWith('0-')) {
+    isIdn = true;
+    domainPrefix = domainPrefix.substring(2);
+  }
 
- // 6. Replace /\b-\b/ (regex) with '.' (dot) character.
- // 7. Replace '--' (double hyphen) with '-' (hyphen).
- let decodedSegment =
- domainPrefix.replaceAll(/\b-\b/g, '.').replaceAll('--', '-');
+  // 6. Replace /\b-\b/ (regex) with '.' (dot) character.
+  // 7. Replace '--' (double hyphen) with '-' (hyphen).
+  let decodedSegment =
+      domainPrefix.replaceAll(/\b-\b/g, '.').replaceAll('--', '-');
 
- // 8. If isIdn equals true, add the punycode prefix 'xn--'.
- if (isIdn) {
- decodedSegment = 'xn--' + decodedSegment;
- }
- return decodedSegment;
+  // 8. If isIdn equals true, add the punycode prefix 'xn--'.
+  if (isIdn) {
+    decodedSegment = 'xn--' + decodedSegment;
+  }
+  return decodedSegment;
 }
 ```
 
@@ -129,89 +129,29 @@ function decodeHostname(proxyUrl) {
 
  
  
- `proxyUrl`
- | 
- `decodeHostname`
- | 
+| `proxyUrl` | `decodeHostname` |
  
-
+| `https://example-com.translate.goog` | `example.com` |
  
- `https://example-com.translate.goog`
- | 
- `example.com`
- | 
+| `https://foo-example-com.translate.goog` | `foo.example.com` |
  
-
+| `https://foo--example-com.translate.goog` | `foo-example.com` |
  
- `https://foo-example-com.translate.goog`
- | 
- `foo.example.com`
- | 
+| `https://0-57hw060o-com.translate.goog/?_x_tr_enc=0` | `xn--57hw060o.com (⚡😊.com)` |
  
-
+| `https://1-en--us-example-com/?_x_tr_enc=1` | `en-us.example.com` |
  
- `https://foo--example-com.translate.goog`
- | 
- `foo-example.com`
- | 
+| `https://0-en----w45as309w-com.translate.goog/?_x_tr_enc=0` | `xn--en--w45as309w.com (en-⚡😊.com)` |
  
-
+| `https://1-0-----16pw588q-com.translate.goog/?_x_tr_enc=0,1` | `xn----16pw588q.com (⚡-😊.com)` |
  
- `https://0-57hw060o-com.translate.goog/?_x_tr_enc=0`
- | 
- `xn--57hw060o.com (⚡😊.com)`
- | 
+| `https://lanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch-co-uk.translate.goog/?_x_tr_hp=l` | `llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk` |
  
-
+| `https://lanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch-co-uk.translate.goog/?_x_tr_hp=www-l` | `www.llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk` |
  
- `https://1-en--us-example-com/?_x_tr_enc=1`
- | 
- `en-us.example.com`
- | 
+| `https://a--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-com.translate.goog/?_x_tr_hp=a--xn--xn--xn--xn--xn--------------------------a` | `a-xn-xn-xn-xn-xn-------------aa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com` |
  
-
- 
- `https://0-en----w45as309w-com.translate.goog/?_x_tr_enc=0`
- | 
- `xn--en--w45as309w.com (en-⚡😊.com)`
- | 
- 
-
- 
- `https://1-0-----16pw588q-com.translate.goog/?_x_tr_enc=0,1`
- | 
- `xn----16pw588q.com (⚡-😊.com)`
- | 
- 
-
- 
- `https://lanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch-co-uk.translate.goog/?_x_tr_hp=l`
- | 
- `llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk`
- | 
- 
-
- 
- `https://lanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch-co-uk.translate.goog/?_x_tr_hp=www-l`
- | 
- `www.llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch.co.uk`
- | 
- 
-
- 
- `https://a--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-com.translate.goog/?_x_tr_hp=a--xn--xn--xn--xn--xn--------------------------a`
- | 
- `a-xn-xn-xn-xn-xn-------------aa-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.com`
- | 
- 
-
- 
- `https://g5h3969ntadg44juhyah3c9aza87iiar4i410avdl8d3f1fuq3nz05dg5b-com.translate.goog/?_x_tr_enc=0&_x_tr_hp=0-`
- | 
- `xn--g5h3969ntadg44juhyah3c9aza87iiar4i410avdl8d3f1fuq3nz05dg5b.com (💖🌲😊💞🤷‍♂️💗🌹😍🌸🌺😂😩😉😒😘💕🐶🐱🐭🐹🐰🐻🦊🐇😺.com)`
- | 
- 
-
+| `https://g5h3969ntadg44juhyah3c9aza87iiar4i410avdl8d3f1fuq3nz05dg5b-com.translate.goog/?_x_tr_enc=0&_x_tr_hp=0-` | `xn--g5h3969ntadg44juhyah3c9aza87iiar4i410avdl8d3f1fuq3nz05dg5b.com (💖🌲😊💞🤷‍♂️💗🌹😍🌸🌺😂😩😉😒😘💕🐶🐱🐭🐹🐰🐻🦊🐇😺.com)` |
  
 
  

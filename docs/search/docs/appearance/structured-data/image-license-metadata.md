@@ -162,32 +162,32 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "ImageObject",
- "contentUrl": "https://example.com/photos/1x1/black-labrador-puppy.jpg",
- "license": "https://example.com/license",
- "acquireLicensePage": "https://example.com/how-to-use-my-images",
- "creditText": "Labrador PhotoLab",
- "creator": {
- "@type": "Person",
- "name": "Brixton Brownstone"
- },
- "copyrightNotice": "Clara Kent"
- }
- </script>
- </head>
- <body>
- <img alt="Black labrador puppy" src="https://example.com/photos/1x1/black-labrador-puppy.jpg">
- <p><a href="https://example.com/license">License</a></p>
- <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
- <p><b>Photographer</b>: Brixton Brownstone</p>
- <p><b>Copyright</b>: Clara Kent</p>
- <p><b>Credit</b>: Labrador PhotoLab</p>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "contentUrl": "https://example.com/photos/1x1/black-labrador-puppy.jpg",
+      "license": "https://example.com/license",
+      "acquireLicensePage": "https://example.com/how-to-use-my-images",
+      "creditText": "Labrador PhotoLab",
+      "creator": {
+        "@type": "Person",
+        "name": "Brixton Brownstone"
+       },
+      "copyrightNotice": "Clara Kent"
+    }
+    </script>
+  </head>
+  <body>
+    <img alt="Black labrador puppy" src="https://example.com/photos/1x1/black-labrador-puppy.jpg">
+    <p><a href="https://example.com/license">License</a></p>
+    <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
+    <p><b>Photographer</b>: Brixton Brownstone</p>
+    <p><b>Copyright</b>: Clara Kent</p>
+    <p><b>Credit</b>: Labrador PhotoLab</p>
+  </body>
 </html>
 ```
 
@@ -222,23 +222,23 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="ImageObject">
- <img alt="Black labrador puppy" property="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" /><br>
- <span property="license"> https://example.com/license</span><br>
- <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span rel="schema:creator">
- <span typeof="schema:Person">
- <span property="schema:name" content="Brixton Brownstone"></span>
- </span>
- </span>
- <span property="copyrightNotice">Clara Kent</span><br>
- <span property="creditText">Labrador PhotoLab</span><br>
- </div>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+  </head>
+  <body>
+  <div vocab="https://schema.org/" typeof="ImageObject">
+    <img alt="Black labrador puppy" property="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" /><br>
+    <span property="license"> https://example.com/license</span><br>
+    <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+    <span rel="schema:creator">
+      <span typeof="schema:Person">
+        <span property="schema:name" content="Brixton Brownstone"></span>
+      </span>
+    </span>
+    <span property="copyrightNotice">Clara Kent</span><br>
+    <span property="creditText">Labrador PhotoLab</span><br>
+  </div>
+  </body>
 </html>
 ```
 
@@ -271,21 +271,21 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/ImageObject">
- <img alt="Black labrador puppy" itemprop="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" />
- <span itemprop="license"> https://example.com/license</span><br>
- <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Brixton Brownstone" />
- </span>
- <span itemprop="copyrightNotice">Clara Kent</span>
- <span itemprop="creditText">Labrador PhotoLab</span>
- </div>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/ImageObject">
+      <img alt="Black labrador puppy" itemprop="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" />
+      <span itemprop="license"> https://example.com/license</span><br>
+      <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+        <meta itemprop="name" content="Brixton Brownstone" />
+      </span>
+      <span itemprop="copyrightNotice">Clara Kent</span>
+      <span itemprop="creditText">Labrador PhotoLab</span>
+    </div>
+  </body>
 </html>
 ```
 
@@ -340,39 +340,39 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "ImageObject",
- "contentUrl": "https://example.com/photos/320/black-labrador-puppy-800w.jpg",
- "license": "https://example.com/license",
- "acquireLicensePage": "https://example.com/how-to-use-my-images",
- "creditText": "Labrador PhotoLab",
- "creator": {
- "@type": "Person",
- "name": "Brixton Brownstone"
- },
- "copyrightNotice": "Clara Kent"
- }
- </script>
- </head>
- <body>
- <img srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
- https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
- https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
- sizes="(max-width: 320px) 280px,
- (max-width: 480px) 440px,
- 800px"
- src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
- alt="Black labrador puppy"><br>
- <p><a href="https://example.com/license">License</a></p>
- <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
- <p><b>Photographer</b>: Brixton Brownstone</p>
- <p><b>Copyright</b>: Clara Kent</p>
- <p><b>Credit</b>: Labrador PhotoLab</p>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "contentUrl": "https://example.com/photos/320/black-labrador-puppy-800w.jpg",
+      "license": "https://example.com/license",
+      "acquireLicensePage": "https://example.com/how-to-use-my-images",
+      "creditText": "Labrador PhotoLab",
+      "creator": {
+        "@type": "Person",
+        "name": "Brixton Brownstone"
+       },
+      "copyrightNotice": "Clara Kent"
+    }
+    </script>
+  </head>
+  <body>
+    <img srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
+                   https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
+                   https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
+           sizes="(max-width: 320px) 280px,
+                  (max-width: 480px) 440px,
+                  800px"
+           src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
+           alt="Black labrador puppy"><br>
+    <p><a href="https://example.com/license">License</a></p>
+    <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
+    <p><b>Photographer</b>: Brixton Brownstone</p>
+    <p><b>Copyright</b>: Clara Kent</p>
+    <p><b>Credit</b>: Labrador PhotoLab</p>
+  </body>
 </html>
 ```
 
@@ -415,31 +415,31 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="ImageObject">
- <img property="contentUrl"
- srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
- https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
- https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
- sizes="(max-width: 320px) 280px,
- (max-width: 480px) 440px,
- 800px"
- src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
- alt="Black labrador puppy">
- <span property="license">https://example.com/license</span>
- <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span rel="schema:creator">
- <span typeof="schema:Person">
- <span property="schema:name" content="Brixton Brownstone"></span>
- </span>
- </span>
- <span property="copyrightNotice">Clara Kent</span>
- <span property="creditText">Labrador PhotoLab</span>
- </div>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+  </head>
+  <body>
+    <div vocab="https://schema.org/" typeof="ImageObject">
+      <img property="contentUrl"
+           srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
+                   https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
+                   https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
+           sizes="(max-width: 320px) 280px,
+                  (max-width: 480px) 440px,
+                  800px"
+           src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
+           alt="Black labrador puppy">
+      <span property="license">https://example.com/license</span>
+      <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span rel="schema:creator">
+        <span typeof="schema:Person">
+          <span property="schema:name" content="Brixton Brownstone"></span>
+        </span>
+      </span>
+      <span property="copyrightNotice">Clara Kent</span>
+      <span property="creditText">Labrador PhotoLab</span>
+   </div>
+  </body>
 </html>
 ```
 
@@ -480,29 +480,29 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Black labrador puppy</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/ImageObject">
- <img itemprop="contentUrl"
- srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
- https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
- https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
- sizes="(max-width: 320px) 280px,
- (max-width: 480px) 440px,
- 800px"
- src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
- alt="Black labrador puppy">
- <span itemprop="license">https://example.com/license</span>
- <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Brixton Brownstone" />
- </span>
- <span itemprop="copyrightNotice">Clara Kent</span>
- <span itemprop="creditText">Labrador PhotoLab</span>
- </div>
- </body>
+  <head>
+    <title>Black labrador puppy</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/ImageObject">
+      <img itemprop="contentUrl"
+           srcset="https://example.com/photos/320/black-labrador-puppy-320w.jpg 320w,
+                   https://example.com/photos/480/black-labrador-puppy-480w.jpg 480w,
+                   https://example.com/photos/800/black-labrador-puppy-800w.jpg 800w"
+           sizes="(max-width: 320px) 280px,
+                  (max-width: 480px) 440px,
+                  800px"
+           src="https://example.com/photos/320/black-labrador-puppy-800w.jpg"
+           alt="Black labrador puppy">
+      <span itemprop="license">https://example.com/license</span>
+      <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+        <meta itemprop="name" content="Brixton Brownstone" />
+      </span>
+      <span itemprop="copyrightNotice">Clara Kent</span>
+      <span itemprop="creditText">Labrador PhotoLab</span>
+   </div>
+  </body>
 </html>
 ```
 
@@ -571,53 +571,53 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Photos of black labradors</title>
- <script type="application/ld+json">
- [{
- "@context": "https://schema.org/",
- "@type": "ImageObject",
- "contentUrl": "https://example.com/photos/1x1/black-labrador-puppy.jpg",
- "license": "https://example.com/license",
- "acquireLicensePage": "https://example.com/how-to-use-my-images",
- "creditText": "Labrador PhotoLab",
- "creator": {
- "@type": "Person",
- "name": "Brixton Brownstone"
- },
- "copyrightNotice": "Clara Kent"
- },
- {
- "@context": "https://schema.org/",
- "@type": "ImageObject",
- "contentUrl": "https://example.com/photos/1x1/adult-black-labrador.jpg",
- "license": "https://example.com/license",
- "acquireLicensePage": "https://example.com/how-to-use-my-images",
- "creditText": "Labrador PhotoLab",
- "creator": {
- "@type": "Person",
- "name": "Brixton Brownstone"
- },
- "copyrightNotice": "Clara Kent"
- }]
- </script>
- </head>
- <body>
- <h2>Black labrador puppy</h2>
- <img alt="Black labrador puppy" src="https://example.com/photos/1x1/black-labrador-puppy.jpg">
- <p><a href="https://example.com/license">License</a></p>
- <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
- <p><b>Photographer</b>: Brixton Brownstone</p>
- <p><b>Copyright</b>: Clara Kent</p>
- <p><b>Credit</b>: Labrador PhotoLab</p>
- <h2>Adult black labrador</h2>
- <img alt="Adult black labrador" src="https://example.com/photos/1x1/adult-black-labrador.jpg">
- <p><a href="https://example.com/license">License</a></p>
- <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
- <p><b>Photographer</b>: Brixton Brownstone</p>
- <p><b>Copyright</b>: Clara Kent</p>
- <p><b>Credit</b>: Labrador PhotoLab</p>
- </body>
+  <head>
+    <title>Photos of black labradors</title>
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "contentUrl": "https://example.com/photos/1x1/black-labrador-puppy.jpg",
+      "license": "https://example.com/license",
+      "acquireLicensePage": "https://example.com/how-to-use-my-images",
+      "creditText": "Labrador PhotoLab",
+      "creator": {
+        "@type": "Person",
+        "name": "Brixton Brownstone"
+       },
+      "copyrightNotice": "Clara Kent"
+    },
+   {
+      "@context": "https://schema.org/",
+      "@type": "ImageObject",
+      "contentUrl": "https://example.com/photos/1x1/adult-black-labrador.jpg",
+      "license": "https://example.com/license",
+      "acquireLicensePage": "https://example.com/how-to-use-my-images",
+      "creditText": "Labrador PhotoLab",
+      "creator": {
+        "@type": "Person",
+        "name": "Brixton Brownstone"
+       },
+      "copyrightNotice": "Clara Kent"
+    }]
+    </script>
+  </head>
+  <body>
+    <h2>Black labrador puppy</h2>
+    <img alt="Black labrador puppy" src="https://example.com/photos/1x1/black-labrador-puppy.jpg">
+    <p><a href="https://example.com/license">License</a></p>
+    <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
+    <p><b>Photographer</b>: Brixton Brownstone</p>
+    <p><b>Copyright</b>: Clara Kent</p>
+    <p><b>Credit</b>: Labrador PhotoLab</p>
+    <h2>Adult black labrador</h2>
+    <img alt="Adult black labrador" src="https://example.com/photos/1x1/adult-black-labrador.jpg">
+    <p><a href="https://example.com/license">License</a></p>
+    <p><a href="https://example.com/how-to-use-my-images">How to use my images</a></p>
+    <p><b>Photographer</b>: Brixton Brownstone</p>
+    <p><b>Copyright</b>: Clara Kent</p>
+    <p><b>Credit</b>: Labrador PhotoLab</p>
+  </body>
 </html>
 ```
 
@@ -667,38 +667,38 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Photos of black labradors</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="ImageObject">
- <h2 property="name">Black labrador puppy</h2>
- <img alt="Black labrador puppy" property="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" /><br>
- <span property="license"> https://example.com/license</span>
- <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span rel="schema:creator">
- <span typeof="schema:Person">
- <span property="schema:name" content="Brixton Brownstone"></span>
- </span>
- </span>
- <span property="copyrightNotice">Clara Kent</span>
- <span property="creditText">Labrador PhotoLab</span>
- </div>
- <br>
- <div vocab="https://schema.org/" typeof="ImageObject">
- <h2 property="name">Adult black labrador</h2>
- <img alt="Adult black labrador" property="contentUrl" src="https://example.com/photos/1x1/adult-black-labrador.jpg" />
- <span property="license"> https://example.com/license</span>
- <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span rel="schema:creator">
- <span typeof="schema:Person">
- <span property="schema:name" content="Brixton Brownstone"></span>
- </span>
- </span>
- <span property="copyrightNotice">Clara Kent</span>
- <span property="creditText">Labrador PhotoLab</span>
- </div>
- </body>
+  <head>
+    <title>Photos of black labradors</title>
+  </head>
+  <body>
+    <div vocab="https://schema.org/" typeof="ImageObject">
+      <h2 property="name">Black labrador puppy</h2>
+      <img alt="Black labrador puppy" property="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" /><br>
+      <span property="license"> https://example.com/license</span>
+      <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span rel="schema:creator">
+        <span typeof="schema:Person">
+          <span property="schema:name" content="Brixton Brownstone"></span>
+        </span>
+      </span>
+      <span property="copyrightNotice">Clara Kent</span>
+      <span property="creditText">Labrador PhotoLab</span>
+    </div>
+    <br>
+    <div vocab="https://schema.org/" typeof="ImageObject">
+      <h2 property="name">Adult black labrador</h2>
+      <img alt="Adult black labrador" property="contentUrl" src="https://example.com/photos/1x1/adult-black-labrador.jpg" />
+      <span property="license"> https://example.com/license</span>
+      <span property="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span rel="schema:creator">
+        <span typeof="schema:Person">
+          <span property="schema:name" content="Brixton Brownstone"></span>
+        </span>
+      </span>
+      <span property="copyrightNotice">Clara Kent</span>
+      <span property="creditText">Labrador PhotoLab</span>
+    </div>
+  </body>
 </html>
 ```
 
@@ -744,34 +744,34 @@ If you choose to use both IPTC photo metadata and structured
 
 ```
 <html>
- <head>
- <title>Photos of black labradors</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/ImageObject">
- <h2 itemprop="name">Black labrador puppy</h2>
- <img alt="Black labrador puppy" itemprop="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" />
- <span itemprop="license"> https://example.com/license</span>
- <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Brixton Brownstone" />
- </span>
- <span itemprop="copyrightNotice">Clara Kent</span><br>
- <span itemprop="creditText">Labrador PhotoLab</span><br>
- </div>
- <br>
- <h2 itemprop="name">Adult black labrador</h2>
- <div itemscope itemtype="https://schema.org/ImageObject">
- <img alt="Adult black labrador" itemprop="contentUrl" src="https://example.com/photos/1x1/adult-black-labrador.jpg" />
- <span itemprop="license"> https://example.com/license</span>
- <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
- <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Brixton Brownstone" />
- </span>
- <span itemprop="copyrightNotice">Clara Kent</span>
- <span itemprop="creditText">Labrador PhotoLab</span>
- </div>
- </body>
+  <head>
+    <title>Photos of black labradors</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/ImageObject">
+      <h2 itemprop="name">Black labrador puppy</h2>
+      <img alt="Black labrador puppy" itemprop="contentUrl" src="https://example.com/photos/1x1/black-labrador-puppy.jpg" />
+      <span itemprop="license"> https://example.com/license</span>
+      <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+        <meta itemprop="name" content="Brixton Brownstone" />
+      </span>
+      <span itemprop="copyrightNotice">Clara Kent</span><br>
+      <span itemprop="creditText">Labrador PhotoLab</span><br>
+    </div>
+    <br>
+      <h2 itemprop="name">Adult black labrador</h2>
+      <div itemscope itemtype="https://schema.org/ImageObject">
+      <img alt="Adult black labrador" itemprop="contentUrl" src="https://example.com/photos/1x1/adult-black-labrador.jpg" />
+      <span itemprop="license"> https://example.com/license</span>
+      <span itemprop="acquireLicensePage">https://example.com/how-to-use-my-images</span>
+      <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+        <meta itemprop="name" content="Brixton Brownstone" />
+      </span>
+      <span itemprop="copyrightNotice">Clara Kent</span>
+      <span itemprop="creditText">Labrador PhotoLab</span>
+    </div>
+  </body>
 </html>
 ```
 
@@ -785,151 +785,34 @@ If you choose to use both IPTC photo metadata and structured
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `contentUrl` | 
+| `contentUrl` | ` URL ` A URL to the actual image content. Google uses `contentUrl` to determine which image the photo metadata applies to. Google also supports the `url` property to specify the image URL if you don't include `contentUrl`. While the `url` property is not as precise and we recommend you use `contentUrl` instead, existing markup may still use `url`. |
  
- `[URL](https://schema.org/URL)`
-
- 
- A URL to the actual image content. Google uses `contentUrl` to determine
- which image the photo metadata applies to.
- 
-
- 
- Google also supports the `url` property to specify the image URL if you don't
- include `contentUrl`. While the `url` property is not as precise
- and we recommend you use `contentUrl` instead, existing markup may still use
- `url`.
- 
- | 
- 
-
- 
- Either `creator` or `creditText` or `copyrightNotice` or `license` | 
- In addition to `contentUrl`, you must include one of the following properties:
-
- 
- 
-- [`creator`](https://developers.google.com#creator-sd)
- 
-- [`creditText`](https://developers.google.com#credit-sd)
- 
-- [`copyrightNotice`](https://developers.google.com#copyright-sd)
- 
-- [`license`](https://developers.google.com#license-sd)
- 
-
- Once you include one of these properties, the other three properties
- become recommended in the Rich Results Test.
- | 
- 
-
+| Either `creator` or `creditText` or `copyrightNotice` or `license` | In addition to `contentUrl`, you must include one of the following properties: `creator` `creditText` `copyrightNotice` `license` Once you include one of these properties, the other three properties become recommended in the Rich Results Test. |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `acquireLicensePage` | 
+| `acquireLicensePage` | ` URL ` A URL to a page where the user can find information on how to license that image. Here are some examples: A check-out page for that image where the user can select specific resolutions or usage rights A general page that explains how to contact you |
  
- `[URL](https://schema.org/URL)`
-
+| `creator` | ` Organization ` or ` Person ` The creator of the image. This is usually the photographer, but it may be a company or organization (if appropriate). |
  
- A URL to a page where the user can find information on how to license that image. Here
- are some examples:
+| `creator.name` | ` Text ` The name of the creator. |
  
-
+| `creditText` | ` Text ` The name of the person and/or organization that is credited for the image when it's published. |
  
+| `copyrightNotice` | ` Text ` The copyright notice for claiming the intellectual property for this photograph. This identifies the current owner of the copyright for the photograph. |
  
-- 
- A check-out page for that image where the user can select specific resolutions or
- usage rights
- 
- 
-- A general page that explains how to contact you
- 
-
- | 
- 
-
- 
- `creator` | 
- 
- `[Organization](https://schema.org/Organization)`
- or `[Person](https://schema.org/Person)`
-
- 
- The creator of the image. This is usually the photographer, but it may be a company or organization (if appropriate).
- 
-
- | 
- 
-
- 
- `creator.name` | 
- 
- `[Text](https://schema.org/Text)`
-
- 
- The name of the creator.
- 
-
- | 
- 
-
- 
- `creditText` | 
- 
- `[Text](https://schema.org/Text)`
-
- 
- The name of the person and/or organization that is credited for the image when it's published.
- 
-
- | 
- 
-
- 
- `copyrightNotice` | 
- 
- `[Text](https://schema.org/Text)`
-
- 
- The copyright notice for claiming the intellectual property for this photograph. This
- identifies the current owner of the copyright for the photograph.
- 
-
- | 
- 
-
- 
- `license` | 
- 
- `[URL](https://schema.org/URL)`
-
- 
- A URL to a page that describes the license governing an image's use. For example, it
- could be the terms and conditions that you have on your website. Where applicable, it
- could also be a Creative Commons License (for example,
- [BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)).
- 
-
- 
- If you're using structured data to specify an image, you must include the `license`
- property for your image to be eligible to be shown with the Licensable badge. We recommend that
- you also add the `acquireLicensePage` property if you have that information.
- 
-
- | 
- 
-
+| `license` | ` URL ` A URL to a page that describes the license governing an image's use. For example, it could be the terms and conditions that you have on your website. Where applicable, it could also be a Creative Commons License (for example, BY-NC 4.0 ). If you're using structured data to specify an image, you must include the `license` property for your image to be eligible to be shown with the Licensable badge. We recommend that you also add the `acquireLicensePage` property if you have that information. |
  
 
 ### IPTC photo metadata
@@ -942,123 +825,22 @@ If you choose to use both IPTC photo metadata and structured
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
+| Copyright Notice | The copyright notice for claiming the intellectual property for this photograph. This identifies the current owner of the copyright for the photograph. |
  
- [Copyright Notice](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#copyright-notice)
- | 
+| Creator | The creator of the image. This is usually the name of the photographer, but it may be the name of a company or organization (if appropriate). |
  
+| Credit Line | The name of the person and/or organization that is credited for the image when it's published. |
  
- The copyright notice for claiming the intellectual property for this photograph. This identifies
- the current owner of the copyright for the photograph.
+| Digital Source Type | The type of digital source that was used to create the image. Google supports the following IPTC `NewsCodes`: `trainedAlgorithmicMedia` : The image was created algorithmically using a model derived from sampled content. `compositeSynthetic` : The image is a mix or composite that includes at least one synthetic element. `algorithmicMedia` : The image was created purely by an algorithm not based on any sampled training data (for example, an image created by software using a mathematical formula). `compositeWithTrainedAlgorithmicMedia` : The image is a composite of trained algorithmic media with some other media, such as with inpainting or outpainting operations. |
  
-
- | 
+| Licensor URL | A URL to a page where the user can find information on how to license that image. The Licensor URL must be a property of a Licensor object , not a property of the image object. Here are some examples: A check-out page for that image where the user can select specific resolutions A general page that explains how to contact you |
  
-
- 
- 
- [Creator](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#creator)
- | 
- 
- 
- The creator of the image. This is usually the name of the photographer, but it may be the
- name of a company or organization (if appropriate).
- 
-
- | 
- 
-
- 
- 
- [Credit Line](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#credit-line)
- | 
- 
- 
- The name of the person and/or organization that is credited for the image when it's published.
- 
-
- | 
- 
-
- 
- 
- [Digital Source Type](https://iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#digital-source-type)
- | 
- 
- 
- The type of digital source that was used to create the image. Google supports the
- following IPTC `NewsCodes`:
- 
-
- 
- 
-- [`trainedAlgorithmicMedia`](https://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia):
- The image was created algorithmically using a model derived from sampled content.
- 
-- [`compositeSynthetic`](https://cv.iptc.org/newscodes/digitalsourcetype/compositeSynthetic):
- The image is a mix or composite that includes at least one synthetic element.
- 
-- [`algorithmicMedia`](https://cv.iptc.org/newscodes/digitalsourcetype/algorithmicMedia):
- The image was created purely by an algorithm not based on any sampled training data
- (for example, an image created by software using a mathematical formula).
- 
-- [`compositeWithTrainedAlgorithmicMedia`](https://cv.iptc.org/newscodes/digitalsourcetype/compositeWithTrainedAlgorithmicMedia):
- The image is a composite of trained algorithmic media with some other media, such as
- with inpainting or outpainting operations.
- 
-
- | 
- 
-
- 
- 
- [Licensor URL](http://ns.useplus.org/LDF/ldf-XMPSpecification#LicensorURL)
- | 
- 
- 
- A URL to a page where the user can find information on how to license that image. The
- [Licensor URL](http://ns.useplus.org/LDF/ldf-XMPSpecification#LicensorURL)
- must be a property of a
- [Licensor object](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#licensor),
- not a property of the image object. Here are some examples:
- 
-
- 
- 
-- A check-out page for that image where the user can select specific resolutions
- 
-- A general page that explains how to contact you
- 
-
- | 
- 
-
- 
- 
- [Web Statement of Rights](https://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata#web-statement-of-rights)
- | 
- 
- 
- A URL to a page that describes the license governing an image's use, and optionally
- other rights information. For example, it could be the terms and conditions that you
- have on your website. Where applicable, it could also be a Creative Commons License (for
- example,
- [BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)).
- 
-
- 
- You must include the Web Statement of Rights field for your image to be eligible to be
- shown with the licensable badge. We recommend that you also add the
- Licensor URL field if you have that information.
- 
-
- | 
- 
-
+| Web Statement of Rights | A URL to a page that describes the license governing an image's use, and optionally other rights information. For example, it could be the terms and conditions that you have on your website. Where applicable, it could also be a Creative Commons License (for example, BY-NC 4.0 ). You must include the Web Statement of Rights field for your image to be eligible to be shown with the licensable badge. We recommend that you also add the Licensor URL field if you have that information. |
  
 
 ### How C2PA metadata can appear in Google Search results

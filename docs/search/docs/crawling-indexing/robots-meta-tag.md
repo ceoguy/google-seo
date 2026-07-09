@@ -28,15 +28,17 @@ fetched: 2026-07-08
  users in Google Search results. Place the robots `meta` tag
  in the `<head>` section of a given page, like this:
 
+
 ```
 <!DOCTYPE html>
 <html><head>
- <meta name="robots" content="noindex">
- (&hellip;)
+  <meta name="robots" content="noindex">
+  (&hellip;)
 </head>
 <body>(&hellip;)</body>
 </html>
 ```
+
 
  
  
@@ -70,24 +72,30 @@ fetched: 2026-07-08
  For example, to instruct Google specifically not to show a snippet in its search results, you can
  specify `googlebot` as the name of the `meta` tag:
 
+
 ```
 <meta name="googlebot" content="nosnippet">
 ```
 
+
  To show a full snippet in Google's web search results, but no snippet in Google News, specify
  `googlebot-news` as the name of the `meta` tag:
+
 
 ```
 <meta name="googlebot-news" content="nosnippet">
 ```
 
+
  To specify multiple crawlers individually, use multiple robots
  `meta` tags:
+
 
 ```
 <meta name="googlebot" content="notranslate">
 <meta name="googlebot-news" content="nosnippet">
 ```
+
 
  
  Note: Google Search doesn't enforce placement of meta robots in the HTML head and
@@ -104,14 +112,15 @@ fetched: 2026-07-08
  also be specified as an `X-Robots-Tag`. Here's an example of an HTTP response with an
  `X-Robots-Tag` instructing crawlers not to index a page:
 
-```
 
+```
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
 (&hellip;)
 X-Robots-Tag: noindex
 (&hellip;)
 ```
+
 
  
  Multiple `X-Robots-Tag` headers can be combined within the HTTP
@@ -121,8 +130,8 @@ X-Robots-Tag: noindex
  `unavailable_after` `X-Robots-Tag`.
  
 
-```
 
+```
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
 (&hellip;)
@@ -131,6 +140,7 @@ X-Robots-Tag: unavailable_after: 25 Jun 2010 15:00:00 PST
 (&hellip;)
 ```
 
+
  
  The `X-Robots-Tag` may optionally specify a user agent before the
  rules. For instance, the following set of `X-Robots-Tag` HTTP
@@ -138,8 +148,8 @@ X-Robots-Tag: unavailable_after: 25 Jun 2010 15:00:00 PST
  search engines:
  
 
-```
 
+```
 HTTP/1.1 200 OK
 Date: Tue, 25 May 2010 21:42:43 GMT
 (&hellip;)
@@ -147,6 +157,7 @@ X-Robots-Tag: googlebot: nofollow
 X-Robots-Tag: otherbot: noindex, nofollow
 (&hellip;)
 ```
+
 
  
  Rules specified without a user agent are valid for all crawlers. The HTTP header, the
@@ -184,354 +195,55 @@ X-Robots-Tag: otherbot: noindex, nofollow
  
  
  
- Rules | 
+| Rules |
  
-
+| `all` | There are no restrictions for indexing or serving. This rule is the default value and has no effect if explicitly listed. |
  
+| `noindex` | Do not show this page, media, or resource in search results. If you don't specify this rule, the page, media, or resource may be indexed and shown in search results. To remove information from Google, follow our step-by-step guide . |
  
+| `nofollow` | Do not follow the links on this page. If you don't specify this rule, Google may use the links on the page to discover those linked pages. Learn more about `nofollow` . |
  
-### `all`
-
- | 
+| `none` | Equivalent to `noindex, nofollow`. |
  
- There are no restrictions for indexing or serving. This rule is the default value and
- has no effect if explicitly listed.
- | 
+| `nosnippet` | Do not show a text snippet or video preview in the search results for this page. A static image thumbnail (if available) may still be visible, when it results in a better user experience. This applies to all forms of search results (at Google: web search, Google Images, Discover, AI Overviews, AI Mode) and will also prevent the content from being used as a direct input for AI Overviews and AI Mode. If you don't specify this rule, Google may generate a text snippet and video preview based on information found on the page. To exclude certain sections of your content from appearing in search result snippets, use the `data-nosnippet` HTML attribute . |
  
-
+| `indexifembedded` | Google is allowed to index the content of a page if it's embedded in another page through `iframes` or similar HTML tags, in spite of a `noindex` rule. `indexifembedded` only has an effect if it's accompanied by `noindex`. |
  
- 
- 
-### `noindex`
-
- | 
- 
- 
- Do not show this page, media, or resource in search results. If you don't specify this
- rule, the page, media, or resource may be indexed and shown in search results.
- 
-
- 
- To remove information from Google, follow our
- [step-by-step guide](https://developers.google.com/search/docs/crawling-indexing/remove-information).
- 
-
- | 
- 
-
- 
- 
- 
-### `nofollow`
-
- | 
- 
- Do not follow the links on this page. If you don't specify this rule, Google may use
- the links on the page to discover those linked pages. Learn more about
- [`nofollow`](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links).
- | 
- 
-
- 
- 
- 
-### `none`
-
- | 
- 
- Equivalent to `noindex, nofollow`.
- | 
- 
-
- 
- 
- 
-### `nosnippet`
-
- | 
- 
- 
- Do not show a text snippet or video preview in the search results for this page. A
- static image thumbnail (if available) may still be visible, when it results in a better
- user experience. This applies to all forms of search results (at Google: web search,
- Google Images, Discover, AI Overviews, AI Mode) and
- will also prevent the content from being used as a direct input for AI Overviews and AI Mode.
- 
-
- 
- If you don't specify this rule, Google may generate a text snippet and video
- preview based on information found on the page.
- 
-
- 
- To exclude certain sections of your content from appearing in search result snippets,
- use the [`data-nosnippet`
- HTML attribute](https://developers.google.com#data-nosnippet-attr).
- 
-
- | 
- 
-
- 
- 
- 
-### `indexifembedded`
-
- | 
- 
- 
- Google is allowed to index the content of a page if it's embedded in another page
- through
- [`iframes`](https://developer.mozilla.org/docs/Web/HTML/Element/iframe)
- or similar HTML tags, in spite of a `noindex` rule.
- 
-
- 
- `indexifembedded` only has an effect if it's accompanied by
- `noindex`.
- 
-
- | 
- 
-
- 
- 
- 
-### `max-snippet:` [number]
-
- | 
- 
- 
- Use a maximum of [number] characters as a textual snippet for this search result. (Note
- that a URL may appear as multiple search results within a search results page.) This
- does not affect image or video previews. This applies to all forms of search results
- (such as Google web search, Google Images, Discover, Assistant, AI Overviews, AI Mode) and
- will also limit how much of the content may be used as a direct input for AI Overviews and AI Mode.
- However, this limit
- does not apply in cases where a publisher has separately granted permission for use of
- content. For instance, if the publisher supplies content in the form of in-page
- structured data or has a license agreement with Google, this setting does not interrupt
- those more specific permitted uses. This rule is ignored if no parseable [number]
- is specified.
- 
-
- 
- If you don't specify this rule, Google will choose the length of the snippet.
- 
-
- Special values:
-
- 
- 
-- 
- `0`: No snippet is to be shown. Equivalent to
- `nosnippet`.
- 
- 
-- 
- `-1`: Google will choose the snippet length that it
- believes is most effective to help users discover your content and direct users to
- your site.
- 
- 
-
- Examples:
-
- To stop a snippet from displaying in search results:
-
- 
-
+| `max-snippet:` [number] | Use a maximum of [number] characters as a textual snippet for this search result. (Note that a URL may appear as multiple search results within a search results page.) This does not affect image or video previews. This applies to all forms of search results (such as Google web search, Google Images, Discover, Assistant, AI Overviews, AI Mode) and will also limit how much of the content may be used as a direct input for AI Overviews and AI Mode. However, this limit does not apply in cases where a publisher has separately granted permission for use of content. For instance, if the publisher supplies content in the form of in-page structured data or has a license agreement with Google, this setting does not interrupt those more specific permitted uses. This rule is ignored if no parseable [number] is specified. If you don't specify this rule, Google will choose the length of the snippet. Special values: `0`: No snippet is to be shown. Equivalent to `nosnippet`. `-1`: Google will choose the snippet length that it believes is most effective to help users discover your content and direct users to your site. Examples: To stop a snippet from displaying in search results: 
 ```
 <meta name="robots" content="max-snippet:0">
 ```
-
- To allow up to 20 characters to be shown in the snippet:
-
- 
-
+ To allow up to 20 characters to be shown in the snippet: 
 ```
 <meta name="robots" content="max-snippet:20">
 ```
-
- 
- To specify that there's no limit on the number of characters that can be shown in the
- snippet:
- 
-
- 
-
+ To specify that there's no limit on the number of characters that can be shown in the snippet: 
 ```
 <meta name="robots" content="max-snippet:-1">
 ```
-
- | 
+ |
  
-
- 
- 
- 
-### `max-image-preview:` [setting]
-
- | 
- 
- Set the maximum size of an image preview for this page in search results.
-
- 
- If you don't specify the `max-image-preview` rule, Google may show an
- image preview of the default size.
- 
-
- Accepted [setting] values:
-
- 
- 
-- 
- `none`: No image preview is to be shown.
- 
- 
-- 
- `standard`: A default image preview may be shown.
- 
- 
-- 
- `large`: A larger image preview, up to the width of the
- viewport, may be shown.
- 
- 
-
- 
- This applies to all forms of search results (such as Google web search, Google Images,
- Discover, Assistant). However, this limit does not apply in cases where a publisher has
- separately granted permission for use of content. For instance, if the publisher
- supplies content in the form of in-page structured data (such as AMP and canonical
- versions of an article) or has a license agreement with Google, this setting will not
- interrupt those more specific permitted uses.
- 
-
- 
- If you don't want Google to use larger thumbnail images when their AMP pages
- and canonical version of an article are shown in Search or Discover, specify a
- `max-image-preview` value of
- `standard` or `none`.
- 
-
- Example:
-
- 
-
+| `max-image-preview:` [setting] | Set the maximum size of an image preview for this page in search results. If you don't specify the `max-image-preview` rule, Google may show an image preview of the default size. Accepted [setting] values: `none`: No image preview is to be shown. `standard`: A default image preview may be shown. `large`: A larger image preview, up to the width of the viewport, may be shown. This applies to all forms of search results (such as Google web search, Google Images, Discover, Assistant). However, this limit does not apply in cases where a publisher has separately granted permission for use of content. For instance, if the publisher supplies content in the form of in-page structured data (such as AMP and canonical versions of an article) or has a license agreement with Google, this setting will not interrupt those more specific permitted uses. If you don't want Google to use larger thumbnail images when their AMP pages and canonical version of an article are shown in Search or Discover, specify a `max-image-preview` value of `standard` or `none`. Example: 
 ```
 <meta name="robots" content="max-image-preview:standard">
 ```
-
- | 
+ |
  
-
- 
- 
- 
-### `max-video-preview:` [number]
-
- | 
- 
- 
- Use a maximum of [number] seconds as a video snippet for videos on this page in search
- results.
- 
-
- 
- If you don't specify the `max-video-preview` rule, Google may show a
- video snippet in search results, and you leave it up to Google to decide how long the
- preview may be.
- 
-
- Special values:
-
- 
- 
-- 
- `0`: At most, a static image may be used, in accordance to
- the `max-image-preview` setting.
- 
-- `-1`: There is no limit.
- 
-
- 
- This applies to all forms of search results (at Google: web search, Google Images,
- Google Videos, Discover, Assistant). This rule is ignored if no parseable [number]
- is specified.
-
- Example:
-
- 
-
+| `max-video-preview:` [number] | Use a maximum of [number] seconds as a video snippet for videos on this page in search results. If you don't specify the `max-video-preview` rule, Google may show a video snippet in search results, and you leave it up to Google to decide how long the preview may be. Special values: `0`: At most, a static image may be used, in accordance to the `max-image-preview` setting. `-1`: There is no limit. This applies to all forms of search results (at Google: web search, Google Images, Google Videos, Discover, Assistant). This rule is ignored if no parseable [number] is specified. Example: 
 ```
 <meta name="robots" content="max-video-preview:-1">
 ```
-
- | 
+ |
  
-
+| `notranslate` | Don't offer translation of this page in search results. If you don't specify this rule, Google may provide a translation of the title link and snippet of a search result for results that aren't in the language of the search query. If the user clicks the translated title link, all further user interaction with the page is through Google Translate, which will automatically translate any links followed. |
  
+| `noimageindex` | Do not index images on this page. If you don't specify this value, images on the page may be indexed and shown in search results. |
  
- 
-### `notranslate`
-
- | 
- 
- Don't offer translation of this page in search results. If you don't specify this
- rule, Google may provide a
- [translation of the title link and snippet](https://developers.google.com/search/docs/appearance/translated-results)
- of a search result for results that aren't in the language
- of the search query. If the user clicks the translated title link, all further user
- interaction with the page is through Google Translate, which will automatically translate
- any links followed.
- | 
- 
-
- 
- 
- 
-### `noimageindex`
-
- | 
- 
- Do not index images on this page. If you don't specify this value, images on the page
- may be indexed and shown in search results.
- | 
- 
-
- 
- 
- 
-### `unavailable_after:` [date/time]
-
- | 
- 
- 
- Do not show this page in search results after the specified date/time. The date/time
- must be specified in a widely adopted format including, but not limited to
- [RFC 822](https://www.ietf.org/rfc/rfc0822.txt),
- [RFC 850](https://www.ietf.org/rfc/rfc0850.txt), and
- [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html).
- The rule is ignored if no valid date/time is specified. By default there is no
- expiration date for content.
- 
-
- 
- If you don't specify this rule, this page may be shown in search results
- indefinitely. Googlebot will decrease the crawl rate of the URL considerably after the specified
- date and time.
- Example:
-
- 
-
+| `unavailable_after:` [date/time] | Do not show this page in search results after the specified date/time. The date/time must be specified in a widely adopted format including, but not limited to RFC 822 , RFC 850 , and ISO 8601 . The rule is ignored if no valid date/time is specified. By default there is no expiration date for content. If you don't specify this rule, this page may be shown in search results indefinitely. Googlebot will decrease the crawl rate of the URL considerably after the specified date and time. Example: 
 ```
 <meta name="robots" content="unavailable_after: 2020-09-21">
 ```
-
- | 
- 
-
+ |
  
 
  
@@ -548,48 +260,13 @@ X-Robots-Tag: otherbot: noindex, nofollow
  
  
  
- List of historical and other unused rules | 
+| List of historical and other unused rules |
  
-
+| `noarchive` | The `noarchive` rule is no longer used by Google Search to control whether a cached link is shown in search results, as the cached link feature no longer exists. |
  
+| `nocache` | The `nocache` rule isn't used by Google Search. |
  
- 
-### `noarchive`
-
- | 
- 
- The `noarchive` rule is no longer used by Google Search to control whether a
- cached link is shown in search results, as the cached link feature no longer exists.
- | 
- 
-
- 
- 
- 
-### `nocache`
-
- | 
- 
- The `nocache` rule isn't used by Google Search.
- | 
- 
-
- 
- 
- 
-### `nositelinkssearchbox`
-
- | 
- 
- 
- The `nositelinkssearchbox` rule is no longer used by Google Search to
- control whether the sitelink search box is shown for a given page, as the
- feature no longer exists.
- 
-
- | 
- 
-
+| `nositelinkssearchbox` | The `nositelinkssearchbox` rule is no longer used by Google Search to control whether the sitelink search box is shown for a given page, as the feature no longer exists. |
  
  
 
@@ -606,6 +283,7 @@ X-Robots-Tag: otherbot: noindex, nofollow
 
  
 ### Comma-separated list
+
 
 ```
 <meta name="robots" content="noindex, nofollow">
@@ -632,18 +310,22 @@ X-Robots-Tag: otherbot: noindex, nofollow
  preview:
  
 
+
 ```
 <meta name="robots" content="max-snippet:20, max-image-preview:large">
 ```
+
 
  
  For situations where multiple crawlers are specified along with different rules, the
  search engine will use the sum of the negative rules. For example:
 
+
 ```
 <meta name="robots" content="nofollow">
 <meta name="googlebot" content="noindex">
 ```
+
 
  
  The page containing these `meta` tags will be interpreted as having a
@@ -666,6 +348,7 @@ X-Robots-Tag: otherbot: noindex, nofollow
 
  Examples:
 
+
 ```
 <p>This text can be shown in a snippet
 <span data-nosnippet>and this part would not be shown</span>.</p>
@@ -685,11 +368,12 @@ X-Robots-Tag: otherbot: noindex, nofollow
 <div data-nosnippet>
 <p>However, this is not in snippet.</p>
 <ul>
- <li>Stuff not in snippet</li>
- <li>More stuff not in snippet</li>
+  <li>Stuff not in snippet</li>
+  <li>More stuff not in snippet</li>
 </ul>
 </div>
 ```
+
 
  
  Google typically renders pages in order to index them, however rendering is not guaranteed.
@@ -758,7 +442,6 @@ X-Robots-Tag: otherbot: noindex, nofollow
  
 
 ```
-
 <Files ~ "\.pdf$">
 Header set X-Robots-Tag "noindex, nofollow"
 </Files>
@@ -773,7 +456,6 @@ Header set X-Robots-Tag "noindex, nofollow"
  
 
 ```
-
 location ~* \.pdf$ {
 add_header X-Robots-Tag "noindex, nofollow";
 }
@@ -797,7 +479,6 @@ add_header X-Robots-Tag "noindex, nofollow";
  
 
 ```
-
 <Files ~ "\.(png|jpe?g|gif)$">
 Header set X-Robots-Tag "noindex"
 </Files>
@@ -809,8 +490,8 @@ Header set X-Robots-Tag "noindex"
  
 ### NGINX
 
-```
 
+```
 location ~* \.(png|jpe?g|gif)$ {
 add_header X-Robots-Tag "noindex";
 }
@@ -828,8 +509,8 @@ add_header X-Robots-Tag "noindex";
  
 ### Apache
 
-```
 
+```
 # the htaccess file must be placed in the directory of the matched file.
 <Files "unicorn.pdf">
 Header set X-Robots-Tag "noindex, nofollow"
@@ -842,8 +523,8 @@ Header set X-Robots-Tag "noindex, nofollow"
  
 ### NGINX
 
-```
 
+```
 location = /secrets/unicorn.pdf {
 add_header X-Robots-Tag "noindex, nofollow";
 }

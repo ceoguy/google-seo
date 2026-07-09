@@ -135,35 +135,13 @@ Using a CMS? It may be easier to use a plugin that's integrated into your CMS.
  microdata format. You don't need to include this markup on every page of your site; you only
  need to add this markup to the home page of your site.
 
- Required properties | 
+ 
+| Required properties |
 
  
+| `name` | ` Text ` The name of the website. Make sure the name meets the guidelines for choosing your site name . |
  
- `name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the website. Make sure the name meets the [guidelines for choosing your site name](https://developers.google.com#choosing-site-name).
-
- | 
- 
-
- 
- 
- `url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The URL of the home page of the site. Set this to the
- [canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
- home page of your site's domain or subdomain.
- For example, `https://example.com/` or `https://news.example.com/`.
- 
-
- | 
- 
+| `url` | ` URL ` The URL of the home page of the site. Set this to the canonical home page of your site's domain or subdomain. For example, `https://example.com/` or `https://news.example.com/`. |
 
 Here's an example of `WebSite` structured data that includes the required fields:
 
@@ -175,19 +153,19 @@ Here's an example of `WebSite` structured data that includes the required fields
 
 ```
 <html>
- <head>
- <title>Example: A Site about Examples</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org",
- "@type" : "WebSite",
- "name" : "Example",
- "url" : "https://example.com/"
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Example: A Site about Examples</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "Example",
+      "url" : "https://example.com/"
+    }
+  </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -201,17 +179,16 @@ Here's an example of `WebSite` structured data that includes the required fields
 
 ```
 <html>
- <head>
- <title>Example: A Site about Examples</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/WebSite">
- <link itemprop="url" href="https://example.com" />
- <meta itemprop="name" content="Example"/>
- </div>
- </body>
+  <head>
+    <title>Example: A Site about Examples</title>
+  </head>
+  <body>
+  <div itemscope itemtype="https://schema.org/WebSite">
+    <link itemprop="url" href="https://example.com" />
+    <meta itemprop="name" content="Example"/>
+  </div>
+  </body>
 </html>
- 
 ```
 
  
@@ -225,43 +202,24 @@ or shorter name), you can do this by adding the `alternateName` property. This i
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- 
- `alternateName`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- 
- The alternate name of the website (for example, if there's a commonly recognized
- acronym or shorter name for your site), if applicable. Make sure the name meets
- the [guidelines for choosing your site name](https://developers.google.com#choosing-site-name).
- 
-
- 
- You can list more than one alternative name. Specify them in order of your
- preference, with the most important one listed first. For example:
- 
-
- 
-
+| `alternateName` | ` Text ` The alternate name of the website (for example, if there's a commonly recognized acronym or shorter name for your site), if applicable. Make sure the name meets the guidelines for choosing your site name . You can list more than one alternative name. Specify them in order of your preference, with the most important one listed first. For example: 
 ```
 <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "WebSite",
- "name": "Burnt Toast",
- "alternateName": ["BT", "B-T", "Burnt Toast Shop"],
- "url": "https://www.example.com/"
- }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Burnt Toast",
+    "alternateName": ["BT", "B-T", "Burnt Toast Shop"],
+    "url": "https://www.example.com/"
+  }
 </script>
 ```
-
- | 
+ |
 
 Here's an example of `WebSite` structured data that includes all required and recommended fields:
 
@@ -273,22 +231,23 @@ Here's an example of `WebSite` structured data that includes all required and re
 
 ```
 <html>
- <head>
- <title>Example: A Site about Examples</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org",
- "@type" : "WebSite",
- "name" : "Example Company",
- "alternateName" : "EC",
- "url" : "https://example.com/"
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Example: A Site about Examples</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org",
+      "@type" : "WebSite",
+      "name" : "Example Company",
+      "alternateName" : "EC",
+      "url" : "https://example.com/"
+    }
+  </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 #### Microdata
@@ -297,18 +256,19 @@ Here's an example of `WebSite` structured data that includes all required and re
 
 ```
 <html>
- <head>
- <title>Example: A Site about Examples</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/WebSite">
- <link itemprop="url" href="https://example.com" />
- <meta itemprop="name" content="Example Company"/>
- <meta itemprop="alternateName" content="EC"/>
- </div>
- </body>
+  <head>
+    <title>Example: A Site about Examples</title>
+  </head>
+  <body>
+  <div itemscope itemtype="https://schema.org/WebSite">
+  <link itemprop="url" href="https://example.com" />
+    <meta itemprop="name" content="Example Company"/>
+    <meta itemprop="alternateName" content="EC"/>
+  </div>
+  </body>
 </html>
 ```
+
 
 ### Test structured data
 
@@ -405,13 +365,13 @@ If you've followed the guidance and your preferred site name still isn't selecte
 
 ```
 <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "WebSite",
- "name": "Burnt Toast",
- "alternateName": ["BT", "B-T", "Burnt Toast Shop", "example.com"],
- "url": "https://www.example.com/"
- }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Burnt Toast",
+    "alternateName": ["BT", "B-T", "Burnt Toast Shop", "example.com"],
+    "url": "https://www.example.com/"
+  }
 </script>
 ```
 
@@ -426,12 +386,12 @@ If you've followed the guidance and your preferred site name still isn't selecte
 
 ```
 <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "WebSite",
- "name": "example.com",
- "url": "https://www.example.com/"
- }
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "example.com",
+    "url": "https://www.example.com/"
+  }
 </script>
 ```
 

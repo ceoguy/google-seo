@@ -196,35 +196,13 @@ In addition to the properties and objects documented here, Google can make gener
  properly implemented per the feature's documentation.
 
  
- Formats | 
+| Formats |
  
-
+| JSON-LD * (Recommended) | A JavaScript notation embedded in a `<script>` tag in the `<head>` and `<body>` elements of an HTML page. The markup is not interleaved with the user-visible text, which makes nested data items easier to express, such as the `Country` of a `PostalAddress` of a `MusicVenue` of an `Event`. Also, Google can read JSON-LD data when it is dynamically injected into the page's contents , such as by JavaScript code or embedded widgets in your content management system. |
  
- [JSON-LD](https://json-ld.org/)* (Recommended) | 
- A JavaScript notation embedded in a `<script>` tag in the `<head>`
- and `<body>` elements of an HTML page. The
- markup is not interleaved with the user-visible text, which makes nested data items easier
- to express, such as the `Country` of a `PostalAddress`
- of a `MusicVenue` of an `Event`.
- Also, Google can read JSON-LD data when it is [dynamically
- injected into the page's contents](https://developers.google.com/search/docs/guides/generate-structured-data-with-javascript), such as by JavaScript code or embedded widgets in
- your content management system. | 
+| Microdata | An open-community HTML specification used to nest structured data within HTML content. Like RDFa, it uses HTML tag attributes to name the properties you want to expose as structured data. It is typically used in the `<body>` element, but can be used in the `<head>` element. |
  
-
- 
- [Microdata](https://html.spec.whatwg.org/multipage/microdata.html#microdata) | 
- An open-community HTML specification used to nest structured data within HTML
- content. Like RDFa, it uses HTML tag attributes to name the properties you want
- to expose as structured data. It is typically used in the `<body>` element, but can be used in the `<head>` element. | 
- 
-
- 
- [RDFa](https://rdfa.info/) | 
- An HTML5 extension that supports linked data by introducing
- [HTML tag attributes](https://www.w3.org/TR/rdfa-lite/#the-attributes) that
- correspond to the user-visible content that you want to describe for search engines. RDFa
- is commonly used in both the `<head>` and `<body>` sections of the HTML page. | 
- 
+| RDFa | An HTML5 extension that supports linked data by introducing HTML tag attributes that correspond to the user-visible content that you want to describe for search engines. RDFa is commonly used in both the `<head>` and `<body>` sections of the HTML page. |
 
 In general, Google recommends using JSON-LD for structured data if your
  site's setup allows it, as it's the easiest solution for website

@@ -135,37 +135,37 @@ Here's an example of structured data on a product review page for product snippe
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Executive Anvil",
- "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "Fred Benson"
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.4,
- "reviewCount": 89
- }
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "Executive Anvil",
+      "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 4,
+          "bestRating": 5
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Fred Benson"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.4,
+        "reviewCount": 89
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -232,37 +232,37 @@ Here's an example of structured data on a product review page for product snippe
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div typeof="schema:Product">
- <div rel="schema:review">
- <div typeof="schema:Review">
- <div rel="schema:reviewRating">
- <div typeof="schema:Rating">
- <div property="schema:ratingValue" content="4"></div>
- <div property="schema:bestRating" content="5"></div>
- </div>
- </div>
- <div rel="schema:author">
- <div typeof="schema:Person">
- <div property="schema:name" content="Fred Benson"></div>
- </div>
- </div>
- </div>
- </div>
- <div property="schema:name" content="Executive Anvil"></div>
- <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
- <div rel="schema:aggregateRating">
- <div typeof="schema:AggregateRating">
- <div property="schema:reviewCount" content="89"></div>
- <div property="schema:ratingValue" content="4.4"></div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+    <div typeof="schema:Product">
+        <div rel="schema:review">
+          <div typeof="schema:Review">
+            <div rel="schema:reviewRating">
+              <div typeof="schema:Rating">
+                <div property="schema:ratingValue" content="4"></div>
+                <div property="schema:bestRating" content="5"></div>
+              </div>
+            </div>
+            <div rel="schema:author">
+              <div typeof="schema:Person">
+                <div property="schema:name" content="Fred Benson"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div property="schema:name" content="Executive Anvil"></div>
+        <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
+        <div rel="schema:aggregateRating">
+          <div typeof="schema:AggregateRating">
+            <div property="schema:reviewCount" content="89"></div>
+            <div property="schema:ratingValue" content="4.4"></div>
+          </div>
+        </div>
+      </div>
+  </body>
 </html>
 ```
 
@@ -319,31 +319,31 @@ Here's an example of structured data on a product review page for product snippe
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div>
- <div itemtype="https://schema.org/Product" itemscope>
- <meta itemprop="name" content="Executive Anvil" />
- <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
- <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
- <meta itemprop="reviewCount" content="89" />
- <meta itemprop="ratingValue" content="4.4" />
- </div>
- <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
- <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Fred Benson" />
- </div>
- <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
- <meta itemprop="ratingValue" content="4" />
- <meta itemprop="bestRating" content="5" />
- </div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+  <div>
+    <div itemtype="https://schema.org/Product" itemscope>
+      <meta itemprop="name" content="Executive Anvil" />
+      <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" />
+        <meta itemprop="ratingValue" content="4.4" />
+      </div>
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+        <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
+          <meta itemprop="name" content="Fred Benson" />
+        </div>
+        <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
+          <meta itemprop="ratingValue" content="4" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
 </html>
 ```
 
@@ -415,57 +415,57 @@ Here's an example of an editorial product review page with pros and cons for pro
  
 
 ```
- <html>
- <head>
- <title>Cheese Knife Pro review</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "name": "Cheese Grater Pro",
- "review": {
- "@type": "Review",
- "name": "Cheese Knife Pro review",
- "author": {
- "@type": "Person",
- "name": "Pascal Van Cleeff"
- },
- "positiveNotes": {
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "name": "Consistent results"
- },
- {
- "@type": "ListItem",
- "position": 2,
- "name": "Still sharp after many uses"
- }
- ]
- },
- "negativeNotes": {
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "name": "No child protection"
- },
- {
- "@type": "ListItem",
- "position": 2,
- "name": "Lacking advanced features"
- }
- ]
- }
- }
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Cheese Knife Pro review</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Cheese Grater Pro",
+        "review": {
+          "@type": "Review",
+          "name": "Cheese Knife Pro review",
+          "author": {
+            "@type": "Person",
+            "name": "Pascal Van Cleeff"
+          },
+          "positiveNotes": {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Consistent results"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Still sharp after many uses"
+              }
+            ]
+          },
+          "negativeNotes": {
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "No child protection"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Lacking advanced features"
+              }
+            ]
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -527,52 +527,52 @@ Here's an example of an editorial product review page with pros and cons for pro
  
 
 ```
- <html>
- <head>
- <title>Cheese Knife Pro review</title>
- </head>
- <body>
- <div typeof="schema:Product">
- <div property="schema:name" content="Cheese Knife Pro review"></div>
- <div rel="schema:review">
- <div typeof="schema:Review">
- <div rel="schema:positiveNotes">
- <div typeof="schema:ItemList">
- <div rel="schema:itemListElement">
- <div typeof="schema:ListItem">
- <div property="schema:position" content="1"></div>
- <div property="schema:name" content="Consistent results"></div>
- </div>
- <div typeof="schema:ListItem">
- <div property="schema:position" content="2"></div>
- <div property="schema:name" content="Still sharp after many uses"></div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:negativeNotes">
- <div typeof="schema:ItemList">
- <div rel="schema:itemListElement">
- <div typeof="schema:ListItem">
- <div property="schema:position" content="1"></div>
- <div property="schema:name" content="No child protection"></div>
- </div>
- <div typeof="schema:ListItem">
- <div property="schema:position" content="2"></div>
- <div property="schema:name" content="Lacking advanced features"></div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:author">
- <div typeof="schema:Person">
- <div property="schema:name" content="Pascal Van Cleeff"></div>
- </div>
- </div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Cheese Knife Pro review</title>
+  </head>
+  <body>
+    <div typeof="schema:Product">
+      <div property="schema:name" content="Cheese Knife Pro review"></div>
+        <div rel="schema:review">
+          <div typeof="schema:Review">
+            <div rel="schema:positiveNotes">
+              <div typeof="schema:ItemList">
+                <div rel="schema:itemListElement">
+                  <div typeof="schema:ListItem">
+                    <div property="schema:position" content="1"></div>
+                    <div property="schema:name" content="Consistent results"></div>
+                  </div>
+                  <div typeof="schema:ListItem">
+                    <div property="schema:position" content="2"></div>
+                    <div property="schema:name" content="Still sharp after many uses"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div rel="schema:negativeNotes">
+              <div typeof="schema:ItemList">
+                <div rel="schema:itemListElement">
+                  <div typeof="schema:ListItem">
+                    <div property="schema:position" content="1"></div>
+                    <div property="schema:name" content="No child protection"></div>
+                  </div>
+                  <div typeof="schema:ListItem">
+                    <div property="schema:position" content="2"></div>
+                    <div property="schema:name" content="Lacking advanced features"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div rel="schema:author">
+              <div typeof="schema:Person">
+                <div property="schema:name" content="Pascal Van Cleeff"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
 </html>
 ```
 
@@ -622,40 +622,40 @@ Here's an example of an editorial product review page with pros and cons for pro
  
 
 ```
- <html>
- <head>
- <title>Cheese Knife Pro review</title>
- </head>
- <body>
- <div itemtype="https://schema.org/Product" itemscope>
- <meta itemprop="name" content="Cheese Knife Pro" />
- <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
- <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Pascal Van Cleeff" />
- </div>
- <div itemprop="positiveNotes" itemtype="https://schema.org/ItemList" itemscope>
- <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
- <meta itemprop="position" content="1" />
- <meta itemprop="name" content="Consistent results" />
- </div>
- <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
- <meta itemprop="position" content="2" />
- <meta itemprop="name" content="Still sharp after many uses" />
- </div>
- </div>
- <div itemprop="negativeNotes" itemtype="https://schema.org/ItemList" itemscope>
- <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
- <meta itemprop="position" content="1" />
- <meta itemprop="name" content="No child protection" />
- </div>
- <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
- <meta itemprop="position" content="2" />
- <meta itemprop="name" content="Lacking advanced features" />
- </div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Cheese Knife Pro review</title>
+  </head>
+  <body>
+    <div itemtype="https://schema.org/Product" itemscope>
+      <meta itemprop="name" content="Cheese Knife Pro" />
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+        <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
+          <meta itemprop="name" content="Pascal Van Cleeff" />
+        </div>
+        <div itemprop="positiveNotes" itemtype="https://schema.org/ItemList" itemscope>
+          <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
+            <meta itemprop="position" content="1" />
+            <meta itemprop="name" content="Consistent results" />
+          </div>
+          <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
+            <meta itemprop="position" content="2" />
+            <meta itemprop="name" content="Still sharp after many uses" />
+          </div>
+        </div>
+        <div itemprop="negativeNotes" itemtype="https://schema.org/ItemList" itemscope>
+          <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
+            <meta itemprop="position" content="1" />
+            <meta itemprop="name" content="No child protection" />
+          </div>
+          <div itemprop="itemListElement" itemtype="https://schema.org/ListItem" itemscope>
+            <meta itemprop="position" content="2" />
+            <meta itemprop="name" content="Lacking advanced features" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -725,54 +725,54 @@ Here's an example of a shopping aggregator page for product snippets treatment i
 
 ```
 <html>
- <head>
- <title>Executive Anvil</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Executive Anvil",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
- "sku": "0446310786",
- "mpn": "925872",
- "brand": {
- "@type": "Brand",
- "name": "ACME"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "Fred Benson"
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.4,
- "reviewCount": 89
- },
- "offers": {
- "@type": "AggregateOffer",
- "offerCount": 5,
- "lowPrice": 119.99,
- "highPrice": 199.99,
- "priceCurrency": "USD"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Executive Anvil</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": "Executive Anvil",
+        "image": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+         ],
+        "description": "Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height.",
+        "sku": "0446310786",
+        "mpn": "925872",
+        "brand": {
+          "@type": "Brand",
+          "name": "ACME"
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 4,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Fred Benson"
+          }
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 4.4,
+          "reviewCount": 89
+        },
+        "offers": {
+          "@type": "AggregateOffer",
+          "offerCount": 5,
+          "lowPrice": 119.99,
+          "highPrice": 199.99,
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -839,57 +839,57 @@ Here's an example of a shopping aggregator page for product snippets treatment i
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div typeof="schema:Product">
- <div rel="schema:review">
- <div typeof="schema:Review">
- <div rel="schema:reviewRating">
- <div typeof="schema:Rating">
- <div property="schema:ratingValue" content="4"></div>
- <div property="schema:bestRating" content="5"></div>
- </div>
- </div>
- <div rel="schema:author">
- <div typeof="schema:Person">
- <div property="schema:name" content="Fred Benson"></div>
- </div>
- </div>
- </div>
- </div>
- <div rel="schema:aggregateRating">
- <div typeof="schema:AggregateRating">
- <div property="schema:reviewCount" content="89"></div>
- <div property="schema:ratingValue" content="4.4"></div>
- </div>
- </div>
- <div rel="schema:image" resource="https://example.com/photos/4x3/photo.jpg"></div>
- <div property="schema:mpn" content="925872"></div>
- <div property="schema:name" content="Executive Anvil"></div>
- <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
- <div rel="schema:image" resource="https://example.com/photos/1x1/photo.jpg">
- </div>
- <div rel="schema:brand">
- <div typeof="schema:Brand">
- <div property="schema:name" content="ACME"></div>
- </div>
- </div>
- <div rel="schema:offers">
- <div typeof="schema:AggregateOffer">
- <div property="schema:offerCount" content="5"></div>
- <div property="schema:lowPrice" content="119.99"></div>
- <div property="schema:highPrice" content="199.99"></div>
- <div property="schema:priceCurrency" content="USD"></div>
- <div rel="schema:url" resource="https://example.com/anvil"></div>
- </div>
- </div>
- <div rel="schema:image" resource="https://example.com/photos/16x9/photo.jpg"></div>
- <div property="schema:sku" content="0446310786"></div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+    <div typeof="schema:Product">
+      <div rel="schema:review">
+        <div typeof="schema:Review">
+          <div rel="schema:reviewRating">
+            <div typeof="schema:Rating">
+              <div property="schema:ratingValue" content="4"></div>
+              <div property="schema:bestRating" content="5"></div>
+            </div>
+          </div>
+          <div rel="schema:author">
+            <div typeof="schema:Person">
+              <div property="schema:name" content="Fred Benson"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div rel="schema:aggregateRating">
+        <div typeof="schema:AggregateRating">
+          <div property="schema:reviewCount" content="89"></div>
+          <div property="schema:ratingValue" content="4.4"></div>
+        </div>
+      </div>
+      <div rel="schema:image" resource="https://example.com/photos/4x3/photo.jpg"></div>
+      <div property="schema:mpn" content="925872"></div>
+      <div property="schema:name" content="Executive Anvil"></div>
+      <div property="schema:description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height."></div>
+      <div rel="schema:image" resource="https://example.com/photos/1x1/photo.jpg">
+      </div>
+      <div rel="schema:brand">
+        <div typeof="schema:Brand">
+          <div property="schema:name" content="ACME"></div>
+        </div>
+      </div>
+      <div rel="schema:offers">
+        <div typeof="schema:AggregateOffer">
+          <div property="schema:offerCount" content="5"></div>
+          <div property="schema:lowPrice" content="119.99"></div>
+          <div property="schema:highPrice" content="199.99"></div>
+          <div property="schema:priceCurrency" content="USD"></div>
+          <div rel="schema:url" resource="https://example.com/anvil"></div>
+        </div>
+      </div>
+      <div rel="schema:image" resource="https://example.com/photos/16x9/photo.jpg"></div>
+      <div property="schema:sku" content="0446310786"></div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -944,45 +944,45 @@ Here's an example of a shopping aggregator page for product snippets treatment i
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div>
- <div itemtype="https://schema.org/Product" itemscope>
- <meta itemprop="mpn" content="925872" />
- <meta itemprop="name" content="Executive Anvil" />
- <link itemprop="image" href="https://example.com/photos/16x9/photo.jpg" />
- <link itemprop="image" href="https://example.com/photos/4x3/photo.jpg" />
- <link itemprop="image" href="https://example.com/photos/1x1/photo.jpg" />
- <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
- <div itemprop="offers" itemtype="https://schema.org/AggregateOffer" itemscope>
- <meta itemprop="lowPrice" content="119.99" />
- <meta itemprop="highPrice" content="199.99" />
- <meta itemprop="offerCount" content="6" />
- <meta itemprop="priceCurrency" content="USD" />
- </div>
- <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
- <meta itemprop="reviewCount" content="89" />
- <meta itemprop="ratingValue" content="4.4" />
- </div>
- <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
- <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
- <meta itemprop="name" content="Fred Benson" />
- </div>
- <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
- <meta itemprop="ratingValue" content="4" />
- <meta itemprop="bestRating" content="5" />
- </div>
- </div>
- <meta itemprop="sku" content="0446310786" />
- <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
- <meta itemprop="name" content="ACME" />
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+  <div>
+    <div itemtype="https://schema.org/Product" itemscope>
+      <meta itemprop="mpn" content="925872" />
+      <meta itemprop="name" content="Executive Anvil" />
+      <link itemprop="image" href="https://example.com/photos/16x9/photo.jpg" />
+      <link itemprop="image" href="https://example.com/photos/4x3/photo.jpg" />
+      <link itemprop="image" href="https://example.com/photos/1x1/photo.jpg" />
+      <meta itemprop="description" content="Sleeker than ACME's Classic Anvil, the Executive Anvil is perfect for the business traveler looking for something to drop from a height." />
+      <div itemprop="offers" itemtype="https://schema.org/AggregateOffer" itemscope>
+        <meta itemprop="lowPrice" content="119.99" />
+        <meta itemprop="highPrice" content="199.99" />
+        <meta itemprop="offerCount" content="6" />
+        <meta itemprop="priceCurrency" content="USD" />
+      </div>
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" />
+        <meta itemprop="ratingValue" content="4.4" />
+      </div>
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+        <div itemprop="author" itemtype="https://schema.org/Person" itemscope>
+          <meta itemprop="name" content="Fred Benson" />
+        </div>
+        <div itemprop="reviewRating" itemtype="https://schema.org/Rating" itemscope>
+          <meta itemprop="ratingValue" content="4" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+      </div>
+      <meta itemprop="sku" content="0446310786" />
+      <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+        <meta itemprop="name" content="ACME" />
+      </div>
+    </div>
+  </div>
+  </body>
 </html>
 ```
 
@@ -1026,9 +1026,9 @@ For your `Product` markup to be eligible for product snippets, you must follow t
 
 ```
 {
- "@context": "https://schema.org",
- "@type": ["Product", "Car"],
- ...
+  "@context": "https://schema.org",
+  "@type": ["Product", "Car"],
+  ...
 }
 ```
 
@@ -1070,109 +1070,28 @@ The full definition of `Product` is available at
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `name` | 
+| `name` | ` Text ` The name of the product. |
  
- `[Text](https://schema.org/Text)`
-
- The name of the product.
-
- | 
- 
-
- 
- Product snippets require either `review` or `aggregateRating` or `offers` | 
- 
- You must include one of the following properties:
-
- 
- 
-- `review`
- 
-- `aggregateRating`
- 
-- `offers`
- 
-
- You only need to provide one of `review`,
- `aggregateRating`, and `offers`, but the product snippets
- section of the Rich Results Test may report a warning if you provide
- `offers` without `review` or `aggregateRating`
- properties.
- | 
- 
-
+| Product snippets require either `review` or `aggregateRating` or `offers` | You must include one of the following properties: `review` `aggregateRating` `offers` You only need to provide one of `review`, `aggregateRating`, and `offers`, but the product snippets section of the Rich Results Test may report a warning if you provide `offers` without `review` or `aggregateRating` properties. |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `aggregateRating` | 
+| `aggregateRating` | ` AggregateRating ` A nested `aggregateRating` of the product. Follow the Review snippet guidelines and the list of required and recommended `AggregateRating` properties . |
  
- `[AggregateRating](https://schema.org/AggregateRating)`
-
- A nested `aggregateRating` of the product. Follow the
- [Review snippet
- guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and the list of required and recommended
- [`AggregateRating`
- properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition).
-
- | 
+| `offers` | ` Offer ` or ` AggregateOffer ` A nested `Offer` or `AggregateOffer` to sell the product. Include the required and recommended properties for either `Offer` or `AggregateOffer` (whichever is applicable to your content). To be eligible for the price drop enhancement , use `Offer` , not `AggregateOffer`. |
  
-
- 
- `offers` | 
- 
- `[Offer](https://schema.org/Offer)` or `[AggregateOffer](https://schema.org/AggregateOffer)`
-
- A nested `Offer` or
- `AggregateOffer` to sell the product. Include the required and
- recommended properties for either [`Offer`](https://developers.google.com#offer-properties)
- or [`AggregateOffer`](https://developers.google.com#aggregate-offer-properties) (whichever
- is applicable to your content).
-
- 
- To be eligible for the [price drop enhancement](https://developers.google.com/search/docs/appearance/structured-data/product#price-drop), use [`Offer`](https://developers.google.com#offer-properties),
- not `AggregateOffer`.
- 
-
- | 
- 
-
- 
- `review` | 
- 
- [`Review`](https://schema.org/Review)
-
- A nested `Review` of the product. Follow the
- [Review snippet
- guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and the list of required and recommended
- [review
- properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties).
-
- If you add a review for the product, the reviewer's name must be a valid name for a `Person` or
- `Team`.
-
- Not recommended: 50% off on Black Friday
-
- Recommended: "James Smith" or "CNET Reviewers"
-
- 
- To manually tell Google about the [pros and cons](https://developers.google.com#pros-cons) of an editorial product review page,
- add the `positiveNotes` and/or `negativeNotes` properties to your nested product review.
- 
-
- | 
- 
-
+| `review` | `Review` A nested `Review` of the product. Follow the Review snippet guidelines and the list of required and recommended review properties . If you add a review for the product, the reviewer's name must be a valid name for a `Person` or `Team`. Not recommended : 50% off on Black Friday Recommended : "James Smith" or "CNET Reviewers" To manually tell Google about the pros and cons of an editorial product review page, add the `positiveNotes` and/or `negativeNotes` properties to your nested product review. |
  
 
 ### Product Reviews
@@ -1197,116 +1116,63 @@ The full definition of `Product` is available at
  [pros and cons guidelines](https://developers.google.com#pros-cons-guidelines).
 
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- Two statements about the product | 
- You must provide at least two statements about the product in any combination of
- positive or negative statements (for example, `ItemList` markup with two
- positive statements is valid):
- 
- 
-- [`negativeNotes`](https://developers.google.com#negative-notes)
- 
-- [`positiveNotes`](https://developers.google.com#positive-notes)
- 
-
- | 
+| Two statements about the product | You must provide at least two statements about the product in any combination of positive or negative statements (for example, `ItemList` markup with two positive statements is valid): `negativeNotes` `positiveNotes` |
  
 
  
-
  
- Recommended properties | 
-
+| Recommended properties |
  
  
- `negativeNotes` | 
- 
- `[ItemList](https://schema.org/ItemList)`
- (see [`ItemList` for Positive and Negative Notes](https://developers.google.com#pros-cons-item-list)
- on usage of `ItemList` in this context)
- 
-
- 
- An optional nested list of negative statements about the product (cons).
- 
-
- 
- To list multiple negative statements, specify multiple `ListItem`
- properties in an `itemListElement` array. For example:
- 
-
- 
-
+| `negativeNotes` | ` ItemList ` (see `ItemList` for Positive and Negative Notes on usage of `ItemList` in this context) An optional nested list of negative statements about the product (cons). To list multiple negative statements, specify multiple `ListItem` properties in an `itemListElement` array. For example: 
 ```
 "review": {
- "@type": "Review",
- "negativeNotes": {
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "name": "No child protection"
- },
- {
- "@type": "ListItem",
- "position": 2,
- "name": "Lacking advanced features"
- }
- ]
- }
+  "@type": "Review",
+  "negativeNotes": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "No child protection"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Lacking advanced features"
+      }
+    ]
+  }
 }
 ```
-
- | 
+ |
  
-
- 
- `positiveNotes` | 
- 
- `[ItemList](https://schema.org/ItemList)`
- (see [`ItemList` for Positive and Negative Notes](https://developers.google.com#pros-cons-item-list)
- on usage of `ItemList` in this context)
- 
-
- 
- An optional nested list of positive statements about the product (pros).
- 
-
- 
- To list multiple positive statements, specify multiple `ListItem`
- properties in an `itemListElement` array. For example:
- 
-
- 
-
+| `positiveNotes` | ` ItemList ` (see `ItemList` for Positive and Negative Notes on usage of `ItemList` in this context) An optional nested list of positive statements about the product (pros). To list multiple positive statements, specify multiple `ListItem` properties in an `itemListElement` array. For example: 
 ```
 "review": {
- "@type": "Review",
- "positiveNotes": {
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "name": "Consistent results"
- },
- {
- "@type": "ListItem",
- "position": 2,
- "name": "Still sharp after many uses"
- }
- ]
- }
+  "@type": "Review",
+  "positiveNotes": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Consistent results"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Still sharp after many uses"
+      }
+    ]
+  }
 }
 ```
-
- | 
- 
-
+ |
  
 
 #### `ItemList` for Positive and Negative Notes
@@ -1318,52 +1184,21 @@ The full definition of `Product` is available at
  The following properties are used to capture pros and cons in a review.
 
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `itemListElement` | 
+| `itemListElement` | ` ListItem ` A list of statements about the product, listed in a specific order. Specify each statement with a `ListItem`. |
  
- `[ListItem](https://schema.org/ListItem)`
-
- 
- A list of statements about the product, listed in a specific order.
- Specify each statement with a `ListItem`.
- 
-
- | 
+| `itemListElement.name` | ` Text ` The key statement of the review. |
  
 
  
- `itemListElement.name` | 
  
- `[Text](https://schema.org/Text)`
-
- 
- The key statement of the review.
- 
-
- | 
- 
-
- 
-
- 
- Recommended properties | 
-
+| Recommended properties |
  
  
- `itemListElement.position` | 
- 
- `[Integer](https://schema.org/Integer)`
-
- 
- The position of the review. Position 1 signifies the first statement in the list.
- 
-
- | 
- 
-
+| `itemListElement.position` | ` Integer ` The position of the review. Position 1 signifies the first statement in the list. |
  
 
 ### Offer details
@@ -1376,146 +1211,50 @@ The full definition of `Offer` is available at
  [`Offer`](https://schema.org/Offer) type.
 
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `price` or `priceSpecification.price` | 
- 
- `[Number](https://schema.org/Number)`
-
- The offer price of a product. Follow
- [schema.org usage guidelines](https://schema.org/price).
-
- 
- Here's an example of the `price` property (the value can be a JSON string
- or number):
- 
-
- 
-
+| `price` or `priceSpecification.price` | ` Number ` The offer price of a product. Follow schema.org usage guidelines . Here's an example of the `price` property (the value can be a JSON string or number): 
 ```
 "offers": {
- "@type": "Offer",
- "price": 39.99,
- "priceCurrency": "USD"
+  "@type": "Offer",
+  "price": 39.99,
+  "priceCurrency": "USD"
 }
 ```
-
- 
- Here's an example of how to specify that a product is available without payment:
- 
-
- 
-
+ Here's an example of how to specify that a product is available without payment: 
 ```
 "offers": {
- "@type": "Offer",
- "price": 0,
- "priceCurrency": "EUR"
+  "@type": "Offer",
+  "price": 0,
+  "priceCurrency": "EUR"
 }
 ```
-
- 
- Alternatively, the offer price may be nested inside a `priceSpecification`
- property instead of being provided at the `Offer` level.
- 
-
- 
-
+ Alternatively, the offer price may be nested inside a `priceSpecification` property instead of being provided at the `Offer` level. 
 ```
 "offers": {
- "@type": "Offer",
- "priceSpecification": {
- "@type": "PriceSpecification",
- "price": 9.99,
- "priceCurrency": "AUD"
- }
+  "@type": "Offer",
+  "priceSpecification": {
+    "@type": "PriceSpecification",
+    "price": 9.99,
+    "priceCurrency": "AUD"
+  }
 }
 ```
-
- 
- 
- If you use both the `offers.price` and `offers.priceSpecification`
- properties to encode an active price, Google will use the price provided through
- the `offers.price` property and ignore the `offers.priceSpecification`
- property.
- 
- If you have complex pricing, check out the [pricing examples](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#pricing-example) and
- supported [pricing properties](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#offer-details) in the merchant listing documentation.
- 
- | 
+ If you use both the `offers.price` and `offers.priceSpecification` properties to encode an active price, Google will use the price provided through the `offers.price` property and ignore the `offers.priceSpecification` property. If you have complex pricing, check out the pricing examples and supported pricing properties in the merchant listing documentation. |
  
 
  
-
  
- Recommended properties | 
-
+| Recommended properties |
  
  
- `availability` | 
+| `availability` | ` ItemAvailability ` Use the single most appropriate product availability option from the following list. `https://schema.org/BackOrder`: The item is on back order. `https://schema.org/Discontinued`: The item has been discontinued. `https://schema.org/InStock`: The item is in stock. `https://schema.org/InStoreOnly`: The item is only available for purchase in store. `https://schema.org/LimitedAvailability`: The item has limited availability. `https://schema.org/OnlineOnly`: The item is available online only. `https://schema.org/OutOfStock`: The item is currently out of stock. `https://schema.org/PreOrder`: The item is available for pre-order. `https://schema.org/PreSale`: The item is available for ordering and delivery before general availability. `https://schema.org/SoldOut`: The item has been sold out. The short names without the URL prefix are also supported (for example, `BackOrder`). |
  
- `[ItemAvailability](https://schema.org/ItemAvailability)`
-
- Use the single most appropriate product availability option from the following list.
-
+| `priceCurrency` or `priceSpecification.priceCurrency` | ` Text ` The currency used to describe the product price, in three-letter ISO 4217 format. This property is currently recommended for product snippets to help Google determine the currency more accurately, but required for merchant listing experiences. It is therefore best to always provide this property. |
  
- 
-- `https://schema.org/BackOrder`: The item is on back order.
- 
-- `https://schema.org/Discontinued`: The item has been discontinued.
- 
-- `https://schema.org/InStock`: The item is in stock.
- 
-- `https://schema.org/InStoreOnly`: The item is only available for purchase in store.
- 
-- `https://schema.org/LimitedAvailability`: The item has limited availability.
- 
-- `https://schema.org/OnlineOnly`: The item is available online only.
- 
-- `https://schema.org/OutOfStock`: The item is currently out of stock.
- 
-- `https://schema.org/PreOrder`: The item is available for pre-order.
- 
-- `https://schema.org/PreSale`: The item is available for ordering and delivery before general availability.
- 
-- `https://schema.org/SoldOut`: The item has been sold out.
- 
-
- The short names without the URL prefix are also supported (for example, `BackOrder`).
-
- | 
- 
-
- 
- `priceCurrency` or `priceSpecification.priceCurrency` | 
- 
- `[Text](https://schema.org/Text)`
-
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217)
- format.
-
- This property is currently recommended for product snippets to help Google
- determine the currency more accurately, but required for merchant listing experiences.
- It is therefore best to always provide this property.
-
- | 
- 
-
- 
- `priceValidUntil` | 
- 
- `[Date](https://schema.org/Date)`
-
- The date (in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
- date format) after which the price will no longer be available, if applicable. Your product snippet
- may not display if the `priceValidUntil` property indicates a past date.
-
- | 
- 
-
+| `priceValidUntil` | ` Date ` The date (in ISO 8601 date format) after which the price will no longer be available, if applicable. Your product snippet may not display if the `priceValidUntil` property indicates a past date. |
  
 
 #### `UnitPriceSpecification`
@@ -1525,43 +1264,19 @@ The full definition of `Offer` is available at
  Use the following properties to capture more complex pricing schemes.
 
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `price` | 
- 
- `[Number](https://schema.org/Number)`
-
- 
- The offer price of a product. See also the `price` property of `Offer`.
- 
-
- | 
+| `price` | ` Number ` The offer price of a product. See also the `price` property of `Offer`. |
  
 
  
-
  
- Recommended properties | 
-
+| Recommended properties |
  
  
- `priceCurrency` | 
- 
- `[Text](https://schema.org/Text)`
-
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
- See also the `priceCurrency` property of `Offer`.
-
- While this property is optional for product snippets, it's strongly recommended because
- it avoids pricing ambiguities and it's required for merchant
- listing experiences.
-
- | 
- 
-
+| `priceCurrency` | ` Text ` The currency used to describe the product price, in three-letter ISO 4217 format. See also the `priceCurrency` property of `Offer`. While this property is optional for product snippets, it's strongly recommended because it avoids pricing ambiguities and it's required for merchant listing experiences. |
  
 
 #### `AggregateOffer`
@@ -1575,59 +1290,23 @@ The full definition of `Offer` is available at
  [`AggregateOffer`](https://schema.org/AggregateOffer) type:
 
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `lowPrice` | 
+| `lowPrice` | ` Number ` The lowest price of all offers available. Use a decimal separator (`.`) when expressing fractions of a currency unit, such as 1.23 for $1.23 US dollars. |
  
- `[Number](https://schema.org/Number)`
-
- 
- The lowest price of all offers available. Use a decimal separator (`.`) when
- expressing fractions of a currency unit, such as 1.23 for $1.23 US dollars.
- 
-
- | 
+| `priceCurrency` | ` Text ` The currency used to describe the product price, in three-letter ISO 4217 format. |
  
 
  
- `priceCurrency` | 
  
- `[Text](https://schema.org/Text)`
-
- The currency used to describe the product price, in three-letter
- [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
-
- | 
- 
-
- 
-
- 
- Recommended properties | 
-
+| Recommended properties |
  
  
- `highPrice` | 
+| `highPrice` | ` Number ` The highest price of all offers available. Use a floating point number if necessary. |
  
- `[Number](https://schema.org/Number)`
-
- The highest price of all offers available. Use a floating point number if necessary.
-
- | 
- 
-
- 
- `offerCount` | 
- 
- `[Number](https://schema.org/Number)`
-
- The number of offers for the product.
-
- | 
- 
-
+| `offerCount` | ` Number ` The number of offers for the product. |
  
 
 ## Monitor rich results with Search Console

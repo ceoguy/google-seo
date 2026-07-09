@@ -65,67 +65,13 @@ In addition to structured data for the individual products that you sell, we als
  
  
  
+| Product snippet A text result that includes additional product information such as ratings, review information, price, and availability | |
  
+| Popular products Visually rich presentation of products for sale | |
  
-##### Product snippet
-
- A [text result](https://developers.google.com/search/docs/appearance/visual-elements-gallery#text-result)
- that includes additional product information such as ratings, review information, price,
- and availability
+| Shopping knowledge panel Detailed product information with a list of sellers (using details such as product identifiers) | |
  
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-##### Popular products
-
- 
- Visually rich presentation of products for sale
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-##### Shopping knowledge panel
-
- 
- Detailed product information with a list of sellers (using details such as
- product identifiers)
- 
-
- | 
- 
- 
- | 
- 
-
- 
- 
- 
-##### Google Images
-
- 
- Annotated images of products available for sale
- 
-
- | 
- 
- 
- | 
- 
-
+| Google Images Annotated images of products available for sale | |
  
  
 

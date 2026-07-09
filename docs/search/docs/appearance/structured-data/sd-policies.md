@@ -228,30 +228,30 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>How To Make Banana Bread</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Banana Bread Recipe",
- "description": "The best banana bread recipe you'll ever find! Learn how to use up all those extra bananas.",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.7,
- "ratingCount": 123
- },
- "video": {
- "@type": "VideoObject",
- "name": "How To Make Banana Bread",
- "description": "This is how you make banana bread, in 5 easy steps.",
- "contentUrl": "https://www.example.com/video123.mp4"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>How To Make Banana Bread</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Banana Bread Recipe",
+      "description": "The best banana bread recipe you'll ever find! Learn how to use up all those extra bananas.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 4.7,
+        "ratingCount": 123
+      },
+      "video": {
+        "@type": "VideoObject",
+        "name": "How To Make Banana Bread",
+        "description": "This is how you make banana bread, in 5 easy steps.",
+        "contentUrl": "https://www.example.com/video123.mp4"
+       }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -269,38 +269,38 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>How To Make Banana Bread</title>
- <script type="application/ld+json">
- [{
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Banana Bread Recipe",
- "description": "The best banana bread recipe you'll ever find! Learn how to use up all those extra bananas."
- },
- {
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "Recipes",
- "item": "https://example.com/recipes"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "Bread recipes",
- "item": "https://example.com/recipes/bread-recipes"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "How To Make Banana Bread"
- }]
- }]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>How To Make Banana Bread</title>
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Banana Bread Recipe",
+      "description": "The best banana bread recipe you'll ever find! Learn how to use up all those extra bananas."
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Recipes",
+        "item": "https://example.com/recipes"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Bread recipes",
+        "item": "https://example.com/recipes/bread-recipes"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How To Make Banana Bread"
+      }]
+    }]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 

@@ -62,96 +62,43 @@ https://google.com/preferences/source?q=example.com
  
  
  
- Button assets by language | 
- 
-
+| Button assets by language |
  
  
  
- All listed languages | 
- [Download (all_listed_languages)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_all_languages.zip) | 
+| All listed languages | Download (all_listed_languages) |
  
-
+| Danish | Download (da) |
  
- Danish | 
- [Download (da)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_da.zip) | 
+| English | Download (en) |
  
-
+| Estonian | Download (et) |
  
- English | 
- [Download (en)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_en.zip) | 
+| Finnish | Download (fi) |
  
-
+| French | Download (fr) |
  
- Estonian | 
- [Download (et)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_et.zip) | 
+| German | Download (de) |
  
-
+| Hebrew | Download (iw) |
  
- Finnish | 
- [Download (fi)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_fi.zip) | 
+| Hindi | Download (hi) |
  
-
+| Japanese | Download (ja) |
  
- French | 
- [Download (fr)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_fr.zip) | 
+| Korean | Download (ko) |
  
-
+| Portuguese (Brazil) | Download (pt-br) |
  
- German | 
- [Download (de)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_de.zip) | 
+| Russian | Download (ru) |
  
-
+| Spanish | Download (es) |
  
- Hebrew | 
- [Download (iw)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_iw.zip) | 
+| Swedish | Download (sv) |
  
-
+| Turkish | Download (tr) |
  
- Hindi | 
- [Download (hi)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_hi.zip) | 
- 
-
- 
- Japanese | 
- [Download (ja)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_ja.zip) | 
- 
-
- 
- Korean | 
- [Download (ko)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_ko.zip) | 
- 
-
- 
- Portuguese (Brazil) | 
- [Download (pt-br)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_pt-br.zip) | 
- 
-
- 
- Russian | 
- [Download (ru)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_ru.zip) | 
- 
-
- 
- Spanish | 
- [Download (es)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_es.zip) | 
- 
-
- 
- Swedish | 
- [Download (sv)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_sv.zip) | 
- 
-
- 
- Turkish | 
- [Download (tr)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_tr.zip) | 
- 
-
- 
- Ukrainian | 
- [Download (uk)](https://services.google.com/fh/files/helpcenter/google_preferred_source_badge_uk.zip) | 
- 
-
+| Ukrainian | Download (uk) |
  
  
 

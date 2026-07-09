@@ -107,38 +107,40 @@ Here's an example of organization information in JSON-LD code.
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>About Us</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Organization",
- "url": "https://www.example.com",
- "sameAs": ["https://example.net/profile/example1234", "https://example.org/example1234"],
- "logo": "https://www.example.com/images/logo.png",
- "name": "Example Corporation",
- "description": "The example corporation is well-known for producing high-quality widgets",
- "email": "contact@example.com",
- "telephone": "+47-99-999-9999",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "Rue Improbable 99",
- "addressLocality": "Paris",
- "addressCountry": "FR",
- "addressRegion": "Ile-de-France",
- "postalCode": "75001"
- },
- "vatID": "FR12345678901",
- "iso6523Code": "0199:724500PMK2A2M1SQQ228"
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>About Us</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "https://www.example.com",
+      "sameAs": ["https://example.net/profile/example1234", "https://example.org/example1234"],
+      "logo": "https://www.example.com/images/logo.png",
+      "name": "Example Corporation",
+      "description": "The example corporation is well-known for producing high-quality widgets",
+      "email": "contact@example.com",
+      "telephone": "+47-99-999-9999",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue Improbable 99",
+        "addressLocality": "Paris",
+        "addressCountry": "FR",
+        "addressRegion": "Ile-de-France",
+        "postalCode": "75001"
+      },
+      "vatID": "FR12345678901",
+      "iso6523Code": "0199:724500PMK2A2M1SQQ228"
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ### `OnlineStore` (subtype of `Organization`) with a shipping policy and return policy
 
@@ -230,91 +232,93 @@ Refer to the separate [Merchant return policy markup](https://developers.google.
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>About Us</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "OnlineStore",
- "name": "Example Online Store",
- "url": "https://www.example.com",
- "sameAs": [
- "https://example.net/profile/example12",
- "https://example.org/@example34"
- ],
- "logo": "https://www.example.com/assets/images/logo.png",
- "contactPoint": {
- "contactType": "Customer Service",
- "email": "support@example.com",
- "telephone": "+47-99-999-9900"
- },
- "vatID": "FR12345678901",
- "iso6523Code": "0199:724500PMK2A2M1SQQ228",
- "hasShippingService": [
- {
- "@type": "ShippingService",
- "name": "shipping to CH and FR",
- "description": "Shipping to CH 5% of order value, shipping to FR always free",
- "fulfillmentType": "FulfillmentTypeDelivery",
- "shippingConditions": [
- {
- "@type": "ShippingConditions",
- "shippingOrigin": {
- "@type": "DefinedRegion",
- "addressCountry": "FR"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "CH"
- },
- "shippingRate": {
- "@type": "ShippingRateSettings",
- "orderPercentage": "0.05"
- }
- },
- {
- "@type": "ShippingConditions",
- "shippingOrigin": {
- "@type": "DefinedRegion",
- "addressCountry": "FR"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "FR"
- },
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": "0",
- "currency": "EUR"
- }
- }
- ]
- }
- ],
- "hasMerchantReturnPolicy": {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": [
- "FR",
- "CH"
- ],
- "returnPolicyCountry": "FR",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn",
- "refundType": "https://schema.org/FullRefund"
- }
- // Other Organization-level properties
- // ...
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>About Us</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "Example Online Store",
+        "url": "https://www.example.com",
+        "sameAs": [
+          "https://example.net/profile/example12",
+          "https://example.org/@example34"
+        ],
+        "logo": "https://www.example.com/assets/images/logo.png",
+        "contactPoint": {
+          "contactType": "Customer Service",
+          "email": "support@example.com",
+          "telephone": "+47-99-999-9900"
+        },
+        "vatID": "FR12345678901",
+        "iso6523Code": "0199:724500PMK2A2M1SQQ228",
+        "hasShippingService": [
+          {
+            "@type": "ShippingService",
+            "name": "shipping to CH and FR",
+            "description": "Shipping to CH 5% of order value, shipping to FR always free",
+            "fulfillmentType": "FulfillmentTypeDelivery",
+            "shippingConditions": [
+              {
+                "@type": "ShippingConditions",
+                "shippingOrigin": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "FR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "CH"
+                },
+                "shippingRate": {
+                  "@type": "ShippingRateSettings",
+                  "orderPercentage": "0.05"
+                }
+              },
+              {
+                "@type": "ShippingConditions",
+                "shippingOrigin": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "FR"
+                },
+                "shippingDestination": {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "FR"
+                },
+                "shippingRate": {
+                  "@type": "MonetaryAmount",
+                  "value": "0",
+                  "currency": "EUR"
+                }
+              }
+            ]
+          }
+        ],
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": [
+            "FR",
+            "CH"
+          ],
+          "returnPolicyCountry": "FR",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 60,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn",
+          "refundType": "https://schema.org/FullRefund"
+        }
+        // Other Organization-level properties
+        // ...
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -363,433 +367,109 @@ Google recognizes the following properties of an
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `address` | 
- `[PostalAddress](https://schema.org/PostalAddress)`
-
- The address (physical or mailing) of your organization, if applicable. Include all properties that apply to your country. The more
- properties you provide, the higher quality the result is for users.
- You can provide multiple addresses if you have a location in multiple cities, states, or countries.
- For example:
-
- 
-
+| `address` | ` PostalAddress ` The address (physical or mailing) of your organization, if applicable. Include all properties that apply to your country. The more properties you provide, the higher quality the result is for users. You can provide multiple addresses if you have a location in multiple cities, states, or countries. For example: 
 ```
 "address": [{
- "@type": "PostalAddress",
- "streetAddress": "999 W Example St Suite 99 Unit 9",
- "addressLocality": "New York",
- "addressRegion": "NY",
- "postalCode": "10019",
- "addressCountry": "US"
+  "@type": "PostalAddress",
+  "streetAddress": "999 W Example St Suite 99 Unit 9",
+  "addressLocality": "New York",
+  "addressRegion": "NY",
+  "postalCode": "10019",
+  "addressCountry": "US"
 },{
- "streetAddress": "999 Rue due exemple",
- "addressLocality": "Paris",
- "postalCode": "75001",
- "addressCountry": "FR"
+  "streetAddress": "999 Rue due exemple",
+  "addressLocality": "Paris",
+  "postalCode": "75001",
+  "addressCountry": "FR"
 }]
 ```
-
- | 
+ |
  
-
+| `address.addressCountry` | ` Text ` The country for your postal address, using the two-letter ISO 3166-1 alpha-2 country code. |
  
- `address.addressCountry` | 
- `[Text](https://schema.org/Text)`
-
- The country for your postal address, using the two-letter [ISO 3166-1 alpha-2 country code.](https://wikipedia.org/wiki/ISO_3166-1)
-
- | 
+| `address.addressLocality` | ` Text ` The city of your postal address. |
  
-
+| `address.addressRegion` | ` Text ` The region of your postal address, if applicable. For example, a state. |
  
- `address.addressLocality` | 
- `[Text](https://schema.org/Text)`
-
- The city of your postal address.
-
- | 
+| `address.postalCode` | ` Text ` The postal code for your address. |
  
-
+| `address.streetAddress` | ` Text ` The full street address of your postal address. |
  
- `address.addressRegion` | 
- `[Text](https://schema.org/Text)`
-
- The region of your postal address, if applicable. For example, a state.
-
- | 
+| `alternateName` | ` Text ` Another common name that your organization goes by, if applicable. |
  
-
- 
- `address.postalCode` | 
- `[Text](https://schema.org/Text)`
-
- The postal code for your address.
-
- | 
- 
-
- 
- `address.streetAddress` | 
- `[Text](https://schema.org/Text)`
-
- The full street address of your postal address.
-
- | 
- 
-
- 
- `alternateName` | 
- `[Text](https://schema.org/Text)`
-
- Another common name that your organization goes by, if applicable.
- | 
- 
-
- 
- `contactPoint` | 
- `[ContactPoint](https://schema.org/ContactPoint)`
-
- The best way for a user to contact your business, if applicable. Include all support methods available to your users
- following Google recommended [best practices](https://developers.google.com/search/blog/2021/07/customer-support). For example:
-
- 
-
+| `contactPoint` | ` ContactPoint ` The best way for a user to contact your business, if applicable. Include all support methods available to your users following Google recommended best practices . For example: 
 ```
 "contactPoint": {
- "@type": "ContactPoint",
- "telephone": "+9-999-999-9999",
- "email": "contact@example.com"
+  "@type": "ContactPoint",
+  "telephone": "+9-999-999-9999",
+  "email": "contact@example.com"
 }
 ```
-
- | 
+ |
  
-
+| `contactPoint.email` | ` Text ` The email address to contact your business, if applicable. If you are using a `LocalBusiness` type, specify a primary email address at the `LocalBusiness` level before using `contactPoint` to specify multiple ways to reach your organization. |
  
- `contactPoint.email` | 
- `[Text](https://schema.org/Text)`
-
- The email address to contact your business, if applicable.
- If you are using a `LocalBusiness` type, specify a primary email address at
- the `LocalBusiness` level before using `contactPoint` to specify
- multiple ways to reach your organization.
+| `contactPoint.telephone` | ` Text ` The phone number to contact your business, if applicable. Be sure to include the country code and area code in the phone number. If you are using a `LocalBusiness` type, specify a primary phone number at the `LocalBusiness` level before using `contactPoint` to specify multiple ways to reach your organization. |
  
-
- | 
+| `description` | ` Text ` A detailed description of your organization, if applicable. |
  
-
+| `duns` | ` Text ` The Dun & Bradstreet DUNS number for identifying your `Organization`, if applicable. We encourage using the `iso6523Code` field with prefix `0060:` instead. |
  
- `contactPoint.telephone` | 
- `[Text](https://schema.org/Text)`
-
- The phone number to contact your business, if applicable.
- Be sure to include the country code and area code in the phone number.
- If you are using a `LocalBusiness` type, specify a primary phone number at
- the `LocalBusiness` level before using `contactPoint` to specify
- multiple ways to reach your organization.
+| `email` | ` Text ` The email address to contact your business, if applicable. |
  
-
- | 
+| `foundingDate` | ` Date ` The date your `Organization` was founded in ISO 8601 date format , if applicable. |
  
-
+| `globalLocationNumber` | ` Text ` The GS1 Global Location Number identifying the location of your `Organization`, if applicable. |
  
- `description` | 
- `[Text](https://schema.org/Text)`
-
- A detailed description of your organization, if applicable.
- | 
+| `hasMerchantReturnPolicy` | Repeated ` MerchantReturnPolicy ` The return policy of your `Organization`, if applicable. See Merchant return policy markup for detailed information on required and optional properties for `MerchantReturnPolicy`. If you don't provide a return policy for your `Organization`, or if some of your products have specific return policies for which you need to override the return policies defined for your `Organization`, use this property also under merchant listing markup . |
  
-
+| `hasMemberProgram` | Repeated ` MemberProgram ` A member (loyalty) program that you provide, if applicable. See Member program markup for detailed information on required and optional properties for `MemberProgram`. |
  
- `duns` | 
- `[Text](https://schema.org/Text)`
-
- The Dun & Bradstreet DUNS number for identifying your `Organization`, if
- applicable. We encourage using the `iso6523Code` field with prefix `0060:`
- instead.
- | 
+| `hasShippingService` | Repeated ` ShippingService ` The shipping policy of your `Organization`, if applicable. See Merchant shipping policy markup for detailed information on required and optional properties for `ShippingService`. If you don't provide a shipping policy for your `Organization`, or if some of your products have specific shipping policies for which you need to override the shipping policies defined for your `Organization`, use this property also under merchant listing markup . |
  
-
+| `iso6523Code` | ` Text ` The ISO 6523 identifier of your organization, if applicable. The first part of an ISO 6523 identifier is an `ICD` (International Code Designator) which defines which identification scheme is used. The second part is the actual identifier. We recommend separating the ICD and the identifier with a colon character (`U+003A`). Common ICD values include: `0060`: Dun & Bradstreet Data Universal Numbering System (DUNS) `0088`: GS1 Global Location Number (GLN) `0199`: Legal Entity Identifier (LEI) |
  
+| `legalName` | ` Text ` The registered, legal name of your `Organization`, if applicable and different from the `name` property. |
  
- `email`
- | 
+| `leiCode` | ` Text ` The identifier for your `Organization` as defined in ISO 17442, if applicable. We encourage using the `iso6523Code` field with prefix `0199:` instead. |
  
- `[Text](https://schema.org/Text)`
-
- The email address to contact your business, if applicable.
-
- | 
+| `logo` | ` URL ` or ` ImageObject ` A logo that is representative of your organization, if applicable. Adding this property can help Google better understand which logo you want to show, for example in Search results and knowledge panels. Image guidelines: The image must be 112x112px, at minimum. The image URL must be crawlable and indexable. The image file format must be supported by Google Images . Make sure the image looks how you intend it to look on a purely white background (for example, if the logo is mostly white or gray, it may not look how you want it to look when displayed on a white background). If you use the ` ImageObject ` type, make sure that it has a valid ` contentUrl ` property or ` url ` property that follows the same guidelines as a ` URL ` type. |
  
-
+| `naics` | ` Text ` The North American Industry Classification System (NAICS) code for your `Organization`, if applicable. |
  
- `foundingDate` | 
- `[Date](https://schema.org/Date)`
-
- The date your `Organization` was founded in [ISO 8601 date format](https://en.wikipedia.org/wiki/ISO_8601), if applicable.
- | 
+| `name` | ` Text ` The name of your organization. Use the same `name` and `alternateName` that you're using for your site name . |
  
-
- 
- `globalLocationNumber` | 
- `[Text](https://schema.org/Text)`
-
- The GS1 Global Location Number identifying the location of your `Organization`,
- if applicable.
- | 
- 
-
- 
- 
- `hasMerchantReturnPolicy`
- | 
- Repeated `[MerchantReturnPolicy](https://schema.org/MerchantReturnPolicy)`
-
- 
- The return policy of your `Organization`, if applicable. See
- [Merchant return policy markup](https://developers.google.com/search/docs/appearance/structured-data/return-policy#merchant-return-policy-properties)
- for detailed information on required and optional properties for `MerchantReturnPolicy`.
- 
-
- 
- If you don't provide a return policy for your `Organization`, or if some of your
- products have specific return policies for which you need to override the return
- policies defined for your `Organization`, use this property also under
- [merchant listing markup](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#merchant-return-policy-properties).
- 
- | 
- 
-
- 
- 
- `hasMemberProgram`
- | 
- Repeated `[MemberProgram](https://schema.org/MemberProgram)`
-
- 
- A member (loyalty) program that you provide, if applicable.
- See [Member program markup](https://developers.google.com/search/docs/appearance/structured-data/loyalty-program#member-program-properties) for detailed information on required and optional properties for `MemberProgram`.
- 
-
- | 
- 
-
- 
- 
- `hasShippingService`
- | 
- Repeated `[ShippingService](https://schema.org/ShippingService)`
-
- 
- The shipping policy of your `Organization`, if applicable. See
- [Merchant shipping policy markup](https://developers.google.com/search/docs/appearance/structured-data/shipping-policy#merchant-shipping-policy-properties)
- for detailed information on required and optional properties for `ShippingService`.
- 
-
- 
- If you don't provide a shipping policy for your `Organization`, or if some of your
- products have specific shipping policies for which you need to override the shipping
- policies defined for your `Organization`, use this property also under
- [merchant listing markup](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#merchant-shipping-policy-properties).
- 
- | 
- 
-
- 
- 
- `iso6523Code`
- | 
- `[Text](https://schema.org/Text)`
-
- The ISO 6523 identifier of your organization, if applicable.
- The first part of an ISO 6523 identifier is an [`ICD` (International Code Designator)](http://iso6523.info/icd_list.pdf)
- which defines which identification scheme is used.
- The second part is the actual identifier. We recommend separating the ICD and the
- identifier with a colon character (`U+003A`). Common ICD values include:
-
- 
- 
-- `0060`: Dun & Bradstreet Data Universal Numbering System (DUNS)
- 
-- `0088`: GS1 Global Location Number (GLN)
- 
-- `0199`: Legal Entity Identifier (LEI)
- 
-
- | 
- 
-
- 
- `legalName` | 
- `[Text](https://schema.org/Text)`
-
- The registered, legal name of your `Organization`, if applicable and different
- from the `name` property.
- | 
- 
-
- 
- `leiCode` | 
- `[Text](https://schema.org/Text)`
-
- The identifier for your `Organization` as defined in ISO 17442, if applicable.
- We encourage using the `iso6523Code` field with prefix `0199:` instead.
- | 
- 
-
- 
- `logo` | 
- `[URL](https://schema.org/URL)` or `[ImageObject](https://schema.org/ImageObject)`
-
- A logo that is representative of your organization, if applicable. Adding this property can help Google
- better understand which logo you want to show, for example in Search results and knowledge
- panels.
-
- Image guidelines:
-
- 
- 
-- The image must be 112x112px, at minimum.
- 
-- The image URL must be crawlable and indexable.
- 
-- The image file format must be [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- Make sure the image looks how you intend it to look on a purely white background (for
- example, if the logo is mostly white or gray, it may not look how you want it to look when
- displayed on a white background).
- 
-
- If you use the `[ImageObject](https://schema.org/ImageObject)` type,
- make sure that it has a valid `[contentUrl](https://schema.org/contentUrl)` property or
- `[url](https://schema.org/url)` property that follows the same guidelines as a
- `[URL](https://schema.org/URL)` type.
- 
-
- | 
- 
-
- 
- `naics` | 
- `[Text](https://schema.org/Text)`
-
- The [North American Industry Classification System (NAICS) code](https://www.census.gov/naics/)
- for your `Organization`, if applicable.
- | 
- 
-
- 
- `name` | 
- `[Text](https://schema.org/Text)`
-
- 
- The name of your organization. Use the same `name` and `alternateName`
- that you're using for your [site name](https://developers.google.com/search/docs/appearance/site-names).
- 
-
- | 
- 
-
- 
- `numberOfEmployees` | 
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`
-
- The number of employees in your `Organization`, if applicable.
-
- Example with a specific number of employees:
-
- 
-
+| `numberOfEmployees` | ` QuantitativeValue ` The number of employees in your `Organization`, if applicable. Example with a specific number of employees: 
 ```
 "numberOfEmployees": {
- "@type": "QuantitativeValue",
- "value": 2056
+  "@type": "QuantitativeValue",
+  "value": 2056
 }
 ```
-
- Example with the number of employees in a range:
-
- 
-
+ Example with the number of employees in a range: 
 ```
 "numberOfEmployees": {
- "@type": "QuantitativeValue",
- "minValue": 100,
- "maxValue": 999
+  "@type": "QuantitativeValue",
+  "minValue": 100,
+  "maxValue": 999
 }
 ```
-
- | 
+ |
  
-
+| `sameAs` | ` URL ` The URL of a page on another website with additional information about your organization, if applicable. For example, a URL to your organization's profile page on a social media or review site. You can provide multiple `sameAs` URLs. |
  
+| `taxID` | ` Text ` The tax ID associated with your `Organization`, if applicable. Make sure `taxID` matches the country that you provided in the `address` field. |
  
- `sameAs`
- | 
+| `telephone` | ` Text ` A business phone number meant to be the primary contact method for customers, if applicable. Be sure to include the country code and area code in the phone number. |
  
- `[URL](https://schema.org/URL)`
-
- The URL of a page on another website with additional information about your organization,
- if applicable. For example, a URL to your organization's profile page on a social media or
- review site. You can provide multiple `sameAs` URLs.
+| `url` | ` URL ` The URL of the website of your organization, if applicable. This helps Google uniquely identify your organization. |
  
-
- | 
- 
-
- 
- 
- `taxID`
- | 
- `[Text](https://schema.org/Text)`
-
- The tax ID associated with your `Organization`, if applicable. Make sure
- `taxID` matches the country that you provided in the `address` field.
- | 
- 
-
- 
- 
- `telephone`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- A business phone number meant to be the primary contact method for customers, if applicable.
- Be sure to include the country code and area code in the phone number.
-
- | 
- 
-
- 
- 
- `url`
- | 
- `[URL](https://schema.org/URL)`
-
- The URL of the website of your organization, if applicable. This helps Google uniquely
- identify your organization.
-
- | 
- 
-
- 
- 
- `vatID`
- | 
- `[Text](https://schema.org/Text)`
-
- The VAT (Value Added Tax) code associated with your `Organization`, if applicable
- to your country and business. This is an important trust signal for users (for example, users
- can look up your business in public VAT registries).
- | 
- 
-
+| `vatID` | ` Text ` The VAT (Value Added Tax) code associated with your `Organization`, if applicable to your country and business. This is an important trust signal for users (for example, users can look up your business in public VAT registries). |
  
 
  

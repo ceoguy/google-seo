@@ -634,99 +634,18 @@ Many features of Search Console help you monitor a site move, including:
  HTTPS). These mistakes can prevent your new site from being indexed completely.
 
  
- Common mistakes | 
-
  
+| Common mistakes |
  
-### `noindex` or robots.txt blocks
- | 
+| `noindex` or robots.txt blocks | Don't forget to remove any `noindex` or robots.txt blocks that were only needed for the migration. It's fine if you don't have a robots.txt file on your site, but be sure to return a proper `404` HTTP status code if the robots.txt file doesn't exist. To test: Examine your robots.txt file in your HTTPS site and see if anything needs to be changed. Use the URL inspection tool for any pages that seem to be missing from Google in the new site. |
  
+| Incorrect redirects | Check your redirects from the old site to the new one. We frequently see people redirecting to the wrong (non-existent) URLs on the new site. You can use Search Console to see if there are an unusually high number of "Not found" errors reported, or you can use other tools such as Screaming Frog to crawl your own site and see if the redirects work as expected. |
  
- Don't forget to remove any `noindex` or robots.txt blocks that were only
- needed for the migration.
+| Other crawl errors | Examine the Index Coverage report for a spike in other errors on your new site during migration events. |
  
-
+| Insufficient server capacity | After a migration, Google will crawl your new site more heavily than usual. This is because your site redirects traffic from the old to the new site, and any crawls of the old site will be redirected to the new site, in addition to any other crawling. Ensure that your site has sufficient capacity to handle the increased traffic from Google. |
  
- It's fine if you don't have a robots.txt file on your site, but be sure to return a
- proper `404` HTTP status code if the robots.txt file doesn't exist.
- 
-
- To test:
-
- 
- 
-- 
- Examine your robots.txt file in your HTTPS site and see if anything needs to be
- changed.
- 
- 
-- 
- Use the
- [URL inspection tool](https://support.google.com/webmasters/answer/9012289)
- for any pages that seem to be missing from Google in the new site.
- 
- 
-
- | 
- 
-
- 
- 
-### Incorrect redirects
- | 
- 
- 
- Check your redirects from the old site to the new one. We frequently see people
- redirecting to the wrong (non-existent) URLs on the new site.
- 
-
- 
- You can use Search Console to see if there are an unusually high number of "Not found"
- errors reported, or you can use other tools such as
- [Screaming Frog](https://www.screamingfrog.co.uk/seo-spider/)
- to crawl your own site and see if the redirects work as expected.
- 
-
- | 
- 
-
- 
- 
-### Other crawl errors
- | 
- 
- 
- Examine the [Index Coverage report](https://search.google.com/search-console/index)
- for a spike in other errors on your new site during migration events.
- 
-
- | 
- 
-
- 
- 
-### Insufficient server capacity
- | 
- 
- 
- After a migration, Google will crawl your new site more heavily than usual. This is
- because your site redirects traffic from the old to the new site, and any crawls of
- the old site will be redirected to the new site, in addition to any other crawling.
- Ensure that your site has sufficient capacity to handle the increased traffic from
- Google.
- 
-
- | 
- 
-
- 
- 
-### Not updating sitemaps
- | 
- Be sure that your sitemaps are all updated with the new URLs.
- | 
- 
-
+| Not updating sitemaps | Be sure that your sitemaps are all updated with the new URLs. |
  
 
  

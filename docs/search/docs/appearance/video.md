@@ -177,138 +177,61 @@ There are several URLs associated with a video. Here's a summary of the main one
 
  
  
- URLs related to the video | 
-
+ 
+| URLs related to the video |
  
  
  
- 
- 1. Watch page
- | 
- 
- The URL of the watch page that's embedding the video. If you're using a video sitemap,
- this URL is the value for the `<loc>` video sitemap tag.
-
- 
-
+| 1. Watch page | The URL of the watch page that's embedding the video. If you're using a video sitemap, this URL is the value for the `<loc>` video sitemap tag. 
 ```
-
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url>
 <loc>https://example.com/videos/some_video_landing_page.html</loc>
- <video:video>
- ...
-
+  <video:video>
+  ...
 ```
-
- | 
+ |
  
-
- 
- 
- 2. Video player
- | 
- 
- The URL of a specific player for the video. This is often the `src` value for
- an `<iframe>` element in the HTML of the watch page:
-
- 
-
+| 2. Video player | The URL of a specific player for the video. This is often the `src` value for an `<iframe>` element in the HTML of the watch page: 
 ```
 <iframe src="https://example.com/videoplayer.php?video=123" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 ```
-
- 
- How to provide the URL
-
- If you're using structured data, provide the video player URL as the value for the
- `VideoObject.embedUrl` property.
-
- 
-
+ How to provide the URL If you're using structured data, provide the video player URL as the value for the `VideoObject.embedUrl` property. 
 ```
 "embedUrl": "https://example.com/videoplayer.php?video=123"
 ```
-
- If you're using a video sitemap, provide the video player URL as the value for the `<video:player_loc>` tag.
-
- 
-
+ If you're using a video sitemap, provide the video player URL as the value for the `<video:player_loc>` tag. 
 ```
-
 <video:player_loc>https://example.com/videoplayer.php?video=123</video:player_loc>
-
 ```
-
- | 
+ |
  
-
- 
- 
- 3. Video file
- | 
- 
- The URL of the video file's actual content bytes, which could be hosted on the embedding
- site, a CDN, or on a streaming service.
-
- In the `<object>` element, the video file's URL is the value of the
- `data` attribute:
-
- 
-
+| 3. Video file | The URL of the video file's actual content bytes, which could be hosted on the embedding site, a CDN, or on a streaming service. In the `<object>` element, the video file's URL is the value of the `data` attribute: 
 ```
 <object data="https://streamserver.example.com/video/123/file.mp4" width="400" height="300"></object>
 ```
-
- In the `<video>` element, the video file's URL is the value of the
- `src` attribute of the `<source>` element:
-
- 
-
+ In the `<video>` element, the video file's URL is the value of the `src` attribute of the `<source>` element: 
 ```
 <video controls width="250">
- <source src="https://streamserver.example.com/video/123/file.webm" type="video/webm" />
- <source src="https://streamserver.example.com/video/123/file.mp4" type="video/mp4" />
+  <source src="https://streamserver.example.com/video/123/file.webm" type="video/webm" />
+  <source src="https://streamserver.example.com/video/123/file.mp4" type="video/mp4" />
 </video>
 ```
-
- In the `<embed>` element, the video file's URL is the value of the `src` attribute:
-
- 
-
+ In the `<embed>` element, the video file's URL is the value of the `src` attribute: 
 ```
 <embed type="video/webm" src="https://streamserver.example.com/video/123/file.mp4" width="400" height="300"></embed>
 ```
-
- 
- How to provide the URL
-
- If you're using structured data, provide the video file's URL as the value for the
- `VideoObject.contentUrl` property.
- 
-
- 
-
+ How to provide the URL If you're using structured data, provide the video file's URL as the value for the `VideoObject.contentUrl` property. 
 ```
 "contentUrl": "https://streamserver.example.com/video/123/file.mp4"
 ```
-
- If you're using a video sitemap, provide the video file's URL as the value for the
- `<video:content_loc>` tag.
-
- 
-
+ If you're using a video sitemap, provide the video file's URL as the value for the `<video:content_loc>` tag. 
 ```
-
 <video:content_loc>https://streamserver.example.com/video/123/file.mp4</video:content_loc>
-
 ```
-
- | 
- 
-
+ |
  
 
 ### Provide a high-quality video thumbnail
@@ -339,43 +262,18 @@ There are several URLs associated with a video. Here's a summary of the main one
 
  
  
- Video thumbnail specifications | 
-
+ 
+| Video thumbnail specifications |
  
  
  
+| Supported thumbnail formats | BMP, GIF, JPEG, PNG, WebP, SVG, and AVIF |
  
- Supported thumbnail formats
- | 
- BMP, GIF, JPEG, PNG, WebP, SVG, and AVIF | 
+| Size | Minimum 60x30 pixels, larger preferred. |
  
-
+| Location | The thumbnail file must be accessible by Googlebot and Googlebot Images (don't block the file with robots.txt or a login requirement). Make sure that the file is consistently available at a stable URL . |
  
- 
- Size
- | 
- Minimum 60x30 pixels, larger preferred. | 
- 
-
- 
- 
- Location
- | 
- 
- The thumbnail file must be accessible by Googlebot and Googlebot Images (don't block the
- file with [robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro) or a login
- requirement). Make sure that the file is consistently available at a
- [stable URL](https://developers.google.com#stable-url).
- | 
- 
-
- 
- 
- Transparency
- | 
- At least 80% of the thumbnail's pixels must have an alpha (transparency) value greater than 250. | 
- 
-
+| Transparency | At least 80% of the thumbnail's pixels must have an alpha (transparency) value greater than 250. |
  
 
 ### Provide consistent and unique information in your structured data
@@ -514,25 +412,26 @@ If you need your video removed from search results as quickly as possible,
  property) or video sitemap (use the `<video:expiration_date>` element). Here
  is an example of a video sitemap with a video that expired in November 2009:
 
+
 ```
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url>
 <loc>https://example.com/videos/some_video_landing_page.html</loc>
 <video:video>
- <video:thumbnail_loc>
- https://example.com/thumbs/123.jpg
- </video:thumbnail_loc>
- <video:title>
- Grilling steaks for summer
- </video:title>
- <video:description>
- Bob shows you how to grill steaks perfectly every time
- </video:description>
- <video:player_loc>
- https://example.com/videoplayer?video=123
- </video:player_loc>
- <video:expiration_date>2009-11-05T19:20:30+08:00</video:expiration_date>
+  <video:thumbnail_loc>
+      https://example.com/thumbs/123.jpg
+  </video:thumbnail_loc>
+  <video:title>
+      Grilling steaks for summer
+  </video:title>
+  <video:description>
+      Bob shows you how to grill steaks perfectly every time
+  </video:description>
+  <video:player_loc>
+      https://example.com/videoplayer?video=123
+  </video:player_loc>
+  <video:expiration_date>2009-11-05T19:20:30+08:00</video:expiration_date>
 </video:video>
 </url>
 </urlset>
@@ -584,24 +483,26 @@ If you need your video removed from search results as quickly as possible,
 
  In this video sitemap example, the video will only appear in search results in Canada and Mexico.
 
+
 ```
 <url>
- <loc>https://example.com/videos/some_video_landing_page.html</loc>
- <video:video>
- <video:thumbnail_loc>
- https://example.com/thumbs/123.jpg
- </video:thumbnail_loc>
- <video:title>Grilling steaks for summer</video:title>
- <video:description>
- Bob shows you how to get perfectly done steaks every time
- </video:description>
- <video:player_loc>
- https://example.com/player?video=123
- </video:player_loc>
- <video:restriction relationship="allow">ca mx</video:restriction>
- </video:video>
+  <loc>https://example.com/videos/some_video_landing_page.html</loc>
+  <video:video>
+    <video:thumbnail_loc>
+            https://example.com/thumbs/123.jpg
+    </video:thumbnail_loc>
+    <video:title>Grilling steaks for summer</video:title>
+    <video:description>
+        Bob shows you how to get perfectly done steaks every time
+    </video:description>
+    <video:player_loc>
+          https://example.com/player?video=123
+    </video:player_loc>
+    <video:restriction relationship="allow">ca mx</video:restriction>
+  </video:video>
 </url>
 ```
+
 
 ## Optimize for SafeSearch
 

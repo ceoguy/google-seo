@@ -28,89 +28,19 @@ fetched: 2026-07-08
  you're in, the language of your search query, and many other factors. Here are the most
  common types of search result visual elements that you might see in Google Search:
 
- Common types of search result visual elements | 
+ 
+| Common types of search result visual elements |
 
  
+| Text result | A result in Google Search that's based on the textual content of the page. Learn more about the text result visual elements . |
  
+| Rich result | A result that typically relies on structured data in the markup of your page to display graphical elements or interactive experiences. Explore the list of structured data features . |
  
- Text result
+| Image result | A result that's based on an image that's embedded on that web page. An image result is more likely to show for image-seeking queries. Learn more about the image result visual elements . |
  
-
- | 
+| Video result | A result that's based on a video that's embedded on that web page. A video result is more likely to show for video-seeking queries. Learn more about the video result visual elements . |
  
- 
- A result in Google Search that's based on the textual content of the page. Learn more
- about the [text result visual elements](https://developers.google.com#text-result).
- 
-
- | 
- 
-
- 
- 
- 
- Rich result
- 
-
- | 
- 
- 
- A result that typically relies on structured data in the markup of your page to display
- graphical elements or interactive experiences. Explore the
- [list of structured data features](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
- 
-
- | 
- 
-
- 
- 
- 
- Image result
- 
-
- | 
- 
- 
- A result that's based on an image that's embedded on that web page. An image result is
- more likely to show for image-seeking queries. Learn more about the [image result visual elements](https://developers.google.com#image-result).
- 
-
- | 
- 
-
- 
- 
- 
- Video result
- 
-
- | 
- 
- 
- A result that's based on a video that's embedded on that web page. A video result is
- more likely to show for video-seeking queries. Learn more about the [video result visual elements](https://developers.google.com#video-result).
- 
-
- | 
- 
-
- 
- 
- 
- Exploration features
- 
-
- | 
- 
- 
- A feature that helps searchers expand and refine their initial search. Learn more about
- [exploration features](https://developers.google.com#exploration).
- 
-
- | 
- 
-
+| Exploration features | A feature that helps searchers expand and refine their initial search. Learn more about exploration features . |
  
 
 ## Attribution
@@ -119,36 +49,13 @@ fetched: 2026-07-08
  result types, including text, image, and video results. Attribution can include various
  aspects of the source, such as the name of the site, favicon, and URL to the web page.
 
- Attribution visual elements | 
+ 
+| Attribution visual elements |
 
  
+| Favicon | The small icon that's associated with the site. Learn how to provide a favicon . |
  
- 
-### Favicon
-
- | 
- 
- 
- The small icon that's associated with the site. Learn how to [provide a favicon](https://developers.google.com/search/docs/appearance/favicon-in-search).
- 
-
- | 
- 
-
- 
- 
- 
-### Site name
-
- | 
- 
- 
- The name of the site. Learn how to [provide a site name with structured data](https://developers.google.com/search/docs/appearance/site-names).
- 
-
- | 
- 
-
+| Site name | The name of the site. Learn how to provide a site name with structured data . |
  
  
  
@@ -162,34 +69,9 @@ fetched: 2026-07-08
 
  
  
+| Domain | The site address as defined by the domain name. This is the name you chose when setting up the website (for example, example.com). |
  
- 
-### Domain
-
- | 
- 
- 
- The site address as defined by the domain name. This is the name you chose when setting up the website (for example, example.com).
- 
-
- | 
- 
-
- 
- 
- 
-### Breadcrumb
-
- | 
- 
- 
- The trail that shows the page's position within the site's hierarchy. Learn how to specify
- the trail with [Breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb).
- 
-
- | 
- 
-
+| Breadcrumb | The trail that shows the page's position within the site's hierarchy. Learn how to specify the trail with Breadcrumb structured data . |
  
 
  | 
@@ -208,67 +90,17 @@ fetched: 2026-07-08
  a variety of factors, like what device you're using, what you searched for, or what language
  you're using. You won't see a text result that includes all of the possible visual elements.
 
- Text result visual elements | 
+ 
+| Text result visual elements |
 
  
+| Attribution | The source information for the web page. Learn how to control attribution . |
  
+| Title link | The title of a search result on Google Search and other properties (for example, Google News) that links to the web page. Learn how to influence title links . |
  
-### Attribution
-
- | 
+| Snippet | The description or summary part of the search result on Google Search and other properties (for example, Google News). Learn how to control snippets . |
  
- 
- The source information for the web page. Learn [how to control attribution](https://developers.google.com#attribution).
- 
-
- | 
- 
-
- 
- 
- 
-### Title link
-
- | 
- 
- 
- The title of a search result on Google Search and other properties (for example,
- Google News) that links to the web page. Learn how to [influence title links](https://developers.google.com/search/docs/appearance/title-link).
- 
-
- | 
- 
-
- 
- 
- 
-### Snippet
-
- | 
- 
- 
- The description or summary part of the search result on Google Search and other
- properties (for example, Google News). Learn [how to control snippets](https://developers.google.com/search/docs/appearance/snippet).
- 
-
- | 
- 
-
- 
- 
- 
-### Byline date
-
- | 
- 
- 
- The date that Google estimates the web page was updated or published. Learn
- [how to provide a byline date](https://developers.google.com/search/docs/appearance/publication-dates).
- 
-
- | 
- 
-
+| Byline date | The date that Google estimates the web page was updated or published. Learn how to provide a byline date . |
  
  
  
@@ -287,20 +119,7 @@ fetched: 2026-07-08
 
  
  
- 
- 
-### Sitelink
-
- | 
- 
- 
- A single link within a sitelinks group. While sitelinks are automated, there are some
- [best practices you can follow for improving the quality](https://developers.google.com/search/docs/appearance/sitelinks#sitelinks-best-practices).
- 
-
- | 
- 
-
+| Sitelink | A single link within a sitelinks group. While sitelinks are automated, there are some best practices you can follow for improving the quality . |
  
 
  | 
@@ -329,38 +148,13 @@ fetched: 2026-07-08
  It's more likely to appear for image-seeking queries. To optimize your image for image results, follow
  the [image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
 
- Image result visual elements | 
+ 
+| Image result visual elements |
 
  
+| Image thumbnail | An image thumbnail for the indexed image that's embedded on a web page. Tapping or clicking it takes the user to the image. To optimize your image for image results, follow the image SEO best practices . |
  
- 
-### Image thumbnail
-
- | 
- 
- 
- An image thumbnail for the indexed image that's embedded on a web page. Tapping or clicking
- it takes the user to the image. To optimize your image for image results, follow the
- [image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
- 
-
- | 
- 
-
- 
- 
- 
-### Attribution
-
- | 
- 
- 
- The source information for the web page that's embedding the image. Learn [how to control attribution](https://developers.google.com#attribution).
- 
-
- | 
- 
-
+| Attribution | The source information for the web page that's embedding the image. Learn how to control attribution . |
  
 
 ## Video result
@@ -369,67 +163,17 @@ fetched: 2026-07-08
  more likely to appear for video-seeking queries. To optimize your video for video results,
  follow the [video best practices](https://developers.google.com/search/docs/appearance/video).
 
- Video result visual elements | 
+ 
+| Video result visual elements |
 
  
+| Video thumbnail | A video thumbnail for the indexed video that's embedded on a web page. Tapping or clicking it takes the user to the web page that's embedding the video. Learn how to specify a video thumbnail . |
  
+| Title link | The title link for the video landing page. Learn how to influence title links . |
  
-### Video thumbnail
-
- | 
+| Attribution | The source information for the video landing page. Learn how to control attribution . |
  
- 
- A video thumbnail for the indexed video that's embedded on a web page. Tapping or clicking
- it takes the user to the web page that's embedding the video. Learn how to
- [specify a video thumbnail](https://developers.google.com/search/docs/appearance/video#video-thumbnail).
- 
-
- | 
- 
-
- 
- 
- 
-### Title link
-
- | 
- 
- 
- The title link for the video landing page. Learn how to [influence title links](https://developers.google.com/search/docs/appearance/title-link).
- 
-
- | 
- 
-
- 
- 
- 
-### Attribution
-
- | 
- 
- 
- The source information for the video landing page. Learn [how to control attribution](https://developers.google.com#attribution).
- 
-
- | 
- 
-
- 
- 
- 
-### Upload date
-
- | 
- 
- 
- The date that the video was published as provided in its metadata. Learn
- [optimize your videos](https://developers.google.com/search/docs/appearance/video).
- 
-
- | 
- 
-
+| Upload date | The date that the video was published as provided in its metadata. Learn optimize your videos . |
  
 
 ## Exploration features

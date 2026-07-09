@@ -21,35 +21,16 @@ fetched: 2026-07-08
  `xmlns` attribute of the `urlset` tag. The namespaces for the sitemap
  extensions Google supports are:
 
- Extension tags and their namespace definitions | 
-
  
- `image:` | 
+| Extension tags and their namespace definitions |
  
- [`http://www.google.com/schemas/sitemap-image/1.1`](http://www.google.com/schemas/sitemap-image/1.1)
- | 
+| `image:` | `http://www.google.com/schemas/sitemap-image/1.1` |
  
-
+| `news:` | `http://www.google.com/schemas/sitemap-news/0.9` |
  
- `news:` | 
+| `video:` | `http://www.google.com/schemas/sitemap-video/1.1` |
  
- [`http://www.google.com/schemas/sitemap-news/0.9`](http://www.google.com/schemas/sitemap-news/0.9)
- | 
- 
-
- 
- `video:` | 
- 
- [`http://www.google.com/schemas/sitemap-video/1.1`](http://www.google.com/schemas/sitemap-video/1.1)
- | 
- 
-
- 
- `xhtml:` (for `hreflang`) | 
- 
- [`http://www.w3.org/1999/xhtml`](http://www.w3.org/1999/xhtml)
- | 
- 
+| `xhtml:` (for `hreflang`) | `http://www.w3.org/1999/xhtml` |
 
 ### Declaring multiple namespaces
 
@@ -57,15 +38,17 @@ fetched: 2026-07-08
  described in the documentation of the respective extensions. Here's an example that shows how
  to add the news, video, and xhtml (for `hreflang`) extensions to a sitemap:
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
- xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
- xmlns:xhtml="http://www.w3.org/1999/xhtml">
- <url>
+           xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+           xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
 <!-- rest of the sitemap -->
 ```
+
 
 ## Combining sitemap extensions
 
@@ -89,50 +72,52 @@ fetched: 2026-07-08
 
  For example, to add news, video, and xhtml (`hreflang`) extensions to a sitemap:
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
- xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
- xmlns:xhtml="http://www.w3.org/1999/xhtml">
- <url>
- <loc>https://www.example.com/english/page.html</loc>
- <!-- Starting with the news extension tags -->
- <news:news>
- <news:publication>
- <news:name>The Example Times</news:name>
- <news:language>en</news:language>
- </news:publication>
- <news:publication_date>2008-12-23</news:publication_date>
- <news:title>Companies A, B in Merger Talks</news:title>
- </news:news>
- <!-- Next we add video extension tags -->
- <video:video>
- <video:thumbnail_loc>https://www.example.com/thumbs/123.jpg</video:thumbnail_loc>
- <video:title>Lizzi is painting the wall</video:title>
- <video:description>
- Gary is watching the paint dry on the wall Lizzi painted.
- </video:description>
- <video:player_loc>
- https://player.example.com/video/987654321
- </video:player_loc>
- </video:video>
- <!-- And finally the xhtml tags for hreflang -->
- <xhtml:link
- rel="alternate"
- hreflang="de"
- href="https://www.example.de/deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="de-ch"
- href="https://www.example.de/schweiz-deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="en"
- href="https://www.example.com/english/page.html"/>
- </url>
+    xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+    xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.example.com/english/page.html</loc>
+    <!-- Starting with the news extension tags -->
+    <news:news>
+      <news:publication>
+        <news:name>The Example Times</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2008-12-23</news:publication_date>
+      <news:title>Companies A, B in Merger Talks</news:title>
+    </news:news>
+    <!-- Next we add video extension tags -->
+    <video:video>
+      <video:thumbnail_loc>https://www.example.com/thumbs/123.jpg</video:thumbnail_loc>
+      <video:title>Lizzi is painting the wall</video:title>
+      <video:description>
+        Gary is watching the paint dry on the wall Lizzi painted.
+      </video:description>
+      <video:player_loc>
+        https://player.example.com/video/987654321
+      </video:player_loc>
+    </video:video>
+    <!-- And finally the xhtml tags for hreflang -->
+    <xhtml:link
+                rel="alternate"
+                hreflang="de"
+                href="https://www.example.de/deutsch/page.html"/>
+    <xhtml:link
+                rel="alternate"
+                hreflang="de-ch"
+                href="https://www.example.de/schweiz-deutsch/page.html"/>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.example.com/english/page.html"/>
+  </url>
 <!-- Add more <url> tags -->
 ```
+
 
  The order of the extension in the sitemap is irrelevant after the `<loc>`
  tag. Keep in mind the

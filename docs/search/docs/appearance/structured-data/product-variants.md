@@ -270,148 +270,150 @@ In this example, the variants are nested under the top-level `ProductGroup` enti
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>Wool winter coat</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org/",
- "@type": "ProductGroup",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- "url": "https://www.example.com/coat",
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "audience": {
- "@type": "PeopleAudience",
- "suggestedGender": "unisex",
- "suggestedAge": {
- "@type": "QuantitativeValue",
- "minValue": 13,
- "unitCode": "ANN"
- }
- },
- "productGroupID": "44E01",
- "pattern": "striped",
- "material": "wool",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ],
- "hasVariant": [
- {
- "@type": "Product",
- "sku": "44E01-M11000",
- "gtin14": "98766051104214",
- "image": "https://www.example.com/coat_small_green.jpg",
- "name": "Small green coat",
- "description": "Small wool green coat for the winter season",
- "color": "Green",
- "size": "small",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=small&color=green",
- "priceCurrency": "USD",
- "price": 39.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- },
- {
- "@type": "Product",
- "sku": "44E01-K11000",
- "gtin14": "98766051104207",
- "image": "https://www.example.com/coat_small_lightblue.jpg",
- "name": "Small light blue coat",
- "description": "Small wool light blue coat for the winter season",
- "color": "light blue",
- "size": "small",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=small&color=lightblue",
- "priceCurrency": "USD",
- "price": 39.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- },
- {
- "@type": "Product",
- "sku": "44E01-X1100000",
- "gtin14": "98766051104399",
- "image": "https://www.example.com/coat_large_lightblue.jpg",
- "name": "Large light blue coat",
- "description": "Large wool light blue coat for the winter season",
- "color": "light blue",
- "size": "large",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=large&color=lightblue",
- "priceCurrency": "USD",
- "price": 49.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/BackOrder",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- }
- ]
- },
- {
- "@context": "https://schema.org/",
- "@type": "OfferShippingDetails",
- "@id": "#shipping_policy",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": 2.99,
- "currency": "USD"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 5,
- "unitCode": "DAY"
- }
- }
- },
- {
- "@context": "http://schema.org/",
- "@type": "MerchantReturnPolicy",
- "@id": "#return_policy",
- "applicableCountry": "US",
- "returnPolicyCountry": "US",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn"
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ProductGroup",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        "url": "https://www.example.com/coat",
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedGender": "unisex",
+          "suggestedAge": {
+            "@type": "QuantitativeValue",
+            "minValue": 13,
+            "unitCode": "ANN"
+          }
+        },
+        "productGroupID": "44E01",
+        "pattern": "striped",
+        "material": "wool",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ],
+        "hasVariant": [
+          {
+            "@type": "Product",
+            "sku": "44E01-M11000",
+            "gtin14": "98766051104214",
+            "image": "https://www.example.com/coat_small_green.jpg",
+            "name": "Small green coat",
+            "description": "Small wool green coat for the winter season",
+            "color": "Green",
+            "size": "small",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat?size=small&color=green",
+              "priceCurrency": "USD",
+              "price": 39.99,
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock",
+              "shippingDetails": { "@id": "#shipping_policy" },
+              "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+            }
+          },
+          {
+            "@type": "Product",
+            "sku": "44E01-K11000",
+            "gtin14": "98766051104207",
+            "image": "https://www.example.com/coat_small_lightblue.jpg",
+            "name": "Small light blue coat",
+            "description": "Small wool light blue coat for the winter season",
+            "color": "light blue",
+            "size": "small",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat?size=small&color=lightblue",
+              "priceCurrency": "USD",
+              "price": 39.99,
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/InStock",
+              "shippingDetails": { "@id": "#shipping_policy" },
+              "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+            }
+          },
+          {
+            "@type": "Product",
+            "sku": "44E01-X1100000",
+            "gtin14": "98766051104399",
+            "image": "https://www.example.com/coat_large_lightblue.jpg",
+            "name": "Large light blue coat",
+            "description": "Large wool light blue coat for the winter season",
+            "color": "light blue",
+            "size": "large",
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat?size=large&color=lightblue",
+              "priceCurrency": "USD",
+              "price": 49.99,
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": "https://schema.org/BackOrder",
+              "shippingDetails": { "@id": "#shipping_policy" },
+              "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "OfferShippingDetails",
+        "@id": "#shipping_policy",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 2.99,
+          "currency": "USD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "US"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      {
+        "@context": "http://schema.org/",
+        "@type": "MerchantReturnPolicy",
+        "@id": "#return_policy",
+        "applicableCountry": "US",
+        "returnPolicyCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 60,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 #### Single page example: variants separate from `ProductGroup`
 
@@ -503,91 +505,93 @@ This structure is similar to the previous example except the variants are define
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>Wool winter coat</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org",
- "@type": "ProductGroup",
- "@id": "#coat_parent",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- "url": "https://www.example.com/coat",
- // ... other ProductGroup-level properties
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "productGroupID": "44E01",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ]
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "name": "Small green coat",
- "description": "Small wool green coat for the winter season",
- "image": "https://www.example.com/coat_small_green.jpg",
- "size": "small",
- "color": "green",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=small&color=green",
- "price": 39.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "name": "Small dark blue coat",
- "description": "Small wool light blue coat for the winter season",
- "image": "https://www.example.com/coat_small_lightblue.jpg",
- "size": "small",
- "color": "light blue",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=small&color=lightblue",
- "price": 39.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "name": "Large light blue coat",
- "description": "Large wool light blue coat for the winter season",
- "image": "https://www.example.com/coat_large_lightblue.jpg",
- "size": "large",
- "color": "light blue",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat?size=large&color=lightblue",
- "price": 49.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "ProductGroup",
+        "@id": "#coat_parent",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        "url": "https://www.example.com/coat",
+        // ... other ProductGroup-level properties
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "productGroupID": "44E01",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "name": "Small green coat",
+        "description": "Small wool green coat for the winter season",
+        "image": "https://www.example.com/coat_small_green.jpg",
+        "size": "small",
+        "color": "green",
+        // ... other Product-level properties
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat?size=small&color=green",
+          "price": 39.99,
+          "priceCurrency": "USD"
+          // ... other offer-level properties
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "name": "Small dark blue coat",
+        "description": "Small wool light blue coat for the winter season",
+        "image": "https://www.example.com/coat_small_lightblue.jpg",
+        "size": "small",
+        "color": "light blue",
+        // ... other Product-level properties
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat?size=small&color=lightblue",
+          "price": 39.99,
+          "priceCurrency": "USD"
+          // ... other offer-level properties
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "name": "Large light blue coat",
+        "description": "Large wool light blue coat for the winter season",
+        "image": "https://www.example.com/coat_large_lightblue.jpg",
+        "size": "large",
+        "color": "light blue",
+        // ... other Product-level properties
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat?size=large&color=lightblue",
+          "price": 49.99,
+          "priceCurrency": "USD"
+          // ... other offer-level properties
+        }
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ### Multi-page website
 
@@ -699,70 +703,72 @@ The following example shows structured data on the first page for the light blue
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>Wool winter coat, light blue color</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org/",
- "@type": "ProductGroup",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- // ... other ProductGroup-level properties
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "productGroupID": "44E01",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ],
- "hasVariant": [
- {
- "@type": "Product",
- "name": "Small light blue coat",
- "description": "Small wool light blue coat for the winter season",
- "image": "https://www.example.com/coat_small_lightblue.jpg",
- "size": "small",
- "color": "light blue",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/lightblue?size=small",
- "price": 39.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- },
- {
- "@type": "Product",
- "name": "Large light blue coat",
- "description": "Large wool light blue coat for the winter season",
- "image": "https://www.example.com/coat_large_lightblue.jpg",
- "size": "large",
- "color": "light blue",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/lightblue?size=large",
- "price": 49.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- },
- { "url": "https://www.example.com/coat/green?size=small" }
- ]
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat, light blue color</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ProductGroup",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        // ... other ProductGroup-level properties
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "productGroupID": "44E01",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ],
+        "hasVariant": [
+          {
+            "@type": "Product",
+            "name": "Small light blue coat",
+            "description": "Small wool light blue coat for the winter season",
+            "image": "https://www.example.com/coat_small_lightblue.jpg",
+            "size": "small",
+            "color": "light blue",
+            // ... other Product-level properties
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat/lightblue?size=small",
+              "price": 39.99,
+              "priceCurrency": "USD"
+              // ... other offer-level properties
+            }
+          },
+          {
+            "@type": "Product",
+            "name": "Large light blue coat",
+            "description": "Large wool light blue coat for the winter season",
+            "image": "https://www.example.com/coat_large_lightblue.jpg",
+            "size": "large",
+            "color": "light blue",
+            // ... other Product-level properties
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat/lightblue?size=large",
+              "price": 49.99,
+              "priceCurrency": "USD"
+              // ... other offer-level properties
+            }
+          },
+          { "url": "https://www.example.com/coat/green?size=small" }
+        ]
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 ### Page 2: Green variant
@@ -818,55 +824,57 @@ The following example shows structured data on the first page for the light blue
 </html>
  
 
+
 ```
 <html>
- <head>
- <title>Wool winter coat, green color</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org/",
- "@type": "ProductGroup",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- // ... other ProductGroup-level properties
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "productGroupID": "44E01",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ],
- "hasVariant": [
- {
- "@type": "Product",
- "name": "Small green coat",
- "description": "Small wool green coat for the winter season",
- "image": "https://www.example.com/coat_green.jpg",
- "color": "green",
- "size": "small",
- // ... other Product-level properties
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/green?size=small",
- "price": 39.99,
- "priceCurrency": "USD"
- // ... other offer-level properties
- }
- },
- { "url": "https://www.example.com/coat/lightblue?size=small" },
- { "url": "https://www.example.com/coat/lightblue?size=large" }
- ]
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat, green color</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ProductGroup",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        // ... other ProductGroup-level properties
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "productGroupID": "44E01",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ],
+        "hasVariant": [
+          {
+            "@type": "Product",
+            "name": "Small green coat",
+            "description": "Small wool green coat for the winter season",
+            "image": "https://www.example.com/coat_green.jpg",
+            "color": "green",
+            "size": "small",
+            // ... other Product-level properties
+            "offers": {
+              "@type": "Offer",
+              "url": "https://www.example.com/coat/green?size=small",
+              "price": 39.99,
+              "priceCurrency": "USD"
+              // ... other offer-level properties
+            }
+          },
+          { "url": "https://www.example.com/coat/lightblue?size=small" },
+          { "url": "https://www.example.com/coat/lightblue?size=large" }
+        ]
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 #### Multi-page example: variants separate from `ProductGroup`
 
@@ -1014,132 +1022,132 @@ This structure is similar to the previous multi-page example, except the variant
 
 ```
 <html>
- <head>
- <title>Wool winter coat, lightblue color</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org/",
- "@type": "ProductGroup",
- "@id": "#coat_parent",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "audience": {
- "@type": "PeopleAudience",
- "suggestedGender": "unisex",
- "suggestedAge": {
- "@type": "QuantitativeValue",
- "minValue": 13,
- "unitCode": "ANN"
- }
- },
- "productGroupID": "44E01",
- "pattern": "striped",
- "material": "wool",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ]
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "sku": "44E01-K11000",
- "gtin14": "98766051104207",
- "image": "https://www.example.com/coat_lightblue.jpg",
- "name": "Small light blue coat",
- "description": "Small wool light blue coat for the winter season",
- "color": "light blue",
- "size": "small",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/lightblue?size=small",
- "priceCurrency": "USD",
- "price": 39.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "sku": "44E01-X1100000",
- "gtin14": "98766051104399",
- "image": "https://www.example.com/coat_lightblue.jpg",
- "name": "Large light blue coat",
- "description": "Large wool light blue coat for the winter season",
- "color": "light blue",
- "size": "large",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/lightblue?size=large",
- "priceCurrency": "USD",
- "price": 49.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/BackOrder",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "url": "https://www.example.com/coat/green?size=small"
- },
- {
- "@context": "https://schema.org/",
- "@type": "OfferShippingDetails",
- "@id": "#shipping_policy",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": 2.99,
- "currency": "USD"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 5,
- "unitCode": "DAY"
- }
- }
- },
- {
- "@context": "https://schema.org/",
- "@type": "MerchantReturnPolicy",
- "@id": "#return_policy",
- "applicableCountry": "US",
- "returnPolicyCountry": "US",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn"
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat, lightblue color</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ProductGroup",
+        "@id": "#coat_parent",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedGender": "unisex",
+          "suggestedAge": {
+            "@type": "QuantitativeValue",
+            "minValue": 13,
+            "unitCode": "ANN"
+          }
+        },
+        "productGroupID": "44E01",
+        "pattern": "striped",
+        "material": "wool",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "sku": "44E01-K11000",
+        "gtin14": "98766051104207",
+        "image": "https://www.example.com/coat_lightblue.jpg",
+        "name": "Small light blue coat",
+        "description": "Small wool light blue coat for the winter season",
+        "color": "light blue",
+        "size": "small",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat/lightblue?size=small",
+          "priceCurrency": "USD",
+          "price": 39.99,
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "shippingDetails": { "@id": "#shipping_policy" },
+          "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "sku": "44E01-X1100000",
+        "gtin14": "98766051104399",
+        "image": "https://www.example.com/coat_lightblue.jpg",
+        "name": "Large light blue coat",
+        "description": "Large wool light blue coat for the winter season",
+        "color": "light blue",
+        "size": "large",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat/lightblue?size=large",
+          "priceCurrency": "USD",
+          "price": 49.99,
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/BackOrder",
+          "shippingDetails": { "@id": "#shipping_policy" },
+          "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "url": "https://www.example.com/coat/green?size=small"
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "OfferShippingDetails",
+        "@id": "#shipping_policy",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": 2.99,
+          "currency": "USD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "US"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "MerchantReturnPolicy",
+        "@id": "#return_policy",
+        "applicableCountry": "US",
+        "returnPolicyCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 60,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -1270,117 +1278,117 @@ This structure is similar to the previous multi-page example, except the variant
 
 ```
 <html>
- <head>
- <title>Wool winter coat, green color</title>
- <script type="application/ld+json">
- [
- {
- "@context": "https://schema.org/",
- "@type": "ProductGroup",
- "@id": "#coat_parent",
- "name": "Wool winter coat",
- "description": "Wool coat, new for the coming winter season",
- "brand": {
- "@type": "Brand",
- "name": "Good brand"
- },
- "audience": {
- "@type": "PeopleAudience",
- "suggestedGender": "unisex",
- "suggestedAge": {
- "@type": "QuantitativeValue",
- "minValue": 13,
- "unitCode": "ANN"
- }
- },
- "productGroupID": "44E01",
- "pattern": "striped",
- "material": "wool",
- "variesBy": [
- "https://schema.org/size",
- "https://schema.org/color"
- ]
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "@id": "#small_green",
- "isVariantOf": { "@id": "#coat_parent" },
- "sku": "44E01-M11000",
- "gtin14": "98766051104214",
- "image": "https://www.example.com/coat_green.jpg",
- "name": "Small green coat",
- "description": "Small wool green coat for the winter season",
- "color": "green",
- "size": "small",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/coat/green?size=small",
- "priceCurrency": "USD",
- "price": 39.99,
- "itemCondition": "https://schema.org/NewCondition",
- "availability": "https://schema.org/InStock",
- "shippingDetails": { "@id": "#shipping_policy" },
- "hasMerchantReturnPolicy": { "@id": "#return_policy" }
- }
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "url": "https://www.example.com/coat/lightblue?size=small"
- },
- {
- "@context": "https://schema.org",
- "@type": "Product",
- "isVariantOf": { "@id": "#coat_parent" },
- "url": "https://www.example.com/coat/lightblue?size=large"
- },
- {
- "@context": "https://schema.org/",
- "@type": "OfferShippingDetails",
- "@id": "#shipping_policy",
- "shippingRate": {
- "@type": "MonetaryAmount",
- "value": "2.99",
- "currency": "USD"
- },
- "shippingDestination": {
- "@type": "DefinedRegion",
- "addressCountry": "US"
- },
- "deliveryTime": {
- "@type": "ShippingDeliveryTime",
- "handlingTime": {
- "@type": "QuantitativeValue",
- "minValue": 0,
- "maxValue": 1,
- "unitCode": "DAY"
- },
- "transitTime": {
- "@type": "QuantitativeValue",
- "minValue": 1,
- "maxValue": 5,
- "unitCode": "DAY"
- }
- }
- },
- {
- "@context": "https://schema.org/",
- "@type": "MerchantReturnPolicy",
- "@id": "#return_policy",
- "applicableCountry": "US",
- "returnPolicyCountry": "US",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn"
- }
- ]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Wool winter coat, green color</title>
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org/",
+        "@type": "ProductGroup",
+        "@id": "#coat_parent",
+        "name": "Wool winter coat",
+        "description": "Wool coat, new for the coming winter season",
+        "brand": {
+          "@type": "Brand",
+          "name": "Good brand"
+        },
+        "audience": {
+          "@type": "PeopleAudience",
+          "suggestedGender": "unisex",
+          "suggestedAge": {
+            "@type": "QuantitativeValue",
+            "minValue": 13,
+            "unitCode": "ANN"
+          }
+        },
+        "productGroupID": "44E01",
+        "pattern": "striped",
+        "material": "wool",
+        "variesBy": [
+          "https://schema.org/size",
+          "https://schema.org/color"
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "@id": "#small_green",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "sku": "44E01-M11000",
+        "gtin14": "98766051104214",
+        "image": "https://www.example.com/coat_green.jpg",
+        "name": "Small green coat",
+        "description": "Small wool green coat for the winter season",
+        "color": "green",
+        "size": "small",
+        "offers": {
+          "@type": "Offer",
+          "url": "https://www.example.com/coat/green?size=small",
+          "priceCurrency": "USD",
+          "price": 39.99,
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/InStock",
+          "shippingDetails": { "@id": "#shipping_policy" },
+          "hasMerchantReturnPolicy": { "@id": "#return_policy" }
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "url": "https://www.example.com/coat/lightblue?size=small"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "isVariantOf": { "@id": "#coat_parent" },
+        "url": "https://www.example.com/coat/lightblue?size=large"
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "OfferShippingDetails",
+        "@id": "#shipping_policy",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "2.99",
+          "currency": "USD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "US"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 5,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "MerchantReturnPolicy",
+        "@id": "#return_policy",
+        "applicableCountry": "US",
+        "returnPolicyCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 60,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    ]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -1457,190 +1465,39 @@ Google recognizes the following properties of `ProductGroup`. The full definitio
 
  
  
- Required properties | 
+ 
+| Required properties |
+ 
+ 
+ 
+| `name` | ` Text ` The name of the `ProductGroup` (for example, "Wool winter coat"). Make sure that the name of the variants in each `Product` item is more specific (for example, "Wool winter coat - green, size small", based on the variant-identifying properties. See the Product documentation for details. |
 
  
  
  
- `name` | 
- `[Text](https://schema.org/Text)`
-
- The name of the `ProductGroup` (for example, "Wool winter coat"). Make sure that
- the name of the variants in each `Product` item is more specific
- (for example, "Wool winter coat - green, size small", based on the variant-identifying properties.
- See the [Product documentation](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#name) for details.
- 
-
- | 
- 
-
- 
- 
- Recommended properties | 
-
+| Recommended properties |
  
  
  
- `aggregateRating` | 
- `[AggregateRating](https://schema.org/AggregateRating)`
+| `aggregateRating` | ` AggregateRating ` A nested `aggregateRating` of the `ProductGroup` (which is representative of all variants), if applicable. Follow the Review snippet guidelines and the list of required and recommended `AggregateRating` properties . |
  
-
- A nested `aggregateRating` of the `ProductGroup` (which is representative
- of all variants), if applicable. Follow the
- [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines)
- and the list of required and recommended
- [`AggregateRating` properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition).
-
- | 
+| `brand` | ` Brand ` Brand information about the `ProductGroup` (same across all variants), if applicable. See the Product documentation for details on `brand`. |
  
-
+| `brand.name` | ` Text ` The name of the brand of the `ProductGroup` (same across all variants). If you're already adding the brand at the `ProductGroup` level, you don't need to add it again at the `Product` level. See the Product documentation for details on `brand`. |
  
- `brand` | 
- `[Brand](https://schema.org/Brand)`
+| `description` | ` Text ` or ` TextObject ` The description of the `ProductGroup`. For example, "Wool winter coat for cold weather climates". Make sure that the variant description is more specific and ideally uses words that identify the variant (such as color, size, material). In addition to the description of the `ProductGroup`, we recommend also adding a description of each variant at the `Product` level. See the Product documentation for details. |
  
-
- Brand information about the `ProductGroup` (same across all variants), if applicable.
- See the [Product documentation](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#brand)
- for details on `brand`.
+| `hasAdultConsideration` | ` AdultOrientedEnumeration ` Indicates that the product is designated as adult-oriented for example, because it contains nudity or sexual content. If you sell products that are considered adult-oriented according to Google's adult-oriented content policy , you must use this property to label them as adult-oriented. While these products are eligible to be shown in Shopping ads and free listings, they are subject to age- and country-based restrictions. Labelling them ensures that Google can apply these restrictions and show appropriate and legally compliant content to people shopping online. While schema.org defines multiple values for `AdultOrientedEnumeration`, Google Search only supports the value `https://schema.org/SexualContentConsideration` for this property. |
  
-
- | 
+| `hasVariant` | ` Product ` A nested `Product` property that is one of the variants of the `ProductGroup` property, if applicable. A `ProductGroup` typically has multiple nested variant `Product` properties. Alternatively, a variant `Product` property can reference back to its parent `ProductGroup` using the `isVariantOf` property on the `Product` property. |
  
-
+| `productGroupID` | ` Text ` The identifier of the product group (also known as the parent sku ). This identifier must be provided for the `ProductGroup` property or, alternatively, using `inProductGroupWithID` property for variants of the `ProductGroup` property. If you provide the identifier for both the `ProductGroup` property and its variant `Product` properties, they must match. |
  
- `brand.name` | 
- `[Text](https://schema.org/Text)`
+| `review` | ` Review ` A nested `review` of the `ProductGroup`, if applicable. Follow the Review snippet guidelines and the list of required and recommended review properties . |
  
-
- The name of the brand of the `ProductGroup` (same across all variants). If you're
- already adding the brand at the `ProductGroup` level, you don't need to add it
- again at the `Product` level.
- See the [Product documentation](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#brand)
- for details on `brand`.
+| `url` | ` URL ` For single-page websites only : The URL (without variant selectors) where the `ProductGroup` property is located, if applicable. Don't use this property for multi-page websites. |
  
-
- | 
- 
-
- 
- `description` | 
- `[Text](https://schema.org/Text)` or
- `[TextObject](https://schema.org/TextObject)`
- 
-
- The description of the `ProductGroup`. For example, "Wool winter coat for cold
- weather climates". Make sure that the variant description is more specific and ideally uses
- words that identify the variant (such as color, size, material).
- 
-
- In addition to the description of the `ProductGroup`, we
- recommend also adding a description of each variant at the `Product`
- level. See the [Product documentation](https://developers.google.com/search/docs/appearance/structured-data/merchant-listing#description)
- for details.
- | 
- 
-
- 
- `hasAdultConsideration` | 
- `[AdultOrientedEnumeration](https://schema.org/AdultOrientedEnumeration)`
-
- Indicates that the product is designated as adult-oriented for example, because it
- contains nudity or sexual content. If you sell products that are considered adult-oriented according to Google's
- [adult-oriented content policy](https://support.google.com/merchants/answer/12073010#res),
- you must use this property to label them as adult-oriented. While these products
- are eligible to be shown in Shopping ads and free listings, they are subject to age- and
- country-based restrictions. Labelling them ensures that Google can apply these
- restrictions and show appropriate and legally compliant content to people shopping online.
- While schema.org defines multiple values for `AdultOrientedEnumeration`,
- Google Search only supports the value `https://schema.org/SexualContentConsideration` for this property.
-
- | 
- 
-
- 
- `hasVariant` | 
- `[Product](https://schema.org/Product)`
-
- A nested `Product` property that is one of the variants of the
- `ProductGroup` property, if applicable. A `ProductGroup` typically has multiple
- nested variant `Product` properties.
-
- Alternatively, a variant `Product` property can reference back to its parent
- `ProductGroup` using the `isVariantOf` property on the `Product`
- property.
- 
-
- | 
- 
-
- 
- `productGroupID` | 
- `[Text](https://schema.org/Text)`
-
- The identifier of the product group (also known as the parent sku). This identifier must be
- provided for the `ProductGroup` property or, alternatively, using `inProductGroupWithID`
- property for variants of the `ProductGroup` property. If you provide the identifier
- for both the `ProductGroup` property and its variant `Product`
- properties, they must match.
- 
-
- | 
- 
-
- 
- `review` | 
- `[Review](https://schema.org/Review)`
- 
-
- A nested `review` of the `ProductGroup`, if applicable. Follow the
- [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines)
- and the list of required and recommended
- [review properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties).
- 
-
- | 
- 
-
- 
- `url` | 
- `[URL](https://schema.org/URL)`
- 
-
- For [single-page websites](https://developers.google.com#single-page-website) only: The URL (without variant
- selectors) where the `ProductGroup` property is located, if applicable. Don't use this property
- for multi-page websites.
- 
-
- | 
- 
-
- 
- `variesBy` | 
- `[DefinedTerm](https://schema.org/DefinedTerm)`
-
- Aspects by which the variants in the `ProductGroup`
- vary, (for example, size or color), if applicable. Reference these variant-identifying properties through
- their full Schema.org URL (for example,
- `https://schema.org/color`). The following properties are supported:
- 
-
- 
- 
-- `https://schema.org/color`
- 
-- `https://schema.org/size`
- 
-- `https://schema.org/suggestedAge`
- 
-- `https://schema.org/suggestedGender`
- 
-- `https://schema.org/material`
- 
-- `https://schema.org/pattern`
- 
-
- | 
- 
+| `variesBy` | ` DefinedTerm ` Aspects by which the variants in the `ProductGroup` vary, (for example, size or color), if applicable. Reference these variant-identifying properties through their full Schema.org URL (for example, `https://schema.org/color`). The following properties are supported: `https://schema.org/color` `https://schema.org/size` `https://schema.org/suggestedAge` `https://schema.org/suggestedGender` `https://schema.org/material` `https://schema.org/pattern` |
 
  
 ## Troubleshooting

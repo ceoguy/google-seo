@@ -2,7 +2,7 @@
 
 158 pages mirrored from developers.google.com/search/docs.
 
-Regenerate: `python3 scripts/fetch-docs.py` (URL list in `urls.txt`, pulled from the live nav).
+Regenerate: `python3 scripts/fetch-docs.py`. The fetcher fails loudly on truncated extraction.
 
 
 ## appearance

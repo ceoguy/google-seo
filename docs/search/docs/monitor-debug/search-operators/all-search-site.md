@@ -15,29 +15,13 @@ fetched: 2026-07-08
  
  
  
- `site:` examples | 
- 
-
+| `site:` examples |
  
  
  
- `site:example.com`
- | 
+| `site:example.com` | Show results only from the `example.com` domain (`www.example.com` and `recipes.example.com`). |
  
- Show results only from the `example.com` domain (`www.example.com`
- and `recipes.example.com`).
- | 
- 
-
- 
- `site:https://www.example.com/ramen` tsukemen
- | 
- 
- Shows results for pages that contain URLs that start with
- `https://www.example.com/ramen` and are relevant to the term tsukemen.
- | 
- 
-
+| `site:https://www.example.com/ramen` tsukemen | Shows results for pages that contain URLs that start with `https://www.example.com/ramen` and are relevant to the term tsukemen. |
  
  
 
@@ -61,43 +45,19 @@ fetched: 2026-07-08
  
  
  
- `site:` examples | 
- 
-
+| `site:` examples |
  
  
  
- `site:example.com` | 
- Returns a list of indexed and serving URLs.
-
+| `site:example.com` | Returns a list of indexed and serving URLs. The list of URLs returned is not always exhaustive. Bigger sites shouldn't expect to see all their URLs in the results. A more specific prefix in the query may yield more results than broader prefixes. |
  
- The list of URLs returned is not always exhaustive. Bigger sites shouldn't expect to
- see all their URLs in the results. A more specific prefix in the query may yield more
- results than broader prefixes.
+| `site:https://example.com/recipes/tsukemen.html` | May help you understand whether a specific URL is indexed and served. |
  
- | 
+| `site:example.com viagra casino` | Helps with identifying and monitoring spam problems on your site. |
  
-
+| `site:https://example.com/` lemon | Shows which URLs on the site can show up for the term "lemon". |
  
- `site:https://example.com/recipes/tsukemen.html` | 
- May help you understand whether a specific URL is indexed and served. | 
- 
-
- 
- `site:example.com viagra casino` | 
- Helps with identifying and monitoring spam problems on your site. | 
- 
-
- 
- `site:https://example.com/` lemon | 
- Shows which URLs on the site can show up for the term "lemon". | 
- 
-
- 
- `site:https://example.com/recipes/tsukemen.html` lemon | 
- Shows whether the specific URL is indexed for the term "lemon". | 
- 
-
+| `site:https://example.com/recipes/tsukemen.html` lemon | Shows whether the specific URL is indexed for the term "lemon". |
  
  
 

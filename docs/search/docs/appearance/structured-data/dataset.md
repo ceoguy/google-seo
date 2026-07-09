@@ -216,86 +216,609 @@ fetched: 2026-07-08
 
 ```
 <html>
+  <head>
+    <title>NCDC Storm Events Database</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org/",
+      "@type":"Dataset",
+      "name":"NCDC Storm Events Database",
+      "description":"Storm Data is provided by the National Weather Service (NWS) and contain statistics on...",
+      "url":"https://catalog.data.gov/dataset/ncdc-storm-events-database",
+      "sameAs":"https://gis.ncdc.noaa.gov/geoportal/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510",
+      "identifier": ["https://doi.org/10.1000/182",
+                     "https://identifiers.org/ark:/12345/fk1234"],
+      "keywords":[
+         "ATMOSPHERE > ATMOSPHERIC PHENOMENA > CYCLONES",
+         "ATMOSPHERE > ATMOSPHERIC PHENOMENA > DROUGHT",
+         "ATMOSPHERE > ATMOSPHERIC PHENOMENA > FOG",
+         "ATMOSPHERE > ATMOSPHERIC PHENOMENA > FREEZE"
+      ],
+      "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
+      "isAccessibleForFree" : true,
+      "hasPart" : [
+        {
+          "@type": "Dataset",
+          "name": "Sub dataset 01",
+          "description": "Informative description of the first subdataset...",
+          "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
+          "creator":{
+             "@type":"Organization",
+             "name": "Sub dataset 01 creator"
+          }
+        },
+        {
+          "@type": "Dataset",
+          "name": "Sub dataset 02",
+          "description": "Informative description of the second subdataset...",
+          "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
+          "creator":{
+             "@type":"Organization",
+             "name": "Sub dataset 02 creator"
+          }
+        }
+      ],
+      "creator":{
+         "@type":"Organization",
+         "url": "https://www.ncei.noaa.gov/",
+         "name":"OC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce",
+         "contactPoint":{
+            "@type":"ContactPoint",
+            "contactType": "customer service",
+            "telephone":"+1-828-271-4800",
+            "email":"ncei.orders@noaa.gov"
+         }
+      },
+      "funder":{
+         "@type": "Organization",
+         "sameAs": "https://ror.org/00tgqzw13",
+         "name": "National Weather Service"
+      },
+      "includedInDataCatalog":{
+         "@type":"DataCatalog",
+         "name":"data.gov"
+      },
+      "distribution":[
+         {
+            "@type":"DataDownload",
+            "encodingFormat":"CSV",
+            "contentUrl":"https://www.ncdc.noaa.gov/stormevents/ftp.jsp"
+         },
+         {
+            "@type":"DataDownload",
+            "encodingFormat":"XML",
+            "contentUrl":"https://gis.ncdc.noaa.gov/all-records/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510"
+         }
+      ],
+      "temporalCoverage":"1950-01-01/2013-12-18",
+      "spatialCoverage":{
+         "@type":"Place",
+         "geo":{
+            "@type":"GeoShape",
+            "box":"18.0 -65.0 72.0 172.0"
+         }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+ 
+ 
+ RDFa
+ Here's an example of a dataset in RDFa using the DCAT vocabulary (not supported in Rich Results Test):
+
+ 
+
+```
+<article about="/node/1234" typeof="dcat:Dataset">
+    <dl>
+      <dt>Name:</dt>
+      <dd property="dc:title">ACME Inc Cash flow data</dd>
+      <dt>Identifiers:</dt>
+      <dd property="dc:identifier">https://doi.org/10.1000/182</dd>
+      <dd property="dc:identifier">https://identifiers.org/ark:/12345/fk1234</dd>
+      <dt>Description:</dt>
+      <dd property="dc:description">Financial Statements - Consolidated Statement of Cash Flows</dd>
+      <dt>Category:</dt>
+      <dd rel="dc:subject">Financial</dd>
+      <dt class="field-label">Downloads:</dt>
+      <dd>
+        <ul>
+          <li>
+            <a rel="dcat:distribution" href="Consolidated_Statement_of_Cash_Flows_en.csv"><span property="dcat:mediaType" content="text/csv" >Consolidated_Statement_of_Cash_Flows_en.csv</span></a>
+          </li>
+         <li>
+            <a rel="dcat:distribution"  href="files/Consolidated_Statement_of_Cash_Flows_en.xls"><span property="dcat:mediaType" content="application/vnd.ms-excel">Consolidated_Statement_of_Cash_Flows_en.xls</span></a>
+          </li>
+          <li>
+            <a rel="dcat:distribution"  href="files/consolidated_statement_of_cash_flows_en.xml"><span property="dcat:mediaType" content="application/xml">consolidated_statement_of_cash_flows_en.xml</span></a>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </article>
+```
+
+ 
+ 
+
+ 
+## Guidelines
+
+ Sites must follow the [structured data
+ guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies). In addition to the structured data guidelines, we recommend the following
+ [sitemap](https://developers.google.com#sitemap) and [source and provenance](https://developers.google.com#source-provenance)
+ best practices.
+
+ 
+### Sitemap best practices
+
+ Use a [sitemap file](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) to help
+ Google find your URLs. Using sitemap files and `sameAs` markup helps document how
+ dataset descriptions are published throughout your site.
+
+ If you have a dataset repository, you likely have at least two types of pages: the canonical
+ ("landing") pages for each dataset and pages that list multiple datasets (for example, search
+ results, or some subset of datasets). We recommend that you add structured data about a dataset to
+ the canonical pages. Use the [`sameAs`](https://schema.org/sameAs)
+ property to link to the canonical page if you add structured data to multiple copies of the
+ dataset, such as listings in search results pages.
+
+ Google doesn't need every mention of the same dataset to be explicitly marked
+ up, but if you do so for other reasons, we strongly encourage the use of
+ [`sameAs`](https://schema.org/sameAs).
+
+### Source and provenance best practices
+
+It is common for open datasets to be republished, aggregated, and to be based on other datasets.
+ This is an initial outline of our approach to representing situations in which a dataset is a copy
+ of, or otherwise based upon, another dataset.
+
+ 
+ 
+- Use the `[sameAs](https://schema.org/sameAs)`
+ property to indicate the most canonical URLs for the original in cases when the dataset or
+ description is a simple republication of materials published elsewhere. The value of
+ `[sameAs](https://schema.org/sameAs)` needs to
+ unambiguously indicate the dataset's identity - in other words, don't use the same
+ `[sameAs](https://schema.org/sameAs)`
+ value for two different datasets.
+ 
+- Use the `[isBasedOn](https://schema.org/isBasedOn)` property
+ in cases where the republished dataset (including its metadata) has been changed
+ significantly.
+ 
+- When a dataset derives from or aggregates several originals, use the
+ `[isBasedOn](https://schema.org/isBasedOn)` property.
+ 
+- Use the [`identifier`](https://pending.webschemas.org/identifier)
+ property to attach any relevant [Digital Object identifiers](https://en.wikipedia.org/wiki/Digital_object_identifier) (DOIs) or
+ [Compact Identifiers](https://doi.org/10.1038/sdata.2018.29). If
+ the dataset has more than one identifier, repeat the `identifier` property. If
+ using JSON-LD, this is represented using JSON list syntax.
+ 
+ 
+
+We hope to improve our recommendations based on feedback, in particular around the description of
+ provenance, versioning, and the dates associated with time series publication. Please join in
+ [community discussions](https://github.com/schemaorg/schemaorg/issues).
+
+### Textual property recommendations
+
+We recommend limiting all textual properties to 5000 characters or less. Google Dataset Search only uses the first 5000 characters of any textual property. Names and titles are typically a few words or a short sentence.
+
+ 
+## Known Errors and Warnings
+
+ 
+ You may experience errors or warnings in Google's [Rich Results Test](https://search.google.com/test/rich-results) and other validation systems. Specifically, validation systems may
+ suggest that organizations must have contact information including a `contactType`; useful values include
+ `customer service`, `emergency`, `journalist`, `newsroom`, and `public engagement`.
+ You can also ignore errors for `csvw:Table` being an unexpected value for the `mainEntity` property.
+
+ 
+
+ 
+## Structured data type definitions
+
+ You must include the required properties for your content to be eligible for display as a rich result.
+ You can also include the recommended properties to add more information about your content,
+ which could provide a better user experience.
+
+ You can use the [Rich Results Test](https://search.google.com/test/rich-results) to validate your markup.
+
+ The focus is on describing information about a dataset (its metadata) and representing its
+ contents. For example, dataset metadata states what the dataset is about, which variables it
+ measures, who created it, and so on. It does not, for example, contain specific values for the
+ variables.
+
+ 
+### `Dataset`
+
+ The full definition of `Dataset` is available at
+ [schema.org/Dataset](https://schema.org/Dataset).
+
+ You can describe additional information about the publication of the dataset, such as the
+ license, when it was published, its
+ [DOI](https://en.wikipedia.org/wiki/Digital_object_identifier),
+ or a `sameAs` pointing to a canonical version of the dataset in a different
+ repository. Add `identifier`, `license`, and `sameAs` for
+ datasets that provide provenance and license information.
+
+ The Google-supported properties are the following:
+
+ 
+ 
+ 
+ 
+| Required properties |
+ 
+ 
+ 
+| `description` | ` Text ` A short summary describing a dataset. Guidelines The summary must be between 50 and 5000 characters long. The summary may include Markdown syntax. Embedded images need to use absolute path URLs (instead of relative paths). When using the JSON-LD format, denote new lines with `\n` (two characters: backslash and lower case letter "n"). |
+ 
+| `name` | ` Text ` A descriptive name of a dataset. For example, "Snow depth in the Northern Hemisphere". Guidelines Use unique names for distinct datasets whenever possible. Recommended : ` "Snow depth in the Northern Hemisphere"` and `"Snow depth in the Southern Hemisphere"` for two different datasets. Not recommended : `"Snow depth"` and `"Snow depth"` for two different datasets. |
+ 
+ 
+
+ 
+ 
+ 
+ 
+| Recommended properties |
+ 
+ 
+ 
+| `alternateName` | ` Text ` Alternative names that have been used to refer to this dataset, such as aliases or abbreviations. Example (in JSON-LD format): 
+```
+"name": "The Quick, Draw! Dataset"
+"alternateName": ["Quick Draw Dataset", "quickdraw-dataset"]
+```
+ |
+ 
+| `creator` | ` Person ` or ` Organization ` The creator or author of this dataset. To uniquely identify individuals, use ORCID ID as the value of the `sameAs` property of the `Person` type. To uniquely identify institutions and organizations, use ROR ID . Example (in JSON-LD format): 
+```
+"creator": [
+  {
+    "@type": "Person",
+    "sameAs": "https://orcid.org/0000-0000-0000-0000",
+    "givenName": "Jane",
+    "familyName": "Foo",
+    "name": "Jane Foo"
+  },
+  {
+    "@type": "Person",
+    "sameAs": "https://orcid.org/0000-0000-0000-0001",
+    "givenName": "Jo",
+    "familyName": "Bar",
+    "name": "Jo Bar"
+  },
+  {
+    "@type": "Organization",
+    "sameAs": "https://ror.org/xxxxxxxxx",
+    "name": "Fictitious Research Consortium"
+  }
+]
+```
+ |
+ 
+| `citation` | ` Text ` or ` CreativeWork ` Identifies academic articles that are recommended by the data provider be cited in addition to the dataset itself. Provide the citation for the dataset itself with other properties, such as `name`, `identifier`, `creator`, and `publisher` properties. For example, this property can uniquely identify a related academic publication such as a data descriptor, data paper, or an article for which this dataset is supplementary material for. Examples (in JSON-LD format): 
+```
+"citation": "https://doi.org/10.1111/111"
+```
+ 
+```
+"citation": "https://identifiers.org/pubmed:11111111"
+```
+ 
+```
+"citation": "https://identifiers.org/arxiv:0111.1111v1"
+```
+ 
+```
+"citation":
+ "Doe J (2014) Influence of X ... https://doi.org/10.1111/111"
+```
+ Additional guidelines Don't use this property to provide citation information for the dataset itself. It is intended to identify related academic articles, not the dataset itself. To provide information necessary to cite the dataset itself use `name`, `identifier`, `creator`, and `publisher` properties instead. When populating the citation property with a citation snippet, provide the article identifier (such as a DOI) whenever possible. Recommended : ` "Doe J (2014) Influence of X. Biomics 1(1). https://doi.org/10.1111/111"` Not recommended : `"Doe J (2014) Influence of X. Biomics 1(1)."` |
+ 
+| `funder` | ` Person ` or ` Organization ` A person or organization that provides financial support for this dataset. To uniquely identify individuals, use ORCID ID as the value of the `sameAs` property of the `Person` type. To uniquely identify institutions and organizations, use ROR ID . Example (in JSON-LD format): 
+```
+"funder": [
+  {
+    "@type": "Person",
+    "sameAs": "https://orcid.org/0000-0000-0000-0002",
+    "givenName": "Jane",
+    "familyName": "Funder",
+    "name": "Jane Funder"
+  },
+  {
+    "@type": "Organization",
+    "sameAs": "https://ror.org/yyyyyyyyy",
+    "name": "Fictitious Funding Organization"
+  }
+]
+```
+ |
+ 
+| `hasPart` or `isPartOf` | ` URL ` or ` Dataset ` If the dataset is a collection of smaller datasets, use the `hasPart` property to denote such relationship. Conversly, if the dataset is part of a larger dataset, use `isPartOf`. Both properties can take the form of a URL or a `Dataset` instance. In case `Dataset` is used as a value it has to include all of the properties required for a standalone `Dataset`. Examples: 
+```
+"hasPart" : [
+  {
+    "@type": "Dataset",
+    "name": "Sub dataset 01",
+    "description": "Informative description of the first subdataset...",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "creator": {
+      "@type":"Organization",
+      "name": "Sub dataset 01 creator"
+    }
+  },
+  {
+    "@type": "Dataset",
+    "name": "Sub dataset 02",
+    "description": "Informative description of the second subdataset...",
+    "license": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "creator": {
+      "@type":"Organization",
+      "name": "Sub dataset 02 creator"
+    }
+  }
+]
+```
+ 
+```
+"isPartOf" : "https://example.com/aggregate_dataset"
+```
+ |
+ 
+| `identifier` | ` URL `, ` Text `, or ` PropertyValue ` An identifier, such as a DOI or a Compact Identifier. If the dataset has more than one identifier, repeat the `identifier` property. If using JSON-LD, this is represented using JSON list syntax. |
+ 
+| `isAccessibleForFree` | ` Boolean ` Whether the dataset is accessible without payment. |
+ 
+| `keywords` | ` Text ` Keywords summarizing the dataset. |
+ 
+| `license` | ` URL ` or ` CreativeWork ` A license under which the dataset is distributed. For example: 
+```
+"license" : "https://creativecommons.org/publicdomain/zero/1.0/"
+```
+ 
+```
+"license" : {
+  "@type": "CreativeWork",
+  "name": "Custom license",
+  "url": "https://example.com/custom_license"
+  }
+```
+ Additional guidelines Provide a URL that unambiguously identifies a specific version of the license used. Recommended 
+```
+"license" : "https://creativecommons.org/licenses/by/4.0"
+```
+ Not recommended 
+```
+"license" : "https://creativecommons.org/licenses/by"
+```
+ |
+ 
+| `measurementTechnique` | ` Text ` or ` URL ` The technique, technology, or methodology used in a dataset, which can correspond to the variable(s) described in `variableMeasured`. The `measurementTechnique` property is proposed and pending standardization at schema.org. We encourage publishers to share any feedback on this property with the schema.org community. |
+ 
+| `sameAs` | ` URL ` The URL of a reference web page that unambiguously indicates the dataset's identity. |
+ 
+| `spatialCoverage` | ` Text ` or ` Place ` You can provide a single point that describes the spatial aspect of the dataset. Only include this property if the dataset has a spatial dimension. For example, a single point where all the measurements were collected, or the coordinates of a bounding box for an area. Points 
+```
+"spatialCoverage:" {
+  "@type": "Place",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 39.3280,
+    "longitude": 120.1633
+  }
+}
+```
+ Shapes Use `GeoShape` to describe areas of different shapes. For example, to specify a bounding box. 
+```
+"spatialCoverage:" {
+  "@type": "Place",
+  "geo": {
+    "@type": "GeoShape",
+    "box": "39.3280 120.1633 40.445 123.7878"
+  }
+}
+```
+ Points inside `box`, `circle`, `line`, or `polygon` properties must be expressed as a space separated pair of two values corresponding to latitude and longitude (in that order). Named locations 
+```
+"spatialCoverage:" "Tahoe City, CA"
+```
+ |
+ 
+| `temporalCoverage` | ` Text ` The data in the dataset covers a specific time interval. Only include this property if the dataset has a temporal dimension. Schema.org uses the ISO 8601 standard to describe time intervals and time points. You can describe dates differently depending upon the dataset interval. Indicate open-ended intervals with two decimal points (`..`). Single date 
+```
+"temporalCoverage" : "2008"
+```
+ Time period 
+```
+"temporalCoverage" : "1950-01-01/2013-12-18"
+```
+ Open-ended time period 
+```
+"temporalCoverage" : "2013-12-19/.."
+```
+ |
+ 
+| `variableMeasured` | ` Text ` or ` PropertyValue ` The variable that this dataset measures. For example, temperature or pressure. The `variableMeasured` property is proposed and pending standardization at schema.org. We encourage publishers to share any feedback on this property with the schema.org community. |
+ 
+| `version` | ` Text ` or ` Number ` The version number for the dataset. |
+ 
+| `url` | ` URL ` Location of a page describing the dataset. |
+ 
+ 
+
+ 
+### `DataCatalog`
+
+ The full definition of `DataCatalog` is available at
+ [schema.org/DataCatalog](https://schema.org/DataCatalog).
+
+ 
+ Datasets are often published in repositories that contain many other
+ datasets. The same dataset can be included in more than one such repository. You
+ can refer to a data catalog that this dataset belongs to by referencing it
+ directly by using the following properties:
+ 
+
+ 
+ 
+ 
+ 
+| Recommended properties |
+ 
+ 
+ 
+| `includedInDataCatalog` | ` DataCatalog ` The catalog to which the dataset belongs. |
+ 
+ 
+
+ 
+### `DataDownload`
+
+ The full definition of `DataDownload` is available at
+ [schema.org/DataDownload](https://schema.org/DataDownload). In addition to Dataset properties,
+ add the following properties for datasets that provide download options.
+
+ 
+ The `distribution` property describes how to get the dataset itself because the URL
+ often points to the landing page describing the dataset. The `distribution`
+ property describes where to get the data and in what format. This property can
+ have several values: for instance, a CSV version has one URL and an Excel
+ version is available at another.
+ 
+
+ 
+ 
+ 
+ 
+| Required properties |
+ 
+ 
+ 
+| `distribution.contentUrl` | ` URL ` The link for the download. |
+ 
+ 
+
+ 
+ 
+ 
+ 
+| Recommended properties |
+ 
+ 
+
+ 
+| `distribution` | ` DataDownload ` The description of the location for download of the dataset and the file format for download. |
+ 
+| `distribution.encodingFormat` | ` Text ` or ` URL ` The file format of the distribution. |
+ 
+ 
+
+ 
+### Tabular datasets
+
+ Beta: This approach is currently in beta and therefore subject to change.
+ 
+ A [tabular dataset](https://www.w3.org/TR/tabular-data-model/#intro) is one organized primarily in terms of a grid of rows and columns.
+ For pages that embed tabular datasets, you can also create more explicit markup, building on the [basic approach](https://developers.google.com#approach). At this time we understand a variation of
+ CSVW ("CSV on the Web", see [W3C](https://www.w3.org/2013/csvw/wiki/Main_Page)), provided in parallel to user-oriented tabular content on the HTML page.
+ 
+
+ Here is an example showing a small table encoded in CSVW JSON-LD format. There are some [known errors](https://developers.google.com#knownerrors) in the Rich Results Test.
+
+ <html>
  <head>
- <title>NCDC Storm Events Database</title>
+ <title>American Humane Association</title>
  <script type="application/ld+json">
  {
- "@context":"https://schema.org/",
- "@type":"Dataset",
- "name":"NCDC Storm Events Database",
- "description":"Storm Data is provided by the National Weather Service (NWS) and contain statistics on...",
- "url":"https://catalog.data.gov/dataset/ncdc-storm-events-database",
- "sameAs":"https://gis.ncdc.noaa.gov/geoportal/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510",
- "identifier": ["https://doi.org/10.1000/182",
- "https://identifiers.org/ark:/12345/fk1234"],
- "keywords":[
- "ATMOSPHERE > ATMOSPHERIC PHENOMENA > CYCLONES",
- "ATMOSPHERE > ATMOSPHERIC PHENOMENA > DROUGHT",
- "ATMOSPHERE > ATMOSPHERIC PHENOMENA > FOG",
- "ATMOSPHERE > ATMOSPHERIC PHENOMENA > FREEZE"
- ],
- "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
- "isAccessibleForFree" : true,
- "hasPart" : [
- {
+ "@context": ["https://schema.org", {"csvw": "https://www.w3.org/ns/csvw#"}],
  "@type": "Dataset",
- "name": "Sub dataset 01",
- "description": "Informative description of the first subdataset...",
- "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
- "creator":{
- "@type":"Organization",
- "name": "Sub dataset 01 creator"
- }
- },
- {
- "@type": "Dataset",
- "name": "Sub dataset 02",
- "description": "Informative description of the second subdataset...",
- "license" : "https://creativecommons.org/publicdomain/zero/1.0/",
- "creator":{
- "@type":"Organization",
- "name": "Sub dataset 02 creator"
- }
- }
- ],
- "creator":{
- "@type":"Organization",
- "url": "https://www.ncei.noaa.gov/",
- "name":"OC/NOAA/NESDIS/NCEI > National Centers for Environmental Information, NESDIS, NOAA, U.S. Department of Commerce",
- "contactPoint":{
- "@type":"ContactPoint",
- "contactType": "customer service",
- "telephone":"+1-828-271-4800",
- "email":"ncei.orders@noaa.gov"
- }
- },
- "funder":{
+ "name":"AMERICAN HUMANE ASSOCIATION",
+ "description": "ProPublica's Nonprofit Explorer lets you view summaries of 2.2 million tax returns from tax-exempt organizations and see financial details such as their executive compensation and revenue and expenses. You can browse raw IRS data released since 2013 and access over 9.4 million tax filing documents going back as far as 2001.",
+ "publisher": {
  "@type": "Organization",
- "sameAs": "https://ror.org/00tgqzw13",
- "name": "National Weather Service"
+ "name": "ProPublica"
  },
- "includedInDataCatalog":{
- "@type":"DataCatalog",
- "name":"data.gov"
- },
- "distribution":[
+ "mainEntity" : {
+ "@type" : "csvw:Table",
+ "csvw:tableSchema": {
+ "csvw:columns": [
  {
- "@type":"DataDownload",
- "encodingFormat":"CSV",
- "contentUrl":"https://www.ncdc.noaa.gov/stormevents/ftp.jsp"
+ "csvw:name": "Year",
+ "csvw:datatype": "string",
+ "csvw:cells": [
+ {
+ "csvw:value": "2024",
+ "csvw:primaryKey": "2024"
  },
  {
- "@type":"DataDownload",
- "encodingFormat":"XML",
- "contentUrl":"https://gis.ncdc.noaa.gov/all-records/catalog/search/resource/details.page?id=gov.noaa.ncdc:C00510"
- }
- ],
- "temporalCoverage":"1950-01-01/2013-12-18",
- "spatialCoverage":{
- "@type":"Place",
- "geo":{
- "@type":"GeoShape",
- "box":"18.0 -65.0 72.0 172.0"
+ "csvw:value": "2024",
+ "csvw:primaryKey": "2024"
+ }]
+ },
+ {
+ "csvw:name": "Organization name",
+ "csvw:datatype": "string",
+ "csvw:cells": [
+ {
+ "csvw:value": "AMERICAN HUMANE ASSOCIATION",
+ "csvw:primaryKey": "2024"
+ },
+ {
+ "csvw:value": "AMERICAN HUMANE ASSOCIATION",
+ "csvw:primaryKey": "2024"
+ }]
+ },
+ {
+ "csvw:name": "Organization address",
+ "csvw:datatype": "string",
+ "csvw:cells": [
+ {
+ "csvw:value": "1400 16TH STREET NW",
+ "csvw:primaryKey": "2024"
+ },
+ {
+ "csvw:value": "1400 16TH STREET NW",
+ "csvw:primaryKey": "2024"
+ }]
+ },
+ {
+ "csvw:name": "Organization NTEE Code",
+ "csvw:datatype": "string",
+ "csvw:cells": [
+ {
+ "csvw:value": "D200",
+ "csvw:notes": "Animal Protection and Welfare",
+ "csvw:primaryKey": "2024"
+ },
+ {
+ "csvw:value": "D200",
+ "csvw:notes": "Animal Protection and Welfare",
+ "csvw:primaryKey": "2024"
+ }]
+ },
+ {
+ "csvw:name": "Total functional expenses ($)",
+ "csvw:datatype": "integer",
+ "csvw:cells": [
+ {
+ "csvw:value": "13800212",
+ "csvw:primaryKey": "2024"
+ },
+ {
+ "csvw:value": "13800212",
+ "csvw:primaryKey": "2024"
+ }]
+ }]
  }
  }
  }
@@ -304,4 +827,257 @@ fetched: 2026-07-08
  <body>
  </body>
 </html>
+ 
+
+ 
+
 ```
+<html>
+  <head>
+    <title>American Humane Association</title>
+    <script type="application/ld+json">
+    {
+      "@context": ["https://schema.org", {"csvw": "https://www.w3.org/ns/csvw#"}],
+      "@type": "Dataset",
+      "name":"AMERICAN HUMANE ASSOCIATION",
+      "description": "ProPublica's Nonprofit Explorer lets you view summaries of 2.2 million tax returns from tax-exempt organizations and see financial details such as their executive compensation and revenue and expenses. You can browse raw IRS data released since 2013 and access over 9.4 million tax filing documents going back as far as 2001.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ProPublica"
+      },
+      "mainEntity" : {
+        "@type" : "csvw:Table",
+        "csvw:tableSchema": {
+          "csvw:columns": [
+            {
+              "csvw:name": "Year",
+              "csvw:datatype": "string",
+              "csvw:cells": [
+                {
+                  "csvw:value": "2024",
+                  "csvw:primaryKey": "2024"
+                },
+                {
+                  "csvw:value": "2024",
+                  "csvw:primaryKey": "2024"
+                }]
+            },
+            {
+              "csvw:name": "Organization name",
+              "csvw:datatype": "string",
+              "csvw:cells": [
+                {
+                  "csvw:value": "AMERICAN HUMANE ASSOCIATION",
+                  "csvw:primaryKey": "2024"
+                },
+                {
+                  "csvw:value": "AMERICAN HUMANE ASSOCIATION",
+                  "csvw:primaryKey": "2024"
+                }]
+            },
+            {
+              "csvw:name": "Organization address",
+              "csvw:datatype": "string",
+              "csvw:cells": [
+                {
+                  "csvw:value": "1400 16TH STREET NW",
+                  "csvw:primaryKey": "2024"
+                },
+                {
+                  "csvw:value": "1400 16TH STREET NW",
+                  "csvw:primaryKey": "2024"
+                }]
+            },
+            {
+              "csvw:name": "Organization NTEE Code",
+              "csvw:datatype": "string",
+              "csvw:cells": [
+                {
+                  "csvw:value": "D200",
+                  "csvw:notes": "Animal Protection and Welfare",
+                  "csvw:primaryKey": "2024"
+                },
+                {
+                  "csvw:value": "D200",
+                  "csvw:notes": "Animal Protection and Welfare",
+                  "csvw:primaryKey": "2024"
+                }]
+            },
+            {
+              "csvw:name": "Total functional expenses ($)",
+              "csvw:datatype": "integer",
+              "csvw:cells": [
+                {
+                  "csvw:value": "13800212",
+                  "csvw:primaryKey": "2024"
+                },
+                {
+                  "csvw:value": "13800212",
+                  "csvw:primaryKey": "2024"
+                }]
+            }]
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+
+## Monitor rich results with Search Console
+
+ 
+ Search Console is a tool that helps you monitor how your pages perform in Google Search.
+ You don't have to sign up for Search Console to be included in Google Search results,
+ but it can help you understand and improve how Google sees your site. We
+ recommend checking Search Console in the following cases:
+ 
+ 
+- [After deploying structured data for the first time](https://developers.google.com#after-deploying)
+ 
+- [After releasing new templates or updating your code](https://developers.google.com#after-releasing)
+ 
+- [Analyzing traffic periodically](https://developers.google.com#analyzing-periodically)
+ 
+
+ 
+ 
+ 
+
+ 
+### After deploying structured data for the first time
+
+ 
+ After Google has indexed your pages, look for issues using the relevant
+ [Rich result status report](https://support.google.com/webmasters/answer/7552505).
+ Ideally, there will be an increase of valid items, and no increase in invalid items. If you find issues
+ in your structured data:
+
+ 
+ 
+- [Fix the invalid items](https://developers.google.com#troubleshooting).
+ 
+- [Inspect a live URL](https://support.google.com/webmasters/answer/9012289#test_live_page) to check if the issue persists.
+ 
+- [Request validation](https://support.google.com/webmasters/answer/13300208) using the status report.
+ 
+
+ 
+### After releasing new templates or updating your code
+
+ When you make significant changes to your website, monitor for increases in structured data invalid items.
+ 
+ 
+- If you see an increase in invalid items, perhaps you rolled out a new template that doesn't work, or your site interacts with the existing
+ template in a new and bad way.
+ 
+- If you see a decrease in valid items (not matched by an increase in invalid items), perhaps you are
+ no longer embedding structured data in your pages. Use the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289) to learn what is causing the issue.
+ 
+
+ 
+### Analyzing traffic periodically
+
+ Analyze your Google Search traffic using the [Performance Report](https://support.google.com/webmasters/answer/7576553).
+ The data will show you how often your page appears as a rich result in Search, how often users click on it and what is
+ the average position you appear on search results. You can also automatically pull these
+ results with the [Search Console API](https://developers.google.com/webmaster-tools/search-console-api-original/v3/how-tos/search_analytics).
+
+ 
+## Troubleshooting
+
+ 
+ If you're having trouble implementing or debugging structured data, here are some resources that
+ may help you.
+ 
+
+ 
+ 
+- If you're using a content management system (CMS) or someone else is taking care of your site,
+ ask them to help you. Make sure to forward any Search Console message that details the issue to them.
+ 
+- Google does not guarantee that features that consume structured data will show up in search results.
+ For a list of common reasons why Google may not show your content in a rich result, see the
+ [General Structured Data Guidelines](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
+ 
+- You might have an error in your structured data. Check the
+ [list of structured data errors](https://support.google.com/webmasters/answer/13300873)
+ and the [Unparsable structured data report](https://support.google.com/webmasters/answer/9166415).
+ 
+- If you received a structured data manual action against your page, the structured data on
+ the page will be ignored (although the page can still appear in Google Search results). To fix
+ [structured data issues](https://support.google.com/webmasters/answer/9044175#zippy=%2Cstructured-data-issue), use the [Manual Actions report](https://support.google.com/webmasters/answer/9044175).
+ 
+ 
+- Review the [guidelines](https://developers.google.com#guidelines) again to identify if your content isn't compliant
+ with the guidelines. The problem can be caused by either spammy content or spammy markup usage.
+ However, the issue may not be a syntax issue, and so the Rich Results Test won't be able to
+ identify these issues.
+ 
+ 
+- [Troubleshoot missing rich results / drop in total rich results](https://support.google.com/webmasters/answer/13300208).
+ 
+- Allow time for re-crawling and re-indexing. Remember that it may take several days after
+ publishing a page for Google to find and crawl it. For general questions about crawling and indexing, check the
+ [Google Search crawling and indexing FAQ](https://developers.google.com/search/help/crawling-index-faq).
+ 
+ 
+- Post a question in the [Google Search Central forum](https://support.google.com/webmasters/community).
+ 
+
+ 
+
+ 
+### Specific dataset isn't showing up in Dataset Search results
+
+ error What caused the issue: Your site doesn't have structured data on the page that describes the datasets or the page hasn't been crawled yet.
+
+ done Fix the issue
+
+ 
+ 
+- Copy the link for the page that you expect to see in Dataset Search results, and put it into the [Rich Results Test](https://search.google.com/test/rich-results). If the message "Page not eligible for rich results known by this test" or "Not all markup is eligible for rich results" appears, this means there's no dataset markup on the page or it's incorrect. You can fix it by referring to the [How to add structured data](https://developers.google.com#add-structured-data) section.
+ 
+- If there is markup on the page, it may not have been crawled yet. You can [check the crawl status](https://support.google.com/webmasters/answer/7440203) with Search Console.
+ 
+
+ 
+### Company logo is missing or not appearing correctly by results
+
+ error What caused the issue: Your page may be missing schema.org markup for organization logos or your business isn't established with Google.
+
+ done Fix the issue
+
+ 
+ 
+- Add [logo structured data](https://developers.google.com/search/docs/appearance/structured-data/organization#logo) to your page.
+ 
+- [Establish your business details](https://developers.google.com/search/docs/appearance/establish-business-details) with Google.
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Send feedback

@@ -53,11 +53,12 @@ fetched: 2026-07-08
  site at `yoursite.example.com/images/dogs.jpg`, add the following to your robots.txt
  file:
 
-```
 
+```
 User-agent: Googlebot-Image
 Disallow: /images/dogs.jpg
 ```
+
 
  The next time Google crawls the `dogs.jpg` image, we'll see this rule and drop your
  image from our search results.
@@ -71,8 +72,8 @@ Disallow: /images/dogs.jpg
  each image, or if the images share a common pattern such as a suffix in the filename, use a
  the `*` character in the filename. For example:
 
-```
 
+```
 User-agent: Googlebot-Image
 # Repeated 'disallow' rules for each image:
 Disallow: /images/dogs.jpg
@@ -81,30 +82,33 @@ Disallow: /images/llamas.jpg
 
 # Wildcard character in the filename for
 # images that share a common suffix. For example,
-# animal-picture-UNICORN.jpg and
-# animal-picture-SQUIRREL.jpg
+#   animal-picture-UNICORN.jpg and
+#   animal-picture-SQUIRREL.jpg
 # in the "images" directory
 # will be matched by this pattern.
 Disallow: /images/animal-picture-*.jpg
 ```
 
+
  To remove all the images on your site from our index, place the following rule in your robots.txt
  file:
 
-```
 
+```
 User-agent: Googlebot-Image
 Disallow: /
 ```
 
+
  To remove all files of a specific file type (for example, to include `.jpg` but not
  `.gif` images), you'd use the following robots.txt entry:
 
-```
 
+```
 User-agent: Googlebot-Image
 Disallow: /*.gif$
 ```
+
 
  By specifying `Googlebot-Image` as the `User-agent`, the images will be
  excluded from Google Images. If you would like to exclude the images from all Google searches

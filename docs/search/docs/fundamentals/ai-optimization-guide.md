@@ -281,38 +281,7 @@ fetched: 2026-07-08
  changes and new resources we publish:
 
  
- | 
- 
- 
- 
-- [Google Search Central blog](https://developers.google.com/search/blog): Get the latest information from our
- Google Search Central blog. You can find information about generative AI in Search, new Search
- Console features, and much more.
- 
- 
-- Google Search Central on [LinkedIn](https://www.linkedin.com/showcase/googlesearchcentral/) and [X (Twitter)](https://twitter.com/googlesearchc):
- Follow us for updates on Google Search and resources to help you make a great site.
- 
- 
-
- | 
- 
- 
- 
-- [Google Search Central Help Forum](https://support.google.com/webmasters/community):
- Post questions about your site's SEO issues and find tips to create high quality sites from the
- product forum for website owners. There are many experienced contributors in the forum, including
- [Product Experts](https://productexperts.withgoogle.com/) and
- occasionally Googlers.
- 
- 
-- [Google Search Central YouTube Channel](https://www.youtube.com/c/GoogleSearchCentral):
- Watch hundreds of helpful videos created for website owners.
- 
- 
-
- | 
- 
+| | Google Search Central blog : Get the latest information from our Google Search Central blog. You can find information about generative AI in Search, new Search Console features, and much more. Google Search Central on LinkedIn and X (Twitter) : Follow us for updates on Google Search and resources to help you make a great site. | Google Search Central Help Forum : Post questions about your site's SEO issues and find tips to create high quality sites from the product forum for website owners. There are many experienced contributors in the forum, including Product Experts and occasionally Googlers. Google Search Central YouTube Channel : Watch hundreds of helpful videos created for website owners. |
 
  
  

@@ -21,14 +21,7 @@ fetched: 2026-07-08
  
  Recipe enhancements | 
  
- Recipe host carousel: Enable users to explore your recipe gallery
- pages by adding [`ItemList` structured data](https://developers.google.com#item-list).
- | 
- 
- 
- | 
- 
-
+| Recipe host carousel : Enable users to explore your recipe gallery pages by adding `ItemList` structured data . | |
  
  
 
@@ -184,95 +177,96 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>Non-Alcoholic Piña Colada</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Non-Alcoholic Piña Colada",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "author": {
- "@type": "Person",
- "name": "Mary Stone"
- },
- "datePublished": "2024-03-10",
- "description": "This non-alcoholic pina colada is everyone's favorite!",
- "recipeCuisine": "American",
- "prepTime": "PT1M",
- "cookTime": "PT2M",
- "totalTime": "PT3M",
- "keywords": "non-alcoholic",
- "recipeYield": "4 servings",
- "recipeCategory": "Drink",
- "nutrition": {
- "@type": "NutritionInformation",
- "calories": "120 calories"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 5,
- "ratingCount": 18
- },
- "recipeIngredient": [
- "400ml of pineapple juice",
- "100ml cream of coconut",
- "ice"
- ],
- "recipeInstructions": [
- {
- "@type": "HowToStep",
- "name": "Blend",
- "text": "Blend 400ml of pineapple juice and 100ml cream of coconut until smooth.",
- "url": "https://example.com/non-alcoholic-pina-colada#step1",
- "image": "https://example.com/photos/non-alcoholic-pina-colada/step1.jpg"
- },
- {
- "@type": "HowToStep",
- "name": "Fill",
- "text": "Fill a glass with ice.",
- "url": "https://example.com/non-alcoholic-pina-colada#step2",
- "image": "https://example.com/photos/non-alcoholic-pina-colada/step2.jpg"
- },
- {
- "@type": "HowToStep",
- "name": "Pour",
- "text": "Pour the pineapple juice and coconut mixture over ice.",
- "url": "https://example.com/non-alcoholic-pina-colada#step3",
- "image": "https://example.com/photos/non-alcoholic-pina-colada/step3.jpg"
- }
- ],
- "video": {
- "@type": "VideoObject",
- "name": "How to Make a Non-Alcoholic Piña Colada",
- "description": "This is how you make a non-alcoholic piña colada.",
- "thumbnailUrl": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "contentUrl": "https://www.example.com/video123.mp4",
- "embedUrl": "https://www.example.com/videoplayer?video=123",
- "uploadDate": "2024-02-05T08:00:00+08:00",
- "duration": "PT1M33S",
- "interactionStatistic": {
- "@type": "InteractionCounter",
- "interactionType": { "@type": "WatchAction" },
- "userInteractionCount": 2347
- },
- "expires": "2024-02-05T08:00:00+08:00"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Non-Alcoholic Piña Colada</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Non-Alcoholic Piña Colada",
+      "image": [
+      "https://example.com/photos/1x1/photo.jpg",
+      "https://example.com/photos/4x3/photo.jpg",
+      "https://example.com/photos/16x9/photo.jpg"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Mary Stone"
+      },
+      "datePublished": "2024-03-10",
+      "description": "This non-alcoholic pina colada is everyone's favorite!",
+      "recipeCuisine": "American",
+      "prepTime": "PT1M",
+      "cookTime": "PT2M",
+      "totalTime": "PT3M",
+      "keywords": "non-alcoholic",
+      "recipeYield": "4 servings",
+      "recipeCategory": "Drink",
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "120 calories"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "ratingCount": 18
+      },
+      "recipeIngredient": [
+        "400ml of pineapple juice",
+        "100ml cream of coconut",
+        "ice"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "name": "Blend",
+          "text": "Blend 400ml of pineapple juice and 100ml cream of coconut until smooth.",
+          "url": "https://example.com/non-alcoholic-pina-colada#step1",
+          "image": "https://example.com/photos/non-alcoholic-pina-colada/step1.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Fill",
+          "text": "Fill a glass with ice.",
+          "url": "https://example.com/non-alcoholic-pina-colada#step2",
+          "image": "https://example.com/photos/non-alcoholic-pina-colada/step2.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Pour",
+          "text": "Pour the pineapple juice and coconut mixture over ice.",
+          "url": "https://example.com/non-alcoholic-pina-colada#step3",
+          "image": "https://example.com/photos/non-alcoholic-pina-colada/step3.jpg"
+        }
+      ],
+      "video": {
+        "@type": "VideoObject",
+        "name": "How to Make a Non-Alcoholic Piña Colada",
+        "description": "This is how you make a non-alcoholic piña colada.",
+        "thumbnailUrl": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+         ],
+        "contentUrl": "https://www.example.com/video123.mp4",
+        "embedUrl": "https://www.example.com/videoplayer?video=123",
+        "uploadDate": "2024-02-05T08:00:00+08:00",
+        "duration": "PT1M33S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 2347
+        },
+        "expires": "2024-02-05T08:00:00+08:00"
+       }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 ### Carousel
@@ -312,35 +306,36 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>Grandma's Best Pie Recipes</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "url": "https://example.com/apple-pie.html"
- },
- {
- "@type": "ListItem",
- "position": 2,
- "url": "https://example.com/blueberry-pie.html"
- },
- {
- "@type": "ListItem",
- "position": 3,
- "url": "https://example.com/cherry-pie.html"
- }]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Grandma's Best Pie Recipes</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "url": "https://example.com/apple-pie.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "url": "https://example.com/blueberry-pie.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "url": "https://example.com/cherry-pie.html"
+        }]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 ## Guidelines
@@ -396,404 +391,156 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- 
- `image`
- | 
- `[URL](https://schema.org/URL)` or `[ImageObject](https://schema.org/ImageObject)`
-
- Image of the completed dish.
-
- 
-Additional image guidelines:
- 
- 
-- Image URLs must be crawlable and indexable. To check if Google can access your URLs, use
- the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289).
- 
-- Images must represent the marked up content.
- 
-- Images must be in a file format that's [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when
- multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
- 
-
- For example:
-
- 
-
+| `image` | ` URL ` or ` ImageObject ` Image of the completed dish. Additional image guidelines: Image URLs must be crawlable and indexable. To check if Google can access your URLs, use the URL Inspection tool . Images must represent the marked up content. Images must be in a file format that's supported by Google Images . For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1. For example: 
 ```
 "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
 ]
 ```
-
+ Specifying the `image` property in `Recipe` markup has no impact on the image chosen for a text result image . To optimize for a text result image, follow the image SEO best practices . |
  
- Specifying the `image` property in `Recipe` markup
- has no impact on the image chosen for a [text result image](https://developers.google.com/search/docs/appearance/visual-elements-gallery#text-result-image).
- To optimize for a text result image, follow the [image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
- | 
- 
-
- 
- `name` | 
- `[Text](https://schema.org/Text)`
-
- The name of the dish.
- | 
- 
-
+| `name` | ` Text ` The name of the dish. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `aggregateRating` | 
- `[AggregateRating](https://schema.org/AggregateRating)`
-
- Annotation for the average review score assigned to the item. Follow the [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and list of required and recommended [`AggregateRating` properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition).
-
- If the `Recipe` structured data contains a single review, the reviewer's name must be a valid
- person or organization. For example, "50% off ingredients" is not a valid name for a
- reviewer.
- | 
+| `aggregateRating` | ` AggregateRating ` Annotation for the average review score assigned to the item. Follow the Review snippet guidelines and list of required and recommended `AggregateRating` properties . If the `Recipe` structured data contains a single review, the reviewer's name must be a valid person or organization. For example, "50% off ingredients" is not a valid name for a reviewer. |
  
-
+| `author` | ` Person ` or ` Organization ` The name of the person or organization that wrote the recipe. To help Google best understand authors across various features, consider following the author markup best practices . |
  
- `author` | 
- `[Person](https://schema.org/Person)`
- or `[Organization](https://schema.org/Organization)`
-
- The name of the person or organization that wrote the recipe. To help Google best
- understand authors across various features, consider following the
- [author markup best practices](https://developers.google.com/search/docs/appearance/structured-data/article#author-bp).
- | 
+| `cookTime` | ` Duration ` The time it takes to actually cook the dish in ISO 8601 format , if applicable. Always use in combination with `prepTime`. |
  
-
+| `datePublished` | ` Date ` The date the recipe was published in ISO 8601 format , if applicable. |
  
- `cookTime` | 
- `[Duration](https://schema.org/Duration)`
-
- The time it takes to actually cook the dish in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), if applicable.
+| `description` | ` Text ` A short summary describing the dish. |
  
-
- Always use in combination with `prepTime`. 
- | 
- 
-
- 
- `datePublished` | 
- `[Date](https://schema.org/Date)`
-
- The date the recipe was published in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601),
- if applicable.
- | 
- 
-
- 
- `description` | 
- `[Text](https://schema.org/Text)`
-
- A short summary describing the dish.
- | 
- 
-
- 
- 
- `keywords`
- | 
- `[Text](https://schema.org/Text)`
-
- Other terms for your recipe such as the season ("summer"), the holiday ("Halloween"), or other descriptors ("quick", "easy", "authentic").
-
- Additional guidelines
-
- 
- 
-- Separate multiple entries in a keywords list with commas.
- 
-- Don't use a tag that's actually a `recipeCategory`
- or `recipeCuisine`.
- 
-
- Not recommended:
-
- 
-
+| `keywords` | ` Text ` Other terms for your recipe such as the season ("summer"), the holiday ("Halloween"), or other descriptors ("quick", "easy", "authentic"). Additional guidelines Separate multiple entries in a keywords list with commas. Don't use a tag that's actually a `recipeCategory` or `recipeCuisine`. Not recommended : 
 ```
 "keywords": "dessert, American"
 ```
-
- Recommended:
-
- 
-
+ Recommended : 
 ```
 "keywords": "winter apple pie, nutmeg crust"
 ```
-
+ |
  
-
- | 
+| `nutrition.calories` | ` Energy ` The number of calories in each serving produced with this recipe. If `nutrition.calories` is defined, `recipeYield` must be defined with the number of servings. |
  
-
+| `prepTime` | ` Duration ` The length of time it takes to prepare ingredients and workspace for the dish, in ISO 8601 format , if applicable. Always use in combination with `cookTime`. |
  
- `nutrition.calories` | 
- `[Energy](https://schema.org/Energy)`
-
- The number of calories in each serving produced with this
- recipe. If `nutrition.calories` is defined, `recipeYield` must be defined
- with the number of servings.
- | 
+| `recipeCategory` | ` Text ` The type of meal or course your recipe is about. For example: "dinner", "main course", or "dessert, snack". |
  
-
+| `recipeCuisine` | ` Text ` The region associated with your recipe. For example, "French", Mediterranean", or "American". |
  
- `prepTime` | 
- 
- 
- `[Duration](https://schema.org/Duration)`
- 
-
- 
- The length of time it takes to prepare ingredients and workspace for the dish, in
- [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601),
- if applicable.
- 
-
- Always use in combination with `cookTime`.
-
- | 
- 
-
- 
- `recipeCategory` | 
- `[Text](https://schema.org/Text)`
-
- The type of meal or course your recipe is about. For example: "dinner", "main course", or "dessert, snack".
- | 
- 
-
- 
- `recipeCuisine` | 
- `[Text](https://schema.org/Text)`
-
- The region associated with your recipe. For example, "French", Mediterranean", or "American".
- | 
- 
-
- 
- `recipeIngredient` | 
- `[Text](https://schema.org/Text)`
- An ingredient used in the recipe. 
-
- For example:
-
- 
-
+| `recipeIngredient` | ` Text ` An ingredient used in the recipe. For example: 
 ```
 "recipeIngredient": [
- "1 (15 ounce) package double crust ready-to-use pie crust",
- "6 cups thinly sliced, peeled apples (6 medium)",
- "3/4 cup sugar",
- "2 tablespoons all-purpose flour",
- "3/4 teaspoon ground cinnamon",
- "1/4 teaspoon salt",
- "1/8 teaspoon ground nutmeg",
- "1 tablespoon lemon juice"
+  "1 (15 ounce) package double crust ready-to-use pie crust",
+  "6 cups thinly sliced, peeled apples (6 medium)",
+  "3/4 cup sugar",
+  "2 tablespoons all-purpose flour",
+  "3/4 teaspoon ground cinnamon",
+  "1/4 teaspoon salt",
+  "1/8 teaspoon ground nutmeg",
+  "1 tablespoon lemon juice"
 ]
 ```
-
- Additional guidelines:
-
+ Additional guidelines : Include only the ingredient text that is necessary for making the recipe. Don't include unnecessary information, such as a definition of the ingredient. |
  
- 
-- Include only the ingredient text that is necessary for making the recipe. 
- 
-- Don't include unnecessary information, such as a definition of the ingredient. 
- 
-
- | 
- 
-
- 
- `recipeInstructions`
- | 
- `[HowToStep](https://schema.org/HowToStep)`, `[HowToSection](https://schema.org/HowToSection)`, or `[Text](https://schema.org/Text)`
- The steps to make the dish.
-
- There are several options for setting the value of `recipeInstructions`. We recommend using `HowToStep`. `HowToSection` can also be used to group HowToSteps when the recipe has sections.
-
- 
- 
-- `HowToStep`: Specify this recipe's steps with `HowToStep`.
- 
-
+| `recipeInstructions` | ` HowToStep `, ` HowToSection `, or ` Text ` The steps to make the dish. There are several options for setting the value of `recipeInstructions`. We recommend using `HowToStep`. `HowToSection` can also be used to group HowToSteps when the recipe has sections. `HowToStep` : Specify this recipe's steps with `HowToStep`. 
 ```
 "recipeInstructions": [
- {
- "@type": "HowToStep",
- "name": "Preheat",
- "text": "Heat oven to 425°F.",
- "url": "https://example.com/recipe#step1",
- "image": "https://example.com/photos/recipe/step1.jpg"
- }, {
- "@type": "HowToStep",
- "name": "Prepare crust",
- "text": "Place 1 pie crust in ungreased 9-inch glass pie plate, pressing firmly against side and bottom.",
- "url": "https://example.com/recipe#step2",
- "image": "https://example.com/photos/recipe/step2.jpg"
- }, {
- "@type": "HowToStep",
- "name": "Make filling",
- "text": "In large bowl, gently mix filling ingredients; spoon into crust-lined pie plate.",
- "url": "https://example.com/recipe#step3",
- "image": "https://example.com/photos/recipe/step3.jpg"
- }, {
- "@type": "HowToStep",
- "name": "Cover",
- "text": "Top with second crust. Cut slits or shapes in several places in top crust.",
- "url": "https://example.com/recipe#step4",
- "image": "https://example.com/photos/recipe/step4.jpg"
- }, {
- "@type": "HowToStep",
- "name": "Bake",
- "text": "Bake 40 to 45 minutes. The pie is ready when the apples are tender and the crust is golden brown.",
- "url": "https://example.com/recipe#step5",
- "image": "https://example.com/photos/recipe/step5.jpg"
- }, {
- "@type": "HowToStep",
- "name": "Cool",
- "text": "Cool on cooling rack at least 2 hours before serving.",
- "url": "https://example.com/recipe#step6",
- "image": "https://example.com/photos/recipe/step6.jpg"
- }
+  {
+    "@type": "HowToStep",
+    "name": "Preheat",
+    "text": "Heat oven to 425°F.",
+    "url": "https://example.com/recipe#step1",
+    "image": "https://example.com/photos/recipe/step1.jpg"
+  }, {
+    "@type": "HowToStep",
+    "name": "Prepare crust",
+    "text": "Place 1 pie crust in ungreased 9-inch glass pie plate, pressing firmly against side and bottom.",
+    "url": "https://example.com/recipe#step2",
+    "image": "https://example.com/photos/recipe/step2.jpg"
+  }, {
+    "@type": "HowToStep",
+    "name": "Make filling",
+    "text": "In large bowl, gently mix filling ingredients; spoon into crust-lined pie plate.",
+    "url": "https://example.com/recipe#step3",
+    "image": "https://example.com/photos/recipe/step3.jpg"
+  }, {
+    "@type": "HowToStep",
+    "name": "Cover",
+    "text": "Top with second crust. Cut slits or shapes in several places in top crust.",
+    "url": "https://example.com/recipe#step4",
+    "image": "https://example.com/photos/recipe/step4.jpg"
+  }, {
+    "@type": "HowToStep",
+    "name": "Bake",
+    "text": "Bake 40 to 45 minutes. The pie is ready when the apples are tender and the crust is golden brown.",
+    "url": "https://example.com/recipe#step5",
+    "image": "https://example.com/photos/recipe/step5.jpg"
+  }, {
+    "@type": "HowToStep",
+    "name": "Cool",
+    "text": "Cool on cooling rack at least 2 hours before serving.",
+    "url": "https://example.com/recipe#step6",
+    "image": "https://example.com/photos/recipe/step6.jpg"
+  }
 ]
 ```
-
- 
- 
-- `HowToSection` (only if a recipe has multiple sections):
- Use to group steps into multiple sections. See `[HowToSection](https://developers.google.com#how-to-section)` for an example.
- 
- 
-- Single or repeated property of text: A block of text that includes one or more steps. Google treats all steps as being in a single section. Repeated
- property values are concatenated into a single block of text. Google then attempts to
- automatically split the single block of text into individual steps. Google tries to
- find and remove any section names, step numbers, keywords, and anything else that
- can incorrectly appear in recipe step text. For best results, we recommend you
- unambiguously specify steps with `[HowToStep](https://developers.google.com#how-to-step)`.
- 
-
+ `HowToSection` (only if a recipe has multiple sections) : Use to group steps into multiple sections. See ` HowToSection ` for an example. Single or repeated property of text : A block of text that includes one or more steps. Google treats all steps as being in a single section. Repeated property values are concatenated into a single block of text. Google then attempts to automatically split the single block of text into individual steps. Google tries to find and remove any section names, step numbers, keywords, and anything else that can incorrectly appear in recipe step text. For best results, we recommend you unambiguously specify steps with ` HowToStep `. 
 ```
 "recipeInstructions": [
- "In large bowl, gently mix filling ingredients; spoon into crust-lined pie
+  "In large bowl, gently mix filling ingredients; spoon into crust-lined pie
 plate. Top with second crust. Cut slits or shapes in several places in top
 crust. Bake 40 to 45 minutes. The pie is ready when the or until apples are
 tender and the crust is golden brown. Cool on cooling rack at least 2 hours
 before serving."
 ]
 ```
-
- 
- 
-
- Additional guidelines
-
- 
- 
-- Don't include metadata that belongs elsewhere. In particular, use the `author`
- property to specify the author, `recipeCuisine` for cuisine,
- `recipeCategory` for category, and `keywords` for other keywords.
- 
-- Include only text on how to make the dish and don't include other text such as
- "Directions", "Watch the video", "Step 1". Specify those phrases
- outside of structured data.
- Not recommended:
-
- 
-
+ Additional guidelines Don't include metadata that belongs elsewhere. In particular, use the `author` property to specify the author, `recipeCuisine` for cuisine, `recipeCategory` for category, and `keywords` for other keywords. Include only text on how to make the dish and don't include other text such as "Directions", "Watch the video", "Step 1". Specify those phrases outside of structured data. Not recommended : 
 ```
 "recipeInstructions": [{
- "@type": "HowToStep",
- "text": "Step 1. Heat oven to 425°F."
+  "@type": "HowToStep",
+  "text": "Step 1. Heat oven to 425°F."
 }]
 ```
-
- Recommended:
-
- 
-
+ Recommended : 
 ```
 "recipeInstructions": [{
- "@type": "HowToStep",
- "text": "Heat oven to 425°F."
+  "@type": "HowToStep",
+  "text": "Heat oven to 425°F."
 }]
 ```
-
+ |
  
- 
-
- | 
- 
-
- 
- `recipeYield` | 
- `[Text](https://schema.org/Text)` or `[Integer](https://schema.org/Integer)`
-
- The quantity produced by the recipe, if applicable. Specify the number of servings
- produced from this recipe with just a number. If you wish to use a different unit (for
- example, number of items), you may include additional yields. This is required if you
- specify any nutritional information per serving (such as `nutrition.calories`).
- Example
-
- 
-
+| `recipeYield` | ` Text ` or ` Integer ` The quantity produced by the recipe, if applicable. Specify the number of servings produced from this recipe with just a number. If you wish to use a different unit (for example, number of items), you may include additional yields. This is required if you specify any nutritional information per serving (such as `nutrition.calories`). Example 
 ```
 "recipeYield": [
- "6",
- "24 cookies"
+  "6",
+  "24 cookies"
 ]
 ```
+ |
 
- | 
+| `totalTime` | ` Duration ` The total time it takes to prepare the cook the dish, in ISO 8601 format , if applicable. Use `totalTime` or a combination of both `cookTime` and `prepTime`. |
  
-
- `totalTime` | 
- `[Duration](https://schema.org/Duration)`
-
- The total time it takes to prepare
- the cook the dish, in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), if applicable.
- 
-
- Use `totalTime` or a combination of both `cookTime` and `prepTime`. 
- | 
- 
-
- 
- 
- `video`
- | 
- `[VideoObject](https://schema.org/VideoObject)`
- 
- A video depicting the steps to make the dish. Follow the list of required and recommended
- [Video properties](https://developers.google.com/search/docs/appearance/structured-data/video#video-object).
- 
-
- 
-
+| `video` |
  
  
 
@@ -821,52 +568,30 @@ before serving."
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- 
- `itemListElement`
- | 
- `[HowToStep](https://developers.google.com#how-to-step)`
- A list of detailed steps for the section, and/or sub-sections. For example, a pizza recipe may have
- one section of steps for making the crust, one for preparing the
- toppings, and one for combining and baking.
-
- Example:
-
- 
-
+| `itemListElement` | ` HowToStep ` A list of detailed steps for the section, and/or sub-sections. For example, a pizza recipe may have one section of steps for making the crust, one for preparing the toppings, and one for combining and baking. Example: 
 ```
 {
- "@type": "HowToSection",
- "name": "Assemble the pie",
- "itemListElement": [
- {
- "@type": "HowToStep",
- "text": "In large bowl, gently mix filling ingredients; spoon into crust-lined pie plate."
- }, {
- "@type": "HowToStep",
- "text": "Top with second crust. Cut slits or shapes in several places in top crust."
- }
- ]
+  "@type": "HowToSection",
+  "name": "Assemble the pie",
+  "itemListElement": [
+    {
+      "@type": "HowToStep",
+      "text": "In large bowl, gently mix filling ingredients; spoon into crust-lined pie plate."
+    }, {
+      "@type": "HowToStep",
+      "text": "Top with second crust. Cut slits or shapes in several places in top crust."
+    }
+  ]
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `name`
- | 
- `[Text](https://schema.org/Text)`
- The name of the section.
-
- | 
- 
-
+| `name` | ` Text ` The name of the section. |
  
 
  
@@ -888,137 +613,44 @@ before serving."
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `itemListElement` | ` HowToDirection ` or ` HowToTip ` A list of detailed substeps, including directions or tips. Optional if `text` is used. |
  
- `itemListElement`
- | 
- `[HowToDirection](https://schema.org/HowToDirection)` or `[HowToTip](https://schema.org/HowToTip)`
- A list of detailed substeps, including directions or tips.
-
- Optional if `text` is used.
-
- | 
- 
-
- 
- 
- `text`
- | 
- `[Text](https://schema.org/Text)`
- The full instruction text of this step.
-
- Optional if `itemListElement` is used. Additional guidelines:
-
- 
- 
-- Include only instructional text and don't include other text such as
- "Directions", "Watch the video", "Step 1". Specify those phrases outside of the marked
- up property.
- 
-
- Not recommended:
-
- 
-
+| `text` | ` Text ` The full instruction text of this step. Optional if `itemListElement` is used. Additional guidelines: Include only instructional text and don't include other text such as "Directions", "Watch the video", "Step 1". Specify those phrases outside of the marked up property. Not recommended : 
 ```
 {
- "@type": "HowToStep",
- "text": "Step 1. Heat oven to 425°F."
+  "@type": "HowToStep",
+  "text": "Step 1. Heat oven to 425°F."
 }
 ```
-
- Recommended:
-
- 
-
+ Recommended : 
 ```
 {
- "@type": "HowToStep",
- "text": "Heat oven to 425°F."
+  "@type": "HowToStep",
+  "text": "Heat oven to 425°F."
 }
 ```
-
- 
- 
-
- | 
- 
-
+ |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
+| `image` | ` ImageObject ` or ` URL ` An image for the step. Additional image guidelines: Image URLs must be crawlable and indexable . Images must represent the marked up content. Images must be in .jpg, .png, or. gif format. |
  
- `image`
- | 
- `[ImageObject](https://schema.org/ImageObject)` or `[URL](https://schema.org/URL)`
+| `name` | ` Text ` The word or short phrase summarizing the step (for example, "Arrange pie crust"). Don't use non-descriptive text (for example, "Step 1: [text]") or other form of step number (for example, "1. [text]"). |
  
- An image for the step. Additional image guidelines:
+| `url` | ` URL ` A `URL` that directly links to the step (if one is available). For example, an anchor link fragment. |
  
-
- 
- 
-- Image URLs must be [crawlable and indexable](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps).
- 
-- Images must represent the marked up content.
- 
-- Images must be in .jpg, .png, or. gif format.
- 
-
- | 
- 
-
- 
- 
- `name`
- | 
- `[Text](https://schema.org/Text)`
- 
- The word or short phrase summarizing the step (for example, "Arrange pie crust").
- Don't use non-descriptive text (for example, "Step 1: [text]") or other form of step number
- (for example, "1. [text]").
- 
-
- | 
- 
-
- 
- 
- `url`
- | 
- `[URL](https://schema.org/URL)`
- 
- A `URL` that directly links to the step (if one is available). For example,
- an anchor link fragment.
- 
-
- | 
- 
-
- 
- 
- `video`
- | 
- `[VideoObject](https://schema.org/VideoObject)` or `[Clip](https://schema.org/Clip)`
- A video for this step or a clip of the video. 
-
- For `[VideoObject](https://schema.org/VideoObject)`, follow the list of required and recommended
- [Video](https://developers.google.com/search/docs/appearance/structured-data/video#type-definitions)
- or [Clip](https://developers.google.com/search/docs/appearance/structured-data/video#clip) properties.
- 
-
- | 
- 
-
+| `video` | ` VideoObject ` or ` Clip ` A video for this step or a clip of the video. For ` VideoObject `, follow the list of required and recommended Video or Clip properties. |
  
 
 ### `HowToDirection` and `HowToTip`
@@ -1032,20 +664,12 @@ Use `HowToDirection` and `HowToTip` to describe directions or tips, if applicabl
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- 
- `text`
- | 
- `[Text](https://schema.org/Text)`
- The text of the direction or tip.
-
- | 
- 
-
+| `text` | ` Text ` The text of the direction or tip. |
  
 
  
@@ -1063,57 +687,28 @@ Use `HowToDirection` and `HowToTip` to describe directions or tips, if applicabl
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `itemListElement` | ` ListItem ` Annotation for a single item page. |
  
- `itemListElement`
- | 
- `[ListItem](https://schema.org/ListItem)`
-
- Annotation for a single item page.
- | 
- 
-
- 
- 
- `ListItem.position`
- | 
- `[Integer](https://schema.org/Integer)`
-
- Ordinal position of the item page in the list. For example:
-
- 
-
+| `ListItem.position` | ` Integer ` Ordinal position of the item page in the list. For example: 
 ```
-
 "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- }, {
- "@type": "ListItem",
- "position": 2,
- }
+  {
+    "@type": "ListItem",
+    "position": 1,
+  }, {
+    "@type": "ListItem",
+    "position": 2,
+  }
 ]
-
 ```
-
- | 
+ |
  
-
- 
- 
- `ListItem.url`
- | 
- `[URL](https://schema.org/URL)`
-
- The canonical URL of the item page. Every item must have a unique URL.
- | 
- 
-
+| `ListItem.url` | ` URL ` The canonical URL of the item page. Every item must have a unique URL. |
  
  
 

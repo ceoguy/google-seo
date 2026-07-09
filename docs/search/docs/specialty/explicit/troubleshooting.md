@@ -65,112 +65,17 @@ fetched: 2026-07-08
 
  
  
+| Common mistakes |
  
- Common mistakes
- | 
+| Adding the adult rating `meta` tag to content that's not sexually explicit | Sometimes site owners apply the adult rating `meta` tag to pages that aren't sexually explicit. SafeSearch filters out all pages that use the adult rating `meta` tag, regardless of their content. To fix, remove the adult rating `meta` tag from pages that are not sexually explicit (the adult rating `meta` tag should only be used on pages that are sexually explicit). |
  
-
+| Labeling videos that aren't explicit as not `family_friendly` in your video sitemap | Sometimes site owners apply the `<video:family_friendly>` tag too broadly, and SafeSearch filters out all pages that are not `family_friendly`, regardless of their content. To fix, only apply the family friendly tag with a value of `no` if your content is sexually explicit or contains graphic violence. |
  
+| Allowing all UGC comments without content moderation | Be aware that your site might be deemed explicit if you allow users to write or upload explicit content with insufficient content moderation. To fix, we recommend implementing measures to prevent spammy UGC comments and other content moderation best practices. |
  
+| Restricting Googlebot with an age gate | If you have an age gate and don't allow Googlebot to crawl without triggering that age gate, our systems might determine that your entire site seems explicit in nature and filter the entire site from search results, even if some pages might not be explicit. To fix, be sure to allow Googlebot to crawl without an age gate restriction, follow our guidelines for mandatory interstitials , and confirm that Googlebot is able to crawl without triggering any age gate by using the Live URL test in Search Console. |
  
-### Adding the adult rating `meta` tag to content that's
- not sexually explicit
-
- | 
- 
- 
- Sometimes site owners apply the adult rating `meta` tag to pages that aren't sexually
- explicit. SafeSearch filters out all pages that use the adult rating `meta` tag, regardless of
- their content.
- 
-
- 
- To fix, remove the [adult rating `meta` tag](https://developers.google.com/search/docs/crawling-indexing/special-tags#rating)
- from pages that are not sexually explicit (the [adult rating `meta` tag](https://developers.google.com/search/docs/crawling-indexing/special-tags#meta-tags)
- should only be used on pages that are sexually explicit).
- 
-
- | 
- 
-
- 
- 
-### Labeling videos that aren't explicit as not `family_friendly` in your video sitemap
-
- | 
- 
- 
- Sometimes site owners apply the [`<video:family_friendly>` tag](https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps#family-friendly)
- too broadly, and SafeSearch filters out all pages that are not `family_friendly`,
- regardless of their content.
- 
-
- 
- To fix, only apply the family friendly tag with a value of `no` if your content is
- sexually explicit or contains graphic violence.
- 
-
- | 
- 
-
- 
- 
-### Allowing all UGC comments without content moderation
-
- | 
- 
- 
- Be aware that your site might be deemed explicit if you allow users to write or upload
- explicit content with insufficient content moderation.
- 
-
- 
- To fix, we recommend implementing measures to [prevent spammy UGC comments](https://developers.google.com/search/docs/monitor-debug/prevent-abuse)
- and other content moderation best practices.
- 
-
- | 
- 
-
- 
- 
-### Restricting Googlebot with an age gate
- | 
- 
- If you have an age gate and don't allow Googlebot to crawl without triggering that age
- gate, our systems might determine that your entire site seems explicit in nature and
- filter the entire site from search results, even if some pages might not be explicit.
- 
-
- 
- To fix, be sure to [allow Googlebot to crawl without an age gate](https://developers.google.com/search/docs/specialty/explicit/guidelines#allow-googlebot-to-crawl)
- restriction, follow [our guidelines for mandatory interstitials](https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials#mandatory-interstitials),
- and confirm that Googlebot is able to crawl without triggering any age gate by using the
- [Live URL test](https://support.google.com/webmasters/answer/9012289#test_live_page)
- in Search Console.
- 
-
- | 
- 
-
- 
- 
-### Not separating explicit pages from non-explicit pages
-
- | 
- 
- 
- If you have a large amount of sexually explicit content and don't group those pages on a
- separate domain or subdomain, our systems might determine that your entire site seems explicit.
- 
-
- 
- To fix, we recommend [grouping explicit pages in a separate domain or subdomain](https://developers.google.com/search/docs/specialty/explicit/guidelines#group-explicit-pages).
- 
-
- | 
- 
-
+| Not separating explicit pages from non-explicit pages | If you have a large amount of sexually explicit content and don't group those pages on a separate domain or subdomain, our systems might determine that your entire site seems explicit. To fix, we recommend grouping explicit pages in a separate domain or subdomain . |
  
 
 ## Troubleshooting

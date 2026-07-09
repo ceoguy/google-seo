@@ -98,31 +98,18 @@ Localized versions of a page are only considered [duplicates](https://developers
 
  Here is the syntax of each `link` element:
 
+
 ```
 <link rel="alternate" hreflang="lang_code" href="url_of_page" />
 ```
 
  
  
- Syntax | 
+| Syntax |
  
-
+| `lang_code` | A supported language/region code targeted by this version of the page, or `x-default` to match any language not explicitly listed by an `hreflang` tag on the page. |
  
- `lang_code` | 
- 
- A [supported language/region code](https://developers.google.com#language-codes) targeted by this version of
- the page, or `x-default` to match any language not explicitly listed by an
- `hreflang` tag on the page.
- | 
- 
-
- 
- `url_of_page` | 
- 
- The fully-qualified URL for the version of this page for the specified language/region.
- | 
- 
-
+| `url_of_page` | The fully-qualified URL for the version of this page for the specified language/region. |
  
 
  The `<link>` tags must be inside a
@@ -140,53 +127,37 @@ Example Widgets, Inc has a website that serves users in the USA, UK, and Germany
 
  
  
- URLs with regional variations | 
+| URLs with regional variations |
  
-
+| `https://en.example.com/page.html` | Generic English language home page that contains information about fees for shipping internationally from the USA. |
  
- `https://en.example.com/page.html` | 
- Generic English language home page that contains information about fees for shipping internationally from the USA. | 
+| `https://en-gb.example.com/page.html` | UK home page that displays prices in pounds sterling. |
  
-
+| `https://en-us.example.com/page.html` | US home page that displays prices in US dollars. |
  
- `https://en-gb.example.com/page.html` | 
- UK home page that displays prices in pounds sterling. | 
+| `https://de.example.com/page.html` | German language home page. |
  
-
- 
- `https://en-us.example.com/page.html` | 
- US home page that displays prices in US dollars. | 
- 
-
- 
- `https://de.example.com/page.html` | 
- German language home page. | 
- 
-
- 
- `https://www.example.com/` | 
- Default page that doesn't target any language or locale; it has selectors to let users pick their language and region. | 
- 
-
+| `https://www.example.com/` | Default page that doesn't target any language or locale; it has selectors to let users pick their language and region. |
  
 
 Note that the language-specific subdomains in these URLs (`en`, `en-gb`, `en-us`, `de`) are not used by Google to determine the target audience for the page; you must explicitly map the target audience.
 
 Here is the HTML that would be in the `<head>` section of all the pages listed in the [URLs with regional variations table](https://developers.google.com#regional-variations-table). It would direct US, UK, generic English speakers, and German speakers to localized pages, and all others to a generic home page. Google Search returns the appropriate result for the user, according to their browser settings.
 
+
 ```
 <head>
  <title>Widgets, Inc</title>
- <link rel="alternate" hreflang="en-gb"
- href="https://en-gb.example.com/page.html" />
- <link rel="alternate" hreflang="en-us"
- href="https://en-us.example.com/page.html" />
- <link rel="alternate" hreflang="en"
- href="https://en.example.com/page.html" />
- <link rel="alternate" hreflang="de"
- href="https://de.example.com/page.html" />
+  <link rel="alternate" hreflang="en-gb"
+       href="https://en-gb.example.com/page.html" />
+  <link rel="alternate" hreflang="en-us"
+       href="https://en-us.example.com/page.html" />
+  <link rel="alternate" hreflang="en"
+       href="https://en.example.com/page.html" />
+  <link rel="alternate" hreflang="de"
+       href="https://de.example.com/page.html" />
  <link rel="alternate" hreflang="x-default"
- href="https://www.example.com/" />
+       href="https://www.example.com/" />
 </head>
 ```
 
@@ -197,29 +168,18 @@ You can return an [HTTP header](https://developer.mozilla.org/en-US/docs/Web/HTT
 
 Here is the format of the header:
 
+
 ```
 Link: <url1>; rel="alternate"; hreflang="lang_code_1", <url2>; rel="alternate"; hreflang="lang_code_2", ...
 ```
 
  
  
- Syntax | 
+| Syntax |
  
-
+| `<url_x>` | The fully-qualified URL of the alternate page corresponding to the locale string assigned to the associated `hreflang` attribute. The URL must include surrounding `<` and `>` marks. Example: `<https://www.google.com>` |
  
- `<url_x>` | 
- The fully-qualified URL of the alternate page corresponding to the locale string assigned
- to the associated `hreflang` attribute. The URL must include surrounding `<` and
- `>` marks. Example: `<https://www.google.com>` | 
- 
-
- 
- `lang_code_x` | 
- A [supported language/region code](https://developers.google.com#language-codes) targeted by this version of
- the page, or `x-default` to matches any language not explicitly listed by an
- `hreflang` tag on the page. | 
- 
-
+| `lang_code_x` | A supported language/region code targeted by this version of the page, or `x-default` to matches any language not explicitly listed by an `hreflang` tag on the page. |
  
 
 You must specify a set of `<url>`, `rel="alternate"`, and `hreflang` values for every version of the page including the requested version, separated by a comma as shown in the following example. The `Link:` header returned for every version of a page is identical. [See the additional guidelines.](https://developers.google.com#all-method-guidelines)
@@ -228,12 +188,13 @@ You must specify a set of `<url>`, `rel="alternate"`, and `hreflang` values for 
 
 Here is an example `Link:` header returned by a site that has three versions of a PDF file: one for English speakers, one for German speakers from Switzerland, and one for all other German speakers:
 
+
+```
+Link: <https://example.com/file.pdf>; rel="alternate"; hreflang="en",
+      <https://de-ch.example.com/file.pdf>; rel="alternate"; hreflang="de-ch",
+      <https://de.example.com/file.pdf>; rel="alternate"; hreflang="de"
 ```
 
-Link: <https://example.com/file.pdf>; rel="alternate"; hreflang="en",
- <https://de-ch.example.com/file.pdf>; rel="alternate"; hreflang="de-ch",
- <https://de.example.com/file.pdf>; rel="alternate"; hreflang="de"
-```
 
  
 ### Sitemap
@@ -306,57 +267,59 @@ Here is an English language page targeted at English speakers worldwide, with eq
 
 Here is the sitemap for those three pages:
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:xhtml="http://www.w3.org/1999/xhtml">
- <url>
- <loc>https://www.example.com/english/page.html</loc>
- <xhtml:link
- rel="alternate"
- hreflang="de"
- href="https://www.example.de/deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="de-ch"
- href="https://www.example.de/schweiz-deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="en"
- href="https://www.example.com/english/page.html"/>
- </url>
- <url>
- <loc>https://www.example.de/deutsch/page.html</loc>
- <xhtml:link
- rel="alternate"
- hreflang="de"
- href="https://www.example.de/deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="de-ch"
- href="https://www.example.de/schweiz-deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="en"
- href="https://www.example.com/english/page.html"/>
- </url>
- <url>
- <loc>https://www.example.de/schweiz-deutsch/page.html</loc>
- <xhtml:link
- rel="alternate"
- hreflang="de"
- href="https://www.example.de/deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="de-ch"
- href="https://www.example.de/schweiz-deutsch/page.html"/>
- <xhtml:link
- rel="alternate"
- hreflang="en"
- href="https://www.example.com/english/page.html"/>
- </url>
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.example.com/english/page.html</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de"
+               href="https://www.example.de/deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de-ch"
+               href="https://www.example.de/schweiz-deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://www.example.com/english/page.html"/>
+  </url>
+  <url>
+    <loc>https://www.example.de/deutsch/page.html</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de"
+               href="https://www.example.de/deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de-ch"
+               href="https://www.example.de/schweiz-deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://www.example.com/english/page.html"/>
+  </url>
+  <url>
+    <loc>https://www.example.de/schweiz-deutsch/page.html</loc>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de"
+               href="https://www.example.de/deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="de-ch"
+               href="https://www.example.de/schweiz-deutsch/page.html"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en"
+               href="https://www.example.com/english/page.html"/>
+  </url>
 </urlset>
 ```
+
 
 ## Supported language and region codes
 
@@ -438,6 +401,7 @@ For language script variations, the proper script is derived from the country. F
 <link rel="alternate" href="https://example.com/en-au" hreflang="en-au" />
 <link rel="alternate" href="https://example.com/country-selector" hreflang="x-default" />
 ```
+
 
  
 ## Troubleshooting

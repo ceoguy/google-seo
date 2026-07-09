@@ -20,33 +20,11 @@ fetched: 2026-07-08
  See our [updates to our documentation](https://developers.google.com/crawling/docs/changelog).
 
  
- [Common crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers) | 
+| Common crawlers | The common crawlers used for Google's products (such as Googlebot ). They always respect robots.txt rules for automatic crawls. |
  
- The common crawlers used for Google's products (such as
- [Googlebot](https://developers.google.com/search/docs/crawling-indexing/googlebot)). They
- always respect robots.txt rules for automatic crawls.
- | 
+| Special-case crawlers | Special-case crawlers are similar to common crawlers, however are used by specific products where there's an agreement between the crawled site and the Google product about the crawl process. For example, `AdsBot` ignores the global robots.txt user agent (`*`) with the ad publisher's permission. |
  
-
- 
- [Special-case crawlers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-special-case-crawlers) | 
- 
- Special-case crawlers are similar to common crawlers, however are used by specific products
- where there's an agreement between the crawled site and the Google product about the crawl
- process. For example, `AdsBot` ignores the global robots.txt user agent
- (`*`) with the ad publisher's permission.
- | 
- 
-
- 
- [User-triggered fetchers](https://developers.google.com/crawling/docs/crawlers-fetchers/google-user-triggered-fetchers) | 
- 
- User-triggered fetchers are part of tools and product functions where the end user triggers a
- fetch. For example,
- [Google Site Verifier](https://support.google.com/webmasters/answer/9008080)
- acts on the request of a user.
- | 
- 
+| User-triggered fetchers | User-triggered fetchers are part of tools and product functions where the end user triggers a fetch. For example, Google Site Verifier acts on the request of a user. |
 
 ## Technical properties of Google's crawlers and fetchers
 

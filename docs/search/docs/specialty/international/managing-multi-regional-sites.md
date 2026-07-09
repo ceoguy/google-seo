@@ -117,11 +117,7 @@ Consider using a URL structure that makes it easy to geotarget your site, or par
 
  
  
- 
- URL structure options
- | 
- 
-
+| URL structure options |
  
  Country-specific domain
  
@@ -133,36 +129,7 @@ Consider using a URL structure that makes it easy to geotarget your site, or par
  
  
  
- 
- Pros:
-
- 
- 
-- Clear geotargeting
- 
-- Server location irrelevant
- 
-- Easy separation of sites
- 
-
- | 
- 
- Cons:
-
- 
- 
-- Expensive (can have limited availability)
- 
-- Requires more infrastructure
- 
-- Strict ccTLD requirements (sometimes)
- 
-- Can only target a single country
- 
-
- | 
- 
-
+| Pros: Clear geotargeting Server location irrelevant Easy separation of sites | Cons: Expensive (can have limited availability) Requires more infrastructure Strict ccTLD requirements (sometimes) Can only target a single country |
  
  
 
@@ -180,31 +147,7 @@ Consider using a URL structure that makes it easy to geotarget your site, or par
  
  
  
- 
- Pros:
-
- 
- 
-- Easy to set up
- 
-- Allows different server locations
- 
-- Easy separation of sites
- 
-
- | 
- 
- Cons:
-
- 
- 
-- Users might not recognize geotargeting from the URL alone (is "de" the
- language or country?)
- 
-
- | 
- 
-
+| Pros: Easy to set up Allows different server locations Easy separation of sites | Cons: Users might not recognize geotargeting from the URL alone (is "de" the language or country?) |
  
  
 
@@ -222,32 +165,7 @@ Consider using a URL structure that makes it easy to geotarget your site, or par
  
  
  
- 
- Pros:
-
- 
- 
-- Easy to set up
- 
-- Low maintenance (same host)
- 
-
- | 
- 
- Cons:
-
- 
- 
-- Users might not recognize geotargeting from the URL alone
- 
-- Single server location
- 
-- Separation of sites harder
- 
-
- | 
- 
-
+| Pros: Easy to set up Low maintenance (same host) | Cons: Users might not recognize geotargeting from the URL alone Single server location Separation of sites harder |
  
  
 
@@ -265,22 +183,7 @@ Consider using a URL structure that makes it easy to geotarget your site, or par
  
  
  
- 
- Not recommended.
- | 
- 
- Cons:
-
- 
- 
-- URL-based segmentation difficult
- 
-- Users might not recognize geotargeting from the URL alone
- 
-
- | 
- 
-
+| Not recommended. | Cons: URL-based segmentation difficult Users might not recognize geotargeting from the URL alone |
  
  
 

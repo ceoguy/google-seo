@@ -333,33 +333,17 @@ fetched: 2026-07-08
  
  
  
- Hosting | 
- Authentication Support | 
- 
-
+| Hosting | Authentication Support |
  
  
  
- Google Cloud Storage | 
- Storage Object Viewer permission | 
+| Google Cloud Storage | Storage Object Viewer permission |
  
-
+| HTTPS | Username+Password or HTTP client certificates |
  
- HTTPS | 
- Username+Password or
- [HTTP client certificates](https://web.dev/articles/enable-https) | 
+| SFTP | Password, Key+Phrase, or both |
  
-
- 
- SFTP | 
- Password, Key+Phrase, or both | 
- 
-
- 
- AWS S3 | 
- Key ID+Access Key | 
- 
-
+| AWS S3 | Key ID+Access Key |
  
  
 
@@ -423,30 +407,14 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@context` | 
+| `@context` | `Text` Set to `https://schema.org`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `https://schema.org`.
-
- | 
- 
-
- 
- `@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `DataFeed`.
-
- | 
- 
-
+| `@type` | `Text` Set to `DataFeed`. |
  
  `dataFeedElement` | 
  
@@ -462,66 +430,70 @@ fetched: 2026-07-08
 
  Example use in a `Book` feed:
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "DataFeed",
- "dataFeedElement": [
- {
- "@context": "https://schema.org",
- "@type": "Book",
- "@id": "https://example.com/work/the_catcher_in_the_rye",
- "url": "https://example.com/work/the_catcher_in_the_rye",
- "name": "The Catcher in the Rye",
- "author": {
- "@type": "Person",
- "name": "J.D. Salinger"
- },
- "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
- "workExample": [
- {
- "@type": "Book",
- "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
- "isbn": "9787543321724",
- "bookEdition": "Mass Market Paperback",
- "bookFormat": "https://schema.org/Paperback",
- "inLanguage": "en",
- ...
- },
- ...
- ]
- }
- ],
- "dateModified": "2018-09-10T13:58:26.892Z"
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "dataFeedElement": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "@id": "https://example.com/work/the_catcher_in_the_rye",
+      "url": "https://example.com/work/the_catcher_in_the_rye",
+      "name": "The Catcher in the Rye",
+      "author": {
+        "@type": "Person",
+        "name": "J.D. Salinger"
+      },
+      "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
+      "workExample": [
+        {
+          "@type": "Book",
+          "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
+          "isbn": "9787543321724",
+          "bookEdition": "Mass Market Paperback",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": "en",
+          ...
+        },
+        ...
+      ]
+   }
+  ],
+  "dateModified": "2018-09-10T13:58:26.892Z"
 }
 ```
+
 
  Example use in a `LibrarySystem` feed:
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "DataFeed",
- "dataFeedElement": [
- {
- "@context": "https://schema.org",
- "@type": "LibrarySystem",
- "@id": "https://example.com/library-systems/100",
- "name": "Santa Clara County Library District",
- "additionalProperty": [
- {
- "@type": "PropertyValue",
- "name": "librarytype",
- "value": "public"
- }
- ],
- ...
- },
- ...
- ],
- "dateModified": "2018-09-10T13:58:26.892Z"
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "dataFeedElement": [
+    {
+      "@context": "https://schema.org",
+      "@type": "LibrarySystem",
+      "@id": "https://example.com/library-systems/100",
+      "name": "Santa Clara County Library District",
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "librarytype",
+          "value": "public"
+        }
+      ],
+      ...
+    },
+    ...
+  ],
+  "dateModified": "2018-09-10T13:58:26.892Z"
 }
 ```
+
 
  
  Warning: As described in
@@ -543,16 +515,7 @@ fetched: 2026-07-08
  
  | 
  
- `dateModified` | 
- 
- [`DateTime`](https://schema.org/DateTime)
-
- The date and time of the last update of the feed in the
- [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-
- | 
- 
-
+| `dateModified` | `DateTime` The date and time of the last update of the feed in the ISO 8601 format. |
  
  
 
@@ -578,123 +541,36 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@context` | 
+| `@context` | `Text` Set to `https://schema.org`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `https://schema.org`.
-
- | 
+| `@id` | `Text` A globally unique ID for the book in URL format. It must be unique to your organization. The ID must be stable and not change over time. URL format is suggested though not required. It doesn't have to be a working link. The domain used for the `@id` value must be owned by your organization. |
  
-
+| `@type` | `Text` Set to `Book`. |
  
- `@id` | 
+| `author` | `Person` or `Organization` The author(s) of the book. Note: If the book doesn't have an author, but rather, one or more contributors , include these other contributors as defined in schema.org/Book . For example, a book might have no known or recorded author, but might instead have a number of editors. Conversely, if a book's author is an organization, define the author accordinly as defined in schema.org/Organization . For example, the author for a book titled "Fundamentals of fire fighting skills" might be the organization `National Fire Protection Association`. |
  
- [`Text`](https://schema.org/Text)
-
- A globally unique ID for the book in URL format. It must be unique to your
- organization. The ID must be stable and not change over time. URL format is suggested
- though not required. It doesn't have to be a working link. The domain used for the
- `@id` value must be owned by your organization.
-
- | 
+| `name` | `Text` The title of the book. |
  
-
+| `url` | `URL` The URL on your website where the book is introduced or described. This link helps accurately reconcile the content in your feed with the content in Google's databases. It can be the same as `workExample.target.urlTemplate`. For the actual landing page, Google Search uses the URL provided in `workExample.target.urlTemplate`. |
  
- `@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `Book`.
-
- | 
- 
-
- 
- `author` | 
- 
- [`Person`](https://schema.org/Person) or
- [`Organization`](https://schema.org/Organization)
-
- The author(s) of the book.
-
- Note: If the book doesn't have an author, but rather, one or more
- contributors, include these other contributors as defined in
- [schema.org/Book](https://schema.org/Book).
- For example, a book might have no known or recorded author, but might instead have a
- number of editors.
-
- Conversely, if a book's author is an organization, define the author accordinly as
- defined in
- [schema.org/Organization](https://schema.org/Organization).
- For example, the author for a book titled "Fundamentals of fire fighting skills" might
- be the organization
- `National Fire Protection Association`.
-
- | 
- 
-
- 
- `name` | 
- 
- [`Text`](https://schema.org/Text)
-
- The title of the book.
-
- | 
- 
-
- 
- `url` | 
- 
- [`URL`](https://schema.org/URL)
-
- The URL on your website where the book is introduced or described. This link helps
- accurately reconcile the content in your feed with the content in Google's
- databases. It can be the same as `workExample.target.urlTemplate`.
-
- For the actual landing page, Google Search uses the URL provided in
- `workExample.target.urlTemplate`.
-
- | 
- 
-
- 
- `workExample` | 
- 
- [`Book`](https://schema.org/Book) `(Edition)`
-
- The edition(s) of the work.
-
- | 
- 
-
+| `workExample` | `Book` `(Edition)` The edition(s) of the work. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `sameAs` | 
- 
- [`URL`](https://schema.org/URL)
-
- The URL of a reference page that identifies the work. For example, a Wikipedia,
- Wikidata, VIAF, or Library of Congress page for the book.
-
- | 
- 
-
+| `sameAs` | `URL` The URL of a reference page that identifies the work. For example, a Wikipedia, Wikidata, VIAF, or Library of Congress page for the book. |
  
  
 
@@ -713,196 +589,46 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@id` | 
+| `@id` | `Text` A globally unique ID for the book in URL format. It must be unique to your organization. The ID must be stable and not change over time. URL format is suggested though not required. It doesn't have to be a working link. The domain used for the `@id` value must be owned by your organization. |
  
- [`Text`](https://schema.org/Text)
-
- A globally unique ID for the book in URL format. It must be unique to your
- organization. The ID must be stable and not change over time. URL format is suggested
- though not required. It doesn't have to be a working link. The domain used for the
- `@id` value must be owned by your organization.
-
- | 
+| `@type` | `Text` Set to `Book`. |
  
-
+| `bookFormat` | `Enum` The format of the edition. The value of this must be one of the following: `https://schema.org/AudiobookFormat` `https://schema.org/EBook` `https://schema.org/Hardcover` `https://schema.org/Paperback` |
  
- `@type` | 
+| `inLanguage` | `Text` The main language of the content in the edition. Use one of the two-letter codes from the list of ISO 639-1 alpha-2 codes . |
  
- [`Text`](https://schema.org/Text)
-
- Set to `Book`.
-
- | 
+| `isbn` | `Text` The ISBN-13 of the edition. If you have ISBN-10, convert it into ISBN-13. |
  
-
- 
- `bookFormat` | 
- 
- [`Enum`](https://schema.org/Enumeration)
-
- The format of the edition. The value of this must be one of the
- following:
-
- 
- 
-- `https://schema.org/AudiobookFormat`
- 
-- `https://schema.org/EBook`
- 
-- `https://schema.org/Hardcover`
- 
-- `https://schema.org/Paperback`
- 
-
- | 
- 
-
- 
- `inLanguage` | 
- 
- [`Text`](https://schema.org/Text)
-
- The main language of the content in the edition. Use one of the two-letter codes
- from the [list
- of ISO 639-1 alpha-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-
- | 
- 
-
- 
- `isbn` | 
- 
- [`Text`](https://schema.org/Text)
-
- The ISBN-13 of the edition. If you have ISBN-10, convert it into ISBN-13.
-
- | 
- 
-
- 
- `potentialAction` | 
- 
- [`ReadAction`](https://schema.org/ReadAction) or [`BorrowAction`](https://schema.org/BorrowAction)
-
- The action to be triggered for users to purchase or download the book. For more
- details, refer to [`ReadAction`](https://developers.google.com#readaction-potentialaction) or
- [`BorrowAction`](https://developers.google.com#borrowaction-potentialaction).
-
- | 
- 
-
+| `potentialAction` | `ReadAction` or `BorrowAction` The action to be triggered for users to purchase or download the book. For more details, refer to `ReadAction` or `BorrowAction` . |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `author` | 
+| `author` | `Person` or `Organization` The author(s) of the edition. Note: Only use this when the author of the edition is different from the work author information. If the edition doesn't have an author, but rather, one or more contributors , include these other contributors as defined in schema.org/Book . For example, an edition might have no known or recorded author, but might instead have a number of editors. Conversely, if an edition's author is an organization, define the author as defined in schema.org/Organization . For example, Publication manual of the American Psychological Association, 6th edition 's author might be the organization `American Psychological Association`. |
  
- [`Person`](https://schema.org/Person) or
- [`Organization`](https://schema.org/Organization)
-
- The author(s) of the edition.
-
- Note: Only use this when the author of the edition is different from
- the work author information.
-
- If the edition doesn't have an author, but rather, one or more
- contributors, include these other contributors as defined in
- [schema.org/Book](https://schema.org/Book).
- For example, an edition might have no known or recorded author, but might instead have
- a number of editors.
-
- Conversely, if an edition's author is an organization, define the author as defined
- in
- [schema.org/Organization](https://schema.org/Organization).
- For example,
- Publication manual of the American Psychological Association, 6th edition's
- author might be the organization
- `American Psychological Association`.
-
- | 
+| `bookEdition` | `Text` The edition information of the book. For example, `2nd Edition`. |
  
-
+| `datePublished` | `Date` The date of publication of the edition in YYYY-MM-DD or YYYY format. This can be either a specific date or only a specific year. |
  
- `bookEdition` | 
+| `identifier` | `PropertyValue` The external or other ID that unambiguously identifies this edition. Multiple identifiers are allowed. For more details, refer to `PropertyValue` (`identifier`) . This property can be repeated. |
  
- [`Text`](https://schema.org/Text)
-
- The edition information of the book. For example, `2nd Edition`.
-
- | 
+| `name` | `Text` The title of the edition. Only use this when the title of the edition is different from the title of the work. |
  
-
+| `sameAs` | `URL` The URL of a reference web page that unambiguously indicates the edition. For example, a Wikipedia page for this specific edition. Don't reuse the `sameAs` of the `Work`. |
  
- `datePublished` | 
- 
- [`Date`](https://schema.org/Date)
-
- The date of publication of the edition in YYYY-MM-DD or YYYY
- format. This can be either a specific date or only a specific year.
-
- | 
- 
-
- 
- `identifier` | 
- 
- [`PropertyValue`](https://schema.org/PropertyValue)
-
- The external or other ID that unambiguously identifies this edition. Multiple
- identifiers are allowed. For more details, refer to
- [`PropertyValue` (`identifier`)](https://developers.google.com#propertyvalue-identifier).
-
- This property can be repeated.
-
- | 
- 
-
- 
- `name` | 
- 
- [`Text`](https://schema.org/Text)
-
- The title of the edition. Only use this when the title of the edition is different
- from the title of the work.
-
- | 
- 
-
- 
- `sameAs` | 
- 
- [`URL`](https://schema.org/URL)
-
- The URL of a reference web page that unambiguously indicates the edition. For
- example, a Wikipedia page for this specific edition. Don't reuse the
- `sameAs` of the `Work`.
-
- | 
- 
-
- 
- `url` | 
- 
- [`URL`](https://schema.org/URL)
-
- The URL on your website where the edition is introduced or described. It can be the
- same as `workExample.target.urlTemplate`.
-
- | 
- 
-
+| `url` | `URL` The URL on your website where the edition is introduced or described. It can be the same as `workExample.target.urlTemplate`. |
  
  
 
@@ -912,17 +638,18 @@ fetched: 2026-07-08
 
 ```
 "workExample":
- {
- "@type": "Book",
- "@id": "https://example.com/book/100",
- "inLanguage": "en",
- "isbn": "9787543321724",
- "bookEdition": "20 Anniversary Edition",
- "datePublished": "2000-02-26",
- "bookFormat": "https://schema.org/Hardcover",
- "potentialAction": {...}
- }
+        {
+          "@type": "Book",
+          "@id": "https://example.com/book/100",
+          "inLanguage": "en",
+          "isbn": "9787543321724",
+          "bookEdition": "20 Anniversary Edition",
+          "datePublished": "2000-02-26",
+          "bookFormat": "https://schema.org/Hardcover",
+          "potentialAction": {...}
+        }
 ```
+
 
  Example `Book` (`Edition`) with multiple `workExample` properties:
 
@@ -930,26 +657,27 @@ fetched: 2026-07-08
 
 ```
 "workExample": [
- {
- "@type": "Book",
- "@id": "https://example.com/book/200",
- "inLanguage": "zh",
- "isbn": "9787543321721",
- "bookEdition": "2nd Edition",
- "bookFormat": "https://schema.org/Hardcover",
- "potentialAction": {...}
- },
- {
- "@type": "Book",
- "@id": "https://example.com/book/300",
- "inLanguage": "zh",
- "isbn": "9787543321722",
- "bookEdition": "1st Edition",
- "bookFormat": "https://schema.org/EBook",
- "potentialAction": {...}
- }
+        {
+          "@type": "Book",
+          "@id": "https://example.com/book/200",
+          "inLanguage": "zh",
+          "isbn": "9787543321721",
+          "bookEdition": "2nd Edition",
+          "bookFormat": "https://schema.org/Hardcover",
+          "potentialAction": {...}
+        },
+        {
+          "@type": "Book",
+          "@id": "https://example.com/book/300",
+          "inLanguage": "zh",
+          "isbn": "9787543321722",
+          "bookEdition": "1st Edition",
+          "bookFormat": "https://schema.org/EBook",
+          "potentialAction": {...}
+      }
  ]
 ```
+
 
  
 ### `Person` or `Organization` (`author`)
@@ -960,78 +688,57 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@type` | 
+| `@type` | `Text` Set to `Person` or `Organization`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `Person` or `Organization`.
-
- | 
- 
-
- 
- `name` | 
- 
- [`Text`](https://schema.org/Text)
-
- The name of the person or organization.
-
- | 
- 
-
+| `name` | `Text` The name of the person or organization. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `sameAs` | 
- 
- [`URL`](https://schema.org/URL)
-
- The URL of a reference web page that unambiguously indicates the person or
- organization's identity. For example, a Wikipedia page for the person or organization.
-
- | 
- 
-
+| `sameAs` | `URL` The URL of a reference web page that unambiguously indicates the person or organization's identity. For example, a Wikipedia page for the person or organization. |
  
  
 
  Example `author`:
 
+
 ```
 "author": {
- "@type": "Person",
- "name": "William Shakespeare"
+  "@type": "Person",
+  "name": "William Shakespeare"
 }
 ```
 
+
  Example with multiple `author` properties:
+
 
 ```
 "author": [
- {
- "@type": "Person",
- "name": "William Shakespeare"
- },
- {
- "@type": "Person",
- "name": "Victor Hugo",
- "sameAs": "https://en.wikipedia.org/wiki/Victor_Hugo"
- }
+  {
+    "@type": "Person",
+    "name": "William Shakespeare"
+  },
+  {
+    "@type": "Person",
+    "name": "Victor Hugo",
+    "sameAs": "https://en.wikipedia.org/wiki/Victor_Hugo"
+  }
 ]
 ```
+
 
  
 ### PropertyValue (identifier)
@@ -1042,292 +749,264 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@type` | 
+| `@type` | `Text` Set to `PropertyValue`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `PropertyValue`.
-
- | 
+| `propertyID` | `Text` The type of ID. As described in ISBN and other supported identifiers , it must be either of the following: `OCLC_NUMBER` `LCCN` `JP_E-CODE` |
  
-
- 
- `propertyID` | 
- 
- [`Text`](https://schema.org/Text)
-
- The type of ID. As described in
- [ISBN and other supported
- identifiers](https://developers.google.com#isbn-and-other-supported-identifiers), it must be either of the following:
-
- 
- 
-- `OCLC_NUMBER`
- 
-- `LCCN`
- 
-- `JP_E-CODE`
- 
-
- | 
- 
-
- 
- `value` | 
- 
- [`Text`](https://schema.org/Text)
-
- The ID value. The external ID that unambiguously identifies this edition. Remove all
- non-numeric prefixes of the external ID.
-
- | 
- 
-
+| `value` | `Text` The ID value. The external ID that unambiguously identifies this edition. Remove all non-numeric prefixes of the external ID. |
  
  
 
  Example `identifier`:
 
+
 ```
- "identifier": {
- "@type": "PropertyValue",
- "propertyID": "OCLC_NUMBER",
- "value": "110123456"
- }
+"identifier": {
+      "@type": "PropertyValue",
+      "propertyID": "OCLC_NUMBER",
+      "value":  "110123456"
+    }
 ```
+
 
  Example with multiple `identifier` properties:
 
+
 ```
- "identifier": [
- {
- "@type": "PropertyValue",
- "propertyID": "OCLC_NUMBER",
- "value": "110123456"
- },
- {
- "@type": "PropertyValue",
- "propertyID": "LCCN",
- "value": "220123456"
- },{
- "@type": "PropertyValue",
- "propertyID": "JP_E-CODE",
- "value": "12345678901234567890"
- }]
+"identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "OCLC_NUMBER",
+      "value":  "110123456"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "LCCN",
+      "value":  "220123456"
+    },{
+      "@type": "PropertyValue",
+      "propertyID": "JP_E-CODE",
+      "value":  "12345678901234567890"
+    }]
 ```
+
 
  
 ### Example `ReadAction` `Book` feed JSON file
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "DataFeed",
- "dataFeedElement": [
- {
- "@context": "https://schema.org",
- "@type": "Book",
- "@id": "https://example.com/work/the_catcher_in_the_rye",
- "url": "https://example.com/work/the_catcher_in_the_rye",
- "name": "The Catcher in the Rye",
- "author": {
- "@type": "Person",
- "name": "J.D. Salinger"
- },
- "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
- "workExample": [
- {
- "@type": "Book",
- "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
- "isbn": "9787543321724",
- "bookEdition": "Mass Market Paperback",
- "bookFormat": "https://schema.org/Paperback",
- "inLanguage": "en",
- "url": "https://example.com/edition/the_catcher_in_the_rye_paperback",
- "datePublished": "1991-05-01",
- "identifier": {
- "@type": "PropertyValue",
- "propertyID": "OCLC_NUMBER",
- "value": "1057320822"
- },
- "potentialAction": {
- "@type": "ReadAction",
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/store/9787543321724",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform",
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- },
- "expectsAcceptanceOf": {
- "@type": "Offer",
- "category": "purchase",
- "price": 6.99,
- "priceCurrency": "USD",
- "availabilityStarts": "2020-01-01T11:0:00-04:00",
- "availabilityEnds": "2050-06-30T23:59:00-04:00",
- "eligibleRegion": {
- "@type": "Country",
- "name": "US"
- }
- }
- }
- },
- {
- "@type": "Book",
- "@id": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
- "isbn": "9780316769532",
- "bookEdition": "Hardcover",
- "bookFormat": "https://schema.org/Hardcover",
- "inLanguage": "en",
- "url": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
- "datePublished": "1951-07-16",
- "potentialAction": {
- "@type": "ReadAction",
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/store/9780316769532",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform",
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- },
- "expectsAcceptanceOf": [
- {
- "@type": "Offer",
- "category": "nologinrequired",
- "availabilityStarts": "2020-01-01T11:0:00-04:00",
- "availabilityEnds": "2050-06-30T23:59:00-04:00",
- "eligibleRegion": [
- {
- "@type": "Country",
- "name": "US"
- },
- {
- "@type": "Country",
- "name": "GB"
- }
- ]
- },
- {
- "@type": "Offer",
- "category": "Subscription",
- "availabilityStarts": "2020-01-01T11:0:00-04:00",
- "availabilityEnds": "2050-06-30T23:59:00-04:00",
- "eligibleRegion": {
- "@type": "Country",
- "name": "IN"
- }
- }
- ]
- }
- }
- ]
- }
- ],
- "dateModified": "2018-09-10T13:58:26.892Z"
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "dataFeedElement": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "@id": "https://example.com/work/the_catcher_in_the_rye",
+      "url": "https://example.com/work/the_catcher_in_the_rye",
+      "name": "The Catcher in the Rye",
+      "author": {
+        "@type": "Person",
+        "name": "J.D. Salinger"
+      },
+      "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
+      "workExample": [
+        {
+          "@type": "Book",
+          "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
+          "isbn": "9787543321724",
+          "bookEdition": "Mass Market Paperback",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": "en",
+          "url": "https://example.com/edition/the_catcher_in_the_rye_paperback",
+          "datePublished": "1991-05-01",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "OCLC_NUMBER",
+            "value": "1057320822"
+          },
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://example.com/store/9787543321724",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/AndroidPlatform",
+                "https://schema.org/IOSPlatform"
+              ]
+            },
+            "expectsAcceptanceOf": {
+              "@type": "Offer",
+              "category": "purchase",
+              "price": 6.99,
+              "priceCurrency": "USD",
+              "availabilityStarts": "2020-01-01T11:0:00-04:00",
+              "availabilityEnds": "2050-06-30T23:59:00-04:00",
+              "eligibleRegion": {
+                "@type": "Country",
+                "name": "US"
+              }
+            }
+          }
+        },
+        {
+          "@type": "Book",
+          "@id": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
+          "isbn": "9780316769532",
+          "bookEdition": "Hardcover",
+          "bookFormat": "https://schema.org/Hardcover",
+          "inLanguage": "en",
+          "url": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
+          "datePublished": "1951-07-16",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://example.com/store/9780316769532",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/AndroidPlatform",
+                "https://schema.org/IOSPlatform"
+              ]
+            },
+            "expectsAcceptanceOf": [
+              {
+                "@type": "Offer",
+                "category": "nologinrequired",
+                "availabilityStarts": "2020-01-01T11:0:00-04:00",
+                "availabilityEnds": "2050-06-30T23:59:00-04:00",
+                "eligibleRegion": [
+                  {
+                    "@type": "Country",
+                    "name": "US"
+                  },
+                  {
+                    "@type": "Country",
+                    "name": "GB"
+                  }
+                ]
+              },
+              {
+                "@type": "Offer",
+                "category": "Subscription",
+                "availabilityStarts": "2020-01-01T11:0:00-04:00",
+                "availabilityEnds": "2050-06-30T23:59:00-04:00",
+                "eligibleRegion": {
+                  "@type": "Country",
+                  "name": "IN"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "dateModified": "2018-09-10T13:58:26.892Z"
 }
 ```
+
 
  
 ### Example `BorrowAction` `Book` feed JSON file
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "DataFeed",
- "dataFeedElement": [
- {
- "@context": "https://schema.org",
- "@type": "Book",
- "@id": "https://example.com/work/the_catcher_in_the_rye",
- "url": "https://example.com/work/the_catcher_in_the_rye",
- "name": "The Catcher in the Rye",
- "author": {
- "@type": "Person",
- "name": "J.D. Salinger"
- },
- "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
- "workExample": [
- {
- "@type": "Book",
- "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
- "isbn": "9787543321724",
- "bookEdition": "Mass Market Paperback",
- "bookFormat": "https://schema.org/Paperback",
- "inLanguage": "en",
- "url": "https://example.com/edition/the_catcher_in_the_rye_paperback",
- "datePublished": "1991-05-01",
- "identifier": {
- "@type": "PropertyValue",
- "propertyID": "OCLC_NUMBER",
- "value": "1057320822"
- },
- "potentialAction": {
- "@type": "BorrowAction",
- "lender": {
- "@type": "LibrarySystem",
- "@id": "https://example.com/librarySystem/100"
- },
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/borrowpurchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform",
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- }
- }
- },
- {
- "@type": "Book",
- "@id": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
- "isbn": "9780316769532",
- "bookEdition": "Hardcover",
- "bookFormat": "https://schema.org/Hardcover",
- "inLanguage": "en",
- "url": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
- "datePublished": "1951-07-16",
- "potentialAction": {
- "@type": "BorrowAction",
- "lender": {
- "@type": "LibrarySystem",
- "@id": "https://example.com/librarySystem/100"
- },
- "target": [
- {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/borrowpurchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform"
- ]
- },
- {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/mobile/borrowpurchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- }
- ]
- }
- }
- ]
- }
- ],
- "dateModified": "2018-09-10T13:58:26.892Z"
+  "@context": "https://schema.org",
+  "@type": "DataFeed",
+  "dataFeedElement": [
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "@id": "https://example.com/work/the_catcher_in_the_rye",
+      "url": "https://example.com/work/the_catcher_in_the_rye",
+      "name": "The Catcher in the Rye",
+      "author": {
+        "@type": "Person",
+        "name": "J.D. Salinger"
+      },
+      "sameAs": "https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye",
+      "workExample": [
+        {
+          "@type": "Book",
+          "@id": "https://example.com/edition/the_catcher_in_the_rye_paperback",
+          "isbn": "9787543321724",
+          "bookEdition": "Mass Market Paperback",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": "en",
+          "url": "https://example.com/edition/the_catcher_in_the_rye_paperback",
+          "datePublished": "1991-05-01",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "OCLC_NUMBER",
+            "value": "1057320822"
+          },
+          "potentialAction": {
+            "@type": "BorrowAction",
+            "lender": {
+              "@type": "LibrarySystem",
+              "@id": "https://example.com/librarySystem/100"
+            },
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://example.com/borrowpurchase?bookId=170",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/AndroidPlatform",
+                "https://schema.org/IOSPlatform"
+              ]
+            }
+          }
+        },
+        {
+          "@type": "Book",
+          "@id": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
+          "isbn": "9780316769532",
+          "bookEdition": "Hardcover",
+          "bookFormat": "https://schema.org/Hardcover",
+          "inLanguage": "en",
+          "url": "https://example.com/edition/the_catcher_in_the_rye_hardcover",
+          "datePublished": "1951-07-16",
+          "potentialAction": {
+            "@type": "BorrowAction",
+            "lender": {
+              "@type": "LibrarySystem",
+              "@id": "https://example.com/librarySystem/100"
+            },
+            "target": [
+              {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://example.com/borrowpurchase?bookId=170",
+                "actionPlatform": [
+                  "https://schema.org/DesktopWebPlatform"
+                ]
+              },
+              {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://example.com/mobile/borrowpurchase?bookId=170",
+                "actionPlatform": [
+                  "https://schema.org/AndroidPlatform",
+                  "https://schema.org/IOSPlatform"
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "dateModified": "2018-09-10T13:58:26.892Z"
 }
 ```
+
 
  
 ### `ReadAction` (`potentialAction`)
@@ -1340,300 +1019,138 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@type` | 
+| `@type` | `Text` Set to `ReadAction`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `ReadAction`.
-
- | 
+| `expectsAcceptanceOf` | `Offer` The definition of user requirements to access this entity. If multiple `Offer` properties are present, a user matching any of the `Offer` criteria might be able to access the content. This property can be repeated. |
  
-
+| `expectsAcceptanceOf.@type` | `Text` Set to `Offer`. |
  
- `expectsAcceptanceOf` | 
+| `expectsAcceptanceOf.category` | `Text` The type of `Offer`. This must be one of the following values: `nologinrequired`: The action is available to the user with no purchase or login to access content. `free`: The action is available with no purchase or paid subscription required of the user. The action does, however, require a user to log in. `subscription`: The book is included with a paid subscription to your service. `purchase`: The book is accessible through a purchase. `rental`: The book is accessible for a finite amount of time after the purchase. |
  
- [`Offer`](https://schema.org/Offer)
-
- The definition of user requirements to access this entity. If multiple
- `Offer` properties are present, a user matching any of the
- `Offer` criteria might be able to access the content.
-
- This property can be repeated.
-
- | 
+| `expectsAcceptanceOf.eligibleRegion` | `Country` The country that's eligible for this `Offer`. This can be used to control the country and region where this content is or isn't available. This property can be repeated. |
  
-
+| `expectsAcceptanceOf.eligibleRegion.@type` | `Text` Set to `Country`. |
  
- `expectsAcceptanceOf.@type` | 
+| `expectsAcceptanceOf.eligibleRegion.name` | `Text` The ISO 3166-1 alpha-2 country code. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `Offer`.
-
- | 
+| `target` | `EntryPoint` The specifications of your deep link, which includes the supported platform information. There can be multiple `EntryPoint` properties to define different deep links for different platform sets. This property can be repeated. |
  
-
+| `target.@type` | `Text` Set to `EntryPoint`. |
  
- `expectsAcceptanceOf.category` | 
+| `target.actionPlatform` | `Text` The platform(s) that this deep link is valid for. Use one of the following values: `https://schema.org/DesktopWebPlatform` `https://schema.org/AndroidPlatform` `https://schema.org/IOSPlatform` This property can be repeated. |
  
- [`Text`](https://schema.org/Text)
-
- The type of `Offer`. This must be one of the following values:
-
- 
- 
-- `nologinrequired`: The action is available to the user with no purchase
- or login to access content.
- 
-- `free`: The action is available with no purchase or paid subscription
- required of the user. The action does, however, require a user to log in.
- 
-- `subscription`: The book is included with a paid subscription to your
- service.
- 
-- `purchase`: The book is accessible through a purchase.
- 
-- `rental`: The book is accessible for a finite amount of time after the
- purchase.
- 
-
- | 
- 
-
- 
- `expectsAcceptanceOf.eligibleRegion` | 
- 
- [`Country`](https://schema.org/Country)
-
- The country that's eligible for this `Offer`. This can be used to control
- the country and region where this content is or isn't available.
-
- This property can be repeated.
-
- | 
- 
-
- 
- `expectsAcceptanceOf.eligibleRegion.@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `Country`.
-
- | 
- 
-
- 
- `expectsAcceptanceOf.eligibleRegion.name` | 
- 
- [`Text`](https://schema.org/Text)
-
- The [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code.
-
- | 
- 
-
- 
- `target` | 
- 
- [`EntryPoint`](https://schema.org/EntryPoint)
-
- The specifications of your deep link, which includes the supported platform
- information. There can be multiple `EntryPoint` properties to define
- different deep links for different platform sets.
-
- This property can be repeated.
-
- | 
- 
-
- 
- `target.@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `EntryPoint`.
-
- | 
- 
-
- 
- `target.actionPlatform` | 
- 
- [`Text`](https://schema.org/Text)
-
- The platform(s) that this deep link is valid for. Use one of the following
- values:
-
- 
- 
-- `https://schema.org/DesktopWebPlatform`
- 
-- `https://schema.org/AndroidPlatform`
- 
-- `https://schema.org/IOSPlatform`
- 
-
- This property can be repeated.
-
- | 
- 
-
- 
- `target.urlTemplate` | 
- 
- [`URL`](https://schema.org/URL)
-
- The link that takes users directly to the content of your book's landing page.
-
- | 
- 
-
+| `target.urlTemplate` | `URL` The link that takes users directly to the content of your book's landing page. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `expectsAcceptanceOf.availabilityEnds` | 
+| `expectsAcceptanceOf.availabilityEnds` | `DateTime` The end time of the availability window. This can be used to control the exact time when this book must no longer be exposed to users. |
  
- [`DateTime`](https://schema.org/DateTime)
-
- The end time of the availability window. This can be used to control the exact time
- when this book must no longer be exposed to users.
-
- | 
+| `expectsAcceptanceOf.availabilityStarts` | `DateTime` The start time of the availability window. This can be used to control the exact time when this book can be exposed to users. |
  
-
+| `expectsAcceptanceOf.price` | `Number` The purchase price of the book. This is required when the `Offer` property's `category` is set to `purchase` or `rental`. |
  
- `expectsAcceptanceOf.availabilityStarts` | 
- 
- [`DateTime`](https://schema.org/DateTime)
-
- The start time of the availability window. This can be used to control the exact
- time when this book can be exposed to users.
-
- | 
- 
-
- 
- `expectsAcceptanceOf.price` | 
- 
- [`Number`](https://schema.org/Number)
-
- The purchase price of the book. This is required when the `Offer`
- property's `category` is set to `purchase` or
- `rental`.
-
- | 
- 
-
- 
- `expectsAcceptanceOf.priceCurrency` | 
- 
- [`Text`](https://schema.org/Text)
-
- The currency of the price in three-letter
- [ISO
- 4217](https://en.wikipedia.org/wiki/ISO_4217) format.
-
- | 
- 
-
+| `expectsAcceptanceOf.priceCurrency` | `Text` The currency of the price in three-letter ISO 4217 format. |
  
  
 
  Example `ReadAction`:
 
+
 ```
 "potentialAction": {
- "@type": "ReadAction",
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/purchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform",
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- },
- "expectsAcceptanceOf": {
- "@type": "Offer",
- "category": "purchase",
- "price": 9.99,
- "priceCurrency": "USD",
- "availabilityStarts": "2018-04-01T11:01:00-04:00",
- "availabilityEnds": "2018-06-30T23:59:00-04:00",
- "eligibleRegion": {
- "@type": "Country",
- "name": "US"
- }
- }
+  "@type": "ReadAction",
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "https://example.com/purchase?bookId=170",
+    "actionPlatform": [
+      "https://schema.org/DesktopWebPlatform",
+      "https://schema.org/AndroidPlatform",
+      "https://schema.org/IOSPlatform"
+    ]
+  },
+  "expectsAcceptanceOf": {
+    "@type": "Offer",
+    "category": "purchase",
+    "price": 9.99,
+    "priceCurrency": "USD",
+    "availabilityStarts": "2018-04-01T11:01:00-04:00",
+    "availabilityEnds": "2018-06-30T23:59:00-04:00",
+    "eligibleRegion": {
+      "@type": "Country",
+      "name": "US"
+    }
+  }
 }
 ```
+
 
  Example `ReadAction` with multiple `EntryPoint` properties:
 
+
 ```
 "potentialAction": {
- "@type": "ReadAction",
- "target": [
- {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/purchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform"
- ]
- },
- {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/mobile/purchase?bookId=170",
- "actionPlatform": [
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- }
- ],
- "expectsAcceptanceOf": [
- {
- "@type": "Offer",
- "category": "noLoginRequired",
- "availabilityStarts": "2018-04-01T11:01:00-04:00",
- "availabilityEnds": "2018-06-30T23:59:00-04:00",
- "eligibleRegion": [
- {
- "@type": "Country",
- "name": "US"
- },
- {
- "@type": "Country",
- "name": "GB"
- }
- ]
- },
- {
- "@type": "Offer",
- "category": "Subscription",
- "availabilityStarts": "2018-04-01T11:01:00-04:00",
- "availabilityEnds": "2018-06-30T23:59:00-04:00",
- "eligibleRegion": {
- "@type": "Country",
- "name": "IN"
- }
- }
- ]
+  "@type": "ReadAction",
+  "target": [
+    {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.com/purchase?bookId=170",
+      "actionPlatform": [
+        "https://schema.org/DesktopWebPlatform"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.com/mobile/purchase?bookId=170",
+      "actionPlatform": [
+        "https://schema.org/AndroidPlatform",
+        "https://schema.org/IOSPlatform"
+      ]
+    }
+  ],
+  "expectsAcceptanceOf": [
+    {
+      "@type": "Offer",
+      "category": "noLoginRequired",
+      "availabilityStarts": "2018-04-01T11:01:00-04:00",
+      "availabilityEnds": "2018-06-30T23:59:00-04:00",
+      "eligibleRegion": [
+        {
+          "@type": "Country",
+          "name": "US"
+        },
+        {
+          "@type": "Country",
+          "name": "GB"
+        }
+      ]
+    },
+    {
+      "@type": "Offer",
+      "category": "Subscription",
+      "availabilityStarts": "2018-04-01T11:01:00-04:00",
+      "availabilityEnds": "2018-06-30T23:59:00-04:00",
+      "eligibleRegion": {
+        "@type": "Country",
+        "name": "IN"
+      }
+    }
+  ]
 }
 ```
+
 
  
 ### `BorrowAction` (`potentialAction`)
@@ -1646,159 +1163,82 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `@type` | 
+| `@type` | `Text` Set to `BorrowAction`. |
  
- [`Text`](https://schema.org/Text)
-
- Set to `BorrowAction`.
-
- | 
+| `lender` | `LibrarySystem` The library system that provides access to this edition. |
  
-
+| `lender.@id` | `URL` The ID references of the `LibrarySystem`, which must be fully described separately in the library feed. |
  
- `lender` | 
+| `lender.@type` | `Text` Set to `LibrarySystem`. |
  
- [`LibrarySystem`](https://schema.org/LibrarySystem)
-
- The library system that provides access to this edition.
-
- | 
+| `target` | `EntryPoint` The specifications of your deep link, which includes the supported platform information. To define deep links for different platform sets, specify an `EntryPoint` array. This property can be repeated. |
  
-
+| `target.@type` | `Text` Set to `EntryPoint`. |
  
- `lender.@id` | 
+| `target.actionPlatform` | `Text` The platform(s) that this deep link is valid for. Use one of the following values: `https://schema.org/DesktopWebPlatform` `https://schema.org/AndroidPlatform` `https://schema.org/IOSPlatform` This property can be repeated. |
  
- [`URL`](https://schema.org/URL)
-
- The ID references of the `LibrarySystem`, which must be fully described
- separately in the library feed.
-
- | 
- 
-
- 
- `lender.@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `LibrarySystem`.
-
- | 
- 
-
- 
- `target` | 
- 
- [`EntryPoint`](https://schema.org/EntryPoint)
-
- The specifications of your deep link, which includes the supported platform
- information. To define deep links for different platform sets, specify an
- `EntryPoint` array.
-
- This property can be repeated.
-
- | 
- 
-
- 
- `target.@type` | 
- 
- [`Text`](https://schema.org/Text)
-
- Set to `EntryPoint`.
-
- | 
- 
-
- 
- `target.actionPlatform` | 
- 
- [`Text`](https://schema.org/Text)
-
- The platform(s) that this deep link is valid for. Use one of the following
- values:
-
- 
- 
-- `https://schema.org/DesktopWebPlatform`
- 
-- `https://schema.org/AndroidPlatform`
- 
-- `https://schema.org/IOSPlatform`
- 
-
- This property can be repeated.
-
- | 
- 
-
- 
- `target.urlTemplate` | 
- 
- [`URL`](https://schema.org/URL)
-
- The link that takes users directly to the content of your book's landing page.
-
- | 
- 
-
+| `target.urlTemplate` | `URL` The link that takes users directly to the content of your book's landing page. |
  
  
 
  Example `BorrowAction`:
 
+
 ```
 "potentialAction": {
- "@type": "BorrowAction",
- "lender": {
- "@type": "LibrarySystem",
- "@id": "https://example.com/librarySystem/100"
- },
- "target": {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/borrow?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform",
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- }
+  "@type": "BorrowAction",
+  "lender": {
+    "@type": "LibrarySystem",
+    "@id": "https://example.com/librarySystem/100"
+  },
+  "target": {
+    "@type": "EntryPoint",
+    "urlTemplate": "https://example.com/borrow?bookId=170",
+    "actionPlatform": [
+      "https://schema.org/DesktopWebPlatform",
+      "https://schema.org/AndroidPlatform",
+      "https://schema.org/IOSPlatform"
+    ]
+  }
 }
 ```
+
 
  Example `BorrowAction` with multiple `EntryPoint` properties:
 
+
 ```
 "potentialAction": {
- "@type": "BorrowAction",
- "lender": {
- "@type": "LibrarySystem",
- "@id": "https://example.com/librarySystem/100"
- },
- "target": [
- {
- "@type": "EntryPoint",
- "urlTemplate": "https://example.com/borrow?bookId=170",
- "actionPlatform": [
- "https://schema.org/DesktopWebPlatform"
- ]
- },
- {
- "@type": "EntryPoint",
-` "urlTemplate": "https://example.com/mobile/borrow?bookId=170",
- "actionPlatform": [
- "https://schema.org/AndroidPlatform",
- "https://schema.org/IOSPlatform"
- ]
- }
- ]
+  "@type": "BorrowAction",
+  "lender": {
+    "@type": "LibrarySystem",
+    "@id": "https://example.com/librarySystem/100"
+  },
+  "target": [
+    {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://example.com/borrow?bookId=170",
+      "actionPlatform": [
+        "https://schema.org/DesktopWebPlatform"
+      ]
+    },
+    {
+      "@type": "EntryPoint",
+`      "urlTemplate": "https://example.com/mobile/borrow?bookId=170",
+      "actionPlatform": [
+        "https://schema.org/AndroidPlatform",
+        "https://schema.org/IOSPlatform"
+      ]
+    }
+  ]
 }
 ```
+
 
  
 ### `Library` entity
@@ -1844,156 +1284,30 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `@context` | ` Text ` Set to `https://schema.org`. |
  
- `@context`
- | 
+| `@id` | ` URL ` A globally unique ID for the library system in URL format. The ID must be stable and not change over time. It's treated as an opaque string and doesn't need to be a working link. The domain used for the `@id` value must be owned by your organization. |
  
- `[Text](https://schema.org/Text)`
-
- Set to `https://schema.org`.
-
- | 
+| `@type` | ` Text ` Set to `LibrarySystem`. |
  
-
+| `additionalProperty` | ` PropertyValue ` The additional property used to indicate the type of the library. |
  
+| `additionalProperty.@type` | ` Text ` Set to `PropertyValue`. |
  
- `@id`
- | 
+| `additionalProperty.name` | ` Text ` Set to `librarytype`. |
  
- `[URL](https://schema.org/URL)`
-
- A globally unique ID for the library system in URL
- format. The ID must be stable and not change over time. It's treated
- as an opaque string and doesn't need to be a working link. The
- domain used for the `@id` value must be owned by your
- organization.
-
- | 
+| `additionalProperty.value` | ` Text ` The type of the library. Use one of the following values: `public` `academic` `corporate` `government` `school` `special` |
  
-
+| `member` | ` Library ` The member(s) of the library system. |
  
+| `name` | ` Text ` The name of the library system. For example, `The Southwestern League of Libraries`. |
  
- `@type`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Set to `LibrarySystem`.
-
- | 
- 
-
- 
- 
- `additionalProperty`
- | 
- 
- `[PropertyValue](https://schema.org/PropertyValue)`
-
- The additional property used to indicate the type of
- the library.
-
- | 
- 
-
- 
- 
- `additionalProperty.@type`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Set to `PropertyValue`.
-
- | 
- 
-
- 
- 
- `additionalProperty.name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Set to `librarytype`.
-
- | 
- 
-
- 
- 
- `additionalProperty.value`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The type of the library. Use one of the following
- values:
-
- 
- 
-- `public`
- 
-- `academic`
- 
-- `corporate`
- 
-- `government`
- 
-- `school`
- 
-- `special`
- 
-
- | 
- 
-
- 
- 
- `member`
- | 
- 
- `[Library](https://schema.org/Library)`
-
- The member(s) of the library system.
-
- | 
- 
-
- 
- 
- `name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the library system. For example,
- `The Southwestern League of Libraries`.
-
- | 
- 
-
- 
- 
- `url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The URL where the library system is introduced or
- described. Google Search uses this link to reconcile the content in
- your feed with the content in Google's databases. For the actual
- landing page, Google Search uses the URL provided in
- `workExample.target.urlTemplate`.
-
- | 
- 
-
+| `url` | ` URL ` The URL where the library system is introduced or described. Google Search uses this link to reconcile the content in your feed with the content in Google's databases. For the actual landing page, Google Search uses the URL provided in `workExample.target.urlTemplate`. |
  
  
 
@@ -2015,225 +1329,112 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `@id` | ` URL ` A globally unique ID for the library branch in URL format. The ID must be stable and not change over time. It's treated as an opaque string and doesn't need to be a working link. The domain used for the `@id` value must be owned by your organization. |
  
- `@id`
- | 
+| `@type` | ` Text ` Set to `Library`. |
  
- `[URL](https://schema.org/URL)`
-
- A globally unique ID for the library branch in URL
- format. The ID must be stable and not change over time. It's treated
- as an opaque string and doesn't need to be a working link. The
- domain used for the `@id` value must be owned by your
- organization.
-
- | 
- 
-
- 
- 
- `@type`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Set to `Library`.
-
- | 
- 
-
- 
- 
- `location`
- | 
- 
- `[PostalAddress](https://schema.org/PostalAddress)`
-
- The street address of the library branch. Not all
- properties apply to every country. You must include as many as apply
- to the addresses of your libraries.
-
- Example United States `location`:
-
+| `location` | ` PostalAddress ` The street address of the library branch. Not all properties apply to every country. You must include as many as apply to the addresses of your libraries. Example United States `location`: 
 ```
 {
- "@type": "Library",
- "@id": "https://example.com/library-branches/1001",
- "name": "Campbell Library",
- "location": {
- "@type": "PostalAddress",
- "streetAddress": "77 Harrison Ave",
- "addressLocality": "Campbell",
- "addressRegion": "CA",
- "postalCode": "95008",
- "addressCountry": "US"
- }
+  "@type": "Library",
+  "@id": "https://example.com/library-branches/1001",
+  "name": "Campbell Library",
+  "location": {
+    "@type": "PostalAddress",
+    "streetAddress": "77 Harrison Ave",
+    "addressLocality": "Campbell",
+    "addressRegion": "CA",
+    "postalCode": "95008",
+    "addressCountry": "US"
+  }
 }
 ```
-
- Example Japan `location`:
-
+ Example Japan `location`: 
 ```
 {
- "@type": "Library",
- "@id": "https://example.com/library-branches/1003",
- "name": "Tokyo Metropolitan Central Library",
- "location": {
- "@type": "PostalAddress",
- "streetAddress": "７-13-5 Minamiazabu, Minato City",
- "addressLocality": "Tokyo",
- "postalCode": "106-0047",
- "addressCountry": "JP"
- }
+  "@type": "Library",
+  "@id": "https://example.com/library-branches/1003",
+  "name": "Tokyo Metropolitan Central Library",
+  "location": {
+    "@type": "PostalAddress",
+    "streetAddress": "７-13-5 Minamiazabu, Minato City",
+    "addressLocality": "Tokyo",
+    "postalCode": "106-0047",
+    "addressCountry": "JP"
+  }
 }
 ```
-
- | 
+ |
  
-
+| `location.@type` | ` Text ` Set to `PostalAddress`. |
  
+| `location.addressCountry` | ` Text ` The country code in ISO 3166-1 format. For example, `US`. |
  
- `location.@type`
- | 
+| `location.addressLocality` | ` Text ` The locality. For example, `Mountain View`. |
  
- `[Text](https://schema.org/Text)`
-
- Set to `PostalAddress`.
-
- | 
+| `location.addressRegion` | ` Text ` The region. For example, `CA`. |
  
-
+| `location.postalCode` | ` Text ` The postal code. For example, `94043`. |
  
+| `location.streetAddress` | ` Text ` The street address. For example, `1600 Amphitheatre Pkwy`. |
  
- `location.addressCountry`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The country code in
- [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)
- format. For example, `US`.
-
- | 
- 
-
- 
- 
- `location.addressLocality`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The locality. For example,
- `Mountain View`.
-
- | 
- 
-
- 
- 
- `location.addressRegion`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The region. For example, `CA`.
-
- | 
- 
-
- 
- 
- `location.postalCode`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The postal code. For example,
- `94043`.
-
- | 
- 
-
- 
- 
- `location.streetAddress`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The street address. For example,
- `1600 Amphitheatre Pkwy`.
-
- | 
- 
-
- 
- 
- `name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the library branch.
-
- | 
- 
-
+| `name` | ` Text ` The name of the library branch. |
  
  
 
  
 ### Example `LibrarySystem` feed JSON file
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type":"LibrarySystem",
- "@id":"https://example.com/library-systems/100",
- "name":"Santa Clara County Library District",
- "additionalProperty":[
- {
- "@type":"PropertyValue",
- "name":"librarytype",
- "value":"public"
- }
- ],
- "member":[
- {
- "@type":"Library",
- "@id":"https://example.com/library-branches/1001",
- "name":"Campbell Library",
- "location":{
- "@type":"PostalAddress",
- "streetAddress":"77 Harrison Ave",
- "addressLocality":"Campbell",
- "addressRegion":"CA",
- "postalCode":"95008",
- "addressCountry":"US"
- }
- },
- {
- "@type":"Library",
- "@id":"https://example.com/library-branches/1002",
- "name":"Gilroy Library",
- "location":{
- "@type":"PostalAddress",
- "streetAddress":"350 W 6th St",
- "addressLocality":"Gilroy",
- "addressRegion":"CA",
- "postalCode":"95020",
- "addressCountry":"US"
- }
- }
- ]
+   "@context": "https://schema.org",
+   "@type":"LibrarySystem",
+   "@id":"https://example.com/library-systems/100",
+   "name":"Santa Clara County Library District",
+   "additionalProperty":[
+      {
+         "@type":"PropertyValue",
+         "name":"librarytype",
+         "value":"public"
+      }
+   ],
+   "member":[
+      {
+         "@type":"Library",
+         "@id":"https://example.com/library-branches/1001",
+         "name":"Campbell Library",
+         "location":{
+            "@type":"PostalAddress",
+            "streetAddress":"77 Harrison Ave",
+            "addressLocality":"Campbell",
+            "addressRegion":"CA",
+            "postalCode":"95008",
+            "addressCountry":"US"
+         }
+      },
+      {
+         "@type":"Library",
+         "@id":"https://example.com/library-branches/1002",
+         "name":"Gilroy Library",
+         "location":{
+            "@type":"PostalAddress",
+            "streetAddress":"350 W 6th St",
+            "addressLocality":"Gilroy",
+            "addressRegion":"CA",
+            "postalCode":"95020",
+            "addressCountry":"US"
+         }
+      }
+   ]
 }
 ```
+
 
  
  

@@ -63,44 +63,46 @@ Here's an example of
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>Article headline</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "NewsArticle",
- "headline": "Article headline",
- "image": "https://example.org/thumbnail1.jpg",
- "datePublished": "2025-02-05T08:00:00+08:00",
- "dateModified": "2025-02-05T09:20:00+08:00",
- "author": {
- "@type": "Person",
- "name": "John Doe",
- "url": "https://example.com/profile/johndoe123"
- },
- "description": "A most wonderful article",
- "isAccessibleForFree": false,
- "hasPart":
- {
- "@type": "WebPageElement",
- "isAccessibleForFree": false,
- "cssSelector" : ".paywall"
- }
- }
- </script>
- </head>
- <body>
- <div class="non-paywall">
- Non-Paywalled Content
- </div>
- <div class="paywall">
- Paywalled Content
- </div>
- </body>
+  <head>
+    <title>Article headline</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Article headline",
+      "image": "https://example.org/thumbnail1.jpg",
+      "datePublished": "2025-02-05T08:00:00+08:00",
+      "dateModified": "2025-02-05T09:20:00+08:00",
+      "author": {
+        "@type": "Person",
+        "name": "John Doe",
+        "url": "https://example.com/profile/johndoe123"
+      },
+      "description": "A most wonderful article",
+      "isAccessibleForFree": false,
+      "hasPart":
+        {
+        "@type": "WebPageElement",
+        "isAccessibleForFree": false,
+        "cssSelector" : ".paywall"
+        }
+    }
+    </script>
+  </head>
+  <body>
+    <div class="non-paywall">
+      Non-Paywalled Content
+    </div>
+    <div class="paywall">
+      Paywalled Content
+    </div>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -147,12 +149,14 @@ Note: If you violate these policies, your page might not be eligible
 - 
  Add a class name around each paywalled section of your page. For example:
 
+
 ```
 <body>
 <p>This content is outside a paywall and is visible to all.</p>
 <div class="paywall">This content is inside a paywall, and requires a subscription or registration.</div>
 </body>
 ```
+
 
  
 - 
@@ -167,21 +171,22 @@ Note: If you violate these policies, your page might not be eligible
  class name that you added in Step 1.
  
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "NewsArticle",
- "mainEntityOfPage": {
- "@type": "WebPage",
- "@id": "https://example.org/article"
- },
- (...)
- "isAccessibleForFree": false,
- "hasPart": {
- "@type": "WebPageElement",
- "isAccessibleForFree": false,
- "cssSelector": ".paywall"
- }
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.org/article"
+  },
+  (...)
+  "isAccessibleForFree": false,
+  "hasPart": {
+    "@type": "WebPageElement",
+    "isAccessibleForFree": false,
+    "cssSelector": ".paywall"
+  }
 }
 ```
 
@@ -197,40 +202,44 @@ If you have multiple paywalled sections on a page, add the class names as an arr
 
 Here's an example of the paywalled sections on a page:
 
+
 ```
 <body>
- <div class="section1">This content is inside a paywall, and requires a subscription or registration.</div>
- <p>This content is outside a paywall and is visible to all.</p>
- <div class="section2">This is another section that's inside a paywall, or requires a subscription or registration.</div>
+  <div class="section1">This content is inside a paywall, and requires a subscription or registration.</div>
+  <p>This content is outside a paywall and is visible to all.</p>
+  <div class="section2">This is another section that's inside a paywall, or requires a subscription or registration.</div>
 </body>
 ```
+
 
  Here's an example of [`NewsArticle`](https://developers.google.com/search/docs/appearance/structured-data/article)
  structured data with multiple paywalled sections.
 
+
 ```
 {
- "@context": "https://schema.org",
- "@type": "NewsArticle",
- "mainEntityOfPage": {
- "@type": "WebPage",
- "@id": "https://example.org/article"
- },
- (...)
- "isAccessibleForFree": false,
- "hasPart": [
- {
- "@type": "WebPageElement",
- "isAccessibleForFree": false,
- "cssSelector": ".section1"
- }, {
- "@type": "WebPageElement",
- "isAccessibleForFree": false,
- "cssSelector": ".section2"
- }
- ]
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://example.org/article"
+    },
+  (...)
+  "isAccessibleForFree": false,
+  "hasPart": [
+    {
+      "@type": "WebPageElement",
+      "isAccessibleForFree": false,
+      "cssSelector": ".section1"
+    }, {
+      "@type": "WebPageElement",
+      "isAccessibleForFree": false,
+      "cssSelector": ".section2"
+    }
+  ]
 }
 ```
+
 
 ### Supported types
 
@@ -285,70 +294,26 @@ You must include the required properties for Google to understand that your arti
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- 
- `isAccessibleForFree`
- | 
- `[Boolean](https://schema.org/Boolean)`
-
- Whether the article is accessible to everyone, or if it's behind a paywall (or requires a
- subscription or registration). Set the `isAccessibleForFree`
- property to `false` to specify that this section is behind a paywall.
-
- | 
- 
-
+| `isAccessibleForFree` | ` Boolean ` Whether the article is accessible to everyone, or if it's behind a paywall (or requires a subscription or registration). Set the `isAccessibleForFree` property to `false` to specify that this section is behind a paywall. |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
+| `hasPart.cssSelector` | ` CssSelectorType ` A CSS selector that references the class name that you set in the HTML to specify the paywalled section. |
  
- `hasPart.cssSelector`
- | 
+| `hasPart.@type` | ` Text ` Set the `@type` to `WebPageElement`. |
  
- `[CssSelectorType](https://schema.org/CssSelectorType)`
-
- A CSS selector that references the class name that you [set in the HTML](https://developers.google.com#class-name-step)
- to specify the paywalled section.
-
- | 
- 
-
- 
- 
- `hasPart.@type`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Set the `@type` to `WebPageElement`.
-
- | 
- 
-
- 
- 
- `hasPart.isAccessibleForFree`
- | 
- 
- `[Boolean](https://schema.org/Boolean)`
-
- Whether this section of the article is behind a paywall (or requires a subscription or
- registration). Set the `isAccessibleForFree` property to `False` to
- specify that this section is behind a paywall.
-
- | 
- 
-
+| `hasPart.isAccessibleForFree` | ` Boolean ` Whether this section of the article is behind a paywall (or requires a subscription or registration). Set the `isAccessibleForFree` property to `False` to specify that this section is behind a paywall. |
  
 
 ## AMP considerations

@@ -178,6 +178,7 @@ It's not necessary to use the word "explicit" in the domain. It only matters
  [`meta` tag](https://developers.google.com/search/docs/crawling-indexing/special-tags#rating) or an HTTP response header.
  We recommend adding this tag to any page with sexually explicit content.
 
+
 ```
 <meta name="rating" content="adult">
 ```

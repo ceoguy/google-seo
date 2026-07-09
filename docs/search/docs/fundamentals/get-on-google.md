@@ -21,9 +21,11 @@ Google automatically looks for sites to add to our index; you usually don't even
  To see if your pages are already [indexed](https://developers.google.com/search/docs/fundamentals/how-search-works#indexing),
  search for your site in Google Search with a query like this. Substitute your own site for "example.com".
 
+
 ```
 site:example.com
 ```
+
 
  The `site:` operator doesn't necessarily return all the URLs that are indexed
  under the prefix specified in the query. [Learn more about the `site:` operator](https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site).
@@ -99,83 +101,43 @@ site:example.com
 
  Business or person | 
  
- [Google for Retail](https://www.google.com/ads/shopping/index.html) | 
- To promote your products on Google Shopping, Google Offers, and other
- properties, you can submit your product catalogs digitally to Google Search. | 
+| Google for Retail | To promote your products on Google Shopping, Google Offers, and other properties, you can submit your product catalogs digitally to Google Search. |
  
-
+| Google for Small Business | See what resources Google offers to help your small business thrive. |
  
- [Google for Small Business](https://smallbusiness.withgoogle.com) | 
- See what resources Google offers to help your small business thrive. | 
+| Street View | Invite customers on a virtual tour of your business. |
  
-
- 
- [Street View](https://www.google.com/streetview/earn/) | 
- Invite customers on a virtual tour of your business. | 
- 
-
- 
- [Knowledge panel](https://support.google.com/knowledgepanel/answer/9163198) | 
- If you want to manage your identity as a person, business, or organization on
- Google, you can [suggest changes to your knowledge panel entry](https://support.google.com/knowledgepanel/answer/7534842). | 
- 
+| Knowledge panel | If you want to manage your identity as a person, business, or organization on Google, you can suggest changes to your knowledge panel entry . |
 
  To learn more about getting digital content on Google, check out the following resources:
 
  Digital content | 
  
- [Google Books and eBooks](https://support.google.com/books/partner/answer/3324395) | 
- Promote your books online and sell your titles through our eBook store. | 
+| Google Books and eBooks | Promote your books online and sell your titles through our eBook store. |
  
-
+| Scholar | Include scholarly works in Google's academic index. |
  
- [Scholar](https://scholar.google.com/intl/en/scholar/about.html) | 
- Include scholarly works in Google's academic index. | 
- 
-
- 
- [Google News](https://support.google.com/news/publisher-center/answer/9607025) | 
- Appear in Google News search results, or provide digital editions for subscription. | 
- 
+| Google News | Appear in Google News search results, or provide digital editions for subscription. |
 
  For getting local information on Google, the following resources may be helpful:
 
  Local information | 
  
- [Google Maps Content Partners](https://contentpartners.maps.google.com/) | 
- If you are an authoritative or official source of regional data, publish it through Google. | 
+| Google Maps Content Partners | If you are an authoritative or official source of regional data, publish it through Google. |
  
-
+| Photo Sphere | Photograph and share the world with 360° pictures. |
  
- [Photo Sphere](https://www.google.com/maps/about/contribute/photosphere/) | 
- Photograph and share the world with 360° pictures. | 
+| Street View | Provide a panoramic virtual tour of your property. |
  
-
- 
- [Street View](https://www.google.com/streetview/contributors/) | 
- Provide a panoramic virtual tour of your property. | 
- 
-
- 
- [Transit Partner Program](https://support.google.com/transitpartners/answer/1111481) | 
- Encourage use of public transit by making it easy to locate routes, schedules and fares. | 
- 
+| Transit Partner Program | Encourage use of public transit by making it easy to locate routes, schedules and fares. |
 
  Media | 
  
- [Google Maps Content Partners](https://contentpartners.maps.google.com/) | 
- If you are an authoritative or official source of regional data, publish it through Google. | 
+| Google Maps Content Partners | If you are an authoritative or official source of regional data, publish it through Google. |
  
-
+| Video on Google Search | Make your videos findable and crawlable by Google Search. |
  
- [Video on Google Search](https://developers.google.com/search/docs/appearance/video) | 
- Make your videos findable and crawlable by Google Search. | 
- 
-
- 
- [YouTube](https://www.youtube.com/t/partnerships_faq) | 
- Upload, distribute, and monetize your videos. | 
- 
+| YouTube | Upload, distribute, and monetize your videos. |
 
  
  

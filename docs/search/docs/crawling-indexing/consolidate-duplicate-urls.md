@@ -145,9 +145,7 @@ For all canonicalization methods, follow these best practices:
  strengths and weaknesses when it comes to maintenance and efficacy in different scenarios.
 
  
- Method and description | 
- 
-
+| Method and description |
  
  
  [`rel="canonical" link` element](https://developers.google.com#rel-canonical-link-method)
@@ -160,32 +158,7 @@ For all canonicalization methods, follow these best practices:
 
  
  
- 
- Pros:
- 
- 
-- Can map an infinite number of duplicate pages.
- 
-
- | 
- 
- Cons:
- 
- 
-- 
- Can be complex to maintain the mapping on larger sites, or sites where
- the URLs change often.
- 
- 
-- 
- Only works for HTML pages, not for files such as PDF. In such cases,
- you can use the `rel="canonical"` HTTP header.
- 
- 
-
- | 
- 
-
+| Pros: Can map an infinite number of duplicate pages. | Cons: Can be complex to maintain the mapping on larger sites, or sites where the URLs change often. Only works for HTML pages, not for files such as PDF. In such cases, you can use the `rel="canonical"` HTTP header. |
  
 
  | 
@@ -200,29 +173,7 @@ For all canonicalization methods, follow these best practices:
 
  
  
- 
- Pros:
- 
- 
-- Doesn't increase page size.
- 
-- Can map an infinite number of duplicate pages.
- 
-
- | 
- 
- Cons:
- 
- 
-- 
- Can be complex to maintain the mapping on larger sites, or sites where
- the URLs change often.
- 
- 
-
- | 
- 
-
+| Pros: Doesn't increase page size. Can map an infinite number of duplicate pages. | Cons: Can be complex to maintain the mapping on larger sites, or sites where the URLs change often. |
  
 
  | 
@@ -235,54 +186,16 @@ For all canonicalization methods, follow these best practices:
 
  
  
- 
- Pros:
-
- 
- 
-- Simple to implement and maintain, especially on large sites.
- 
-
- | 
- 
- Cons:
-
- 
- 
-- 
- Google must still determine the associated duplicate for any
- canonicals that you declare in the sitemap.
- 
- 
-- 
- Less powerful signal to Google than the `rel="canonical"`
- mapping technique.
- 
+| Pros: Simple to implement and maintain, especially on large sites. | Cons: Google must still determine the associated duplicate for any canonicals that you declare in the sitemap. Less powerful signal to Google than the `rel="canonical"` mapping technique. |
  
 
  | 
  
 
  
-
- | 
+| Redirects | Use permanent redirects to tell Google that a redirected URL is a worse version than the URL it redirects to. Use this only when deprecating a duplicate page. |
  
-
- 
- [Redirects](https://developers.google.com#redirects-method) | 
- 
- Use permanent redirects to tell Google that a redirected URL is a worse version than the URL
- it redirects to. Use this only when deprecating a duplicate page.
- | 
- 
-
- 
- [AMP variant](https://developers.google.com/search/docs/crawling-indexing/amp) | 
- 
- If one of your variants is an AMP page, follow the AMP guidelines to
- indicate the canonical page and AMP variant.
- | 
- 
+| AMP variant | If one of your variants is an AMP page, follow the AMP guidelines to indicate the canonical page and AMP variant. |
 
 ## Use `rel="canonical"` `link` annotations
 
@@ -329,6 +242,7 @@ For all canonicalization methods, follow these best practices:
  `rel="canonical"` to the `<head>` section of
  duplicate pages, pointing to the canonical page. For example:
 
+
 ```
 <html>
 <head>
@@ -346,11 +260,12 @@ For all canonicalization methods, follow these best practices:
  `rel="alternate"` `link` element to it, pointing to the mobile
  version of the page:
 
+
 ```
 <html>
 <head>
 <title>Explore the world of dresses</title>
-<link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.example.com/dresses/green-dresses">
+<link rel="alternate" media="only screen and (max-width: 640px)"  href="https://m.example.com/dresses/green-dresses">
 <link rel="canonical" href="https://example.com/dresses/green-dresses" />
 <!-- other elements -->
 </head>
@@ -401,6 +316,7 @@ Google supports this method for web search results only.
  that the PDF version of the `.docx` version should be canonical, you might
  add this HTTP header for the `.docx` version of the content:
 
+
 ```
 HTTP/1.1 200 OK
 Content-Length: 19
@@ -408,6 +324,7 @@ Content-Length: 19
 Link: <https://www.example.com/downloads/white-paper.pdf>; rel="canonical"
 ...
 ```
+
 
  As with the `rel="canonical"` `link` element, use absolute URLs
  in the `rel="canonical"` HTTP header.

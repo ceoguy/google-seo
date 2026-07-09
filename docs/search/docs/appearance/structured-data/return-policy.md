@@ -76,37 +76,39 @@ Here's an example of a complete `OnlineStore` markup with a return policy for pr
  customers in Germany, Austria, and Switzerland, and which need to be returned by mail to Ireland.
  There is a 60-day return window, with free returns, and full refunds. Only new products can be returned.
 
+
 ```
- {
- "@context": "https://schema.org",
- "@type": "OnlineStore",
- "name": "Example Online Store",
- "url": "https://www.example.com",
- "sameAs": ["https://example.net/profile/example12", "https://example.org/@example34"],
- "logo": "https://www.example.com/assets/images/logo.png",
- "contactPoint": {
- "contactType": "Customer Service",
- "email": "support@example.com",
- "telephone": "+47-99-999-9900"
- },
- "vatID": "FR12345678901",
- "iso6523Code": "0199:724500PMK2A2M1SQQ228",
- 
- "hasMerchantReturnPolicy": {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": [ "DE", "AT", "CH"],
- "returnPolicyCountry": "IE",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "itemCondition": "https://schema.org/NewCondition",
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/FreeReturn",
- "refundType": "https://schema.org/FullRefund",
- "returnLabelSource": "https://schema.org/ReturnLabelCustomerResponsibility"
- }
- 
- }
+{
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "Example Online Store",
+    "url": "https://www.example.com",
+    "sameAs": ["https://example.net/profile/example12", "https://example.org/@example34"],
+    "logo": "https://www.example.com/assets/images/logo.png",
+    "contactPoint": {
+      "contactType": "Customer Service",
+      "email": "support@example.com",
+      "telephone": "+47-99-999-9900"
+    },
+    "vatID": "FR12345678901",
+    "iso6523Code": "0199:724500PMK2A2M1SQQ228",
+    
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": [ "DE", "AT", "CH"],
+      "returnPolicyCountry": "IE",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 60,
+      "itemCondition": "https://schema.org/NewCondition",
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn",
+      "refundType": "https://schema.org/FullRefund",
+      "returnLabelSource": "https://schema.org/ReturnLabelCustomerResponsibility"
+    }
+    
+  }
 ```
+
 
 Here's an example of a complete `MerchantReturnPolicy` structured data markup including
  return options for customer remorse or defect items as well as a seasonal override limiting the
@@ -161,56 +163,58 @@ Here's an example of a complete `MerchantReturnPolicy` structured data markup in
  </body>
 </html>
 
+
 ```
- <html>
- <head>
- <title>Our return policy</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "OnlineStore",
- "hasMerchantReturnPolicy": {
- "@type": "MerchantReturnPolicy",
- "applicableCountry": [ "DE", "AT", "CH"],
- "returnPolicyCountry": "IE",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "merchantReturnDays": 60,
- "itemCondition": [ "https://schema.org/NewCondition", "https://schema.org/DamagedCondition" ],
- "returnMethod": "https://schema.org/ReturnByMail",
- "returnFees": "https://schema.org/ReturnShippingFees",
- "refundType": "https://schema.org/FullRefund",
- "returnShippingFeesAmount": {
- "@type": "MonetaryAmount",
- "value": 2.99,
- "currency": "EUR"
- },
- "returnLabelSource": "https://schema.org/ReturnLabelInBox",
- "customerRemorseReturnFees": "https://schema.org/ReturnShippingFees",
- "customerRemorseReturnShippingFeesAmount": {
- "@type": "MonetaryAmount",
- "value": 5.99,
- "currency": "EUR"
- },
- "customerRemorseReturnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
- "itemDefectReturnFees": "https://schema.org/FreeReturn",
- "itemDefectReturnLabelSource": "https://schema.org/ReturnLabelInBox",
- "returnPolicySeasonalOverride": {
- "@type": "MerchantReturnPolicySeasonalOverride",
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
- "startDate": "2025-12-01",
- "endDate": "2025-01-05",
- "merchantReturnDays": 30
- }
- }
- // Other Organization-level properties
- // ...
- }
- </script>
- </head>
- <body>
- </body>
+<html>
+  <head>
+    <title>Our return policy</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": [ "DE", "AT", "CH"],
+          "returnPolicyCountry": "IE",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 60,
+          "itemCondition": [ "https://schema.org/NewCondition", "https://schema.org/DamagedCondition" ],
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/ReturnShippingFees",
+          "refundType": "https://schema.org/FullRefund",
+          "returnShippingFeesAmount": {
+            "@type": "MonetaryAmount",
+            "value": 2.99,
+            "currency": "EUR"
+          },
+          "returnLabelSource": "https://schema.org/ReturnLabelInBox",
+          "customerRemorseReturnFees": "https://schema.org/ReturnShippingFees",
+          "customerRemorseReturnShippingFeesAmount": {
+            "@type": "MonetaryAmount",
+            "value": 5.99,
+            "currency": "EUR"
+          },
+          "customerRemorseReturnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+          "itemDefectReturnFees": "https://schema.org/FreeReturn",
+          "itemDefectReturnLabelSource": "https://schema.org/ReturnLabelInBox",
+          "returnPolicySeasonalOverride": {
+            "@type": "MerchantReturnPolicySeasonalOverride",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "startDate": "2025-12-01",
+            "endDate": "2025-01-05",
+            "merchantReturnDays": 30
+          }
+        }
+        // Other Organization-level properties
+        // ...
+      }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -250,65 +254,19 @@ You must include the required properties for your structured data to be eligible
  Use the following properties to describe the standard return policies for your business.
  
  
- Required properties (choose the option that best suits your use case) | 
-
  
- Option A | 
-
- 
- `applicableCountry` | 
- 
- `[Text](https://schema.org/Text)`
-
- The country code that the return policy applies to (where the product is sold and will be returned from).
- Use the two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
- country code formatting. You can specify up to 50 countries.
-
- | 
- 
-
- 
- `returnPolicyCategory` | 
- 
- `[MerchantReturnEnumeration](https://schema.org/MerchantReturnEnumeration)`
-
- The type of return policy. Use one of the following values:
-
+| Required properties (choose the option that best suits your use case) |
  
  
-- `https://schema.org/MerchantReturnFiniteReturnWindow`:
- There's a set number of days to return a product.
+| Option A |
  
-- `https://schema.org/MerchantReturnNotPermitted`:
- Returns aren't permitted.
+| `applicableCountry` | ` Text ` The country code that the return policy applies to (where the product is sold and will be returned from). Use the two-letter ISO 3166-1 alpha-2 country code formatting. You can specify up to 50 countries. |
  
-- `https://schema.org/MerchantReturnUnlimitedWindow`:
- There's an unlimited amount of time to return a product.
+| `returnPolicyCategory` | ` MerchantReturnEnumeration ` The type of return policy. Use one of the following values: `https://schema.org/MerchantReturnFiniteReturnWindow`: There's a set number of days to return a product. `https://schema.org/MerchantReturnNotPermitted`: Returns aren't permitted. `https://schema.org/MerchantReturnUnlimitedWindow`: There's an unlimited amount of time to return a product. If you use `MerchantReturnFiniteReturnWindow`, then the `merchantReturnDays` property is required. |
  
-
+| Option B |
  
- If you use `MerchantReturnFiniteReturnWindow`, then the
- [`merchantReturnDays`](https://developers.google.com#merchant-return-days) property is required.
- 
-
- | 
- 
-
- Option B | 
-
- 
- `merchantReturnLink` | 
- 
- `[URL](https://schema.org/URL)`
-
- 
- Specify the URL of a web page that describes the return policy to your customers. This can be your own
- return policy, or a third-party policy from a service that handles your returns.
- 
-
- | 
- 
-
+| `merchantReturnLink` | ` URL ` Specify the URL of a web page that describes the return policy to your customers. This can be your own return policy, or a third-party policy from a service that handles your returns. |
  
  
 
@@ -320,80 +278,17 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `merchantReturnDays` | 
+| `merchantReturnDays` | ` Integer ` The number of days from the delivery date that a product can be returned. This property is only required if `returnPolicyCategory` equals `MerchantReturnFiniteReturnWindow`. |
  
+| `returnFees` | ` ReturnFeesEnumeration ` The default type of return fee. Use one of the following supported values: `https://schema.org/FreeReturn`: There's no charge to the consumer to return the product. If used, don't include the `returnShippingFeesAmount` property. `https://schema.org/ReturnFeesCustomerResponsibility`: The consumer needs to handle and pay for the return shipping themselves. If used, don't include the `returnShippingFeesAmount` property. `https://schema.org/ReturnShippingFees`: There's a shipping fee charged by the merchant to the consumer to return the product. Specify the (non-zero) shipping fee using the `returnShippingFeesAmount` property. |
  
- `[Integer](https://schema.org/Integer)`
+| `returnMethod` | ` ReturnMethodEnumeration ` The type of return method offered. Use one or more of the following values: `https://schema.org/ReturnAtKiosk`: The item can be returned at a kiosk. `https://schema.org/ReturnByMail`: The item can be returned by mail. `https://schema.org/ReturnInStore`: The item can be returned in store. |
  
-
- The number of days from the delivery date that a product can be returned. This
- property is only required if [`returnPolicyCategory`](https://developers.google.com#return-policy-category) equals `MerchantReturnFiniteReturnWindow`.
-
- | 
- 
-
- 
- `returnFees` | 
- 
- `[ReturnFeesEnumeration](https://schema.org/ReturnFeesEnumeration)`
-
- The default type of return fee. Use one of the following supported values:
-
- 
- 
-- `https://schema.org/FreeReturn`: There's no charge to the consumer to
- return the product. If used, don't include the [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount)
- property.
- 
-- `https://schema.org/ReturnFeesCustomerResponsibility`: The consumer
- needs to handle and pay for the return shipping themselves. If used, don't include
- the [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount)
- property.
- 
-- `https://schema.org/ReturnShippingFees`: There's a shipping fee
- charged by the merchant to the consumer to return the product. Specify the
- (non-zero) shipping fee using the
- [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount) property.
- 
-
- | 
- 
-
- 
- `returnMethod` | 
- 
- `[ReturnMethodEnumeration](https://schema.org/ReturnMethodEnumeration)`
-
- The type of return method offered. Use one or more of the following values:
-
- 
- 
-- `https://schema.org/ReturnAtKiosk`: The item can be returned at a kiosk.
- 
-- `https://schema.org/ReturnByMail`: The item can be returned by mail.
- 
-- `https://schema.org/ReturnInStore`: The item can be returned in store.
- 
-
- | 
- 
-
- 
- `returnShippingFeesAmount` | 
- 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- The cost of shipping for returning a product. This property must be specified only when
- [`returnFees`](https://developers.google.com#return-fees) equals `https://schema.org/ReturnShippingFees`.
- 
-
- | 
- 
-
+| `returnShippingFeesAmount` | ` MonetaryAmount ` The cost of shipping for returning a product. This property must be specified only when `returnFees` equals `https://schema.org/ReturnShippingFees`. |
  
  
 
@@ -406,180 +301,31 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
  
+| Recommended properties |
  
- `customerRemorseReturnFees` | 
  
- `[ReturnFeesEnumeration](https://schema.org/ReturnFeesEnumeration)`
-
- A specific type of return fee if the product is returned due to customer remorse.
- See [`returnFees`](https://developers.google.com#return-fees) for possible values.
-
- | 
+| `customerRemorseReturnFees` | ` ReturnFeesEnumeration ` A specific type of return fee if the product is returned due to customer remorse. See `returnFees` for possible values. |
  
-
+| `customerRemorseReturnLabelSource` | ` ReturnLabelSourceEnumeration ` The method by which the consumer obtains a return shipping label for a product. See `returnLabelSource` for possible values. |
  
- `customerRemorseReturnLabelSource` | 
+| `customerRemorseReturnShippingFeesAmount` | ` MonetaryAmount ` The cost of shipping for returning a product due to customer remorse. This property is only required if there's a non-zero shipping fee to be paid by the consumer to return a product. See `returnShippingFeesAmount` for details. |
  
- `[ReturnLabelSourceEnumeration](https://schema.org/ReturnLabelSourceEnumeration)`
-
+| `itemCondition` | ` OfferItemCondition ` The acceptable conditions of an item which can be returned. You can provide multiple conditions which are accepted. Use the following values: `https://schema.org/DamagedCondition`: Damaged items are accepted. `https://schema.org/NewCondition`: New items are accepted. `https://schema.org/RefurbishedCondition`: Refurbished items are accepted. `https://schema.org/UsedCondition`: Used items are accepted. |
  
- The method by which the consumer obtains a return shipping label for a product.
- See [`returnLabelSource`](https://developers.google.com#return-label-source) for possible values.
+| `itemDefectReturnFees` | ` ReturnFeesEnumeration ` A specific type of return fee for defect products. See `returnFees` for possible values. |
  
-
- | 
+| `itemDefectReturnLabelSource` | ` ReturnLabelSourceEnumeration ` The method by which the consumer can obtain a return shipping label for a product. See `returnLabelSource` for possible values. |
  
-
+| `itemDefectReturnShippingFeesAmount` | ` MonetaryAmount ` The cost of shipping for returning a product due to defect products. This property is only required if there's a non-zero shipping fee to be paid by the consumer to return a product. See `returnShippingFeesAmount` for details. |
  
- `customerRemorseReturnShippingFeesAmount` | 
+| `refundType` | ` RefundType ` The type of refund(s) available for the consumer when returning a product. `https://schema.org/ExchangeRefund`: The item can be exchanged for the same product. `https://schema.org/FullRefund`: The item can be refunded for the full monetary amount. `https://schema.org/StoreCreditRefund`: The item can can be refunded for store credit. |
  
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
+| `restockingFee` | ` MonetaryAmount ` or ` Number ` The restocking fee charged to the consumer when returning a product. Specify a value of type `Number` to charge a percentage of the price paid by the consumer or use `MonetaryAmount` to charge a fixed amount. |
  
- The cost of shipping for returning a product due to customer remorse. This property
- is only required if there's a non-zero shipping fee to be paid by the consumer to return a product.
- See [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount) for details.
+| `returnLabelSource` | ` ReturnLabelSourceEnumeration ` The method by which the consumer can obtain a return shipping label for a product. Use one of the following values: `https://schema.org/ReturnLabelCustomerResponsibility`: It's the responsibility of the consumer to create a return label. `https://schema.org/ReturnLabelDownloadAndPrint`: The return label must be downloaded and printed by the customer. `https://schema.org/ReturnLabelInBox`: The return label was included when the product was originally shipped. |
  
-
- | 
- 
-
- 
- `itemCondition` | 
- 
- `[OfferItemCondition](https://schema.org/OfferItemCondition)`
-
- 
- The acceptable conditions of an item which can be returned. You can provide multiple conditions which are accepted.
- Use the following values:
- 
-
- 
- 
-- `https://schema.org/DamagedCondition`: Damaged items are accepted.
- 
-- `https://schema.org/NewCondition`: New items are accepted.
- 
-- `https://schema.org/RefurbishedCondition`: Refurbished items are accepted.
- 
-- `https://schema.org/UsedCondition`: Used items are accepted.
- 
-
- | 
- 
-
- 
- `itemDefectReturnFees` | 
- 
- `[ReturnFeesEnumeration](https://schema.org/ReturnFeesEnumeration)`
-
- A specific type of return fee for defect products. See [`returnFees`](https://developers.google.com#return-fees) for possible values.
-
- | 
- 
-
- 
- `itemDefectReturnLabelSource` | 
- 
- `[ReturnLabelSourceEnumeration](https://schema.org/ReturnLabelSourceEnumeration)`
-
- 
- The method by which the consumer can obtain a return shipping label for a product.
- See [`returnLabelSource`](https://developers.google.com#return-label-source) for possible values.
- 
-
- | 
- 
-
- 
- `itemDefectReturnShippingFeesAmount` | 
- 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- 
- The cost of shipping for returning a product due to defect products. This property
- is only required if there's a non-zero shipping fee to be paid by the consumer to return a product.
- See [`returnShippingFeesAmount`](https://developers.google.com#return-shipping-fees-amount) for details.
- 
-
- | 
- 
-
- 
- `refundType` | 
- 
- `[RefundType](https://schema.org/RefundTypeEnumeration)`
-
- The type of refund(s) available for the consumer when returning a product.
-
- 
- 
-- `https://schema.org/ExchangeRefund`: The item can be exchanged for the same product.
- 
-- `https://schema.org/FullRefund`: The item can be refunded for the full monetary amount.
- 
-- `https://schema.org/StoreCreditRefund`: The item can can be refunded for store credit.
- 
-
- | 
- 
-
- 
- `restockingFee` | 
- 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)` or
- `[Number](https://schema.org/Number)`
-
- The restocking fee charged to the consumer when returning a product. Specify a value of type `Number` to charge
- a percentage of the price paid by the consumer or use `MonetaryAmount` to charge a fixed amount.
-
- | 
- 
-
- 
- `returnLabelSource` | 
- 
- `[ReturnLabelSourceEnumeration](https://schema.org/ReturnLabelSourceEnumeration)`
-
- 
- The method by which the consumer can obtain a return shipping label for a product. Use one of the following values:
- 
-
- 
- 
-- `https://schema.org/ReturnLabelCustomerResponsibility`:
- It's the responsibility of the consumer to create a return label.
- 
- 
-- `https://schema.org/ReturnLabelDownloadAndPrint`:
- The return label must be downloaded and printed by the customer.
- 
- 
-- `https://schema.org/ReturnLabelInBox`:
- The return label was included when the product was originally shipped.
- 
- 
-
- | 
- 
-
- 
- `returnPolicyCountry` | 
- 
- `[Text](https://schema.org/Text)`
-
- 
- The country where the product has to be sent to for returns. This country can be different
- from the country where the product was originally shipped or sent to.
- [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1)
- country code formatting. You can specify up to 50 countries.
-
- | 
- 
-
+| `returnPolicyCountry` | ` Text ` The country where the product has to be sent to for returns. This country can be different from the country where the product was originally shipped or sent to. ISO 3166-1 alpha-2 country code formatting. You can specify up to 50 countries. |
  
  
 
@@ -590,86 +336,40 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `returnPolicySeasonalOverride` | 
- 
- `[MerchantReturnPolicySeasonalOverride](https://schema.org/MerchantReturnPolicySeasonalOverride)`
-
- A seasonal override of a return policy to specify return policies for special events, such as holidays.
- For example, your usual return policy category is set to `MerchantReturnPolicyUnlimitedWindow`
- but the return window should be limited during holiday sales:
- 
-
- 
-
+| `returnPolicySeasonalOverride` | ` MerchantReturnPolicySeasonalOverride ` A seasonal override of a return policy to specify return policies for special events, such as holidays. For example, your usual return policy category is set to `MerchantReturnPolicyUnlimitedWindow` but the return window should be limited during holiday sales: 
 ```
- "returnPolicySeasonalOverride": {
- "@type": "MerchantReturnPolicySeasonalOverride",
- "startDate": "2024-11-29",
- "endDate": "2024-12-06",
- "merchantReturnDays": 10,
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
- }
+"returnPolicySeasonalOverride": {
+    "@type": "MerchantReturnPolicySeasonalOverride",
+    "startDate": "2024-11-29",
+    "endDate": "2024-12-06",
+    "merchantReturnDays": 10,
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
+  }
 ```
-
- 
- Here's how to specify multiple seasonal overrides. In this example, the usual return policy is
- unlimited, but is limited during the following two date ranges:
- 
-
- 
-
+ Here's how to specify multiple seasonal overrides. In this example, the usual return policy is unlimited, but is limited during the following two date ranges: 
 ```
- "returnPolicySeasonalOverride": [{
- "@type": "MerchantReturnPolicySeasonalOverride",
- "startDate": "2024-11-29",
- "endDate": "2024-12-06",
- "merchantReturnDays": 10,
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
- },
- {
- "@type": "MerchantReturnPolicySeasonalOverride",
- "startDate": "2024-12-26",
- "endDate": "2025-01-06",
- "merchantReturnDays": 10,
- "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
- }]
- 
+"returnPolicySeasonalOverride": [{
+    "@type": "MerchantReturnPolicySeasonalOverride",
+    "startDate": "2024-11-29",
+    "endDate": "2024-12-06",
+    "merchantReturnDays": 10,
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
+  },
+  {
+    "@type": "MerchantReturnPolicySeasonalOverride",
+    "startDate": "2024-12-26",
+    "endDate": "2025-01-06",
+    "merchantReturnDays": 10,
+    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow"
+  }]
 ```
-
- | 
+ |
  
-
- 
- `returnPolicySeasonalOverride.returnPolicyCategory` | 
- 
- `[MerchantReturnEnumeration](https://schema.org/MerchantReturnEnumeration)`
-
- The type of return policy. Use one of the following values:
-
- 
- 
-- `https://schema.org/MerchantReturnFiniteReturnWindow`:
- There's a set number of days to return a product.
- 
-- `https://schema.org/MerchantReturnNotPermitted`:
- Returns aren't permitted.
- 
-- `https://schema.org/MerchantReturnUnlimitedWindow`:
- There's an unlimited amount of time to return a product.
- 
-
- 
- If you use `MerchantReturnFiniteReturnWindow`, then the
- `merchantReturnDays` property is required.
- 
-
- | 
- 
-
+| `returnPolicySeasonalOverride.returnPolicyCategory` | ` MerchantReturnEnumeration ` The type of return policy. Use one of the following values: `https://schema.org/MerchantReturnFiniteReturnWindow`: There's a set number of days to return a product. `https://schema.org/MerchantReturnNotPermitted`: Returns aren't permitted. `https://schema.org/MerchantReturnUnlimitedWindow`: There's an unlimited amount of time to return a product. If you use `MerchantReturnFiniteReturnWindow`, then the `merchantReturnDays` property is required. |
  
  
 
@@ -677,49 +377,15 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `returnPolicySeasonalOverride.endDate` | 
+| `returnPolicySeasonalOverride.endDate` | ` Date ` or ` DateTime ` The end date of the seasonal override. |
  
+| `returnPolicySeasonalOverride.merchantReturnDays` | ` Integer ` or ` Date ` or ` DateTime ` The number of days from the delivery date that a product can be returned. This property is only required if you set the `returnPolicyCategory` to `MerchantReturnFiniteReturnWindow`. |
  
- `[Date](https://schema.org/Date)` or
- `[DateTime](https://schema.org/DateTime)`
- 
-
- The end date of the seasonal override.
-
- | 
- 
-
- 
- `returnPolicySeasonalOverride.merchantReturnDays` | 
- 
- 
- `[Integer](https://schema.org/Integer)` or
- `[Date](https://schema.org/Date)` or
- `[DateTime](https://schema.org/DateTime)`
- 
-
- The number of days from the delivery date that a product can be returned. This
- property is only required if you set the `returnPolicyCategory` to `MerchantReturnFiniteReturnWindow`.
- 
-
- | 
- 
-
- 
- `returnPolicySeasonalOverride.startDate` | 
- 
- `[Date](https://schema.org/Date)` or
- `[DateTime](https://schema.org/DateTime)`
- 
-
- The start date of the seasonal override.
-
- | 
- 
+| `returnPolicySeasonalOverride.startDate` | ` Date ` or ` DateTime ` The start date of the seasonal override. |
 
  
  

@@ -58,6 +58,7 @@ For example, you can dynamically create
  that uses the page title as the recipe name by creating the following custom variable named
  `recipe_name`:
 
+
 ```
 function() { return document.title; }
 ```
@@ -68,18 +69,19 @@ We recommend to create variables to collect all the necessary information from t
 
 Here is an example for the custom HTML tag content:
 
+
 ```
 <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "&#123;&#123;recipe_name&#125;&#125;",
- "image": [ "&#123;&#123;recipe_image&#125;&#125;" ],
- "author": {
- "@type": "Person",
- "name": "&#123;&#123;recipe_author&#125;&#125;"
- }
- }
+  {
+    "@context": "https://schema.org/",
+    "@type": "Recipe",
+    "name": "&#123;&#123;recipe_name&#125;&#125;",
+    "image": [ "&#123;&#123;recipe_image&#125;&#125;" ],
+    "author": {
+      "@type": "Person",
+      "name": "&#123;&#123;recipe_author&#125;&#125;"
+    }
+  }
 </script>
 ```
 
@@ -108,10 +110,10 @@ Here is an example of JavaScript-generated structured data:
 fetch('https://api.example.com/recipes/123')
 .then(response => response.text())
 .then(structuredDataText => {
- const script = document.createElement('script');
- script.setAttribute('type', 'application/ld+json');
- script.textContent = structuredDataText;
- document.head.appendChild(script);
+  const script = document.createElement('script');
+  script.setAttribute('type', 'application/ld+json');
+  script.textContent = structuredDataText;
+  document.head.appendChild(script);
 });
 ```
 

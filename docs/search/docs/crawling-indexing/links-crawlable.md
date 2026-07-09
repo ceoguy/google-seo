@@ -23,25 +23,35 @@ Generally, Google can only crawl your link if it's an `<a>` HTML element (also
 
 Recommended (Google can parse)
 
+
 ```
 <a href="https://example.com">
 ```
+
+
 
 ```
 <a href="/products/category/shoes">
 ```
 
+
+
 ```
 <a href="./products/category/shoes">
 ```
+
+
 
 ```
 <a href="/products/category/shoes" onclick="javascript:goTo('shoes')">
 ```
 
+
+
 ```
 <a href="/products/category/shoes" class="pretty">
 ```
+
 
  Links are also crawlable when you use JavaScript to insert them into a page dynamically as
  long as it uses the HTML markup shown above.
@@ -49,30 +59,41 @@ Recommended (Google can parse)
 Not recommended (but Google may still
  attempt to parse this):
 
+
 ```
 <a routerLink="products/category">
 ```
+
+
 
 ```
 <span href="https://example.com">
 ```
 
+
+
 ```
 <a onclick="goto('https://example.com')">
 ```
+
 
  Make sure that the URL in your `<a>` element resolves into an actual web
  address (meaning, it resembles a URI) that Google crawlers can send requests to, for example:
 
 Recommended (Google can resolve):
 
+
 ```
 <a href="https://example.com/stuff">
 ```
 
+
+
 ```
 <a href="/products">
 ```
+
+
 
 ```
 <a href="/products.php?id=123">
@@ -81,13 +102,17 @@ Recommended (Google can resolve):
 Not recommended (but Google may still
  attempt to resolve this):
 
+
 ```
 <a href="javascript:goTo('products')">
 ```
 
+
+
 ```
 <a href="javascript:window.location.href='/products'">
 ```
+
 
 ## Anchor text placement
 

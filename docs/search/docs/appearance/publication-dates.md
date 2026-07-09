@@ -47,17 +47,17 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>Analyzing Google Search traffic drops</title>
- </head>
- <body>
- <p>
- Posted Tuesday, July 20, 2021
- </p>
- <p>
- Suppose you open Search Console and find out that your Google Search traffic dropped. What should you do?
- </p>
- </body>
+  <head>
+    <title>Analyzing Google Search traffic drops</title>
+  </head>
+  <body>
+    <p>
+      Posted Tuesday, July 20, 2021
+    </p>
+    <p>
+      Suppose you open Search Console and find out that your Google Search traffic dropped. What should you do?
+    </p>
+  </body>
 </html>
 ```
 
@@ -76,26 +76,26 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>Analyzing Google Search traffic drops</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "NewsArticle",
- "headline": "Analyzing Google Search traffic drops",
- "datePublished": "2021-07-20T08:00:00+08:00",
- "dateModified": "2021-07-20T09:20:00+08:00"
- }
- </script>
- </head>
- <body>
- <p>
- Posted Tuesday, July 20, 2021
- </p>
- <p>
- Suppose you open Search Console and find out that your Google Search traffic dropped. What should you do?
- </p>
- </body>
+  <head>
+    <title>Analyzing Google Search traffic drops</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "Analyzing Google Search traffic drops",
+      "datePublished": "2021-07-20T08:00:00+08:00",
+      "dateModified": "2021-07-20T09:20:00+08:00"
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      Posted Tuesday, July 20, 2021
+    </p>
+    <p>
+      Suppose you open Search Console and find out that your Google Search traffic dropped. What should you do?
+    </p>
+  </body>
 </html>
 ```
 

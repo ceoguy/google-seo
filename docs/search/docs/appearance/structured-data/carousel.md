@@ -163,59 +163,61 @@ The summary page has a short description of each item in the list. Each
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>Best cookie recipes</title>
- <script type="application/ld+json">
- {
- "@context":"https://schema.org",
- "@type":"ItemList",
- "itemListElement":[
- {
- "@type":"ListItem",
- "position":1,
- "url":"https://example.com/peanut-butter-cookies.html"
- },
- {
- "@type":"ListItem",
- "position":2,
- "url":"https://example.com/triple-chocolate-chunk.html"
- },
- {
- "@type":"ListItem",
- "position":3,
- "url":"https://example.com/snickerdoodles.html"
- }
- ]
- }
- </script>
- </head>
- <body>
- <p>
- Here are the best cookie recipes of all time.
- </p>
- <h2>
- Peanut Butter Cookies
- </h2>
- <p>
- This <a href="https://example.com/peanut-butter-cookies.html">Peanut Butter Cookie recipe</a> is the tastiest one you'll find.
- </p>
- <h2>
- Triple Chocolate Chunk Cookies
- </h2>
- <p>
- This <a href="https://example.com/triple-chocolate-chunk.html">Triple Chocolate Chunk Cookies recipe</a> is the tastiest one you'll find.
- </p>
- <h2>
- Snickerdoodles
- </h2>
- <p>
- This <a href="https://example.com/snickerdoodles.html">Snickerdoodles recipe</a> is the tastiest one you'll find.
- </p>
- </body>
+  <head>
+    <title>Best cookie recipes</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "url":"https://example.com/peanut-butter-cookies.html"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "url":"https://example.com/triple-chocolate-chunk.html"
+        },
+        {
+          "@type":"ListItem",
+          "position":3,
+          "url":"https://example.com/snickerdoodles.html"
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      Here are the best cookie recipes of all time.
+    </p>
+    <h2>
+      Peanut Butter Cookies
+    </h2>
+    <p>
+      This <a href="https://example.com/peanut-butter-cookies.html">Peanut Butter Cookie recipe</a> is the tastiest one you'll find.
+    </p>
+    <h2>
+      Triple Chocolate Chunk Cookies
+    </h2>
+    <p>
+      This <a href="https://example.com/triple-chocolate-chunk.html">Triple Chocolate Chunk Cookies recipe</a> is the tastiest one you'll find.
+    </p>
+    <h2>
+      Snickerdoodles
+    </h2>
+    <p>
+      This <a href="https://example.com/snickerdoodles.html">Snickerdoodles recipe</a> is the tastiest one you'll find.
+    </p>
+  </body>
 </html>
 ```
+
 
 #### Details page
 
@@ -322,91 +324,91 @@ The summary page has a short description of each item in the list. Each
 
 ```
 <html>
- <head>
- <title>Peanut Butter Cookies</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Peanut Butter Cookies",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "author": {
- "@type": "Person",
- "name": "Wendy Darling"
- },
- "datePublished": "2024-03-10",
- "description": "This Peanut Butter Cookie recipe is everyone's favorite",
- "prepTime": "PT10M",
- "cookTime": "PT25M",
- "totalTime": "PT35M",
- "recipeCuisine": "French",
- "recipeCategory": "Cookies",
- "keywords": "peanut butter, cookies",
- "recipeYield": 24,
- "nutrition": {
- "@type": "NutritionInformation",
- "calories": "120 calories"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 5,
- "ratingCount": 18
- },
- "recipeIngredient": [
- "2 cups of peanut butter",
- "1/3 cup of sugar"
- ],
- "recipeInstructions": [
- {
- "@type": "HowToStep",
- "text": "Mix together the peanut butter and sugar."
- },
- {
- "@type": "HowToStep",
- "text": "Roll cookie dough into small balls and place on a cookie sheet."
- },
- {
- "@type": "HowToStep",
- "text": "Bake for 25 minutes."
- }
- ],
- "video": {
- "@type": "VideoObject",
- "name": "How to Peanut Butter Cookies",
- "description": "This is how you make peanut butter cookies.",
- "thumbnailUrl": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "contentUrl": "https://www.example.com/video123.mp4",
- "embedUrl": "https://www.example.com/videoplayer?video=123",
- "uploadDate": "2024-02-05T08:00:00+08:00",
- "duration": "PT1M33S",
- "interactionStatistic": {
- "@type": "InteractionCounter",
- "interactionType": { "@type": "WatchAction" },
- "userInteractionCount": 2347
- },
- "expires": "2025-02-05T08:00:00+08:00"
- }
- }
- </script>
- </head>
- <body>
- <p>
- Here's how to make peanut butter cookies.
- </p>
- <ol>
- <li>Mix together the peanut butter and sugar.</li>
- <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
- <li>Bake for 25 minutes.</li>
- </ol>
- </body>
+  <head>
+    <title>Peanut Butter Cookies</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Peanut Butter Cookies",
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Wendy Darling"
+      },
+      "datePublished": "2024-03-10",
+      "description": "This Peanut Butter Cookie recipe is everyone's favorite",
+      "prepTime": "PT10M",
+      "cookTime": "PT25M",
+      "totalTime": "PT35M",
+      "recipeCuisine": "French",
+      "recipeCategory": "Cookies",
+      "keywords": "peanut butter, cookies",
+      "recipeYield": 24,
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "120 calories"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "ratingCount": 18
+      },
+      "recipeIngredient": [
+        "2 cups of peanut butter",
+        "1/3 cup of sugar"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Mix together the peanut butter and sugar."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Roll cookie dough into small balls and place on a cookie sheet."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake for 25 minutes."
+        }
+      ],
+      "video": {
+        "@type": "VideoObject",
+        "name": "How to Peanut Butter Cookies",
+        "description": "This is how you make peanut butter cookies.",
+        "thumbnailUrl": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+         ],
+        "contentUrl": "https://www.example.com/video123.mp4",
+        "embedUrl": "https://www.example.com/videoplayer?video=123",
+        "uploadDate": "2024-02-05T08:00:00+08:00",
+        "duration": "PT1M33S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 2347
+        },
+        "expires": "2025-02-05T08:00:00+08:00"
+       }
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      Here's how to make peanut butter cookies.
+    </p>
+    <ol>
+      <li>Mix together the peanut butter and sugar.</li>
+      <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
+      <li>Bake for 25 minutes.</li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -509,91 +511,91 @@ The summary page has a short description of each item in the list. Each
 
 ```
 <html>
- <head>
- <title>Triple Chocolate Chunk Cookies</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Triple Chocolate Chunk Cookies",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "author": {
- "@type": "Person",
- "name": "Wendy Darling"
- },
- "datePublished": "2024-03-10",
- "description": "This Triple Chocolate Chunk Cookie recipe is everyone's favorite",
- "prepTime": "PT10M",
- "cookTime": "PT25M",
- "totalTime": "PT35M",
- "recipeCuisine": "French",
- "recipeCategory": "Cookies",
- "keywords": "chocolate, cookies",
- "recipeYield": 24,
- "nutrition": {
- "@type": "NutritionInformation",
- "calories": "120 calories"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 5,
- "ratingCount": 18
- },
- "recipeIngredient": [
- "2 cups of melted chocolate",
- "1/3 cup of sugar"
- ],
- "recipeInstructions": [
- {
- "@type": "HowToStep",
- "text": "Mix together the chocolate and sugar."
- },
- {
- "@type": "HowToStep",
- "text": "Roll cookie dough into small balls and place on a cookie sheet."
- },
- {
- "@type": "HowToStep",
- "text": "Bake for 25 minutes."
- }
- ],
- "video": {
- "@type": "VideoObject",
- "name": "How to Triple Chocolate Chunk Cookies",
- "description": "This is how you make peanut butter cookies.",
- "thumbnailUrl": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "contentUrl": "https://www.example.com/video123.mp4",
- "embedUrl": "https://www.example.com/videoplayer?video=123",
- "uploadDate": "2024-02-05T08:00:00+08:00",
- "duration": "PT1M33S",
- "interactionStatistic": {
- "@type": "InteractionCounter",
- "interactionType": { "@type": "WatchAction" },
- "userInteractionCount": 2347
- },
- "expires": "2025-02-05T08:00:00+08:00"
- }
- }
- </script>
- </head>
- <body>
- <p>
- Here's how to make Triple Chocolate Chunk Cookies.
- </p>
- <ol>
- <li>Mix together the chocolate and sugar.</li>
- <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
- <li>Bake for 25 minutes.</li>
- </ol>
- </body>
+  <head>
+    <title>Triple Chocolate Chunk Cookies</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Triple Chocolate Chunk Cookies",
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Wendy Darling"
+      },
+      "datePublished": "2024-03-10",
+      "description": "This Triple Chocolate Chunk Cookie recipe is everyone's favorite",
+      "prepTime": "PT10M",
+      "cookTime": "PT25M",
+      "totalTime": "PT35M",
+      "recipeCuisine": "French",
+      "recipeCategory": "Cookies",
+      "keywords": "chocolate, cookies",
+      "recipeYield": 24,
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "120 calories"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "ratingCount": 18
+      },
+      "recipeIngredient": [
+        "2 cups of melted chocolate",
+        "1/3 cup of sugar"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Mix together the chocolate and sugar."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Roll cookie dough into small balls and place on a cookie sheet."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake for 25 minutes."
+        }
+      ],
+      "video": {
+        "@type": "VideoObject",
+        "name": "How to Triple Chocolate Chunk Cookies",
+        "description": "This is how you make peanut butter cookies.",
+        "thumbnailUrl": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+         ],
+        "contentUrl": "https://www.example.com/video123.mp4",
+        "embedUrl": "https://www.example.com/videoplayer?video=123",
+        "uploadDate": "2024-02-05T08:00:00+08:00",
+        "duration": "PT1M33S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 2347
+        },
+        "expires": "2025-02-05T08:00:00+08:00"
+       }
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      Here's how to make Triple Chocolate Chunk Cookies.
+    </p>
+    <ol>
+      <li>Mix together the chocolate and sugar.</li>
+      <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
+      <li>Bake for 25 minutes.</li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -696,91 +698,91 @@ The summary page has a short description of each item in the list. Each
 
 ```
 <html>
- <head>
- <title>Snickerdoodles</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Recipe",
- "name": "Snickerdoodles",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "author": {
- "@type": "Person",
- "name": "Wendy Darling"
- },
- "datePublished": "2024-03-10",
- "description": "This Snickerdoodles recipe is everyone's favorite",
- "prepTime": "PT10M",
- "cookTime": "PT25M",
- "totalTime": "PT35M",
- "recipeCuisine": "French",
- "recipeCategory": "Cookies",
- "keywords": "cinnamon sugar, cookies",
- "recipeYield": 24,
- "nutrition": {
- "@type": "NutritionInformation",
- "calories": "120 calories"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 5,
- "ratingCount": 18
- },
- "recipeIngredient": [
- "2 cups of cinnamon",
- "1/3 cup of sugar"
- ],
- "recipeInstructions": [
- {
- "@type": "HowToStep",
- "text": "Mix together the cinnamon and sugar."
- },
- {
- "@type": "HowToStep",
- "text": "Roll cookie dough into small balls and place on a cookie sheet."
- },
- {
- "@type": "HowToStep",
- "text": "Bake for 25 minutes."
- }
- ],
- "video": {
- "@type": "VideoObject",
- "name": "How to Snickerdoodles",
- "description": "This is how you make snickerdoodles.",
- "thumbnailUrl": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "contentUrl": "https://www.example.com/video123.mp4",
- "embedUrl": "https://www.example.com/videoplayer?video=123",
- "uploadDate": "2024-02-05T08:00:00+08:00",
- "duration": "PT1M33S",
- "interactionStatistic": {
- "@type": "InteractionCounter",
- "interactionType": { "@type": "WatchAction" },
- "userInteractionCount": 2347
- },
- "expires": "2025-02-05T08:00:00+08:00"
- }
- }
- </script>
- </head>
- <body>
- <p>
- Here's how to make snickerdoodles.
- </p>
- <ol>
- <li>Mix together the cinnamon and sugar.</li>
- <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
- <li>Bake for 25 minutes.</li>
- </ol>
- </body>
+  <head>
+    <title>Snickerdoodles</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Recipe",
+      "name": "Snickerdoodles",
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+      ],
+      "author": {
+        "@type": "Person",
+        "name": "Wendy Darling"
+      },
+      "datePublished": "2024-03-10",
+      "description": "This Snickerdoodles recipe is everyone's favorite",
+      "prepTime": "PT10M",
+      "cookTime": "PT25M",
+      "totalTime": "PT35M",
+      "recipeCuisine": "French",
+      "recipeCategory": "Cookies",
+      "keywords": "cinnamon sugar, cookies",
+      "recipeYield": 24,
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": "120 calories"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 5,
+        "ratingCount": 18
+      },
+      "recipeIngredient": [
+        "2 cups of cinnamon",
+        "1/3 cup of sugar"
+      ],
+      "recipeInstructions": [
+        {
+          "@type": "HowToStep",
+          "text": "Mix together the cinnamon and sugar."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Roll cookie dough into small balls and place on a cookie sheet."
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Bake for 25 minutes."
+        }
+      ],
+      "video": {
+        "@type": "VideoObject",
+        "name": "How to Snickerdoodles",
+        "description": "This is how you make snickerdoodles.",
+        "thumbnailUrl": [
+          "https://example.com/photos/1x1/photo.jpg",
+          "https://example.com/photos/4x3/photo.jpg",
+          "https://example.com/photos/16x9/photo.jpg"
+         ],
+        "contentUrl": "https://www.example.com/video123.mp4",
+        "embedUrl": "https://www.example.com/videoplayer?video=123",
+        "uploadDate": "2024-02-05T08:00:00+08:00",
+        "duration": "PT1M33S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": { "@type": "WatchAction" },
+          "userInteractionCount": 2347
+        },
+        "expires": "2025-02-05T08:00:00+08:00"
+       }
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      Here's how to make snickerdoodles.
+    </p>
+    <ol>
+      <li>Mix together the cinnamon and sugar.</li>
+      <li>Roll cookie dough into small balls and place on a cookie sheet.</li>
+      <li>Bake for 25 minutes.</li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -906,119 +908,121 @@ The summary page has a short description of each item in the list. Each
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>The Best Movies from the Oscars - 2024</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Movie",
- "url": "https://example.com/2024-best-picture-noms#a-star-is-born",
- "name": "A Star Is Born",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-10-05",
- "director": {
- "@type": "Person",
- "name": "Bradley Cooper"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 5
- },
- "author": {
- "@type": "Person",
- "name": "John D."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 90,
- "bestRating": 100,
- "ratingCount": 19141
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Movie",
- "name": "Bohemian Rhapsody",
- "url": "https://example.com/2024-best-picture-noms#bohemian-rhapsody",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-11-02",
- "director": {
- "@type": "Person",
- "name": "Bryan Singer"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 3
- },
- "author": {
- "@type": "Person",
- "name": "Vin S."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 61,
- "bestRating": 100,
- "ratingCount": 21985
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Movie",
- "name": "Black Panther",
- "url": "https://example.com/2024-best-picture-noms#black-panther",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-02-16",
- "director": {
- "@type": "Person",
- "name": "Ryan Coogler"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 2
- },
- "author": {
- "@type": "Person",
- "name": "Trevor R."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 96,
- "bestRating": 100,
- "ratingCount": 88211
- }
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Best Movies from the Oscars - 2024</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Movie",
+            "url": "https://example.com/2024-best-picture-noms#a-star-is-born",
+            "name": "A Star Is Born",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-10-05",
+            "director": {
+                "@type": "Person",
+                "name": "Bradley Cooper"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 5
+              },
+              "author": {
+                "@type": "Person",
+                "name": "John D."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 90,
+                "bestRating": 100,
+                "ratingCount": 19141
+              }
+            }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Movie",
+            "name": "Bohemian Rhapsody",
+            "url": "https://example.com/2024-best-picture-noms#bohemian-rhapsody",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-11-02",
+            "director": {
+                "@type": "Person",
+                "name": "Bryan Singer"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 3
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Vin S."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 61,
+                "bestRating": 100,
+                "ratingCount": 21985
+              }
+            }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Movie",
+            "name": "Black Panther",
+            "url": "https://example.com/2024-best-picture-noms#black-panther",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-02-16",
+            "director": {
+                "@type": "Person",
+                "name": "Ryan Coogler"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 2
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Trevor R."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 96,
+                "bestRating": 100,
+                "ratingCount": 88211
+              }
+            }
+          }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -1094,20 +1098,12 @@ The Google-supported properties are the following:
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `itemListElement` | 
- `[ListItem](https://schema.org/ListItem)`
-
- List of items. To specify a list, define an `ItemList` that contains at least
- two `ListItem` elements. All items must be of the same type. See `
- [ListItem](https://developers.google.com#list-item)` for details.
- | 
- 
-
+| `itemListElement` | ` ListItem ` List of items. To specify a list, define an `ItemList` that contains at least two `ListItem` elements. All items must be of the same type. See ` ListItem ` for details. |
  
 
 ### `ListItem`
@@ -1147,35 +1143,14 @@ The full definition of `ListItem` is available at
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `position` | ` Integer ` The item's position in the carousel. This is a 1-based number. |
  
- `position`
- | 
- 
- `[Integer](https://schema.org/Integer)`
-
- The item's position in the carousel. This is a 1-based number.
-
- | 
- 
-
- 
- 
- `url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The canonical URL of the item detail page. All URLs in the list must be unique, but live
- on the same domain (the same domain or sub/super domain as the current page).
-
- | 
- 
-
+| `url` | ` URL ` The canonical URL of the item detail page. All URLs in the list must be unique, but live on the same domain (the same domain or sub/super domain as the current page). |
  
  
 
@@ -1192,86 +1167,18 @@ The full definition of `ListItem` is available at
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `item` | ` Thing ` An individual thing in a list. Populate this object with the following values, plus all the properties of the specific structured data type being described: ` item.name ` ` item.url ` Any other properties required for this data type, as described in schema.org and the rules described in the documents for your content type: Course Movie Recipe Restaurant Example : For a recipe, you would provide `prepTime` and `image` properties. |
  
- `item`
- | 
+| `item.name` | ` Text ` The string name of the item. The `item.name` is displayed as the title of an individual item in the carousel. HTML formatting is ignored. |
  
- `[Thing](https://schema.org/Thing)`
-
- An individual thing in a list. Populate this object with the following values, plus all the
- properties of the specific structured data type being described:
-
+| `item.url` | ` URL ` The fully-qualified URL and page anchor to this item on the page. The URL must be the current page, and you must include an HTML anchor (`<a>` tag or `name` or `id` value) in your page near the user-visible text. Example : `https://example.org/recipes/pies#apple_pie`. |
  
- 
-- `[item.name](https://developers.google.com#item-name)`
- 
-- `[item.url](https://developers.google.com#item-url)`
- 
-- Any other properties required for this data type, as described in schema.org and the rules
- described in the documents for your content type:
- 
- 
-- [Course](https://developers.google.com/search/docs/appearance/structured-data/course)
- 
-- [Movie](https://developers.google.com/search/docs/appearance/structured-data/movie)
- 
-- [Recipe](https://developers.google.com/search/docs/appearance/structured-data/recipe)
- 
-- [Restaurant](https://developers.google.com/search/docs/appearance/structured-data/local-business#carousel)
- 
-
- Example: For a recipe, you would provide `prepTime` and `image`
- properties.
- 
-
- | 
- 
-
- 
- 
- `item.name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The string name of the item. The `item.name` is displayed as the title of an
- individual item in the carousel. HTML formatting is ignored.
-
- | 
- 
-
- 
- 
- `item.url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The fully-qualified URL and page anchor to this item on the page. The URL must be
- the current page, and you must include an HTML anchor (`<a>` tag or
- `name` or `id` value) in your page near the user-visible text.
- Example: `https://example.org/recipes/pies#apple_pie`.
-
- | 
- 
-
- 
- 
- `position`
- | 
- 
- `[Integer](https://schema.org/Integer)`
-
- The item's position in the carousel. This is a 1-based number.
-
- | 
- 
-
+| `position` | ` Integer ` The item's position in the carousel. This is a 1-based number. |
  
  
 

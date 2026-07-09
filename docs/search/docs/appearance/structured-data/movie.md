@@ -80,34 +80,34 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>The Best Movies from the Oscars - 2024</title>
- <script type="application/ld+json">
- {
- "@context":"https://schema.org",
- "@type":"ItemList",
- "itemListElement":[
- {
- "@type":"ListItem",
- "position":1,
- "url":"https://example.com/a-star-is-born.html"
- },
- {
- "@type":"ListItem",
- "position":2,
- "url":"https://example.com/bohemian-rhapsody.html"
- },
- {
- "@type":"ListItem",
- "position":3,
- "url":"https://example.com/black-panther.html"
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Best Movies from the Oscars - 2024</title>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ItemList",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "url":"https://example.com/a-star-is-born.html"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "url":"https://example.com/bohemian-rhapsody.html"
+        },
+        {
+          "@type":"ListItem",
+          "position":3,
+          "url":"https://example.com/black-panther.html"
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -234,117 +234,118 @@ fetched: 2026-07-08
 
 ```
 <html>
- <head>
- <title>The Best Movies from the Oscars - 2024</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Movie",
- "url": "https://example.com/2024-best-picture-noms#a-star-is-born",
- "name": "A Star Is Born",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-10-05",
- "director": {
- "@type": "Person",
- "name": "Bradley Cooper"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 5
- },
- "author": {
- "@type": "Person",
- "name": "John D."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 90,
- "bestRating": 100,
- "ratingCount": 19141
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Movie",
- "name": "Bohemian Rhapsody",
- "url": "https://example.com/2024-best-picture-noms#bohemian-rhapsody",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-11-02",
- "director": {
- "@type": "Person",
- "name": "Bryan Singer"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 3
- },
- "author": {
- "@type": "Person",
- "name": "Vin S."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 61,
- "bestRating": 100,
- "ratingCount": 21985
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Movie",
- "name": "Black Panther",
- "url": "https://example.com/2024-best-picture-noms#black-panther",
- "image": "https://example.com/photos/6x9/photo.jpg",
- "dateCreated": "2024-02-16",
- "director": {
- "@type": "Person",
- "name": "Ryan Coogler"
- },
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 2
- },
- "author": {
- "@type": "Person",
- "name": "Trevor R."
- }
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 96,
- "bestRating": 100,
- "ratingCount": 88211
- }
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Best Movies from the Oscars - 2024</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Movie",
+            "url": "https://example.com/2024-best-picture-noms#a-star-is-born",
+            "name": "A Star Is Born",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-10-05",
+            "director": {
+                "@type": "Person",
+                "name": "Bradley Cooper"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 5
+              },
+              "author": {
+                "@type": "Person",
+                "name": "John D."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 90,
+                "bestRating": 100,
+                "ratingCount": 19141
+              }
+            }
+          },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Movie",
+            "name": "Bohemian Rhapsody",
+            "url": "https://example.com/2024-best-picture-noms#bohemian-rhapsody",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-11-02",
+            "director": {
+                "@type": "Person",
+                "name": "Bryan Singer"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 3
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Vin S."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 61,
+                "bestRating": 100,
+                "ratingCount": 21985
+              }
+            }
+          },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Movie",
+            "name": "Black Panther",
+            "url": "https://example.com/2024-best-picture-noms#black-panther",
+            "image": "https://example.com/photos/6x9/photo.jpg",
+            "dateCreated": "2024-02-16",
+            "director": {
+                "@type": "Person",
+                "name": "Ryan Coogler"
+              },
+            "review": {
+              "@type": "Review",
+              "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": 2
+              },
+              "author": {
+                "@type": "Person",
+                "name": "Trevor R."
+              }
+            },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 96,
+                "bestRating": 100,
+                "ratingCount": 88211
+              }
+            }
+          }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -386,106 +387,39 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `image` | 
- `[URL](https://schema.org/URL)` or `[ImageObject](https://schema.org/ImageObject)`
+| `image` | ` URL ` or ` ImageObject ` An image that represents the movie. Additional image guidelines: Image URLs must be crawlable and indexable . Images must represent the marked up content. Images must be in .jpg, .png, or .gif format. Images must have a high resolution and have a 6:9 aspect ratio. While Google can crop images that are close to a 6:9 aspect ratio, images largely deviating from this ratio aren't eligible for the feature. |
  
- An image that represents the movie. Additional image guidelines:
-
- 
- 
-- Image URLs must be
- [crawlable and indexable](https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps).
- 
-- Images must represent the marked up content.
- 
-- Images must be in .jpg, .png, or .gif format.
- 
-- Images must have a high resolution and have a 6:9 aspect ratio. While Google can crop images
- that are close to a 6:9 aspect ratio, images largely deviating from this ratio aren't
- eligible for the feature.
- 
-
- | 
- 
-
- 
- `name` | 
- `[Text](https://schema.org/Text)`
- 
- The name of the movie.
- 
-
- | 
- 
-
+| `name` | ` Text ` The name of the movie. |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
+| `aggregateRating` | ` AggregateRating ` Annotation for the average review score assigned to the movie. Follow the Review snippet guidelines and list of required and recommended AggregateRating properties . |
  
-### `aggregateRating`
- | 
- `[AggregateRating](https://schema.org/AggregateRating)`
-
- Annotation for the average review score assigned to the movie. Follow the [Review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and list of required and recommended [AggregateRating properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregate-rating).
-
- | 
+| `dateCreated` | ` Date ` or ` DateTime ` The date the movie was released. |
  
-
- 
- `dateCreated` | 
- `[Date](https://schema.org/Date)` or `[DateTime](https://schema.org/DateTime)`
- 
- The date the movie was released.
- 
-
- | 
- 
-
- 
- `director` | 
- `[Person](https://schema.org/Person)`
- 
- The director of the movie. For example:
-
- 
-
+| `director` | ` Person ` The director of the movie. For example: 
 ```
 "director": {
- "@type": "Person",
- "name": "Bradley Cooper"
+  "@type": "Person",
+  "name": "Bradley Cooper"
 }
 ```
-
- | 
+ |
  
-
- 
- 
-### `review`
- | 
- `[Review](https://schema.org/Review)`
-
- A nested `Review` of the movie. Follow the
- [Review snippet
- guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines) and the list of required and recommended
- [review
- properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties).
- | 
- 
-
+| `review` | ` Review ` A nested `Review` of the movie. Follow the Review snippet guidelines and the list of required and recommended review properties . |
  
  
 

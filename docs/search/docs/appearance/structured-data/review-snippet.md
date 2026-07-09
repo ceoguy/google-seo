@@ -187,45 +187,45 @@ Here's an example of a simple review.
 
 ```
 <html>
- <head>
- <title>Legal Seafood</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Review",
- "itemReviewed": {
- "@type": "Restaurant",
- "image": "https://www.example.com/seafood-restaurant.jpg",
- "name": "Legal Seafood",
- "servesCuisine": "Seafood",
- "priceRange": "$$$",
- "telephone": "1234567",
- "address" :{
- "@type": "PostalAddress",
- "streetAddress": "123 William St",
- "addressLocality": "New York",
- "addressRegion": "NY",
- "postalCode": "10038",
- "addressCountry": "US"
- }
- },
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4
- },
- "author": {
- "@type": "Person",
- "name": "Bob Smith"
- },
- "publisher": {
- "@type": "Organization",
- "name": "Washington Times"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+  <title>Legal Seafood</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "Restaurant",
+        "image": "https://www.example.com/seafood-restaurant.jpg",
+        "name": "Legal Seafood",
+        "servesCuisine": "Seafood",
+        "priceRange": "$$$",
+        "telephone": "1234567",
+        "address" :{
+          "@type": "PostalAddress",
+          "streetAddress": "123 William St",
+          "addressLocality": "New York",
+          "addressRegion": "NY",
+          "postalCode": "10038",
+          "addressCountry": "US"
+        }
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 4
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Bob Smith"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Washington Times"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -267,32 +267,32 @@ Here's an example of a simple review.
  
 
 ```
- <html>
- <head>
- <title>Legal Seafood</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="Review">
- <div property="itemReviewed" typeof="Restaurant">
- <img property="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
- <span property="name">Legal Seafood</span>
- <span property="servesCuisine">Seafood</span>
- <span property="priceRange">$$$</span>
- <span property="telephone">1234567</span>
- <span property="address">123 William St, New York</span>
- </div>
- <span property="reviewRating" typeof="Rating">
- <span property="ratingValue">4</span>
- </span> stars -
- <b>"A good seafood place." </b>
- <span property="author" typeof="Person">
- <span property="name">Bob Smith</span>
- </span>
- <div property="publisher" typeof="Organization">
- <meta property="name" content="Washington Times">
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>Legal Seafood</title>
+  </head>
+  <body>
+    <div vocab="https://schema.org/" typeof="Review">
+      <div property="itemReviewed" typeof="Restaurant">
+        <img property="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
+        <span property="name">Legal Seafood</span>
+        <span property="servesCuisine">Seafood</span>
+        <span property="priceRange">$$$</span>
+        <span property="telephone">1234567</span>
+        <span property="address">123 William St, New York</span>
+      </div>
+      <span property="reviewRating" typeof="Rating">
+        <span property="ratingValue">4</span>
+      </span> stars -
+      <b>"A good seafood place." </b>
+      <span property="author" typeof="Person">
+        <span property="name">Bob Smith</span>
+      </span>
+      <div property="publisher" typeof="Organization">
+        <meta property="name" content="Washington Times">
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -334,34 +334,35 @@ Here's an example of a simple review.
  
 
 ```
- <html>
- <head>
- <title>Legal Seafood</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/Review">
- <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Restaurant">
- <img itemprop="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
- <span itemprop="name">Legal Seafood</span>
- <span itemprop="servesCuisine">Seafood</span>
- <span itemprop="priceRange">$$$</span>
- <span itemprop="telephone">1234567</span>
- <span itemprop="address">123 William St, New York</span>
- </div>
- <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
- <span itemprop="ratingValue">4</span>
- </span> stars -
- <b>"A good seafood place." </b>
- <span itemprop="author" itemscope itemtype="https://schema.org/Person">
- <span itemprop="name">Bob Smith</span>
- </span>
- <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
- <meta itemprop="name" content="Washington Times">
- </div>
- </div>
- </body>
+<html>
+  <head>
+  <title>Legal Seafood</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/Review">
+      <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Restaurant">
+        <img itemprop="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
+        <span itemprop="name">Legal Seafood</span>
+        <span itemprop="servesCuisine">Seafood</span>
+        <span itemprop="priceRange">$$$</span>
+        <span itemprop="telephone">1234567</span>
+        <span itemprop="address">123 William St, New York</span>
+      </div>
+      <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        <span itemprop="ratingValue">4</span>
+      </span> stars -
+      <b>"A good seafood place." </b>
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+        <span itemprop="name">Bob Smith</span>
+      </span>
+      <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="Washington Times">
+      </div>
+    </div>
+  </body>
 </html>
 ```
+
 
 ### Nested review
 
@@ -440,67 +441,67 @@ Here's an example of a review that's nested in a `Product`. You can copy and
 
 ```
 <html>
- <head>
- <title>The Catcher in the Rye</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "brand": {
- "@type": "Brand",
- "name": "Penguin Books"
- },
- "description": "The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind.",
- "sku": "9780241984758",
- "mpn": "925872",
- "image": "https://www.example.com/catcher-in-the-rye-book-cover.jpg",
- "name": "The Catcher in the Rye",
- "review": [{
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 5
- },
- "author": {
- "@type": "Person",
- "name": "John Doe"
- }
- },
- {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 1
- },
- "author": {
- "@type": "Person",
- "name": "Jane Doe"
- }
- }],
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 88,
- "bestRating": 100,
- "ratingCount": 20
- },
- "offers": {
- "@type": "Offer",
- "url": "https://example.com/offers/catcher-in-the-rye",
- "priceCurrency": "USD",
- "price": 5.99,
- "priceValidUntil": "2024-11-05",
- "itemCondition": "https://schema.org/UsedCondition",
- "availability": "https://schema.org/InStock",
- "seller": {
- "@type": "Organization",
- "name": "eBay"
- }
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Catcher in the Rye</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "brand": {
+        "@type": "Brand",
+        "name": "Penguin Books"
+      },
+      "description": "The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind.",
+      "sku": "9780241984758",
+      "mpn": "925872",
+      "image": "https://www.example.com/catcher-in-the-rye-book-cover.jpg",
+      "name": "The Catcher in the Rye",
+      "review": [{
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 5
+        },
+        "author": {
+          "@type": "Person",
+          "name": "John Doe"
+        }
+       },
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": 1
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Jane Doe"
+        }
+      }],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 88,
+        "bestRating": 100,
+        "ratingCount": 20
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://example.com/offers/catcher-in-the-rye",
+        "priceCurrency": "USD",
+        "price": 5.99,
+        "priceValidUntil": "2024-11-05",
+        "itemCondition": "https://schema.org/UsedCondition",
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "eBay"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -574,64 +575,64 @@ Here's an example of a review that's nested in a `Product`. You can copy and
  
 
 ```
- <html>
- <head>
- <title>The Catcher in the Rye</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="Product">
- <div rel="schema:brand">
- <div typeof="schema:Brand">
- <div property="schema:name" content="Penguin"></div>
- </div>
- </div>
- <div property="schema:description" content="The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind."></div>
- <div property="schema:sku" content="9780241984758"></div>
- <div property="schema:mpn" content="925872"></div>
- <img property="image" src="https://example.com/photos/1x1/catcher-in-the-rye-book-cover.jpg" alt="Catcher in the Rye"/>
- <span property="name">The Catcher in the Rye</span>
- <div property="review" typeof="Review"> Reviews:
- <span property="reviewRating" typeof="Rating">
- <span property="ratingValue">5</span> -
- </span>
- <b>"A masterpiece of literature" </b> by
- <span property="author" typeof="Person">
- <span property="name">John Doe</span></span>, written on
- <meta property="datePublished" content="2006-05-04">4 May 2006
- <div>I really enjoyed this book. It captures the essential challenge people face as they try make sense of their lives and grow to adulthood.</div>
- <span property="publisher" typeof="Organization">
- <meta property="name" content="Washington Times">
- </span>
- </div><div property="review" typeof="Review">
- <span property="reviewRating" typeof="Rating">
- <span property="ratingValue">1</span> -
- </span>
- <b>"The worst thing I've ever read" </b> by
- <span property="author" typeof="Person">
- <span property="name">Jane Doe</span></span>, written on
- <meta property="datePublished" content="2006-05-10">10 May 2006
- <span property="publisher" typeof="Organization">
- <meta property="name" content="Washington Times">
- </span>
- </div>
- <div rel="schema:aggregateRating">
- <div typeof="schema:AggregateRating">
- <div property="schema:reviewCount" content="89"></div>
- <div property="schema:ratingValue" content="4.4">4,4</div> stars
- </div>
- </div>
- <div rel="schema:offers">
- <div typeof="schema:Offer">
- <div property="schema:price" content="4.99"></div>
- <div property="schema:availability" content="https://schema.org/InStock"></div>
- <div property="schema:priceCurrency" content="GBP"></div>
- <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-21"></div>
- <div rel="schema:url" resource="https://example.com/catcher"></div>
- <div property="schema:itemCondition" content="https://schema.org/UsedCondition"></div>
- </div>
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>The Catcher in the Rye</title>
+  </head>
+    <body>
+      <div vocab="https://schema.org/" typeof="Product">
+        <div rel="schema:brand">
+          <div typeof="schema:Brand">
+            <div property="schema:name" content="Penguin"></div>
+          </div>
+        </div>
+        <div property="schema:description" content="The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind."></div>
+        <div property="schema:sku" content="9780241984758"></div>
+        <div property="schema:mpn" content="925872"></div>
+        <img property="image" src="https://example.com/photos/1x1/catcher-in-the-rye-book-cover.jpg" alt="Catcher in the Rye"/>
+        <span property="name">The Catcher in the Rye</span>
+        <div property="review" typeof="Review"> Reviews:
+          <span property="reviewRating" typeof="Rating">
+            <span property="ratingValue">5</span> -
+          </span>
+          <b>"A masterpiece of literature" </b> by
+          <span property="author" typeof="Person">
+            <span property="name">John Doe</span></span>, written on
+          <meta property="datePublished" content="2006-05-04">4 May 2006
+          <div>I really enjoyed this book. It captures the essential challenge people face as they try make sense of their lives and grow to adulthood.</div>
+          <span property="publisher" typeof="Organization">
+            <meta property="name" content="Washington Times">
+          </span>
+        </div><div property="review" typeof="Review">
+          <span property="reviewRating" typeof="Rating">
+            <span property="ratingValue">1</span> -
+          </span>
+          <b>"The worst thing I've ever read" </b> by
+          <span property="author" typeof="Person">
+            <span property="name">Jane Doe</span></span>, written on
+          <meta property="datePublished" content="2006-05-10">10 May 2006
+          <span property="publisher" typeof="Organization">
+            <meta property="name" content="Washington Times">
+          </span>
+        </div>
+        <div rel="schema:aggregateRating">
+          <div typeof="schema:AggregateRating">
+            <div property="schema:reviewCount" content="89"></div>
+            <div property="schema:ratingValue" content="4.4">4,4</div> stars
+          </div>
+        </div>
+        <div rel="schema:offers">
+          <div typeof="schema:Offer">
+            <div property="schema:price" content="4.99"></div>
+            <div property="schema:availability" content="https://schema.org/InStock"></div>
+            <div property="schema:priceCurrency" content="GBP"></div>
+            <div property="schema:priceValidUntil" datatype="xsd:date" content="2024-11-21"></div>
+            <div rel="schema:url" resource="https://example.com/catcher"></div>
+            <div property="schema:itemCondition" content="https://schema.org/UsedCondition"></div>
+          </div>
+        </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -699,58 +700,58 @@ Here's an example of a review that's nested in a `Product`. You can copy and
  
 
 ```
- <html>
- <head>
- <title>The Catcher in the Rye</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/Product">
- <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
- <meta itemprop="name" content="Penguin" />
- </div>
- <meta itemprop="description" content="The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind." />
- <meta itemprop="sku" content="0446310786" />
- <meta itemprop="mpn" content="925872" />
- <img itemprop="image" src="https://example.com/photos/1x1/catcher-in-the-rye-book-cover.jpg" alt="Catcher in the Rye"/>
- <span itemprop="name">The Catcher in the Rye</span>
- <div itemprop="review" itemscope itemtype="https://schema.org/Review"> Reviews:
- <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
- <span itemprop="ratingValue">5</span> -
- </span>
- <b>"A masterpiece of literature" </b> by
- <span itemprop="author" itemscope itemtype="https://schema.org/Person">
- <span itemprop="name">John Doe</span></span>, written on
- <meta itemprop="datePublished" content="2006-05-04">4 May 2006
- <div>I really enjoyed this book. It captures the essential challenge people face as they try make sense of their lives and grow to adulthood.</div>
- <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
- <meta itemprop="name" content="Washington Times">
- </span>
- </div><div itemprop="review" itemscope itemtype="https://schema.org/Review">
- <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
- <span itemprop="ratingValue">1</span> -
- </span>
- <b>"The worst thing I've ever read" </b> by
- <span itemprop="author" itemscope itemtype="https://schema.org/Person">
- <span itemprop="name">Jane Doe</span></span>, written on
- <meta itemprop="datePublished" content="2006-05-10">10 May 2006
- <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
- <meta itemprop="name" content="Washington Times">
- </span>
- </div>
- <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
- <meta itemprop="reviewCount" content="89" />
- <span itemprop="ratingValue" content="4.4">4,4</span> stars
- </div>
- <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
- <link itemprop="url" href="https://example.com/catcher" />
- <meta itemprop="availability" content="https://schema.org/InStock" />
- <meta itemprop="priceCurrency" content="GBP" />
- <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
- <meta itemprop="price" content="4.99" />
- <meta itemprop="priceValidUntil" content="2024-11-21" />
- </div>
- </div>
- </body>
+<html>
+  <head>
+    <title>The Catcher in the Rye</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/Product">
+      <div itemprop="brand" itemtype="https://schema.org/Brand" itemscope>
+        <meta itemprop="name" content="Penguin" />
+      </div>
+      <meta itemprop="description" content="The Catcher in the Rye is a classic coming-of-age story: an story of teenage alienation, capturing the human need for connection and the bewildering sense of loss as we leave childhood behind." />
+      <meta itemprop="sku" content="0446310786" />
+      <meta itemprop="mpn" content="925872" />
+      <img itemprop="image" src="https://example.com/photos/1x1/catcher-in-the-rye-book-cover.jpg" alt="Catcher in the Rye"/>
+      <span itemprop="name">The Catcher in the Rye</span>
+      <div itemprop="review" itemscope itemtype="https://schema.org/Review"> Reviews:
+        <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <span itemprop="ratingValue">5</span> -
+        </span>
+        <b>"A masterpiece of literature" </b> by
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">John Doe</span></span>, written on
+        <meta itemprop="datePublished" content="2006-05-04">4 May 2006
+        <div>I really enjoyed this book. It captures the essential challenge people face as they try make sense of their lives and grow to adulthood.</div>
+        <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <meta itemprop="name" content="Washington Times">
+        </span>
+      </div><div itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <span itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+            <span itemprop="ratingValue">1</span> -
+        </span>
+        <b>"The worst thing I've ever read" </b> by
+        <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">Jane Doe</span></span>, written on
+        <meta itemprop="datePublished" content="2006-05-10">10 May 2006
+        <span itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <meta itemprop="name" content="Washington Times">
+        </span>
+      </div>
+      <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" />
+        <span itemprop="ratingValue" content="4.4">4,4</span> stars
+      </div>
+      <div itemprop="offers" itemtype="https://schema.org/Offer" itemscope>
+        <link itemprop="url" href="https://example.com/catcher" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+        <meta itemprop="priceCurrency" content="GBP" />
+        <meta itemprop="itemCondition" content="https://schema.org/UsedCondition" />
+        <meta itemprop="price" content="4.99" />
+        <meta itemprop="priceValidUntil" content="2024-11-21" />
+      </div>
+    </div>
+  </body>
 </html>
 ```
 
@@ -800,35 +801,35 @@ Here's an example of an aggregate rating.
 
 ```
 <html>
- <head>
- <title>Legal Seafood</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "AggregateRating",
- "itemReviewed": {
- "@type": "Restaurant",
- "image": "https://www.example.com/seafood-restaurant.jpg",
- "name": "Legal Seafood",
- "servesCuisine": "Seafood",
- "telephone": "1234567",
- "address" : {
- "@type": "PostalAddress",
- "streetAddress": "123 William St",
- "addressLocality": "New York",
- "addressRegion": "NY",
- "postalCode": "10038",
- "addressCountry": "US"
- }
- },
- "ratingValue": 88,
- "bestRating": 100,
- "ratingCount": 20
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Legal Seafood</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "AggregateRating",
+      "itemReviewed": {
+        "@type": "Restaurant",
+        "image": "https://www.example.com/seafood-restaurant.jpg",
+        "name": "Legal Seafood",
+        "servesCuisine": "Seafood",
+        "telephone": "1234567",
+        "address" : {
+          "@type": "PostalAddress",
+          "streetAddress": "123 William St",
+          "addressLocality": "New York",
+          "addressRegion": "NY",
+          "postalCode": "10038",
+          "addressCountry": "US"
+        }
+      },
+      "ratingValue": 88,
+      "bestRating": 100,
+      "ratingCount": 20
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -861,23 +862,23 @@ Here's an example of an aggregate rating.
  
 
 ```
- <html>
- <head>
- <title>Legal Seafood</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="AggregateRating">
- <div property="itemReviewed" typeof="Restaurant">
- <img property="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
- <span property="name">Legal Seafood</span>
- <span property="servesCuisine">Seafood</span>
- <span property="telephone">1234567</span>
- <span property="address">123 William St, New York</span>
- </div>
- <span property="ratingValue">4.2</span> out of <span property="bestRating">5</span> stars -
- <span property="ratingCount">123</span> votes
- </div>
- </body>
+<html>
+  <head>
+    <title>Legal Seafood</title>
+  </head>
+  <body>
+    <div vocab="https://schema.org/" typeof="AggregateRating">
+      <div property="itemReviewed" typeof="Restaurant">
+        <img property="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
+        <span property="name">Legal Seafood</span>
+        <span property="servesCuisine">Seafood</span>
+        <span property="telephone">1234567</span>
+        <span property="address">123 William St, New York</span>
+      </div>
+      <span property="ratingValue">4.2</span> out of <span property="bestRating">5</span> stars -
+      <span property="ratingCount">123</span> votes
+    </div>
+  </body>
 </html>
 ```
 
@@ -910,23 +911,23 @@ Here's an example of an aggregate rating.
  
 
 ```
- <html>
- <head>
- <title>Legal Seafood</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/AggregateRating">
- <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Restaurant">
- <img itemprop="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
- <span itemprop="name">Legal Seafood</span>
- <span itemprop="servesCuisine">Seafood</span>
- <span itemprop="telephone">1234567</span>
- <span itemprop="address">123 William St, New York</span>
- </div>
- <span itemprop="ratingValue">4.2</span> out of <span itemprop="bestRating">5</span> stars -
- <span itemprop="ratingCount">123</span> votes
- </div>
- </body>
+<html>
+  <head>
+    <title>Legal Seafood</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/AggregateRating">
+      <div itemprop="itemReviewed" itemscope itemtype="https://schema.org/Restaurant">
+        <img itemprop="image" src="https://example.com/photos/1x1/seafood-restaurant.jpg" alt="Legal Seafood"/>
+        <span itemprop="name">Legal Seafood</span>
+        <span itemprop="servesCuisine">Seafood</span>
+        <span itemprop="telephone">1234567</span>
+        <span itemprop="address">123 William St, New York</span>
+      </div>
+      <span itemprop="ratingValue">4.2</span> out of <span itemprop="bestRating">5</span> stars -
+      <span itemprop="ratingCount">123</span> votes
+    </div>
+  </body>
 </html>
 ```
 
@@ -981,38 +982,38 @@ Here's an example of an aggregate rating that's nested in a `Product`. You can c
 
 ```
 <html>
- <head>
- <title>Executive Anvil</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "Product",
- "name": "Executive Anvil",
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "brand": {
- "@type": "Brand",
- "name": "ACME"
- },
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 4.4,
- "ratingCount": 89
- },
- "offers": {
- "@type": "AggregateOffer",
- "lowPrice": 119.99,
- "highPrice": 199.99,
- "priceCurrency": "USD"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+  <title>Executive Anvil</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Executive Anvil",
+    "image": [
+      "https://example.com/photos/1x1/photo.jpg",
+      "https://example.com/photos/4x3/photo.jpg",
+      "https://example.com/photos/16x9/photo.jpg"
+     ],
+    "brand": {
+      "@type": "Brand",
+      "name": "ACME"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": 4.4,
+      "ratingCount": 89
+    },
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": 119.99,
+      "highPrice": 199.99,
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -1048,26 +1049,26 @@ Here's an example of an aggregate rating that's nested in a `Product`. You can c
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div vocab="https://schema.org/" typeof="Product">
- <span property="brand" typeof="Brand">ACME</span> <span property="name">Executive Anvil</span>
- <img property="image" src="https://example.com/photos/1x1/anvil_executive.jpg" alt="Executive Anvil logo" />
- <span property="aggregateRating"
- typeof="AggregateRating">
- Average rating: <span property="ratingValue">4.4</span>, based on
- <span property="ratingCount">89</span> reviews
- </span>
- <span property="offers" typeof="AggregateOffer">
- from $<span property="lowPrice">119.99</span> to
- $<span property="highPrice">199.99</span>
- <meta property="priceCurrency" content="USD" />
- </span>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+    <div vocab="https://schema.org/" typeof="Product">
+     <span property="brand" typeof="Brand">ACME</span> <span property="name">Executive Anvil</span>
+     <img property="image" src="https://example.com/photos/1x1/anvil_executive.jpg" alt="Executive Anvil logo" />
+     <span property="aggregateRating"
+           typeof="AggregateRating">
+      Average rating: <span property="ratingValue">4.4</span>, based on
+      <span property="ratingCount">89</span> reviews
+     </span>
+     <span property="offers" typeof="AggregateOffer">
+      from $<span property="lowPrice">119.99</span> to
+      $<span property="highPrice">199.99</span>
+      <meta property="priceCurrency" content="USD" />
+     </span>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1102,25 +1103,25 @@ Here's an example of an aggregate rating that's nested in a `Product`. You can c
  
 
 ```
- <html>
- <head>
- <title>Executive Anvil</title>
- </head>
- <body>
- <div itemscope itemtype="https://schema.org/Product">
- <span itemprop="brand" itemtype="https://schema.org/Brand" itemscope>ACME</span> <span itemprop="name">Executive Anvil</span>
- <img itemprop="image" src="https://example.com/photos/1x1/anvil_executive.jpg" />
- <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
- Average rating: <span itemprop="ratingValue">4.4</span>, based on
- <span itemprop="ratingCount">89</span> reviews
- </span>
- <span itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer">
- from $<span itemprop="lowPrice">119.99</span> to
- $<span itemprop="highPrice">199.99</span>
- <meta itemprop="priceCurrency" content="USD" />
- </span>
- </div>
- </body>
+<html>
+  <head>
+    <title>Executive Anvil</title>
+  </head>
+  <body>
+    <div itemscope itemtype="https://schema.org/Product">
+      <span itemprop="brand" itemtype="https://schema.org/Brand" itemscope>ACME</span> <span itemprop="name">Executive Anvil</span>
+      <img itemprop="image" src="https://example.com/photos/1x1/anvil_executive.jpg" />
+      <span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+        Average rating: <span itemprop="ratingValue">4.4</span>, based on
+        <span itemprop="ratingCount">89</span> reviews
+      </span>
+      <span itemprop="offers" itemscope itemtype="https://schema.org/AggregateOffer">
+        from $<span itemprop="lowPrice">119.99</span> to
+        $<span itemprop="highPrice">199.99</span>
+        <meta itemprop="priceCurrency" content="USD" />
+      </span>
+    </div>
+  </body>
 </html>
 ```
 
@@ -1212,214 +1213,59 @@ The full definition of `Review` is available at
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `author` | 
- `[Person](https://schema.org/Person)` or
- `[Organization](https://schema.org/Organization)`
-
- The author of the review. The reviewer's name must be a valid name. For example,
- "50% off until Saturday" is not a valid name for a reviewer.
-
- This field must be shorter than 100 characters. If it's longer than 100 characters,
- your page won't be eligible for an author-based review snippet.
-
+| `author` | ` Person ` or ` Organization ` The author of the review. The reviewer's name must be a valid name. For example, "50% off until Saturday" is not a valid name for a reviewer. This field must be shorter than 100 characters. If it's longer than 100 characters, your page won't be eligible for an author-based review snippet. To help Google best understand authors across various features, consider following the author markup best practices . |
  
- To help Google best
- understand authors across various features, consider following the
- [author markup best practices](https://developers.google.com/search/docs/appearance/structured-data/article#author-bp).
+| `itemReviewed` (if review is not a Nested Review ) | One of the valid types The item that is being reviewed. However, if the review is nested into another schema.org type using the ` review ` property, omit the `itemReviewed` property (we assume the parent item is the reviewed item). The valid types for the reviewed item are: ` Book ` ` Course ` ` CreativeWorkSeason ` ` CreativeWorkSeries ` ` Episode ` ` Event ` ` Game ` ` HowTo ` ` LocalBusiness ` ` MediaObject ` ` Movie ` ` MusicPlaylist ` ` MusicRecording ` ` Organization ` ` Product ` ` Recipe ` ` SoftwareApplication ` |
  
-
- | 
- 
-
- 
- 
- `itemReviewed` (if review is not a [Nested Review](https://developers.google.com#embedded-review-example))
- | 
- 
- One of the valid types
-
- The item that is being reviewed. However, if the review is nested into another
- schema.org type using the
- `[review](https://schema.org/review)` property,
- omit the `itemReviewed` property (we assume the parent item is the reviewed item).
-
- 
- The valid types for the reviewed item are:
-
- 
- 
-- `[Book](https://schema.org/Book)`
- 
-- `[Course](https://schema.org/Course)`
- 
-- `[CreativeWorkSeason](https://schema.org/CreativeWorkSeason)`
- 
-- `[CreativeWorkSeries](https://schema.org/CreativeWorkSeries)`
- 
-- `[Episode](https://schema.org/Episode)`
- 
-- `[Event](https://schema.org/Event)`
- 
-- `[Game](https://schema.org/Game)`
- 
-- `[HowTo](https://schema.org/HowTo)`
- 
-- `[LocalBusiness](https://schema.org/LocalBusiness)`
- 
-- `[MediaObject](https://schema.org/MediaObject)`
- 
-- `[Movie](https://schema.org/Movie)`
- 
-- `[MusicPlaylist](https://schema.org/MusicPlaylist)`
- 
-- `[MusicRecording](https://schema.org/MusicRecording)`
- 
-- `[Organization](https://schema.org/Organization)`
- 
-- `[Product](https://schema.org/Product)`
- 
-- `[Recipe](https://schema.org/Recipe)`
- 
-- `[SoftwareApplication](https://schema.org/SoftwareApplication)`
- 
-
- | 
- 
-
- 
- 
- `itemReviewed.name` or parent item `name` in [Nested Review](https://developers.google.com#embedded-review-example)
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the item that is being reviewed. If the review is nested into another
- schema.org type using the
- `[review](https://schema.org/review)` property,
- you still need to provide the `name` of the thing that is being reviewed. For example:
-
- 
-
+| `itemReviewed.name` or parent item `name` in Nested Review | ` Text ` The name of the item that is being reviewed. If the review is nested into another schema.org type using the ` review ` property, you still need to provide the `name` of the thing that is being reviewed. For example: 
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Game",
- "name": "Firefly",
- "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 5
- },
- "author": {
- "@type": "Person",
- "name": "John Doe"
- }
- }
+  "@context": "https://schema.org/",
+  "@type": "Game",
+  "name": "Firefly",
+  "review": {
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": 5
+    },
+    "author": {
+      "@type": "Person",
+      "name": "John Doe"
+    }
+  }
 }
 ```
-
- | 
+ |
  
-
+| `reviewRating` | ` Rating ` The rating given in this review. The rating can be a nested `Rating` or more specific subtype. The most typical subtype is `AggregateRating` . |
  
- 
- `reviewRating`
- | 
- 
- `[Rating](https://schema.org/Rating)`
-
- The rating given in this review. The rating can be a nested
- [`Rating`](https://schema.org/Rating) or more specific subtype. The most typical
- subtype is [`AggregateRating`](https://developers.google.com#aggregated-rating-type-definition).
-
- | 
- 
-
- 
- 
- `reviewRating.ratingValue`
- | 
- 
- `[Number](https://schema.org/Number)` or
- `[Text](https://schema.org/Text)`
-
- A numerical quality rating for the item, either a number, fraction, or percentage (for
- example, `4`, `60%`, or `6 / 10`).
- Google understands the scale for fractions and percentages, since the scale is
- implied in the fraction itself or the percentage. The default scale for numbers is a
- 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is
- intended, use `bestRating` and `worstRating`.
-
- For decimal numbers, use a dot instead of a comma to specify the value (for example
- `4.4` instead of `4,4`). In Microdata and RDFa, you can use
- `content` attributes to override the visible content. That way, you can show
- the user whatever style convention you want, while also satisfying the dot requirement
- for structured data. For example:
-
- 
-
+| `reviewRating.ratingValue` | ` Number ` or ` Text ` A numerical quality rating for the item, either a number, fraction, or percentage (for example, `4`, `60%`, or `6 / 10`). Google understands the scale for fractions and percentages, since the scale is implied in the fraction itself or the percentage. The default scale for numbers is a 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is intended, use `bestRating` and `worstRating`. For decimal numbers, use a dot instead of a comma to specify the value (for example `4.4` instead of `4,4`). In Microdata and RDFa, you can use `content` attributes to override the visible content. That way, you can show the user whatever style convention you want, while also satisfying the dot requirement for structured data. For example: 
 ```
 <span itemprop="ratingValue" content="4.4">4,4</span> stars
 ```
-
- | 
- 
-
+ |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `datePublished` | 
+| `datePublished` | ` Date ` The date that the review was published, in ISO 8601 date format. |
  
- `[Date](https://schema.org/Date)`
-
- The date that the review was published, in
- [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date
- format.
+| `reviewRating.bestRating` | ` Number ` The highest value allowed in this rating system. If `bestRating` is omitted, 5 is assumed. |
  
-
- | 
- 
-
- 
- 
- `reviewRating.bestRating`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- The highest value allowed in this rating system. If `bestRating`
- is omitted, 5 is assumed.
-
- | 
- 
-
- 
- 
- `reviewRating.worstRating`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- The lowest value allowed in this rating system. If `worstRating`
- is omitted, 1 is assumed.
-
- | 
- 
-
+| `reviewRating.worstRating` | ` Number ` The lowest value allowed in this rating system. If `worstRating` is omitted, 1 is assumed. |
  
  
 
@@ -1434,179 +1280,49 @@ The full definition of `Review` is available at
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `itemReviewed` (if aggregate rating is not a Nested Aggregate Rating ) | One of the valid types The item that is being rated. However, if the aggregate rating is nested into another schema.org type using the ` aggregateRating ` property, omit the `itemReviewed` property. The valid types for the reviewed item are: ` Book ` ` Course ` ` CreativeWorkSeason ` ` CreativeWorkSeries ` ` Episode ` ` Event ` ` Game ` ` HowTo ` ` LocalBusiness ` ` MediaObject ` ` Movie ` ` MusicPlaylist ` ` MusicRecording ` ` Organization ` ` Product ` ` Recipe ` ` SoftwareApplication ` |
  
- `itemReviewed` (if aggregate rating is not a [Nested Aggregate Rating](https://developers.google.com#embedded-aggregate-rating))
- | 
- 
- One of the valid types
-
- The item that is being rated. However, if the aggregate rating is nested into
- another schema.org type using the
- `[aggregateRating](https://schema.org/aggregateRating)`
- property, omit the `itemReviewed` property.
-
- 
- The valid types for the reviewed item are:
-
- 
- 
-- `[Book](https://schema.org/Book)`
- 
-- `[Course](https://schema.org/Course)`
- 
-- `[CreativeWorkSeason](https://schema.org/CreativeWorkSeason)`
- 
-- `[CreativeWorkSeries](https://schema.org/CreativeWorkSeries)`
- 
-- `[Episode](https://schema.org/Episode)`
- 
-- `[Event](https://schema.org/Event)`
- 
-- `[Game](https://schema.org/Game)`
- 
-- `[HowTo](https://schema.org/HowTo)`
- 
-- `[LocalBusiness](https://schema.org/LocalBusiness)`
- 
-- `[MediaObject](https://schema.org/MediaObject)`
- 
-- `[Movie](https://schema.org/Movie)`
- 
-- `[MusicPlaylist](https://schema.org/MusicPlaylist)`
- 
-- `[MusicRecording](https://schema.org/MusicRecording)`
- 
-- `[Organization](https://schema.org/Organization)`
- 
-- `[Product](https://schema.org/Product)`
- 
-- `[Recipe](https://schema.org/Recipe)`
- 
-- `[SoftwareApplication](https://schema.org/SoftwareApplication)`
- 
-
- | 
- 
-
- 
- 
- `itemReviewed.name` or parent item `name` in [Nested Aggregate Rating](https://developers.google.com#embedded-aggregate-rating)
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the item that is being reviewed. If the review is nested into another
- schema.org type using the
- `[aggregateRating](https://schema.org/aggregateRating)` property,
- you still need to provide the `name` of the thing that is being reviewed. For example:
-
- 
-
+| `itemReviewed.name` or parent item `name` in Nested Aggregate Rating | ` Text ` The name of the item that is being reviewed. If the review is nested into another schema.org type using the ` aggregateRating ` property, you still need to provide the `name` of the thing that is being reviewed. For example: 
 ```
 {
- "@context": "https://schema.org/",
- "@type": "Game",
- "name": "Firefly",
- "aggregateRating": {
- "@type": "AggregateRating",
- "ratingValue": 88,
- "bestRating": 100,
- "ratingCount": 20
- }
+  "@context": "https://schema.org/",
+  "@type": "Game",
+  "name": "Firefly",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 88,
+    "bestRating": 100,
+    "ratingCount": 20
+  }
 }
 ```
-
- | 
+ |
  
-
+| `ratingCount` | ` Number ` The total number of ratings for the item on your site. At least one of `ratingCount` or `reviewCount` is required. |
  
+| `reviewCount` | ` Number ` Specifies the number of people who provided a review with or without an accompanying rating. At least one of `ratingCount` or `reviewCount` is required. |
  
- `ratingCount`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- The total number of ratings for the item on your site. At least one of
- `ratingCount` or `reviewCount` is required.
-
- | 
- 
-
- 
- 
- `reviewCount`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- Specifies the number of people who provided a review with or without an accompanying
- rating. At least one of `ratingCount` or `reviewCount` is required.
- 
-
- | 
- 
-
- 
- 
- `ratingValue`
- | 
- 
- `[Number](https://schema.org/Number)` or
- `[Text](https://schema.org/Text)`
-
- The average rating for the item's quality using a numerical rating of either a number,
- fraction, or percentage (for example, `4`, `60%`, or `6 / 10`).
- Google understands the scale for fractions and percentages, since the scale is
- implied in the fraction itself or the percentage. The default scale for numbers is a
- 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is
- intended, use `bestRating` and `worstRating`.
-
- For decimal numbers, use a dot instead of a comma to specify the value (for example
- `4.4` instead of `4,4`). In Microdata and RDFa, you can use
- `content` attributes to override the visible content. That way, you can show
- the user whatever style convention you want, while also satisfying the dot requirement
- for structured data. For example:
-
- 
-
+| `ratingValue` | ` Number ` or ` Text ` The average rating for the item's quality using a numerical rating of either a number, fraction, or percentage (for example, `4`, `60%`, or `6 / 10`). Google understands the scale for fractions and percentages, since the scale is implied in the fraction itself or the percentage. The default scale for numbers is a 5-point scale, where 1 is the lowest value and 5 is the highest value. If another scale is intended, use `bestRating` and `worstRating`. For decimal numbers, use a dot instead of a comma to specify the value (for example `4.4` instead of `4,4`). In Microdata and RDFa, you can use `content` attributes to override the visible content. That way, you can show the user whatever style convention you want, while also satisfying the dot requirement for structured data. For example: 
 ```
 <span itemprop="ratingValue" content="4.4">4,4</span> stars
 ```
-
- | 
+ |
  
 
  
-
  
- Recommended properties | 
-
+| Recommended properties |
  
  
  
- `bestRating` | 
- `[Number](https://schema.org/Number)`
-
- The highest value allowed in this rating system. If `bestRating`
- is omitted, 5 is assumed.
+| `bestRating` | ` Number ` The highest value allowed in this rating system. If `bestRating` is omitted, 5 is assumed. |
  
- | 
- 
-
- 
- `worstRating` | 
- `[Number](https://schema.org/Number)`
-
- The lowest value allowed in this rating system. If `worstRating`
- is omitted, 1 is assumed. 
- | 
- 
-
+| `worstRating` | ` Number ` The lowest value allowed in this rating system. If `worstRating` is omitted, 1 is assumed. |
  
 
 ## Monitor rich results with Search Console

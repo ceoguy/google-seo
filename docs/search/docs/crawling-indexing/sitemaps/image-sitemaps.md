@@ -28,27 +28,29 @@ fetched: 2026-07-08
  
 - `https://example.com/sample2.html`, which contains one image
 
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
- xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
- <url>
- <loc>https://example.com/sample1.html</loc>
- <image:image>
- <image:loc>https://example.com/image.jpg</image:loc>
- </image:image>
- <image:image>
- <image:loc>https://example.com/photo.jpg</image:loc>
- </image:image>
- </url>
- <url>
- <loc>https://example.com/sample2.html</loc>
- <image:image>
- <image:loc>https://example.com/picture.jpg</image:loc>
- </image:image>
- </url>
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://example.com/sample1.html</loc>
+    <image:image>
+      <image:loc>https://example.com/image.jpg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://example.com/photo.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://example.com/sample2.html</loc>
+    <image:image>
+      <image:loc>https://example.com/picture.jpg</image:loc>
+    </image:image>
+  </url>
 </urlset>
 ```
+
 
 ## Image sitemap reference
 
@@ -59,34 +61,11 @@ fetched: 2026-07-08
 
  
  
- Required tags | 
+| Required tags |
  
-
+| `<image:image>` | Encloses all information about a single image. Each `<url>` tag can contain up to 1,000 `<image:image>` tags. |
  
- `<image:image>` | 
- 
- Encloses all information about a single image. Each `<url>` tag can
- contain up to 1,000 `<image:image>` tags.
- | 
- 
-
- 
- `<image:loc>` | 
- 
- The URL of the image.
-
- 
- In some cases, the image URL may not be on the same domain as your main site. This is
- fine, as long as you verify both domains in Search Console. If, for example, you use
- a content delivery network such as Google Sites to host your images, make sure that
- the hosting site is verified in Search Console. In addition, make sure that your
- [robots.txt](https://developers.google.com/search/docs/crawling-indexing/robots/intro) file doesn't
- disallow the crawling of any content you want indexed.
- 
-
- | 
- 
-
+| `<image:loc>` | The URL of the image. In some cases, the image URL may not be on the same domain as your main site. This is fine, as long as you verify both domains in Search Console. If, for example, you use a content delivery network such as Google Sites to host your images, make sure that the hosting site is verified in Search Console. In addition, make sure that your robots.txt file doesn't disallow the crawling of any content you want indexed. |
  
 
  

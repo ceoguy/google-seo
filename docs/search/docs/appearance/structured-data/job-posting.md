@@ -146,55 +146,56 @@ Here's an example of an individual job posting using JSON-LD code.
 
 ```
 <html>
- <head>
- <title>Software Engineer</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org/",
- "@type" : "JobPosting",
- "title" : "Software Engineer",
- "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
- "identifier": {
- "@type": "PropertyValue",
- "name": "Google",
- "value": "1234567"
- },
- "datePosted" : "2024-01-18",
- "validThrough" : "2024-03-18T00:00",
- "employmentType" : "CONTRACTOR",
- "hiringOrganization" : {
- "@type" : "Organization",
- "name" : "Google",
- "sameAs" : "https://www.google.com",
- "logo" : "https://www.example.com/images/logo.png"
- },
- "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "1600 Amphitheatre Pkwy",
- "addressLocality": "Mountain View",
- "addressRegion": "CA",
- "postalCode": "94043",
- "addressCountry": "US"
- }
- },
- "baseSalary": {
- "@type": "MonetaryAmount",
- "currency": "USD",
- "value": {
- "@type": "QuantitativeValue",
- "value": 40.00,
- "unitText": "HOUR"
- }
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Software Engineer</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "Software Engineer",
+      "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Google",
+        "value": "1234567"
+      },
+      "datePosted" : "2024-01-18",
+      "validThrough" : "2024-03-18T00:00",
+      "employmentType" : "CONTRACTOR",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "Google",
+        "sameAs" : "https://www.google.com",
+        "logo" : "https://www.example.com/images/logo.png"
+      },
+      "jobLocation": {
+      "@type": "Place",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1600 Amphitheatre Pkwy",
+        "addressLocality": "Mountain View",
+        "addressRegion": "CA",
+        "postalCode": "94043",
+        "addressCountry": "US"
+        }
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": 40.00,
+          "unitText": "HOUR"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 ### Work from home job posting
@@ -250,47 +251,47 @@ Here's an example of a Work from home job posting using JSON-LD code.
 
 ```
 <html>
- <head>
- <title>Software Engineer</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org/",
- "@type" : "JobPosting",
- "title" : "Software Engineer",
- "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
- "identifier": {
- "@type": "PropertyValue",
- "name": "Google",
- "value": "1234567"
- },
- "datePosted" : "2024-01-18",
- "validThrough" : "2024-03-18T00:00",
- "applicantLocationRequirements": {
- "@type": "Country",
- "name": "USA"
- },
- "jobLocationType": "TELECOMMUTE",
- "employmentType": "FULL_TIME",
- "hiringOrganization" : {
- "@type" : "Organization",
- "name" : "Google",
- "sameAs" : "https://www.google.com",
- "logo" : "https://www.example.com/images/logo.png"
- },
- "baseSalary": {
- "@type": "MonetaryAmount",
- "currency": "USD",
- "value": {
- "@type": "QuantitativeValue",
- "value": 40.00,
- "unitText": "HOUR"
- }
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Software Engineer</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "Software Engineer",
+      "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Google",
+        "value": "1234567"
+      },
+      "datePosted" : "2024-01-18",
+      "validThrough" : "2024-03-18T00:00",
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "USA"
+      },
+      "jobLocationType": "TELECOMMUTE",
+      "employmentType": "FULL_TIME",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "Google",
+        "sameAs" : "https://www.google.com",
+        "logo" : "https://www.example.com/images/logo.png"
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": 40.00,
+          "unitText": "HOUR"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -390,8 +391,8 @@ Here's an example of a Work from home job posting using JSON-LD code.
 
 ```
 "applicantLocationRequirements": {
- "@type": "Country",
- "name": "USA"
+  "@type": "Country",
+  "name": "USA"
 },
 "jobLocationType": "TELECOMMUTE"
 ```
@@ -404,13 +405,13 @@ Here's an example of a Work from home job posting using JSON-LD code.
 
 ```
 "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "addressLocality": "Detroit",
- "addressRegion": "MI",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Detroit",
+    "addressRegion": "MI",
+    "addressCountry": "US"
+  }
  },
 "jobLocationType": "TELECOMMUTE"
 ```
@@ -423,22 +424,22 @@ Here's an example of a Work from home job posting using JSON-LD code.
 
 ```
 "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "555 Clancy St",
- "addressLocality": "Detroit",
- "addressRegion": "MI",
- "postalCode": "48201",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "555 Clancy St",
+    "addressLocality": "Detroit",
+    "addressRegion": "MI",
+    "postalCode": "48201",
+    "addressCountry": "US"
+  }
  },
 "applicantLocationRequirements": [{
- "@type": "State",
- "name": "Michigan, USA"
+    "@type": "State",
+    "name": "Michigan, USA"
  },{
- "@type": "State",
- "name": "Texas, USA"
+    "@type": "State",
+    "name": "Texas, USA"
  }],
 "jobLocationType": "TELECOMMUTE"
 ```
@@ -680,498 +681,173 @@ Here's an example of a Work from home job posting using JSON-LD code.
  
  
  
- Required properties | 
- 
-
+| Required properties |
  
  
  
- `datePosted` | 
- `[Date](https://schema.org/Date)`
-
- The original date that employer posted the job in
- [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601).
- For example, "2017-01-24" or "2017-01-24T19:33:17+00:00".
-
- 
-
+| `datePosted` | ` Date ` The original date that employer posted the job in ISO 8601 format . For example, "2017-01-24" or "2017-01-24T19:33:17+00:00". 
 ```
 "datePosted": "2016-02-18"
 ```
-
- | 
+ |
  
-
+| `description` | ` Text ` The full description of the job in HTML format. The `description` must be a complete representation of the job, including job responsibilities, qualifications, skills, working hours, education requirements, and experience requirements. The `description` can't be the same as the `title`. Additional guidelines: You must format the description in HTML. At minimum, add paragraph breaks using `<br>`, `<p>`, or `\n`. The feature recognizes the following HTML tags: `<p>`, `<ul>`, and `<li>`. The feature doesn't recognize header and character-level tags, such as `<h1>`, `<strong>`, and `<em>`. While the tags won't affect the formatting in the feature, you can safely include them on the page. |
  
- `description` | 
- `[Text](https://schema.org/Text)`
-
- The full description of the job in HTML format.
-
- The `description` must be a complete representation of the job, including
- job responsibilities, qualifications, skills, working hours, education requirements, and
- experience requirements. The `description` can't be the same as the `title`.
-
- Additional guidelines:
-
- 
- 
-- You must format the description in HTML.
- 
-- At minimum, add paragraph breaks using `<br>`, `<p>`,
- or `\n`.
- 
-- The feature recognizes the following HTML tags: `<p>`,
- `<ul>`, and `<li>`.
- 
-- The feature doesn't recognize header and character-level tags, such as
- `<h1>`, `<strong>`, and `<em>`.
- While the tags won't affect the formatting in the feature, you can safely include them on
- the page.
- 
-
- | 
- 
-
- 
- `hiringOrganization` | 
- `[Organization](https://schema.org/Organization)`
-
- The organization offering the job position. This must be the name of the company (for
- example, "Starbucks, Inc"), and not the specific location that is hiring (for example,
- "Starbucks on Main Street"). For example:
-
- 
-
+| `hiringOrganization` | ` Organization ` The organization offering the job position. This must be the name of the company (for example, "Starbucks, Inc"), and not the specific location that is hiring (for example, "Starbucks on Main Street"). For example: 
 ```
 "hiringOrganization": {
- "@type": "Organization",
- "name": "MagsRUs Wheel Company",
- "sameAs": "http://www.magsruswheelcompany.com"
+  "@type": "Organization",
+  "name": "MagsRUs Wheel Company",
+  "sameAs": "http://www.magsruswheelcompany.com"
 }
 ```
-
- 
- If the organization is hiring anonymously (for example, a staffing agency on behalf of
- an anonymous employer or an employer directly on your platform), use the `confidential`
- value for the `hiringOrganization.name` field. For example:
- 
-
- 
-
+ If the organization is hiring anonymously (for example, a staffing agency on behalf of an anonymous employer or an employer directly on your platform), use the `confidential` value for the `hiringOrganization.name` field. For example: 
 ```
 "hiringOrganization": {
- "@type": "Organization",
- "name": "confidential"
+  "@type": "Organization",
+  "name": "confidential"
 }
 ```
-
- Logos on third-party job sites
-
- If you have a third-party job site, you can provide a different logo for a given
- organization than the image shown in the organization's Google knowledge panel. To
- request a different logo for a hiring organization, add the logo property to the
- `hiringOrganization` array. For `JobPosting` structured data, the image width and height ratio must be between 0.75 and 2.5.
- Make sure that you follow the
- [logo image guidelines](https://developers.google.com/search/docs/appearance/structured-data/organization#logo) and
- [Company logo guidelines](https://developers.google.com#company-logo). For example:
-
+ Logos on third-party job sites If you have a third-party job site, you can provide a different logo for a given organization than the image shown in the organization's Google knowledge panel. To request a different logo for a hiring organization, add the logo property to the `hiringOrganization` array. For `JobPosting` structured data, the image width and height ratio must be between 0.75 and 2.5. Make sure that you follow the logo image guidelines and Company logo guidelines . For example: 
 ```
 "hiringOrganization": {
- "@type": "Organization",
- "name": "MagsRUs Wheel Company",
- "sameAs": "http://www.magsruswheelcompany.com",
- "logo": "https://www.example.com/images/logo.png"
+  "@type": "Organization",
+  "name": "MagsRUs Wheel Company",
+  "sameAs": "http://www.magsruswheelcompany.com",
+  "logo": "https://www.example.com/images/logo.png"
 }
 ```
-
- | 
+ |
  
-
- 
- `jobLocation` | 
- `[Place](https://schema.org/Place)`
-
- The physical location(s) of the business where the employee will report to work (such as
- an office or worksite), not the location where the job was posted. Include as many properties
- as possible. The more properties you provide, the higher quality the job posting is to our
- users. Note that you must include the `addressCountry` property. For example:
-
- 
-
+| `jobLocation` | ` Place ` The physical location(s) of the business where the employee will report to work (such as an office or worksite), not the location where the job was posted. Include as many properties as possible. The more properties you provide, the higher quality the job posting is to our users. Note that you must include the `addressCountry` property. For example: 
 ```
 "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "555 Clancy St",
- "addressLocality": "Detroit",
- "addressRegion": "MI",
- "postalCode": "48201",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "555 Clancy St",
+    "addressLocality": "Detroit",
+    "addressRegion": "MI",
+    "postalCode": "48201",
+    "addressCountry": "US"
+  }
 }
 ```
-
- Multiple physical locations
-
- If the job has multiple locations, add multiple `jobLocation` properties in an array.
- Google will choose the best location to display based on the job seeker's query.
-
- Remote jobs
-
- For jobs in which the employee may or must work remotely 100% of the time, you must use
- `[jobLocationType](https://developers.google.com#job-location-type)`. The `jobLocation
- ` property isn't required if
- `[applicantLocationRequirements](https://developers.google.com#applicant-location-requirements)`
- is present.
-
- | 
+ Multiple physical locations If the job has multiple locations, add multiple `jobLocation` properties in an array. Google will choose the best location to display based on the job seeker's query. Remote jobs For jobs in which the employee may or must work remotely 100% of the time, you must use ` jobLocationType `. The `jobLocation ` property isn't required if ` applicantLocationRequirements ` is present. |
  
-
- 
- `title` | 
- `[Text](https://schema.org/Text)`
-
- The title of the job (not the title of the posting). For example, "Software Engineer" or
- "Barista". For example:
-
- 
-
+| `title` | ` Text ` The title of the job (not the title of the posting). For example, "Software Engineer" or "Barista". For example: 
 ```
 "title": "Software Engineer"
 ```
-
- Best practices:
-
- 
- 
-- This property must be the title of the job only.
- 
-- Don't include job codes, addresses, dates, salaries, or company names in the `title` property.
- Not recommended: Apply now for IT job -FRENCH speaker in Bucharest
-
- Recommended: Market Specialist, French speaker
-
- 
- 
-- Provide concise, readable titles.
- 
-- Don't overuse special characters such as `!` and `*`. Abusing special characters might
- cause your structured data to be considered as
- [Spammy Structured Markup](https://support.google.com/webmasters/answer/3498001?&ref_topic=6003164). Numbers and characters such as `/` and `-` are acceptable.
- Not recommended: *** WAREHOUSE HIRING NOW!! ON A BUS ROUTE!! ***
-
- Recommended: Shipping and Receiving Warehouse Associate
-
- 
-- Don't use `name` instead of `title`. The properties `title`
- and `name` aren't interchangeable.
- 
-- If you're a third party job site, don't attempt to modify the job title to follow the
- [guidelines](https://developers.google.com#guidelines), as it can make the title unreadable. Instead, provide the title as you
- received it from the employer.
- 
-
- | 
- 
-
+ Best practices: This property must be the title of the job only. Don't include job codes, addresses, dates, salaries, or company names in the `title` property. Not recommended : Apply now for IT job -FRENCH speaker in Bucharest Recommended : Market Specialist, French speaker Provide concise, readable titles. Don't overuse special characters such as `!` and `*`. Abusing special characters might cause your structured data to be considered as Spammy Structured Markup . Numbers and characters such as `/` and `-` are acceptable. Not recommended : *** WAREHOUSE HIRING NOW!! ON A BUS ROUTE!! *** Recommended : Shipping and Receiving Warehouse Associate Don't use `name` instead of `title`. The properties `title` and `name` aren't interchangeable. If you're a third party job site, don't attempt to modify the job title to follow the guidelines , as it can make the title unreadable. Instead, provide the title as you received it from the employer. |
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `applicantLocationRequirements` | 
- `[AdministrativeArea](https://schema.org/AdministrativeArea)`
-
- The geographic location(s) in which employees may be located for to be eligible for the
- Work from home job. The job description must clearly state that the applicant may be
- located in certain geographical location(s). This property is required if applicants may
- be located in one or more geographic locations and the job is 100% remote.
-
- The following example suggests a job that can be done remotely anywhere within the United
- States:
-
- 
-
+| `applicantLocationRequirements` | ` AdministrativeArea ` The geographic location(s) in which employees may be located for to be eligible for the Work from home job. The job description must clearly state that the applicant may be located in certain geographical location(s). This property is required if applicants may be located in one or more geographic locations and the job is 100% remote. The following example suggests a job that can be done remotely anywhere within the United States: 
 ```
 "applicantLocationRequirements": {
- "@type": "Country",
- "name": "USA"
+  "@type": "Country",
+  "name": "USA"
 },
 "jobLocationType": "TELECOMMUTE"
 ```
-
- The following example suggests a job can either be done remotely from the country of
- Canada or executed at a physical location in Detroit, MI:
-
- 
-
+ The following example suggests a job can either be done remotely from the country of Canada or executed at a physical location in Detroit, MI: 
 ```
 "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "555 Clancy St",
- "addressLocality": "Detroit",
- "addressRegion": "MI",
- "postalCode": "48201",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "555 Clancy St",
+    "addressLocality": "Detroit",
+    "addressRegion": "MI",
+    "postalCode": "48201",
+    "addressCountry": "US"
+  }
  },
 "applicantLocationRequirements": {
- "@type": "Country",
- "name": "Canada"
+    "@type": "Country",
+    "name": "Canada"
  },
 "jobLocationType": "TELECOMMUTE"
 ```
-
- | 
- 
+ |
 
  
- `baseSalary` | 
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`
-
- The actual base salary for the job, as provided by the employer (not an estimate).
- Note: Only employers can provide
- `baseSalary`.
- 
- 
- For the `unitText` of
- `[QuantitativeValue](https://schema.org/QuantitativeValue)`, use one of the
- following case-sensitive values:
-
- 
- 
-- `HOUR`
- 
-- `DAY`
- 
-- `WEEK`
- 
-- `MONTH`
- 
-- `YEAR`
- 
-
- For example:
-
- 
-
+| `baseSalary` | ` MonetaryAmount ` The actual base salary for the job, as provided by the employer (not an estimate). Note : Only employers can provide `baseSalary`. For the `unitText` of ` QuantitativeValue `, use one of the following case-sensitive values: `HOUR` `DAY` `WEEK` `MONTH` `YEAR` For example: 
 ```
 "baseSalary": {
- "@type": "MonetaryAmount",
- "currency": "USD",
- "value": {
- "@type": "QuantitativeValue",
- "value": 40.00,
- "unitText": "HOUR"
- }
+  "@type": "MonetaryAmount",
+  "currency": "USD",
+  "value": {
+    "@type": "QuantitativeValue",
+    "value": 40.00,
+    "unitText": "HOUR"
+  }
 }
 ```
-
- To specify a salary range, define a `minValue` and a `maxValue`, rather
- than a single `value`. For example:
-
- 
-
+ To specify a salary range, define a `minValue` and a `maxValue`, rather than a single `value`. For example: 
 ```
 "baseSalary": {
- "@type": "MonetaryAmount",
- "currency": "USD",
- "value": {
- "@type": "QuantitativeValue",
- "minValue": 40.00,
- "maxValue": 50.00,
- "unitText": "HOUR"
- }
+  "@type": "MonetaryAmount",
+  "currency": "USD",
+  "value": {
+    "@type": "QuantitativeValue",
+    "minValue": 40.00,
+    "maxValue": 50.00,
+    "unitText": "HOUR"
+  }
 }
 ```
-
- | 
+ |
  
-
+| `directApply` | ` Boolean ` Indicates whether the URL that's associated with this job posting enables direct application for the job. Since we are still developing how we are using this information, you may not see any appearance or effect in Google Search right away. We define a direct apply experience in terms of the actions that are required from the user to apply to the job. This means that a user is offered a short and simple application process on your page without unnecessary intermediate steps. If the user has to click apply, complete an application form, sign in or log in more than once in the application journey, it means that you aren't offering a direct apply experience. You likely offer a direct apply experience if you provide one of the following experiences: The user completes the application process on your site. Once arriving at your page from Google, the user doesn't have to click apply and provide user information more than once to complete the application process The job posting includes instructions on how to apply (for example, the job posting lists the email address, phone number, or physical address where they can submit the application) or directly schedule an interview with an employer. These instructions must be for directly contacting the actual company hiring for the job, or their representative. |
  
- `directApply` | 
- `[Boolean](https://schema.org/Boolean)`
-
- Indicates whether the URL that's associated with this job posting enables direct
- application for the job.
-
- Since we are still developing how we are using this information, you
- may not see any appearance or effect in Google Search right away.
- We define a direct apply experience in terms of the actions that
- are required from the user to apply to the job. This means that a user is
- offered a short and simple application process on your page without unnecessary
- intermediate steps. If the user has to click apply, complete an application form, sign
- in or log in more than once in the application journey, it means that you aren't offering
- a direct apply experience.
-
- 
- You likely offer a direct apply experience if you provide one of the following experiences:
- 
-
- 
- 
-- The user completes the application process on your site.
- 
-- Once arriving at your page from Google, the user doesn't have to click apply and provide
- user information more than once to complete the application process
- 
-- The job posting includes instructions on how to apply (for example, the job posting lists the email
- address, phone number, or physical address where they can submit the application) or directly
- schedule an interview with an employer. These instructions must be for directly contacting
- the actual company hiring for the job, or their representative.
- 
-
- | 
- 
-
- 
- `employmentType` | 
- `[Text](https://schema.org/Text)`
-
- Type of employment. For example:
-
- 
-
+| `employmentType` | ` Text ` Type of employment. For example: 
 ```
 "employmentType": "CONTRACTOR"
 ```
-
- Choose one or more of the following case-sensitive values:
-
- 
- 
-- `FULL_TIME`: The job is a full-time position.
- 
-- `PART_TIME`: The job is a part-time position.
- 
-- `CONTRACTOR`: The job is a contractor position.
- 
-- `TEMPORARY`: The job is a temporary position.
- 
-- `INTERN`: The job is an internship position.
- 
-- `VOLUNTEER`: The job is a volunteer position.
- 
-- `PER_DIEM`: The job is paid by the day.
- 
-- `OTHER`: The job is a different type of position that's not covered by the other possible values.
- 
-
- You can include more than one `employmentType` property. For example:
-
- 
-
+ Choose one or more of the following case-sensitive values: `FULL_TIME`: The job is a full-time position. `PART_TIME`: The job is a part-time position. `CONTRACTOR`: The job is a contractor position. `TEMPORARY`: The job is a temporary position. `INTERN`: The job is an internship position. `VOLUNTEER`: The job is a volunteer position. `PER_DIEM`: The job is paid by the day. `OTHER`: The job is a different type of position that's not covered by the other possible values. You can include more than one `employmentType` property. For example: 
 ```
 "employmentType": ["FULL_TIME", "CONTRACTOR"]
 ```
-
- | 
+ |
  
-
- 
- `identifier` | 
- `[PropertyValue](https://schema.org/PropertyValue)`
- The hiring organization's unique identifier for the job.
-
- For example:
-
- 
-
+| `identifier` | ` PropertyValue ` The hiring organization's unique identifier for the job. For example: 
 ```
 "identifier": {
- "@type": "PropertyValue",
- "name": "MagsRUs Wheel Company",
- "value": "1234567"
+  "@type": "PropertyValue",
+  "name": "MagsRUs Wheel Company",
+  "value": "1234567"
 }
 ```
-
- | 
+ |
  
-
- 
- `jobLocationType` | 
- 
- `[Text](https://schema.org/Text)`
-
- Set this property with the value `TELECOMMUTE` for jobs in which the employee may
- or must work remotely 100% of the time (from home or another location of their choosing).
- In addition to adding `jobLocationType`, the job description must clearly state
- that the job is 100% remote. The `jobLocationType` property is required if the
- job is 100% remote.
-
- Requirements
-
- 
- 
-- Jobs marked as `TELECOMMUTE` must be fully remote. Don't mark up jobs that
- allow occasional work-from-home, jobs for which remote work is a negotiable benefit, or
- have other arrangements that are not 100% remote. The "gig economy" nature of a job
- doesn't imply that it is or is not remote.
- 
-- You must specify a minimum of one country from which applicants are eligible to work,
- using
- `[applicantLocationRequirements](https://developers.google.com#applicant-location-requirements)`
- (preferred), or a default to the
- country of a `jobLocation` (provided there is an option to work at a physical
- location as well). If a remote job doesn't contain
- `applicantLocationRequirements`, Google shows the job to anyone in the
- country specified in `jobLocation`.
- 
-
- The following example shows that the employee can physically report to work at a job
- site located in Tucson, AZ OR can work remotely within the US:
-
- 
-
+| `jobLocationType` | ` Text ` Set this property with the value `TELECOMMUTE` for jobs in which the employee may or must work remotely 100% of the time (from home or another location of their choosing). In addition to adding `jobLocationType`, the job description must clearly state that the job is 100% remote. The `jobLocationType` property is required if the job is 100% remote. Requirements Jobs marked as `TELECOMMUTE` must be fully remote. Don't mark up jobs that allow occasional work-from-home, jobs for which remote work is a negotiable benefit, or have other arrangements that are not 100% remote. The "gig economy" nature of a job doesn't imply that it is or is not remote. You must specify a minimum of one country from which applicants are eligible to work, using ` applicantLocationRequirements ` (preferred), or a default to the country of a `jobLocation` (provided there is an option to work at a physical location as well). If a remote job doesn't contain `applicantLocationRequirements`, Google shows the job to anyone in the country specified in `jobLocation`. The following example shows that the employee can physically report to work at a job site located in Tucson, AZ OR can work remotely within the US: 
 ```
 "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "addressLocality": "Tucson",
- "addressRegion": "AZ",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Tucson",
+    "addressRegion": "AZ",
+    "addressCountry": "US"
+  }
  },
 "jobLocationType": "TELECOMMUTE"
 ```
-
- Google continues to support `TELECOMMUTE` as an
- `additionalProperty` of `jobLocation`. While we don't have immediate
- plans to deprecate `additionalProperty`, we encourage the use of the new schema
- where possible.
- | 
+ Google continues to support `TELECOMMUTE` as an `additionalProperty` of `jobLocation`. While we don't have immediate plans to deprecate `additionalProperty`, we encourage the use of the new schema where possible. |
  
-
- 
- `validThrough` | 
- `[DateTime](https://schema.org/DateTime)`
-
- Note: This is required for job postings that have an expiration date.
- The date when the job posting will expire in
- [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601).
- For example, "2017-02-24" or "2017-02-24T19:33:17+00:00". For example:
-
- 
-
+| `validThrough` | ` DateTime ` Note : This is required for job postings that have an expiration date. The date when the job posting will expire in ISO 8601 format . For example, "2017-02-24" or "2017-02-24T19:33:17+00:00". For example: 
 ```
 "validThrough": "2017-03-18T00:00"
 ```
-
- If a job posting never expires, or you do not know when the job will expire, do not
- include this property. If the job is filled before the expiration date occurs, [remove the job posting](https://developers.google.com#remove).
-
- | 
- 
-
+ If a job posting never expires, or you do not know when the job will expire, do not include this property. If the job is filled before the expiration date occurs, remove the job posting . |
  
 
  
@@ -1249,61 +925,61 @@ Here's an example of a Work from home job posting using JSON-LD code.
 
 ```
 <html>
- <head>
- <title>Software Engineer</title>
- <script type="application/ld+json">
- {
- "@context" : "https://schema.org/",
- "@type" : "JobPosting",
- "title" : "Software Engineer",
- "educationRequirements" : {
- "@type" : "EducationalOccupationalCredential",
- "credentialCategory" : "bachelor degree"
- },
- "experienceRequirements" : {
- "@type" : "OccupationalExperienceRequirements",
- "monthsOfExperience" : "36"
- },
- "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
- "identifier": {
- "@type": "PropertyValue",
- "name": "Google",
- "value": "1234567"
- },
- "datePosted" : "2024-01-18",
- "validThrough" : "2024-03-18T00:00",
- "employmentType" : "CONTRACTOR",
- "hiringOrganization" : {
- "@type" : "Organization",
- "name" : "Google",
- "sameAs" : "https://www.google.com",
- "logo" : "https://www.example.com/images/logo.png"
- },
- "jobLocation": {
- "@type": "Place",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "1600 Amphitheatre Pkwy",
- "addressLocality": ", Mountain View",
- "addressRegion": "CA",
- "postalCode": "94043",
- "addressCountry": "US"
- }
- },
- "baseSalary": {
- "@type": "MonetaryAmount",
- "currency": "USD",
- "value": {
- "@type": "QuantitativeValue",
- "value": 40.00,
- "unitText": "HOUR"
- }
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Software Engineer</title>
+    <script type="application/ld+json">
+    {
+      "@context" : "https://schema.org/",
+      "@type" : "JobPosting",
+      "title" : "Software Engineer",
+      "educationRequirements" : {
+        "@type" : "EducationalOccupationalCredential",
+        "credentialCategory" : "bachelor degree"
+      },
+      "experienceRequirements" : {
+        "@type" : "OccupationalExperienceRequirements",
+        "monthsOfExperience" : "36"
+      },
+      "description" : "<p>Google aspires to be an organization that reflects the globally diverse audience that our products and technology serve. We believe that in addition to hiring the best talent, a diversity of perspectives, ideas and cultures leads to the creation of better products and services.</p>",
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "Google",
+        "value": "1234567"
+      },
+      "datePosted" : "2024-01-18",
+      "validThrough" : "2024-03-18T00:00",
+      "employmentType" : "CONTRACTOR",
+      "hiringOrganization" : {
+        "@type" : "Organization",
+        "name" : "Google",
+        "sameAs" : "https://www.google.com",
+        "logo" : "https://www.example.com/images/logo.png"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1600 Amphitheatre Pkwy",
+        "addressLocality": ", Mountain View",
+        "addressRegion": "CA",
+        "postalCode": "94043",
+        "addressCountry": "US"
+        }
+      },
+     "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": 40.00,
+          "unitText": "HOUR"
+        }
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -1313,126 +989,31 @@ Here's an example of a Work from home job posting using JSON-LD code.
  
  
  
- Recommended properties (beta) | 
- 
-
+| Recommended properties (beta) |
  
  
  
- `educationRequirements` | 
- 
- `[EducationalOccupationalCredential](https://schema.org/EducationalOccupationalCredential)` or
- `[Text](https://schema.org/Text)`
-
- The educational background needed for the job posting. If there aren't any educational
- requirements, use the `no requirements` value. If you don't know the educational
- requirements, don't add this property.
- 
-
- 
- This property can be repeated in an array. For example:
- 
-
- 
-
+| `educationRequirements` | ` EducationalOccupationalCredential ` or ` Text ` The educational background needed for the job posting. If there aren't any educational requirements, use the `no requirements` value. If you don't know the educational requirements, don't add this property. This property can be repeated in an array. For example: 
 ```
 "educationRequirements": [
- {
- "@type": "EducationalOccupationalCredential",
- "credentialCategory": "bachelor degree" },
- {
- "@type": "EducationalOccupationalCredential",
- "credentialCategory": "postgraduate degree"
- }
+  {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "bachelor degree" },
+  {
+    "@type": "EducationalOccupationalCredential",
+    "credentialCategory": "postgraduate degree"
+  }
 ]
 ```
-
- | 
+ |
  
-
+| `educationRequirements.credentialCategory` | ` Text ` The level of education that's required for the job posting. Use one of the following values: `high school`: The job requires high school education. `associate degree`: The job requires an associate degree. `bachelor degree`: The job requires a bachelor degree. `professional certificate`: The job requires a professional certificate. `postgraduate degree`: The job requires a postgraduate degree. The list of values may not apply to all countries; you can pick the closest equivalent. In addition to adding this property, continue to describe the education requirements in the `description` property. |
  
- `educationRequirements.credentialCategory` | 
+| `experienceRequirements` | ` OccupationalExperienceRequirements ` or ` Text ` The experience that's required for the job posting. If there aren't any requirements, use the `no requirements` value. In addition to adding this property, continue to describe the experience requirements in the `description` property. |
  
+| `experienceRequirements.monthsOfExperience` | ` Number ` The minimum number of months of experience that are required for the job posting. If there are more complex experience requirements, use the experience that represents the minimum number that is required for a candidate. For example: 12 months as a chef or 24 months as a sous chef: This implies that the candidate may have either experience of the two required options, and the minimum requirement is 12 months. 12 months as a chef and 24 months as a sous chef: This is implies that the candidate has to fulfill all given requirements, and the minimum requirement is 24 months. |
  
- `[Text](https://schema.org/Text)`
-
- The level of education that's required for the job posting. Use one of the following values:
-
- 
- 
-- `high school`: The job requires high school education.
- 
-- `associate degree`: The job requires an associate degree.
- 
-- `bachelor degree`: The job requires a bachelor degree.
- 
-- `professional certificate`: The job requires a professional certificate.
- 
-- `postgraduate degree`: The job requires a postgraduate degree.
- 
-
- The list of values may not apply to all countries; you can pick the closest equivalent.
- 
- In addition to adding this property, continue to describe the education requirements in
- the [`description`](https://developers.google.com#description) property.
- 
-
- | 
- 
-
- 
- `experienceRequirements` | 
- 
- `[OccupationalExperienceRequirements](https://schema.org/OccupationalExperienceRequirements)` or
- `[Text](https://schema.org/Text)`
-
- The experience that's required for the job posting. If there aren't any
- requirements, use the `no requirements` value.
-
- 
- In addition to adding this property, continue to describe the experience requirements in
- the [`description`](https://developers.google.com#description) property.
- 
-
- | 
- 
-
- 
- `experienceRequirements.monthsOfExperience` | 
- 
- `[Number](https://schema.org/Number)`
-
- The minimum number of months of experience that are required for the job posting.
-
- 
- If there are more complex experience requirements, use the experience that represents the minimum number that is required for a candidate. For example:
-
- 
- 
-- 
- 12 months as a chef or 24 months as a sous chef: This implies that the candidate may have either experience of the two required options, and the minimum requirement is 12 months.
- 
- 
-- 
- 12 months as a chef and 24 months as a sous chef: This is implies that the candidate has to fulfill all given requirements, and the minimum requirement is 24 months.
- 
- 
-
- | 
- 
-
- 
- `experienceInPlaceOfEducation` | 
- 
- Boolean
-
- If set to true, this property indicates whether a job posting will accept experience in
- place of its formal educational qualifications. If set to true, you must include both the
- `experienceRequirements` and `educationRequirements` properties.
-
- | 
- 
-
+| `experienceInPlaceOfEducation` | Boolean If set to true, this property indicates whether a job posting will accept experience in place of its formal educational qualifications. If set to true, you must include both the `experienceRequirements` and `educationRequirements` properties. |
  
  
 

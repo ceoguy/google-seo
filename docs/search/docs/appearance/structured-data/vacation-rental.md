@@ -206,138 +206,140 @@ Here's an example of a simple vacation rental listing using JSON-LD.
  <body></body>
  </html>
 
+
 ```
 <html>
- <head>
- <title>My Beautiful Vacation Rental</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "VacationRental",
- "additionalType": "HolidayVillageRental",
- "brand": {
- "@type": "Brand",
- "name": "brandIdName"
- },
- "containsPlace": {
- "@type": "Accommodation",
- "additionalType": "EntirePlace",
- "bed": [{
- "@type": "BedDetails",
- "numberOfBeds" : 1,
- "typeOfBed": "Queen"
- },
- {
- "@type": "BedDetails",
- "numberOfBeds" : 2,
- "typeOfBed": "Single"
- }],
- "occupancy": {
- "@type": "QuantitativeValue",
- "value" : 2
- },
- "amenityFeature": [
- {
- "@type": "LocationFeatureSpecification",
- "name": "ac",
- "value": true
- },
- {
- "@type": "LocationFeatureSpecification",
- "name": "airportShuttle",
- "value": true
- },
- {
- "@type": "LocationFeatureSpecification",
- "name": "balcony",
- "value": true
- },
- {
- "@type": "LocationFeatureSpecification",
- "name": "beachAccess",
- "value": true
- },
- {
- "@type": "LocationFeatureSpecification",
- "name": "childFriendly",
- "value": true
- }
- ],
- "floorSize": {
- "@type": "QuantitativeValue",
- "value" : 75,
- "unitCode": "MTK"
- },
- "numberOfBathroomsTotal": 1,
- "numberOfBedrooms": 3,
- "numberOfRooms": 5
- },
- "identifier": "abc123",
- "latitude": "42.12345",
- "longitude": "101.12345",
- "name": "My Beautiful Vacation Rental",
- "address": {
- "addressCountry": "US",
- "addressLocality": "Mountain View",
- "addressRegion": "California",
- "postalCode": "94043",
- "streetAddress": "1600 Amphitheatre Pkwy, Unit 6E"
- },
- "aggregateRating": {
- "ratingValue": 4.5,
- "ratingCount": 10,
- "reviewCount": 3,
- "bestRating": 5
- },
- "image": [
- "https://example.com/mylisting/unit_image1.png",
- "https://example.com/mylisting/unit_image2.png",
- "https://example.com/mylisting/unit_image3.png",
- "https://example.com/mylisting/unit_image4.png",
- "https://example.com/mylisting/unit_image5.png",
- "https://example.com/mylisting/unit_image6.png",
- "https://example.com/mylisting/unit_image7.png",
- "https://example.com/mylisting/unit_image8.png"
- ],
- "checkinTime": "18:00:00+08:00",
- "checkoutTime": "11:00:00+08:00",
- "description": "A great Vacation Rental in the perfect neighborhood.",
- "knowsLanguage": ["en-US", "fr-FR"],
- "review": [{
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "Lillian Ruiz"
- },
- "datePublished": "2024-12-01",
- "contentReferenceTime": "2024-11-17"
- },
- {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 5,
- "bestRating": 5
- },
- "author": {
- "@type": "Person",
- "name": "John S."
- },
- "datePublished": "2024-10-01",
- "contentReferenceTime": "2024-09-28"
- }
- ]
- }
- </script>
- </head>
- <body></body>
- </html>
+  <head>
+    <title>My Beautiful Vacation Rental</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VacationRental",
+        "additionalType": "HolidayVillageRental",
+        "brand": {
+          "@type": "Brand",
+          "name": "brandIdName"
+        },
+        "containsPlace": {
+          "@type": "Accommodation",
+          "additionalType": "EntirePlace",
+          "bed": [{
+            "@type": "BedDetails",
+            "numberOfBeds" : 1,
+            "typeOfBed": "Queen"
+          },
+          {
+            "@type": "BedDetails",
+            "numberOfBeds" : 2,
+            "typeOfBed": "Single"
+          }],
+         "occupancy": {
+            "@type": "QuantitativeValue",
+            "value" : 2
+          },
+          "amenityFeature": [
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "ac",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "airportShuttle",
+              "value": true
+            },
+            {
+             "@type": "LocationFeatureSpecification",
+              "name": "balcony",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "beachAccess",
+              "value": true
+            },
+            {
+              "@type": "LocationFeatureSpecification",
+              "name": "childFriendly",
+              "value": true
+            }
+          ],
+          "floorSize": {
+            "@type": "QuantitativeValue",
+            "value" : 75,
+            "unitCode": "MTK"
+          },
+          "numberOfBathroomsTotal": 1,
+          "numberOfBedrooms": 3,
+          "numberOfRooms": 5
+        },
+        "identifier": "abc123",
+        "latitude": "42.12345",
+        "longitude": "101.12345",
+        "name": "My Beautiful Vacation Rental",
+        "address": {
+          "addressCountry": "US",
+          "addressLocality": "Mountain View",
+          "addressRegion": "California",
+          "postalCode": "94043",
+          "streetAddress": "1600 Amphitheatre Pkwy, Unit 6E"
+        },
+        "aggregateRating": {
+          "ratingValue": 4.5,
+          "ratingCount": 10,
+          "reviewCount": 3,
+          "bestRating": 5
+        },
+        "image": [
+          "https://example.com/mylisting/unit_image1.png",
+          "https://example.com/mylisting/unit_image2.png",
+          "https://example.com/mylisting/unit_image3.png",
+          "https://example.com/mylisting/unit_image4.png",
+          "https://example.com/mylisting/unit_image5.png",
+          "https://example.com/mylisting/unit_image6.png",
+          "https://example.com/mylisting/unit_image7.png",
+          "https://example.com/mylisting/unit_image8.png"
+        ],
+        "checkinTime": "18:00:00+08:00",
+        "checkoutTime": "11:00:00+08:00",
+        "description": "A great Vacation Rental in the perfect neighborhood.",
+        "knowsLanguage": ["en-US", "fr-FR"],
+        "review": [{
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 4,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Lillian Ruiz"
+          },
+          "datePublished": "2024-12-01",
+          "contentReferenceTime": "2024-11-17"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5
+          },
+          "author": {
+            "@type": "Person",
+            "name": "John S."
+          },
+          "datePublished": "2024-10-01",
+          "contentReferenceTime": "2024-09-28"
+        }
+      ]
+      }
+    </script>
+  </head>
+  <body></body>
+  </html>
 ```
+
 
 ## Eligibility guidelines
 
@@ -381,175 +383,32 @@ Here's an example of a simple vacation rental listing using JSON-LD.
  
  
  
- Required properties | 
- 
-
+| Required properties |
  
  
  
+| `containsPlace` | ` Accommodation ` A vacation rental listing must contain one Accommodation to markup additional details such as beds, occupancy, number of rooms, and `amenityFeature` properties. |
  
- `containsPlace`
- | 
- 
- 
- `
- [Accommodation](https://schema.org/Accommodation)
- `
- 
-
- 
- A vacation rental listing must contain one
- [Accommodation](https://schema.org/Accommodation)
- to markup additional details such as beds, occupancy, number of rooms, and
- `amenityFeature` properties.
- 
-
- | 
- 
-
- 
- 
- `containsPlace.occupancy`
- | 
- 
- 
- `
- [QuantitativeValue](https://schema.org/QuantitativeValue)
- `
- 
-
- Information about the maximum number of guests allowed to stay at the vacation rental listing.
-
- 
-
+| `containsPlace.occupancy` | ` QuantitativeValue ` Information about the maximum number of guests allowed to stay at the vacation rental listing. 
 ```
 "occupancy": {
- "@type": "QuantitativeValue",
- "value" : 5
- }
+  "@type": "QuantitativeValue",
+  "value" : 5
+  }
 ```
-
- | 
+ |
  
-
+| `containsPlace.occupancy.value` | ` Integer ` The numerical value of guests allowed to stay at the vacation rental listing. |
  
+| `identifier` | ` Text ` A unique identifier for the property. Additional guidelines: The identifier must be independent of the listing content; for example, it won't change when the property owner updates the listing name or number of bedrooms. The same identifier must be used for the same listing in different languages. |
  
- `containsPlace.occupancy.value`
- | 
+| `image` | Repeated ` URL ` One or more images of the listing. The listing must have a minimum of 8 photos (at least 1 image of each of the following: bedroom, bathroom, and common area). Additionally, follow the Property listing image requirements . |
  
+| `latitude` (or `geo.latitude`) | ` Number ` The latitude of the listing's location. Precision must be at least 5 decimal places. |
  
- `
- [Integer](https://schema.org/Integer)
- `
+| `longitude` (or `geo.longitude`) | ` Number ` The longitude of the listing's location. Precision must be at least 5 decimal places. |
  
-
- The numerical value of guests allowed to stay at the vacation rental listing.
-
- | 
- 
-
- 
- 
- `identifier`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- A unique identifier for the property.
-
- 
- Additional guidelines:
- 
-
- 
- 
-- 
- The identifier must be independent of the listing content; for example, it won't
- change when the property owner updates the listing name or number of bedrooms.
- 
- 
-- The same identifier must be used for the same listing in different languages.
- 
-
- | 
- 
-
- 
- 
- `image`
- | 
- 
- 
- Repeated `[URL](https://schema.org/URL)`
- 
-
- One or more images of the listing. The listing must have a minimum of 8 photos (at
- least 1 image of each of the following: bedroom, bathroom, and common area).
-
- 
- Additionally, follow the
- [Property listing image requirements](https://developers.google.com/hotels/vacation-rentals/dev-guide/onboarding#property_listing_image_requirements).
- 
-
- | 
- 
-
- 
- 
- `latitude` (or `geo.latitude`)
- | 
- 
- 
- `
- [Number](https://schema.org/Number)
- `
- 
-
- 
- The latitude of the listing's location. Precision must be at least 5 decimal places.
- 
-
- | 
- 
-
- 
- 
- `longitude` (or `geo.longitude`)
- | 
- 
- 
- `
- [Number](https://schema.org/Number)
- `
- 
-
- 
- The longitude of the listing's location. Precision must be at least 5 decimal places.
- 
-
- | 
- 
-
- 
- 
- `name`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- The name of the vacation rental listing.
-
- | 
- 
-
+| `name` | ` Text ` The name of the vacation rental listing. |
  
 
  
@@ -557,283 +416,50 @@ Here's an example of a simple vacation rental listing using JSON-LD.
  
  
  
- Recommended properties | 
- 
-
+| Recommended properties |
  
  
  
+| `additionalType` | ` Text ` The type of vacation rental listing. Here are some suggested values: `Apartment` `Bungalow` `Cabin` `Chalet` `Cottage` `Gite` `HolidayVillageRental` `House` `Villa` `VacationRental` The full definitions of these values are in Categories for lodging businesses . |
  
- `additionalType`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- 
- The type of vacation rental listing. Here are some suggested values:
- 
-
- 
- 
-- `Apartment`
- 
-- `Bungalow`
- 
-- `Cabin`
- 
-- `Chalet`
- 
-- `Cottage`
- 
-- `Gite`
- 
-- `HolidayVillageRental`
- 
-- `House`
- 
-- `Villa`
- 
-- `VacationRental`
- 
-
- 
- The full definitions of these values are in
- [Categories for lodging businesses](https://support.google.com/hotelprices/answer/9970971?ref_topic=10062823#VR).
- 
-
- | 
- 
-
- 
- 
- `address`
- | 
- 
- 
- `
- [PostalAddress](https://schema.org/PostalAddress)
- `
- 
-
- The full, physical location of the vacation rental.
-
- Provide the street address, city, state or region,
- and postal code for the vacation rental. If applicable, provide the unit or apartment number.
-
- Note that P.O. boxes or other mailing-only addresses are not
- considered full, physical addresses.
-
- 
-
+| `address` | ` PostalAddress ` The full, physical location of the vacation rental. Provide the street address, city, state or region, and postal code for the vacation rental. If applicable, provide the unit or apartment number. Note that P.O. boxes or other mailing-only addresses are not considered full, physical addresses. 
 ```
 "address": {
- "addressCountry": "US",
- "addressLocality": "Mountain View",
- "addressRegion": "California",
- "postalCode": "94043",
- "streetAddress": "1600 Amphitheatre Pkwy, Apartment 4E"
+  "addressCountry": "US",
+  "addressLocality": "Mountain View",
+  "addressRegion": "California",
+  "postalCode": "94043",
+  "streetAddress": "1600 Amphitheatre Pkwy, Apartment 4E"
 }
 ```
+ |
+ 
+| `address.addressCountry` | ` Text ` The country of your vacation listing, using the two-letter ISO 3166-1 alpha-2 country code . |
 
- | 
+| `address.addressLocality` | ` Text ` The city of your vacation listing. |
  
+| `address.addressRegion` | ` Text ` The name of the listings's state, region, or province. |
 
- 
- 
- `address.addressCountry`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
+| `address.postalCode` | ` Text ` The postal code for your vacation listing. |
 
- The country of your vacation listing, using the two-letter
- [ISO 3166-1 alpha-2 country code](https://wikipedia.org/wiki/ISO_3166-1).
-
- | 
-
+| `address.streetAddress` | ` Text ` The full street address of your vacation listing, including the unit or apartment number if applicable. |
  
- `address.addressLocality`
- | 
+| `aggregateRating` | ` AggregateRating ` The average vacation rental rating is based on multiple ratings or reviews. Follow the review snippet guidelines and the list of required and recommended aggregate rating properties . |
  
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- The city of your vacation listing.
-
- | 
- 
-
- 
- 
- `address.addressRegion`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- The name of the listings's state, region, or province.
-
- | 
-
- 
- `address.postalCode`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- The postal code for your vacation listing.
-
- | 
-
- 
- `address.streetAddress`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- The full street address of your vacation listing, including the unit or apartment
- number if applicable.
-
- | 
- 
-
- 
- 
- `aggregateRating`
- | 
- 
- 
- `
- [AggregateRating](https://schema.org/AggregateRating)
- `
- 
-
- 
- The average vacation rental rating is based on multiple ratings or reviews. Follow the
- [review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines)
- and the list of required and recommended
- [aggregate rating properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#aggregated-rating-type-definition).
- 
-
- | 
- 
-
- 
- 
- `brand`
- | 
- 
- 
- `
- [Brand](https://schema.org/Brand)
- `
- 
-
- 
- The brand ID associated with this property. Read more about how to to associate your
- properties to brands and how link your brand icons and display names to respective
- brand IDs in the [Hotel Center documentation](https://support.google.com/hotelprices/answer/9919249).
- 
-
- 
-
+| `brand` | ` Brand ` The brand ID associated with this property. Read more about how to to associate your properties to brands and how link your brand icons and display names to respective brand IDs in the Hotel Center documentation . 
 ```
 "brand": {
- "@type": "Brand",
- "name" : "brandIdName"
+  "@type": "Brand",
+  "name" : "brandIdName"
 }
 ```
-
- | 
+ |
  
-
+| `checkinTime` | ` Time ` The earliest time someone may check into a lodging establishment in ISO 8601 format . Example: `14:30:00+08:00` |
  
+| `checkoutTime` | ` Time ` The latest time someone may check into a lodging establishment in ISO 8601 format . Example: `14:30:00+08:00` |
  
- `checkinTime`
- | 
- 
- 
- `
- [Time](https://schema.org/Time)
- `
- 
-
- 
- The earliest time someone may check into a lodging establishment in
- [ISO 8601 format](https://wikipedia.org/wiki/ISO_8601).
- 
-
- Example: `14:30:00+08:00`
-
- | 
- 
-
- 
- 
- `checkoutTime`
- | 
- 
- 
- `
- [Time](https://schema.org/Time)
- `
- 
-
- The latest time someone may check into a lodging establishment in [ISO 8601 format](https://wikipedia.org/wiki/ISO_8601).
-
- Example: `14:30:00+08:00`
-
- | 
- 
-
- 
- 
- `containsPlace.additionalType`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- 
- The type of room for this accommodation. Use one of the following values:
- 
-
- 
- 
-- `EntirePlace`
- 
-- `PrivateRoom`
- 
-- `SharedRoom`
- 
-
- | 
- 
-
+| `containsPlace.additionalType` | ` Text ` The type of room for this accommodation. Use one of the following values: `EntirePlace` `PrivateRoom` `SharedRoom` |
  
  
  `containsPlace.amenityFeature`
@@ -850,9 +476,9 @@ Here's an example of a simple vacation rental listing using JSON-LD.
 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "featureName",
- "value": true
+  "@type": "LocationFeatureSpecification",
+  "name" : "featureName",
+  "value": true
 }
 ```
 
@@ -865,294 +491,62 @@ Boolean values
  
  
  
+| `ac` | Whether the property has air conditioning. |
  
- `ac`
- | 
+| `airportShuttle` | Whether the host provides transportation to and from airport or other terminals. |
  
- Whether the property has air conditioning.
-
- | 
+| `balcony` | Whether the property has a balcony. |
  
-
+| `beachAccess` | Whether the property has access to a public beach close to the property. |
  
+| `childFriendly` | Whether the property is suitable for children. |
  
- `airportShuttle`
- | 
+| `crib` | Whether the property provides a crib. |
  
- Whether the host provides transportation to and from airport or other terminals.
-
- | 
+| `elevator` | Whether the property has an elevator. |
  
-
+| `fireplace` | Whether the property has a fireplace. |
  
+| `freeBreakfast` | Whether the property has breakfast included. |
  
- `balcony`
- | 
+| `gymFitnessEquipment` | Whether the property has a gym or fitness equipment. |
  
- Whether the property has a balcony.
-
- | 
+| `heating` | Whether the property has heating. |
  
-
+| `hotTub` | Whether the property has a hot tub. |
  
+| `instantBookable` | Whether the property is instantly bookable through the checkout process. The alternative is waiting for approval. |
  
- `beachAccess`
- | 
+| `ironingBoard` | Whether the property has ironing boards available. |
  
- Whether the property has access to a public beach close to the property.
-
- | 
+| `kitchen` | Whether the property has a kitchen. |
  
-
+| `microwave` | Whether the property has a microwave available. |
  
+| `outdoorGrill` | Whether the property has a grill. |
  
- `childFriendly`
- | 
+| `ovenStove` | Whether the property has an oven or a stove. |
  
- Whether the property is suitable for children.
-
- | 
+| `patio` | Whether the property has a patio. |
  
-
+| `petsAllowed` | Whether the guest is allowed to bring a pet to the property. You can use the `containsPlace.petsAllowed` property instead of this field. |
  
+| `pool` | Whether the property has a pool. |
  
- `crib`
- | 
+| `privateBeachAccess` | Whether the property has dedicated access to a non-public beach. |
  
- Whether the property provides a crib.
-
- | 
+| `selfCheckinCheckout` | Whether the property supports self checkin and checkout. |
  
-
+| `smokingAllowed` | Whether smoking is allowed in the unit. You can use the `containsPlace.smokingAllowed` property instead of this field. |
  
  
- `elevator`
- | 
+| `tv` | Whether the property has a TV. |
  
- Whether the property has an elevator.
-
- | 
+| `washerDryer` | Whether the property has laundry appliances. |
  
-
+| `wheelchairAccessible` | Whether the property is wheelchair accessible. |
  
- 
- `fireplace`
- | 
- 
- Whether the property has a fireplace.
-
- | 
- 
-
- 
- 
- `freeBreakfast`
- | 
- 
- Whether the property has breakfast included.
-
- | 
- 
-
- 
- 
- `gymFitnessEquipment`
- | 
- 
- Whether the property has a gym or fitness equipment.
-
- | 
- 
-
- 
- 
- `heating`
- | 
- 
- Whether the property has heating.
-
- | 
- 
-
- 
- 
- `hotTub`
- | 
- 
- Whether the property has a hot tub.
-
- | 
- 
-
- 
- 
- `instantBookable`
- | 
- 
- 
- Whether the property is instantly bookable through the checkout process. The alternative is waiting for approval.
- 
-
- | 
- 
-
- 
- 
- `ironingBoard`
- | 
- 
- Whether the property has ironing boards available.
-
- | 
- 
-
- 
- 
- `kitchen`
- | 
- 
- Whether the property has a kitchen.
-
- | 
- 
-
- 
- 
- `microwave`
- | 
- 
- Whether the property has a microwave available.
-
- | 
- 
-
- 
- 
- `outdoorGrill`
- | 
- 
- Whether the property has a grill.
-
- | 
- 
-
- 
- 
- `ovenStove`
- | 
- 
- Whether the property has an oven or a stove.
-
- | 
- 
-
- 
- 
- `patio`
- | 
- 
- Whether the property has a patio.
-
- | 
- 
-
- 
- 
- `petsAllowed`
- | 
- 
- Whether the guest is allowed to bring a pet to the property.
-
- You can use the `containsPlace.petsAllowed` property
- instead of this field.
- 
- | 
- 
-
- 
- 
- `pool`
- | 
- 
- Whether the property has a pool.
-
- | 
- 
-
- 
- 
- `privateBeachAccess`
- | 
- 
- Whether the property has dedicated access to a non-public beach.
-
- | 
- 
-
- 
- 
- `selfCheckinCheckout`
- | 
- 
- Whether the property supports self checkin and checkout.
-
- | 
- 
-
- 
- 
- `smokingAllowed`
- | 
- 
- Whether smoking is allowed in the unit.
-
- You can use the `containsPlace.smokingAllowed` property
- instead of this field.
- 
- | 
- 
-
- 
- 
- 
- `tv`
- | 
- 
- Whether the property has a TV.
-
- | 
- 
-
- 
- 
- `washerDryer`
- | 
- 
- Whether the property has laundry appliances.
-
- | 
- 
-
- 
- 
- `wheelchairAccessible`
- | 
- 
- Whether the property is wheelchair accessible.
-
- | 
- 
-
- 
- 
- `wifi`
- | 
- 
- Whether the property has wifi.
-
- | 
- 
-
+| `wifi` | Whether the property has wifi. |
  
 
  Non-boolean values
@@ -1167,10 +561,10 @@ Boolean values
 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "featureName",
- "value": "detail"
- }
+  "@type": "LocationFeatureSpecification",
+  "name" : "featureName",
+  "value": "detail"
+  }
 ```
 
  
@@ -1178,391 +572,109 @@ Boolean values
  
  
  
- 
- 
- `
- internetType
- `
- 
-
- | 
- 
- 
- The type of internet available on the property. Here are some suggested values:
- 
-
- 
- 
-- `Free`
- 
-- `Paid`
- 
-- `None`
- 
-
- 
-
+| ` internetType ` | The type of internet available on the property. Here are some suggested values: `Free` `Paid` `None` 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "internetType",
- "value": "Free"
+  "@type": "LocationFeatureSpecification",
+  "name" : "internetType",
+  "value": "Free"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `
- parkingType
-
- `
- | 
- 
- 
- The type of parking available on the property. Here are some suggested values:
- 
- 
-- `Free`
- 
-- `Paid`
- 
-- `None`
- 
-
- 
-
- 
-
+| ` parkingType ` | The type of parking available on the property. Here are some suggested values: `Free` `Paid` `None` 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "parkingType",
- "value": "Free"
+  "@type": "LocationFeatureSpecification",
+  "name" : "parkingType",
+  "value": "Free"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `
- poolType
- `
- | 
- 
- 
- The type of pool available on the property. Here are some suggested values:
- 
- 
-- `Indoor`
- 
-- `Outdoor`
- 
-- `None`
- 
-
- Only English strings are supported.
- 
-
- 
-
+| ` poolType ` | The type of pool available on the property. Here are some suggested values: `Indoor` `Outdoor` `None` Only English strings are supported. 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "poolType",
- "value": "Outdoor"
+  "@type": "LocationFeatureSpecification",
+  "name" : "poolType",
+  "value": "Outdoor"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `
- licenseNum
-
- `
- | 
- 
- 
- The license number (tourist or business) required to be shown for properties in certain
- regions of the world. It could be repeated and, if multiple licenses exist, we suggest
- adding the authority of the license as context (for example: `Paris: 123456ABC`).
- 
-
- 
-
+| ` licenseNum ` | The license number (tourist or business) required to be shown for properties in certain regions of the world. It could be repeated and, if multiple licenses exist, we suggest adding the authority of the license as context (for example: `Paris: 123456ABC`). 
 ```
 "amenityFeature": {
- "@type": "LocationFeatureSpecification",
- "name" : "licenseNum",
- "value": "Paris: 123456ABC"
+  "@type": "LocationFeatureSpecification",
+  "name" : "licenseNum",
+  "value": "Paris: 123456ABC"
 }
 ```
-
- | 
- 
-
+ |
  
 
  | 
  
 
  
- 
- `containsPlace.bed`
- | 
- 
- 
- Repeated `[BedDetails](https://schema.org/BedDetails)`
- 
-
- 
- Information about the type and number of beds in the listing.
- 
-
- 
-
+| `containsPlace.bed` | Repeated ` BedDetails ` Information about the type and number of beds in the listing. 
 ```
 "bed": [{
- "@type": "BedDetails",
- "numberOfBeds" : 1,
- "typeOfBed": "Queen"
- },
- {
- "@type": "BedDetails",
- "numberOfBeds" : 2,
- "typeOfBed": "Single"
- }]
+  "@type": "BedDetails",
+  "numberOfBeds" : 1,
+  "typeOfBed": "Queen"
+  },
+  {
+  "@type": "BedDetails",
+  "numberOfBeds" : 2,
+  "typeOfBed": "Single"
+  }]
 ```
-
- | 
+ |
  
-
+| `containsPlace.bed.numberOfBeds` | ` Integer ` The number of beds in the listing. |
  
+| `containsPlace.bed.typeOfBed` | ` Text ` The type of beds in the listing. Here are some suggested values: `CaliforniaKing` `King` `Queen` `Full` `Double` `SemiDouble` `Single` |
  
- `containsPlace.bed.numberOfBeds`
- | 
- 
- 
- `[Integer](https://schema.org/Integer)`
- 
-
- 
- The number of beds in the listing.
- 
-
- | 
- 
-
- 
- 
- `containsPlace.bed.typeOfBed`
- | 
- 
- 
- `[Text](https://schema.org/Text)`
- 
-
- 
- The type of beds in the listing. Here are some suggested values:
- 
- 
-- `CaliforniaKing`
- 
-- `King`
- 
-- `Queen`
- 
-- `Full`
- 
-- `Double`
- 
-- `SemiDouble`
- 
-- `Single`
- 
-
- 
-
- | 
- 
-
- 
- 
- `containsPlace.floorSize`
- | 
- 
- 
- `
- [QuantitativeValue](https://schema.org/QuantitativeValue)
- `
- 
-
- Size of the accommodation. It must be specified using `unitCode` property values:
- 
-
- 
- 
-- For square feet: `FTK` or `SQFT`
- 
-- For square meters: `MTK` or `SQM`
- 
-
+| `containsPlace.floorSize` | ` QuantitativeValue ` Size of the accommodation. It must be specified using `unitCode` property values: For square feet: `FTK` or `SQFT` For square meters: `MTK` or `SQM` 
 ```
 "floorSize": {
- "@type": "QuantitativeValue",
- "value" : 75,
- "unitCode": "MTK"
- }
+  "@type": "QuantitativeValue",
+  "value" : 75,
+  "unitCode": "MTK"
+  }
 ```
+ |
 
- | 
+| `containsPlace.numberOfBathroomsTotal` | ` Integer ` The total bathrooms in the listing. Follow real estate conventions as documented in RESO and use the simple sum of the number of bathrooms. For example, for a property with two full bathrooms and one half bathroom, the total number of bathrooms is 2.5. |
 
- 
- `containsPlace.numberOfBathroomsTotal`
- | 
- 
- 
- `
- [Integer](https://schema.org/Integer)
- `
- 
+| `containsPlace.numberOfBedrooms` | ` Integer ` The total number of bedrooms in the listing. |
 
+| `containsPlace.numberOfRooms` | ` Integer ` The total number of rooms in the listing. |
  
- The total bathrooms in the listing. Follow real estate conventions as
- [documented in RESO](https://ddwiki.reso.org/display/DDW17/BathroomsTotalInteger+Field)
- and use the simple sum of the number of bathrooms. For example, for a property with two full
- bathrooms and one half bathroom, the total number of bathrooms is 2.5.
+| `description` | ` Text ` A description of the property. |
  
-
- | 
-
+| `knowsLanguage` | ` Repeated Text ` The languages the host can speak. Use language codes from the IETF BCP 47 standard, such as `en-US` or `fr-FR`. |
  
- `containsPlace.numberOfBedrooms`
- | 
- 
- 
- `
- [Integer](https://schema.org/Integer)
- `
- 
-
- The total number of bedrooms in the listing.
-
- | 
-
- 
- `containsPlace.numberOfRooms`
- | 
- 
- 
- `
- [Integer](https://schema.org/Integer)
- `
- 
-
- The total number of rooms in the listing.
-
- | 
- 
-
- 
- 
- `description`
- | 
- 
- 
- `
- [Text](https://schema.org/Text)
- `
- 
-
- A description of the property.
-
- | 
- 
-
- 
- 
- `knowsLanguage`
- | 
- 
- 
- `
- Repeated [Text](https://schema.org/Text)
- `
- 
-
- 
- The languages the host can speak. Use language codes from the IETF BCP 47 standard, such
- as `en-US` or `fr-FR`.
- 
-
- | 
- 
-
- 
- 
- `review`
- | 
- 
- 
- `
- Repeated [Review](https://schema.org/Review)
- `
- 
-
- 
- One or more user reviews of the listing. Follow the
- [review snippet guidelines](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#guidelines)
- and the list of required and recommended
- [review properties](https://developers.google.com/search/docs/appearance/structured-data/review-snippet#review-properties).
- 
-
- Note: For vacation rentals, the `review.datePublished` is a required field.
-
+| `review` | ` Repeated Review ` One or more user reviews of the listing. Follow the review snippet guidelines and the list of required and recommended review properties . Note : For vacation rentals, the `review.datePublished` is a required field. 
 ```
 "review": {
- "@type": "Review",
- "reviewRating": {
- "@type": "Rating",
- "ratingValue": 4,
- "bestRating": 5
- },
- "datePublished": "2023-02-09"
- "author": {
- "@type": "Person",
- "name": "Lillian R"
- }
+  "@type": "Review",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": 4,
+    "bestRating": 5
+  },
+  "datePublished": "2023-02-09"
+  "author": {
+    "@type": "Person",
+    "name": "Lillian R"
+  }
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `review.contentReferenceTime`
- | 
- 
- 
- `
- [DateTime](https://schema.org/DateTime)
- `
- 
-
- This property is required for vacation listings located in France.
- The start date of the author's stay.
-
- | 
- 
-
+| `review.contentReferenceTime` | ` DateTime ` This property is required for vacation listings located in France . The start date of the author's stay. |
  
 
 ## Monitor rich results with Search Console

@@ -62,9 +62,7 @@ fetched: 2026-07-08
  redirect type that works for your situation and site:
 
  
- Redirect types | 
- 
-
+| Redirect types |
  
  Permanent | 
  
@@ -80,62 +78,17 @@ fetched: 2026-07-08
 
  
  
- `HTTP 301 (moved permanently)` | 
+| `HTTP 301 (moved permanently)` | Set up server-side redirects . |
  
+| `HTTP 308 (moved permanently)` |
  
- Set up [server-side redirects](https://developers.google.com#serverside).
+| `meta refresh` (0 seconds) | Set up `meta refresh` redirects . |
  
-
- | 
+| HTTP refresh (0 seconds) |
  
-
+| JavaScript `location` | Set up JavaScript redirects . Only use JavaScript redirects if you can't do server-side or `meta refresh` redirects. |
  
- `HTTP 308 (moved permanently)` | 
- 
-
- 
- `meta refresh` (0 seconds) | 
- 
- 
- Set up [`meta refresh` redirects](https://developers.google.com#metarefresh).
- 
-
- | 
- 
-
- 
- HTTP refresh (0 seconds) | 
- 
-
- 
- JavaScript `location` | 
- 
- 
- Set up [JavaScript redirects](https://developers.google.com#jslocation).
- 
-
- 
- Only use JavaScript redirects if you can't do server-side or `meta refresh`
- redirects.
- 
- | 
- 
-
- 
- Crypto redirect | 
- 
- 
- Learn more about
- [crypto redirects](https://developers.google.com#cryptoredirects).
- 
-
- 
- Don't rely on crypto redirects for letting search
- engines know that your content has moved unless you have no other choice.
- 
- | 
- 
-
+| Crypto redirect | Learn more about crypto redirects . Don't rely on crypto redirects for letting search engines know that your content has moved unless you have no other choice. |
  
 
  | 
@@ -152,37 +105,15 @@ fetched: 2026-07-08
 
  
  
- `HTTP 302 (found)` | 
+| `HTTP 302 (found)` | Set up server-side redirects . |
  
+| `HTTP 303 (see other)` |
  
- Set up [server-side redirects](https://developers.google.com#serverside).
+| `HTTP 307 (temporary redirect)` |
  
-
- | 
+| `meta refresh` (more than 0 seconds) | Set up `meta refresh` redirects . |
  
-
- 
- `HTTP 303 (see other)` | 
- 
-
- 
- `HTTP 307 (temporary redirect)` | 
- 
-
- 
- `meta refresh` (more than 0 seconds) | 
- 
- 
- Set up [`meta refresh` redirects](https://developers.google.com#metarefresh).
- 
-
- | 
- 
-
- 
- `HTTP refresh` (more than 0 seconds) | 
- 
-
+| `HTTP refresh` (more than 0 seconds) |
  
 
  | 
@@ -222,19 +153,23 @@ fetched: 2026-07-08
  To set up a permanent redirect with PHP, use the `header()` function. You must set
  the headers before sending anything to the screen:
 
+
 ```
 header('HTTP/1.1 301 Moved Permanently');
 header('Location: https://www.example.com/newurl');
 exit();
 ```
 
+
  Similarly, here's an example of how to set up a temporary redirect with PHP:
+
 
 ```
 header('HTTP/1.1 302 Found');
 header('Location: https://www.example.com/newurl');
 exit();
 ```
+
 
  If you have access to your web server configuration files, you may be able to write the
  redirect rules yourself. Follow your web server's guides:
@@ -268,10 +203,10 @@ Redirect temp "/two-old" "https://example.com/two-new"
 ```
 RewriteEngine on
 # redirect the service page to a new page with a permanent redirect
-RewriteRule "^/service$" "/about/service" [R=301]
+RewriteRule   "^/service$"  "/about/service"  [R=301]
 
 # redirect the service page to a new page with a temporary redirect
-RewriteRule "^/service$" "/about/service" [R]
+RewriteRule   "^/service$"  "/about/service"  [R]
 ```
 
  
@@ -342,6 +277,7 @@ rewrite service?name=$1 ^service/offline/([a-z]+)/?$ redirect;
  the HTML or in the HTTP header with server-side code. For example, here's an instant
  `meta refresh` redirect in the `<head>` element in the HTML:
 
+
 ```
 <!doctype html>
 <html>
@@ -351,17 +287,20 @@ rewrite service?name=$1 ^service/offline/([a-z]+)/?$ redirect;
 <!--...-->
 ```
 
+
  Here's an example of the HTTP header equivalent, which you can inject with server-side scripts:
 
-```
 
+```
 HTTP/1.1 200 OK
 Refresh: 0; url=https://www.example.com/newlocation
 ...
 ```
 
+
  To create a delayed redirect, which is interpreted as a temporary redirect by Google, set the
  `content` attribute to the number of seconds that the redirect should be delayed:
+
 
 ```
 <!doctype html>
@@ -371,6 +310,7 @@ Refresh: 0; url=https://www.example.com/newlocation
 <title>Example title</title>
 <!--...-->
 ```
+
 
 ## JavaScript `location` redirects
 
@@ -385,16 +325,18 @@ Refresh: 0; url=https://www.example.com/newlocation
  To set up a JavaScript redirect, set the `location` property to the redirect target
  URL in a script block in the HTML head. For example:
 
+
 ```
 <!doctype html>
 <html>
 <head>
 <script>
- window.location.href = "https://www.example.com/newlocation";
+  window.location.href = "https://www.example.com/newlocation";
 </script>
 <title>Example title</title>
 <!--...-->
 ```
+
 
 ## Crypto redirects
 

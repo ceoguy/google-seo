@@ -123,57 +123,59 @@ fetched: 2026-07-08
  </body>
 </html>
 
+
 ```
 <html>
- <head>
- <title>About Us</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "OnlineStore",
- "hasMemberProgram": {
- "@type": "MemberProgram",
- "name": "Membership Plus",
- "description": "For frequent shoppers this is our top-rated loyalty program",
- "url": "https://www.example.com/membership-plus",
- "hasTiers": [
- {
- "@type": "MemberProgramTier",
- "@id": "#plus-tier-silver",
- "name": "silver",
- "url": "https://www.example.com/membership-plus-silver",
- "hasTierBenefit": [
- "https://schema.org/TierBenefitLoyaltyPoints"
- ],
- "membershipPointsEarned": 5
- },
- {
- "@type": "MemberProgramTier",
- "@id": "#plus-tier-gold",
- "name": "gold",
- "url": "https://www.example.com/membership-plus-gold",
- "hasTierRequirement":
- {
- "@type": "CreditCard",
- "name": "Example platinum card plus"
- },
- "hasTierBenefit": [
- "https://schema.org/TierBenefitLoyaltyPrice",
- "https://schema.org/TierBenefitLoyaltyPoints"
- ],
- "membershipPointsEarned": 10
- }
- ]
- }
- // Other Organization-level properties
- // ...
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>About Us</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "OnlineStore",
+      "hasMemberProgram": {
+        "@type": "MemberProgram",
+        "name": "Membership Plus",
+        "description": "For frequent shoppers this is our top-rated loyalty program",
+        "url": "https://www.example.com/membership-plus",
+        "hasTiers": [
+          {
+            "@type": "MemberProgramTier",
+            "@id": "#plus-tier-silver",
+            "name": "silver",
+            "url": "https://www.example.com/membership-plus-silver",
+            "hasTierBenefit": [
+              "https://schema.org/TierBenefitLoyaltyPoints"
+            ],
+            "membershipPointsEarned": 5
+          },
+          {
+            "@type": "MemberProgramTier",
+            "@id": "#plus-tier-gold",
+            "name": "gold",
+            "url": "https://www.example.com/membership-plus-gold",
+            "hasTierRequirement":
+            {
+              "@type": "CreditCard",
+              "name": "Example platinum card plus"
+            },
+            "hasTierBenefit": [
+              "https://schema.org/TierBenefitLoyaltyPrice",
+              "https://schema.org/TierBenefitLoyaltyPoints"
+            ],
+            "membershipPointsEarned": 10
+          }
+        ]
+      }
+      // Other Organization-level properties
+      // ...
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -218,61 +220,25 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `description` | 
+| `description` | ` Text ` The description of the loyalty program, describing the primary benefits for members. |
  
- `[Text](https://schema.org/Text)`
-
- The description of the loyalty program, describing the primary benefits for members.
-
- | 
+| `hasTiers` | Repeated ` MemberProgramTier ` Defines a tier under a loyalty program. A loyalty program must have at least one tier. See the list of `MemberProgramTier` properties supported by Google. |
  
-
- 
- `hasTiers` | 
- 
- Repeated `[MemberProgramTier](https://schema.org/MemberProgramTier)`
-
- Defines a tier under a loyalty program. A loyalty program must have at least one tier.
- See the list of [`MemberProgramTier` properties](https://developers.google.com#memberprogram-tier-properties)
- supported by Google.
-
- | 
- 
-
- 
- `name` | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the loyalty program.
-
- | 
- 
-
+| `name` | ` Text ` The name of the loyalty program. |
  
  
 
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
- `url` | 
- 
- `[URL](https://schema.org/URL)`
-
- A URL of the web page where a shopper can sign up for this loyalty program.
- Don't provide multiple URLs. If not provided, the URL of the page
- containing the `MemberProgram` structured data will be assumed.
-
- | 
- 
-
+| `url` | ` URL ` A URL of the web page where a shopper can sign up for this loyalty program. Don't provide multiple URLs. If not provided, the URL of the page containing the `MemberProgram` structured data will be assumed. |
  
  
 
@@ -291,135 +257,58 @@ You must include the required properties for your structured data to be eligible
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
- `hasTierBenefit` | 
+| `hasTierBenefit` | Repeated ` TierBenefitEnumeration ` Benefit for members of this member tier. A member tier can have multiple benefits. The short names without the URL prefix are also supported (for example `TierBenefitLoyaltyPoints`). `https://schema.org/TierBenefitLoyaltyPoints`: The benefit is earning loyalty points. Also specify `membershipPointsEarned`. `https://schema.org/TierBenefitLoyaltyPrice`: The benefit is a member's only price. |
  
- Repeated `[TierBenefitEnumeration](https://schema.org/TierBenefitEnumeration)`
-
- Benefit for members of this member tier. A member tier can have multiple benefits. The short names without the URL prefix
- are also supported (for example `TierBenefitLoyaltyPoints`).
-
- 
- 
-- `https://schema.org/TierBenefitLoyaltyPoints`: The benefit is earning loyalty points. Also specify `membershipPointsEarned`.
- 
-- `https://schema.org/TierBenefitLoyaltyPrice`: The benefit is a member's only price.
- 
-
- | 
- 
-
- 
- `name` | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the membership tier.
-
- | 
- 
-
+| `name` | ` Text ` The name of the membership tier. |
  
  
 
  
  
- Recommended properties | 
-
  
- `hasTierRequirement` | 
+| Recommended properties |
  
- 
- `[CreditCard](https://schema.org/CreditCard)`, or
- `[MonetaryAmount](https://schema.org/MonetaryAmount)`, or
- `[UnitPriceSpecification](https://schema.org/UnitPriceSpecification)`, or
- `[Text](https://schema.org/Text)`
- 
-
- The requirement to join a member tier. If not specified, anyone can join the tier for free. For a non-free tier, specify
- a value of the type representing the requirement to join the tier.
- 
-
- 
- 
-- `https://schema.org/CreditCard`: Specify the credit card that the user needs to sign up for to join the tier.
- For example:
-
+| `hasTierRequirement` | ` CreditCard `, or ` MonetaryAmount `, or ` UnitPriceSpecification `, or ` Text ` The requirement to join a member tier. If not specified, anyone can join the tier for free. For a non-free tier, specify a value of the type representing the requirement to join the tier. `https://schema.org/CreditCard`: Specify the credit card that the user needs to sign up for to join the tier. For example: 
 ```
- "hasTierRequirement": {
- "@type": "CreditCard",
- "name": "Capital Two cashback rewards platinum card"
- }
+"hasTierRequirement": {
+    "@type": "CreditCard",
+    "name": "Capital Two cashback rewards platinum card"
+  }
 ```
-
- 
- 
-- `https://schema.org/MonetaryAmount`: Specify the minimum amount of spending required to join the tier.
- For example, for a $250 minimum spending, specify:
-
+ `https://schema.org/MonetaryAmount`: Specify the minimum amount of spending required to join the tier. For example, for a $250 minimum spending, specify: 
 ```
- "hasTierRequirement": {
- "@type": "MonetaryAmount",
- "value": 250,
- "currency": "USD"
- }
+"hasTierRequirement": {
+    "@type": "MonetaryAmount",
+    "value": 250,
+    "currency": "USD"
+  }
 ```
-
- 
- 
-- `https://schema.org/UnitPriceSpecification`: Specify the periodic fee a consumer needs to pay for membership in the tier.
- For example, for a 12 month membership, billed once a month at 9.99€, specify:
-
+ `https://schema.org/UnitPriceSpecification`: Specify the periodic fee a consumer needs to pay for membership in the tier. For example, for a 12 month membership, billed once a month at 9.99€, specify: 
 ```
- "hasTierRequirement": {
- "@type": "UnitPriceSpecification",
- "price": 9.99,
- "priceCurrency": "EUR",
- "billingDuration": 12,
- "billingIncrement": 1,
- "unitCode": "MON"
- }
+"hasTierRequirement": {
+    "@type": "UnitPriceSpecification",
+    "price": 9.99,
+    "priceCurrency": "EUR",
+    "billingDuration": 12,
+    "billingIncrement": 1,
+    "unitCode": "MON"
+  }
 ```
-
- 
- 
-- `https://schema.org/Text`: Describe any other requirement to join the tier. For example:
-
+ `https://schema.org/Text`: Describe any other requirement to join the tier. For example: 
 ```
 "hasTierRequirement": "Purchase a share in our coop and volunteer a minimum of 1 day a month to keep operating costs low."
 ```
+ |
 
  
- 
-
- | 
- 
+| `membershipPointsEarned` | ` QuantitativeValue ` The number of loyalty points earned by the consumer per currency unit spent when `hasTierBenefit` is equal to `https://schema.org/TierBenefitLoyaltyPoints`. |
 
  
- `membershipPointsEarned` | 
- 
- `[QuantitativeValue](https://schema.org/membershipPointsEarned)`
-
- The number of loyalty points earned by the consumer per currency unit spent when `hasTierBenefit` is equal to `https://schema.org/TierBenefitLoyaltyPoints`.
- 
-
- | 
- 
-
- 
- `url` | 
- 
- `[URL](https://schema.org/URL)`
-
- A URL of the web page where a shopper can sign up for this specific member tier.
- Don't provide multiple URLs.
-
- | 
- 
-
+| `url` | ` URL ` A URL of the web page where a shopper can sign up for this specific member tier. Don't provide multiple URLs. |
  
 
  

@@ -93,28 +93,30 @@ Here's an example of a single course details page. This page must be paired with
  course list feature, pay attention to any warnings or errors that are in the Course list item
  section; you can ignore the other errors.
 
+
 ```
 <html>
- <head>
- <title>Introduction to Computer Science and Programming</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Course",
- "name": "Introduction to Computer Science and Programming",
- "description": "Introductory CS course laying out the basics.",
- "provider": {
- "@type": "Organization",
- "name": "University of Technology - Eureka",
- "sameAs": "https://www.example.com"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Introduction to Computer Science and Programming</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Introduction to Computer Science and Programming",
+      "description": "Introductory CS course laying out the basics.",
+      "provider": {
+        "@type": "Organization",
+        "name": "University of Technology - Eureka",
+        "sameAs": "https://www.example.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ### Single, all-in-one page
 
@@ -186,68 +188,70 @@ Here's an example of a [single, all-in-one page](https://developers.google.com/s
  course list feature, pay attention to any warnings or errors that are in the Course list item
  and Carousels sections; you can ignore the other errors.
 
+
 ```
 <html>
- <head>
- <title>Computer Science Courses</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "ItemList",
- "itemListElement": [
- {
- "@type": "ListItem",
- "position": 1,
- "item": {
- "@type": "Course",
- "url":"https://www.example.com/courses#intro-to-cs",
- "name": "Introduction to Computer Science and Programming",
- "description": "This is an introductory CS course laying out the basics.",
- "provider": {
- "@type": "Organization",
- "name": "University of Technology - Example",
- "sameAs": "https://www.example.com"
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 2,
- "item": {
- "@type": "Course",
- "url":"https://www.example.com/courses#intermediate-cs",
- "name": "Intermediate Computer Science and Programming",
- "description": "This is a CS course that builds on the basics learned in the Introduction course.",
- "provider": {
- "@type": "Organization",
- "name": "University of Technology - Example",
- "sameAs": "https://www.example.com"
- }
- }
- },
- {
- "@type": "ListItem",
- "position": 3,
- "item": {
- "@type": "Course",
- "url":"https://www.example.com/courses#advanced-cs",
- "name": "Advanced Computer Science and Programming",
- "description": "This CS course covers advanced programming principles.",
- "provider": {
- "@type": "Organization",
- "name": "University of Technology - Eureka",
- "sameAs": "https://www.example.com"
- }
- }
- }
- ]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Computer Science Courses</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Course",
+            "url":"https://www.example.com/courses#intro-to-cs",
+            "name": "Introduction to Computer Science and Programming",
+            "description": "This is an introductory CS course laying out the basics.",
+            "provider": {
+              "@type": "Organization",
+              "name": "University of Technology - Example",
+              "sameAs": "https://www.example.com"
+           }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Course",
+            "url":"https://www.example.com/courses#intermediate-cs",
+            "name": "Intermediate Computer Science and Programming",
+            "description": "This is a CS course that builds on the basics learned in the Introduction course.",
+            "provider": {
+              "@type": "Organization",
+              "name": "University of Technology - Example",
+              "sameAs": "https://www.example.com"
+           }
+         }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Course",
+            "url":"https://www.example.com/courses#advanced-cs",
+            "name": "Advanced Computer Science and Programming",
+            "description": "This CS course covers advanced programming principles.",
+            "provider": {
+              "@type": "Organization",
+              "name": "University of Technology - Eureka",
+              "sameAs": "https://www.example.com"
+           }
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ## Guidelines
 
@@ -323,34 +327,19 @@ The full definition of `Course` is available at
  [schema.org/Course](https://schema.org/Course).
  The Google-supported properties are the following:
 
- Required properties | 
+ 
+| Required properties |
 
  
- `description` | 
- `[Text](https://schema.org/Text)`
-
- A description of the course. Display limit of 60 characters.
- | 
+| `description` | ` Text ` A description of the course. Display limit of 60 characters. |
  
+| `name` | ` Text ` The title of the course. |
 
  
- `name` | 
- `[Text](https://schema.org/Text)`
-
- The title of the course.
- | 
- 
-
- Recommended properties | 
+| Recommended properties |
 
  
- `provider` | 
- `[Organization](https://schema.org/Organization)`
-
- The organization that publishes the source content of the course. For example,
- UC Berkeley.
- | 
- 
+| `provider` | ` Organization ` The organization that publishes the source content of the course. For example, UC Berkeley. |
 
  
 ### `ItemList`
@@ -363,30 +352,14 @@ In addition to [`Course` properties](https://developers.google.com#course), add 
 The full definition of `ItemList` is
 available at [schema.org/ItemList](https://schema.org/ItemList).
 
- Required properties | 
-
- `itemListElement` | 
- `[ListItem](https://schema.org/ListItem)`
-
- Annotation for a single item page.
- | 
  
+| Required properties |
 
+| `itemListElement` | ` ListItem ` Annotation for a single item page. |
  
- `ListItem.position` | 
- `[Integer](https://schema.org/Integer)`
-
- Ordinal position of the item page in the list.
- | 
+| `ListItem.position` | ` Integer ` Ordinal position of the item page in the list. |
  
-
- 
- `ListItem.url` | 
- `[URL](https://schema.org/URL)`
-
- The canonical URL of the item page. Every item must have a unique URL.
- | 
- 
+| `ListItem.url` | ` URL ` The canonical URL of the item page. Every item must have a unique URL. |
 
  
 ## Troubleshooting

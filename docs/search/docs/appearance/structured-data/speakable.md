@@ -32,30 +32,31 @@ xPath `content-locator` value:
 
 ```
 <html>
- <head>
- <title>Speakable markup example</title>
- <meta name="description" content="This page is all about the quick brown fox" />
- <script type="application/ld+json">
- {
- "@context": "https://schema.org/",
- "@type": "WebPage",
- "name": "Quick Brown Fox",
- "speakable":
- {
- "@type": "SpeakableSpecification",
- "xPath": [
- "/html/head/title",
- "/html/head/meta[@name='description']/@content"
- ]
- },
- "url": "https://www.example.com/quick-brown-fox"
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Speakable markup example</title>
+    <meta name="description" content="This page is all about the quick brown fox" />
+    <script type="application/ld+json">
+    {
+     "@context": "https://schema.org/",
+     "@type": "WebPage",
+     "name": "Quick Brown Fox",
+     "speakable":
+     {
+      "@type": "SpeakableSpecification",
+      "xPath": [
+        "/html/head/title",
+        "/html/head/meta[@name='description']/@content"
+        ]
+      },
+     "url": "https://www.example.com/quick-brown-fox"
+     }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
  
 ## Country and language availability
@@ -146,56 +147,36 @@ xPath `content-locator` value:
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `cssSelector` | 
- 
- `[Text](https://schema.org/Text)`
-
- Addresses content in the annotated pages (such as class attribute). Use either
- `cssSelector` or `xPath`; don't use both. For example:
-
- 
-
+| `cssSelector` | ` Text ` Addresses content in the annotated pages (such as class attribute). Use either `cssSelector` or `xPath`; don't use both. For example: 
 ```
 "speakable":
- {
- "@type": "SpeakableSpecification",
- "cssSelector": [
- ".headline",
- ".summary"
- ]
+  {
+  "@type": "SpeakableSpecification",
+  "cssSelector": [
+    ".headline",
+    ".summary"
+  ]
 }
 ```
-
- | 
+ |
  
-
- 
- `xPath` | 
- `[Text](https://schema.org/Text)`
- Addresses content using xPaths (assuming an XML view of the content). Use either
- `cssSelector` or `xPath`; don't use both. For example:
-
- 
-
+| `xPath` | ` Text ` Addresses content using xPaths (assuming an XML view of the content). Use either `cssSelector` or `xPath`; don't use both. For example: 
 ```
 "speakable":
- {
- "@type": "SpeakableSpecification",
- "xPath": [
- "/html/head/title",
- "/html/head/meta[@name='description']/@content"
- ]
+  {
+  "@type": "SpeakableSpecification",
+  "xPath": [
+    "/html/head/title",
+    "/html/head/meta[@name='description']/@content"
+  ]
 }
 ```
-
- | 
- 
-
+ |
  
  
 

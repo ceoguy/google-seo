@@ -142,7 +142,6 @@ fetched: 2026-07-08
  
 
 ```
-
 curl -I -X GET "https://www.example.com/"
 HTTP/1.1 503 Service Unavailable
 Mime-Version: 1.0

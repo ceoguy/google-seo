@@ -60,23 +60,13 @@ All of our [best practices for making a site Google-friendly](https://developers
 The following topics describe how to work with AMP in Google Search.
 
  
- Topics | 
+| Topics |
  
-
+| Enhance your AMP content in Google Search | Learn how to enhance and monitor your AMP pages. |
  
- [Enhance your AMP content in Google Search](https://developers.google.com/search/docs/crawling-indexing/amp/enhance-amp) | 
- Learn how to enhance and monitor your AMP pages. | 
+| Validate your AMP content | This document contains tips and pointers about how to validate AMP pages. |
  
-
- 
- [Validate your AMP content](https://developers.google.com/search/docs/crawling-indexing/amp/validate-amp) | 
- This document contains tips and pointers about how to validate AMP pages. | 
- 
-
- 
- [Remove your AMP pages from Google Search](https://developers.google.com/search/docs/crawling-indexing/amp/remove-amp) | 
- Learn how to remove your AMP pages from Google Search. | 
- 
+| Remove your AMP pages from Google Search | Learn how to remove your AMP pages from Google Search. |
 
 ## FAQs
 

@@ -128,7 +128,6 @@ fetched: 2026-07-08
  
 
 ```
-
 <html>
 <head>
 <title>An awesome math solver</title>
@@ -136,36 +135,36 @@ fetched: 2026-07-08
 <body>
 <script type="application/ld+json">
 [
- {
- "@context": "https://schema.org",
- "@type": ["MathSolver", "LearningResource"],
- "name": "An awesome math solver",
- "url": "https://www.mathdomain.com/",
- "usageInfo": "https://www.mathdomain.com/privacy",
- "inLanguage": "en",
- "potentialAction": [{
- "@type": "SolveMathAction",
- "target": "https://mathdomain.com/solve?q={math_expression_string}",
- "mathExpression-input": "required name=math_expression_string",
- "eduQuestionType": ["Polynomial Equation","Derivative"]
- }],
- "learningResourceType": "Math solver"
- },
- {
- "@context": "https://schema.org",
- "@type": ["MathSolver", "LearningResource"],
- "name": "Un solucionador de matemáticas increíble",
- "url": "https://es.mathdomain.com/",
- "usageInfo": "https://es.mathdomain.com/privacy",
- "inLanguage": "es",
- "potentialAction": [{
- "@type": "SolveMathAction",
- "target": "https://es.mathdomain.com/solve?q={math_expression_string}",
- "mathExpression-input": "required name=math_expression_string",
- "eduQuestionType": ["Polynomial Equation","Derivative"]
- }],
- "learningResourceType": "Math solver"
- }
+  {
+    "@context": "https://schema.org",
+    "@type": ["MathSolver", "LearningResource"],
+    "name": "An awesome math solver",
+    "url": "https://www.mathdomain.com/",
+    "usageInfo": "https://www.mathdomain.com/privacy",
+    "inLanguage": "en",
+    "potentialAction": [{
+      "@type": "SolveMathAction",
+      "target": "https://mathdomain.com/solve?q={math_expression_string}",
+      "mathExpression-input": "required name=math_expression_string",
+      "eduQuestionType": ["Polynomial Equation","Derivative"]
+     }],
+    "learningResourceType": "Math solver"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": ["MathSolver", "LearningResource"],
+    "name": "Un solucionador de matemáticas increíble",
+    "url": "https://es.mathdomain.com/",
+    "usageInfo": "https://es.mathdomain.com/privacy",
+    "inLanguage": "es",
+    "potentialAction": [{
+      "@type": "SolveMathAction",
+      "target": "https://es.mathdomain.com/solve?q={math_expression_string}",
+      "mathExpression-input": "required name=math_expression_string",
+      "eduQuestionType": ["Polynomial Equation","Derivative"]
+     }],
+    "learningResourceType": "Math solver"
+  }
 ]
 </script>
 </body>
@@ -220,7 +219,6 @@ fetched: 2026-07-08
  
 
 ```
-
 <html>
 <head>
 <title>An awesome math solver</title>
@@ -228,30 +226,31 @@ fetched: 2026-07-08
 <body>
 <script type="application/ld+json">
 {
- "@context": "https://schema.org",
- "@type": ["MathSolver", "LearningResource"],
- "name": "An awesome math solver",
- "url": "https://www.mathdomain.com/",
- "usageInfo": "https://www.mathdomain.com/privacy",
- "inLanguage": "en",
- "potentialAction": [{
- "@type": "SolveMathAction",
- "target": "https://mathdomain.com/solve?q={math_expression_string}",
- "mathExpression-input": "required name=math_expression_string",
- "eduQuestionType": "Polynomial Equation"
- },
- {
- "@type": "SolveMathAction",
- "target": "https://mathdomain.com/trig?q={math_expression_string}",
- "mathExpression-input": "required name=math_expression_string",
- "eduQuestionType": "Trigonometric Equation"
- }],
- "learningResourceType": "Math solver"
+  "@context": "https://schema.org",
+  "@type": ["MathSolver", "LearningResource"],
+  "name": "An awesome math solver",
+  "url": "https://www.mathdomain.com/",
+  "usageInfo": "https://www.mathdomain.com/privacy",
+  "inLanguage": "en",
+  "potentialAction": [{
+     "@type": "SolveMathAction",
+     "target": "https://mathdomain.com/solve?q={math_expression_string}",
+     "mathExpression-input": "required name=math_expression_string",
+     "eduQuestionType": "Polynomial Equation"
+   },
+   {
+     "@type": "SolveMathAction",
+     "target": "https://mathdomain.com/trig?q={math_expression_string}",
+     "mathExpression-input": "required name=math_expression_string",
+     "eduQuestionType": "Trigonometric Equation"
+   }],
+  "learningResourceType": "Math solver"
 }
 </script>
 </body>
 </html>
 ```
+
 
  
 ## Guidelines
@@ -345,245 +344,114 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `potentialAction` | 
- `[SolveMathAction](https://schema.org/SolveMathAction)`
-
- The action that leads to a mathematical explanation (for example, step-by-step solution or graph) of a math expression.
-
- 
-
+| `potentialAction` | ` SolveMathAction ` The action that leads to a mathematical explanation (for example, step-by-step solution or graph) of a math expression. 
 ```
 {
 "@type": "MathSolver",
 "potentialAction": [{
- "@type": "SolveMathAction",
- "target": "https://mathdomain.com/solve?q={math_expression_string}",
- "mathExpression-input": "required name=math_expression_string",
- "eduQuestionType": "Polynomial Equation"
- }]
+  "@type": "SolveMathAction",
+  "target": "https://mathdomain.com/solve?q={math_expression_string}",
+  "mathExpression-input": "required name=math_expression_string",
+  "eduQuestionType": "Polynomial Equation"
+  }]
 }
 ```
-
- | 
+ |
  
-
- 
- `potentialAction.mathExpression-input` | 
- `[Text](https://schema.org/Text)`
-
- 
- A placeholder for a mathematical expression (for example: x^2-3x=0) that is sent by Google
- to your website. You can then "solve" the math expression, which may involve simplifying,
- transforming, or solving for a specific variable. The string can take many formats
- (for example: LaTeX, Ascii-Math, or mathematical expressions that you can write with a
- keyboard).
- 
-
- 
- `mathExpression-input` is an annotated property. See the
- [`Potential Actions`](https://schema.org/docs/actions.html#part-4)
- page for more information.
- 
- For some problem types, the `math_expression_string` indicates both the problem type and
- parameters of the problem type. Here are some examples of the more complicated problem
- types so that you can anticipate and parse them correctly.
- 
-
- Derivatives
-
- Google will send a `math_expression_string` in one of two forms:
-
- 
- 
-- 
-
+| `potentialAction.mathExpression-input` | ` Text ` A placeholder for a mathematical expression (for example: x^2-3x=0) that is sent by Google to your website. You can then "solve" the math expression, which may involve simplifying, transforming, or solving for a specific variable. The string can take many formats (for example: LaTeX, Ascii-Math, or mathematical expressions that you can write with a keyboard). `mathExpression-input` is an annotated property. See the `Potential Actions` page for more information. For some problem types, the `math_expression_string` indicates both the problem type and parameters of the problem type. Here are some examples of the more complicated problem types so that you can anticipate and parse them correctly. Derivatives Google will send a `math_expression_string` in one of two forms: 
 ```
 (math_expression)'
- d/dvariable math_expression
- 
- Examples:
- 
- (x^2+x)'
- d/dx (x^2+x)
- d/dy y^2+y
- 
- Integrals
- Google will send a math_expression_string in one of two forms:
- 
- \int math_expression
+          d/dvariable math_expression
+        
+        Examples:
+        
+          (x^2+x)'
+          d/dx (x^2+x)
+          d/dy y^2+y
+        
+        Integrals
+        Google will send a math_expression_string in one of two forms:
+        
+          \int math_expression
 ```
-
  
-- 
-
 ```
 \int_{from}^{to} math_expression
 ```
-
- 
-
- Examples:
-
- 
- 
-- `\int x^2+x`
- 
-- `\int_{0}^{2} x^2+x`
- 
-
- Limits
-
- Google will send a `math_expression_string` in one of two forms:
-
- 
- 
-- 
-
+ Examples: `\int x^2+x` `\int_{0}^{2} x^2+x` Limits Google will send a `math_expression_string` in one of two forms: 
 ```
 \lim math_expression
 ```
-
  
-- 
-
 ```
 \lim_{variable\rightarrowvalue} math_expression
 ```
-
+ Examples: `\lim_{x\rightarrow0} sin(x)/x` `\lim_{y\rightarrow\infty} sin(y)/y` `\lim sin(x)/x` |
  
-
- Examples:
-
+| `url` | ` URL ` The URL of the `MathSolver`. |
  
- 
-- `\lim_{x\rightarrow0} sin(x)/x`
- 
-- `\lim_{y\rightarrow\infty} sin(y)/y`
- 
-- `\lim sin(x)/x`
- 
-
- | 
- 
-
- 
- `url` | 
- `[URL](https://schema.org/URL)`
-
- The URL of the `MathSolver`.
- | 
- 
-
- 
- `usageInfo` | 
- `[URL](https://schema.org/URL)`
-
- The privacy policy for your math problem solving site.
-
- 
-
+| `usageInfo` | ` URL ` The privacy policy for your math problem solving site. 
 ```
 {
- "@type": "MathSolver",
- "usageInfo": "https://www.mathdomain.com/privacy"
+  "@type": "MathSolver",
+  "usageInfo": "https://www.mathdomain.com/privacy"
 }
 ```
- | 
+ |
  
-
- 
- `potentialAction.target` | 
- `[EntryPoint](https://schema.org/EntryPoint)`
-
- The URL target entrypoint for an action. The `potentialAction.target`
- property accepts a string to represent the math expression that's being solved by the action.
-
- 
-
+| `potentialAction.target` | ` EntryPoint ` The URL target entrypoint for an action. The `potentialAction.target` property accepts a string to represent the math expression that's being solved by the action. 
 ```
 {
 "@type": "MathSolver",
 "potentialAction": [{
- "@type": "SolveMathAction",
- "target": "https://mathdomain.com/solve?q={math_expression_string}"
- }]
+  "@type": "SolveMathAction",
+  "target": "https://mathdomain.com/solve?q={math_expression_string}"
+  }]
 }
 ```
-
- | 
- 
-
+ |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- `inLanguage` | 
- `[Text](https://schema.org/Text)`
-
- The language(s) that are supported by your math problem solving site. See [this table](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
- for a list of possible languages.
-
- 
-
+| `inLanguage` | ` Text ` The language(s) that are supported by your math problem solving site. See this table for a list of possible languages. 
 ```
 {
- "@type": "MathSolver",
- "inLanguage": "es"
+  "@type": "MathSolver",
+  "inLanguage": "es"
 }
 ```
- | 
+ |
  
-
- 
- `assesses` | 
- `[Text](https://schema.org/Text)`
- list of [Problem Type Definitions](https://developers.google.com#problem-type-definitions)
-
- The problem type(s) that are solved with the `HowTo`. Use the
- `assesses` property if you're using `HowTo`
- markup in addition to `MathSolver` markup.
-
- 
-
+| `assesses` | ` Text ` list of Problem Type Definitions The problem type(s) that are solved with the `HowTo`. Use the `assesses` property if you're using `HowTo` markup in addition to `MathSolver` markup. 
 ```
 {
- "@type": "MathSolver",
- "assesses": "Polynomial Equation"
+  "@type": "MathSolver",
+  "assesses": "Polynomial Equation"
 }
 ```
- | 
+ |
  
-
- 
- `potentialAction.eduQuestionType` | 
- `[Text](https://schema.org/Text)`
- list of [Problem Type Definitions](https://developers.google.com#problem-type-definitions)
-
- The problem type(s) that are capable of being solved by the `potentialAction.target` property.
-
- 
-
+| `potentialAction.eduQuestionType` | ` Text ` list of Problem Type Definitions The problem type(s) that are capable of being solved by the `potentialAction.target` property. 
 ```
 {
- "@type": "SolveMathAction",
- "eduQuestionType": "Polynomial Equation"
+  "@type": "SolveMathAction",
+  "eduQuestionType": "Polynomial Equation"
 }
 ```
- | 
- 
-
+ |
  
  
 
@@ -604,28 +472,19 @@ fetched: 2026-07-08
  
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `learningResourceType` | 
- `[Text](https://schema.org/Text)`
-
- The type of this learning resource. Use this fixed value: `Math Solver`.
-
- 
-
+| `learningResourceType` | ` Text ` The type of this learning resource. Use this fixed value: `Math Solver`. 
 ```
 {
- "@type": ["MathSolver", "LearningResource"],
- "learningResourceType": "Math Solver"
+  "@type": ["MathSolver", "LearningResource"],
+  "learningResourceType": "Math Solver"
 }
 ```
-
- | 
- 
-
+ |
  
  
 
@@ -643,303 +502,105 @@ fetched: 2026-07-08
 
  
  
- Example problem types (this isn't an exhaustive list) | 
+| Example problem types (this isn't an exhaustive list) |
  
-
+| `Absolute Value Equation` | Absolute value equations. For example: |x - 5| = 9 |
  
- `Absolute Value Equation` | 
- Absolute value equations. For example: |x - 5| = 9
- | 
+| `Algebra` | A generic problem type that can be placed with other problem type. For example: polynomial equations, exponential equations, and radical expressions. |
  
-
+| `Arc Length` | Arc length problems. For example: Determine the length of x = 4 (3 + y)^2, 1 < y < 4. |
  
- `Algebra` | 
- A generic problem type that can be placed with other problem type. For example: polynomial equations, exponential equations, and radical expressions.
- | 
+| `Arithmetic` | Arithmetic problems. For example: Find the sum of 5 + 7. |
  
-
+| `Biquadratic Equation` | Biquadratic equations. For example: x^4 - x^2 - 2 = 0. |
  
- `Arc Length` | 
- Arc length problems. For example: Determine the length of x = 4 (3 + y)^2, 1 < y < 4.
- | 
+| `Calculus` | A generic problem type that can be placed with other problem types. For example: integrals, derivatives, and differential equations. |
  
-
+| `Characteristic Polynomial` | Find the characteristic polynomial of &#123;&#123;1,2,5&#125;, &#123;3,-1,1&#125;, &#123;1,2,3&#125;&#125; . |
  
- `Arithmetic` | 
- Arithmetic problems. For example: Find the sum of 5 + 7.
- | 
+| `Circle` | Circle related problems. For example: Find the radius of x^2 + y^2 = 3. |
  
-
+| `Derivative` | Derivative of 5x^4 + 2x^3 + 4x - 2. |
  
- `Biquadratic Equation` | 
- Biquadratic equations. For example: x^4 - x^2 - 2 = 0.
- | 
+| `Differential Equation` | Differential equation problems. For example: y+dy/dx=5x. |
  
-
+| `Distance` | Distance problems. For example: Find the distance between (6,-1) and (-3,2). |
  
- `Calculus` | 
- A generic problem type that can be placed with other problem types. For example: integrals, derivatives, and differential equations.
- | 
+| `Eigenvalue` | Eigenvalue problems. For example: Find the eigenvalues for the matrix [[-6, 3], [4, 5]]. |
  
-
+| `Eigenvector` | Eigenvector problems. For example: Find the eigenvector for the matrix [[-6, 3], [4, 5]] with eigenvalues of [-7, 6]. |
  
- `Characteristic Polynomial` | 
- Find the characteristic polynomial of &#123;&#123;1,2,5&#125;, &#123;3,-1,1&#125;, &#123;1,2,3&#125;&#125;.
- | 
+| `Ellipse` | Ellipse problems. For example: Find the x and y intercepts of 9x^2 + 4y^2 = 36. |
  
-
+| `Exponential Equation` | Exponential equations. For example: 7^x = 9. |
  
- `Circle` | 
- Circle related problems. For example: Find the radius of x^2 + y^2 = 3.
- | 
+| `Function` | Polynomial simplifications. For example: (x-5)^2 * (x+5)^2. |
  
-
+| `Function Composition` | f(g(x)) when f(x)=x^2-2x, g(x)=2x-2 |
  
- `Derivative` | 
- Derivative of 5x^4 + 2x^3 + 4x - 2.
- | 
+| `Geometry` | A generic problem type that can be placed with other problem types. For example: circle, ellipse, parabola, slope. |
  
-
+| `Hyperbola` | Hyperbola problems. For example: Find the x-intercept of (x^2)/4 - (y^2)/5 = 1. |
  
- `Differential Equation` | 
- Differential equation problems. For example: y+dy/dx=5x.
- | 
+| `Inflection Point` | Find the inflection point of f(x) = 1/2x^4 +x^3 - 6x^2. |
  
-
+| `Integral` | Integral of sqrt (x^2 - y^2). |
  
- `Distance` | 
- Distance problems. For example: Find the distance between (6,-1) and (-3,2).
- | 
+| `Intercept` | Line intercept problems. For example: Find the x-intercept of the line y = 10x - 5. |
  
-
+| `Limit` | Limit problems. For example: Find the limit of x as x approaches 1 for (x^2-1)/(x-1). |
  
- `Eigenvalue` | 
- Eigenvalue problems. For example: Find the eigenvalues for the matrix [[-6, 3], [4, 5]].
- | 
+| `Line Equation` | Line equation problems. For example: Find the equation of a line with points (-7,-4) and (-2,-6). |
  
-
+| `Linear Algebra` | A generic problem type that can be placed with other problem types. For example: matrix and characteristic polynomial. |
  
- `Eigenvector` | 
- Eigenvector problems. For example: Find the eigenvector for the matrix [[-6, 3], [4, 5]] with eigenvalues of [-7, 6].
- | 
+| `Linear Equation` | Linear equations. For example: 4x - 3 = 2x + 9. |
  
-
+| `Linear Inequality` | Linear inequalities. For example: 5x - 6 > 3x - 8. |
  
- `Ellipse` | 
- Ellipse problems. For example: Find the x and y intercepts of 9x^2 + 4y^2 = 36.
- | 
+| `Logarithmic Equation` | Logarithmic equations. For example: log(x) = log(100). |
  
-
+| `Logarithmic Inequality` | Logarithmic inequalities. For example: log(x) > log(100). |
  
- `Exponential Equation` | 
- Exponential equations. For example: 7^x = 9.
- | 
+| `Matrix` | &#123;&#123;1,2,5&#125;, &#123;3,-1,1&#125;, &#123;1,2,3&#125;&#125; row reduce |
  
-
+| `Midpoint` | Midpoint problems. For example: find the midpoint between (-3, 7) and (5, -2). |
  
- `Function` | 
- Polynomial simplifications. For example: (x-5)^2 * (x+5)^2.
- | 
+| `Parabola` | Parabola problems. For example: Find the vertex of y2 - 4x - 4y = 0. |
  
-
+| `Parallel` | Parallel line problems. For example: Are the two lines parallel (y = 10x + 5, y = 20x + 10)? |
  
- `Function Composition` | 
- f(g(x)) when f(x)=x^2-2x, g(x)=2x-2
- | 
+| `Perpendicular` | Perpendicular problems. For example: Are the two lines perpendicular (y = 10x + 5, y = 20x + 10)? |
  
-
+| `Polynomial Equation` | Polynomial equations. For example: x^5 - 3x = 0. |
  
- `Geometry` | 
- A generic problem type that can be placed with other problem types. For example: circle, ellipse, parabola, slope.
- | 
+| `Polynomial Expression` | Polynomial expressions. For example: (x - 5)^4 * (x + 5)^2. |
  
-
+| `Polynomial Inequality` | Polynomial inequalities. For example: x^4 - x^2 - 6 > x^3 - 3x^2. |
  
- `Hyperbola` | 
- Hyperbola problems. For example: Find the x-intercept of (x^2)/4 - (y^2)/5 = 1.
- | 
+| `Quadratic Equation` | Quadratic equations. For example: x^2 - 3x - 4 = 0. |
  
-
+| `Quadratic Expression` | Quadratic expressions. For example: x^2 - 3x - 2. |
  
- `Inflection Point` | 
- Find the inflection point of f(x) = 1/2x^4 +x^3 - 6x^2.
- | 
+| `Quadratic Inequality` | Quadratic inequalities. For example: x^2 - x - 6 > x^2 - 3x. |
  
-
+| `Radical Equation` | Radical equations. For example: sqrt(x) - x = 0. |
  
- `Integral` | 
- Integral of sqrt (x^2 - y^2).
- | 
+| `Radical Inequality` | Radical inequalities. For example: sqrt(x) - x > 0. |
  
-
+| `Rational Equation` | Rational equations. For example: 5/(x - 3) = 2/(x - 1). |
  
- `Intercept` | 
- Line intercept problems. For example: Find the x-intercept of the line y = 10x - 5.
- | 
+| `Rational Expression` | Rational expressions. For example: 1/(x^3 + 4x^2 + 5x + 2). |
  
-
+| `Rational Inequality` | Rational inequalities. For example: 5/(x - 3) > 2/(x - 1). |
  
- `Limit` | 
- Limit problems. For example: Find the limit of x as x approaches 1 for (x^2-1)/(x-1).
- | 
+| `Slope` | Slope problems. For example: Find the slope of y = 10x + 5. |
  
-
+| `Statistics` | Statistics problems. For example: Find the mean of a set of numbers (3, 8, 2, 10). |
  
- `Line Equation` | 
- Line equation problems. For example: Find the equation of a line with points (-7,-4) and (-2,-6).
- | 
+| `System of Equations` | System of equations problems. For example: Solve 2x + 5y = 16;3x - 5y = - 1. |
  
-
- 
- `Linear Algebra` | 
- A generic problem type that can be placed with other problem types. For example: matrix and characteristic polynomial.
- | 
- 
-
- 
- `Linear Equation` | 
- Linear equations. For example: 4x - 3 = 2x + 9.
- | 
- 
-
- 
- `Linear Inequality` | 
- Linear inequalities. For example: 5x - 6 > 3x - 8.
- | 
- 
-
- 
- `Logarithmic Equation` | 
- Logarithmic equations. For example: log(x) = log(100).
- | 
- 
-
- 
- `Logarithmic Inequality` | 
- Logarithmic inequalities. For example: log(x) > log(100).
- | 
- 
-
- 
- `Matrix` | 
- &#123;&#123;1,2,5&#125;, &#123;3,-1,1&#125;, &#123;1,2,3&#125;&#125; row reduce
- | 
- 
-
- 
- `Midpoint` | 
- Midpoint problems. For example: find the midpoint between (-3, 7) and (5, -2).
- | 
- 
-
- 
- `Parabola` | 
- Parabola problems. For example: Find the vertex of y2 - 4x - 4y = 0.
- | 
- 
-
- 
- `Parallel` | 
- Parallel line problems. For example: Are the two lines parallel (y = 10x + 5, y = 20x + 10)?
- | 
- 
-
- 
- `Perpendicular` | 
- Perpendicular problems. For example: Are the two lines perpendicular (y = 10x + 5, y = 20x + 10)?
- | 
- 
-
- 
- `Polynomial Equation` | 
- Polynomial equations. For example: x^5 - 3x = 0.
- | 
- 
-
- 
- `Polynomial Expression` | 
- Polynomial expressions. For example: (x - 5)^4 * (x + 5)^2.
- | 
- 
-
- 
- `Polynomial Inequality` | 
- Polynomial inequalities. For example: x^4 - x^2 - 6 > x^3 - 3x^2.
- | 
- 
-
- 
- `Quadratic Equation` | 
- Quadratic equations. For example: x^2 - 3x - 4 = 0.
- | 
- 
-
- 
- `Quadratic Expression` | 
- Quadratic expressions. For example: x^2 - 3x - 2.
- | 
- 
-
- 
- `Quadratic Inequality` | 
- Quadratic inequalities. For example: x^2 - x - 6 > x^2 - 3x.
- | 
- 
-
- 
- `Radical Equation` | 
- Radical equations. For example: sqrt(x) - x = 0.
- | 
- 
-
- 
- `Radical Inequality` | 
- Radical inequalities. For example: sqrt(x) - x > 0.
- | 
- 
-
- 
- `Rational Equation` | 
- Rational equations. For example: 5/(x - 3) = 2/(x - 1).
- | 
- 
-
- 
- `Rational Expression` | 
- Rational expressions. For example: 1/(x^3 + 4x^2 + 5x + 2).
- | 
- 
-
- 
- `Rational Inequality` | 
- Rational inequalities. For example: 5/(x - 3) > 2/(x - 1).
- | 
- 
-
- 
- `Slope` | 
- Slope problems. For example: Find the slope of y = 10x + 5.
- | 
- 
-
- 
- `Statistics` | 
- Statistics problems. For example: Find the mean of a set of numbers (3, 8, 2, 10).
- | 
- 
-
- 
- `System of Equations` | 
- System of equations problems. For example: Solve 2x + 5y = 16;3x - 5y = - 1.
- | 
- 
-
- 
- `Trigonometry` | 
- Solve sin(t) + cos(t) = 1.
- | 
- 
-
+| `Trigonometry` | Solve sin(t) + cos(t) = 1. |
  
 
  

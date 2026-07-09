@@ -92,37 +92,40 @@ Here's a [list of HTTP status codes](https://developers.google.com/search/docs/c
 
 Here is sample code for the redirect approach:
 
+
 ```
 fetch(`/api/products/${productId}`)
 .then(response => response.json())
 .then(product => {
- if(product.exists) {
- showProductDetails(product); // shows the product information on the page
- } else {
- // this product does not exist, so this is an error page.
- window.location.href = '/not-found'; // redirect to 404 page on the server.
- }
+  if(product.exists) {
+    showProductDetails(product); // shows the product information on the page
+  } else {
+    // this product does not exist, so this is an error page.
+    window.location.href = '/not-found'; // redirect to 404 page on the server.
+  }
 })
 ```
 
 Here is sample code for the `noindex` tag approach:
 
+
 ```
 fetch(`/api/products/${productId}`)
 .then(response => response.json())
 .then(product => {
- if(product.exists) {
- showProductDetails(product); // shows the product information on the page
- } else {
- // this product does not exist, so this is an error page.
- // Note: This example assumes there is no other robots meta tag present in the HTML.
- const metaRobots = document.createElement('meta');
- metaRobots.name = 'robots';
- metaRobots.content = 'noindex';
- document.head.appendChild(metaRobots);
- }
+  if(product.exists) {
+    showProductDetails(product); // shows the product information on the page
+  } else {
+    // this product does not exist, so this is an error page.
+    // Note: This example assumes there is no other robots meta tag present in the HTML.
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex';
+    document.head.appendChild(metaRobots);
+  }
 })
 ```
+
 
 ## Use the History API instead of fragments
 
@@ -132,48 +135,50 @@ fetch(`/api/products/${productId}`)
  To ensure that Googlebot can parse and extract your URLs, don't use fragments to load different page content.
  The following example is a bad practice, because Googlebot can't reliably resolve the URLs:
 
+
 ```
 <nav>
- <ul>
- <li><a href="#/products">Our products</a></li>
- <li><a href="#/services">Our services</a></li>
- </ul>
+  <ul>
+    <li><a href="#/products">Our products</a></li>
+    <li><a href="#/services">Our services</a></li>
+  </ul>
 </nav>
 
 <h1>Welcome to example.com!</h1>
 <div id="placeholder">
- <p>Learn more about <a href="#/products">our products</a> and <a href="#/services">our services</a></p>
+  <p>Learn more about <a href="#/products">our products</a> and <a href="#/services">our services</a></p>
 </div>
 <script>
 window.addEventListener('hashchange', function goToPage() {
- // this function loads different content based on the current URL fragment
- const pageToLoad = window.location.hash.slice(1); // URL fragment
- document.getElementById('placeholder').innerHTML = load(pageToLoad);
+  // this function loads different content based on the current URL fragment
+  const pageToLoad = window.location.hash.slice(1); // URL fragment
+  document.getElementById('placeholder').innerHTML = load(pageToLoad);
 });
 </script>
 ```
 
 Instead, you can make sure your URLs are accessible to Googlebot by implementing the History API:
 
+
 ```
 <nav>
- <ul>
- <li><a href="/products">Our products</a></li>
- <li><a href="/services">Our services</a></li>
- </ul>
+  <ul>
+    <li><a href="/products">Our products</a></li>
+    <li><a href="/services">Our services</a></li>
+  </ul>
 </nav>
 
 <h1>Welcome to example.com!</h1>
 <div id="placeholder">
- <p>Learn more about <a href="/products">our products</a> and <a href="/services">our services</a></p>
+  <p>Learn more about <a href="/products">our products</a> and <a href="/services">our services</a></p>
 </div>
 <script>
 function goToPage(event) {
- event.preventDefault(); // stop the browser from navigating to the destination URL.
- const hrefUrl = event.target.getAttribute('href');
- const pageToLoad = hrefUrl.slice(1); // remove the leading slash
- document.getElementById('placeholder').innerHTML = load(pageToLoad);
- window.history.pushState({}, window.title, hrefUrl) // Update URL as well as browser history.
+  event.preventDefault(); // stop the browser from navigating to the destination URL.
+  const hrefUrl = event.target.getAttribute('href');
+  const pageToLoad = hrefUrl.slice(1); // remove the leading slash
+  document.getElementById('placeholder').innerHTML = load(pageToLoad);
+  window.history.pushState({}, window.title, hrefUrl) // Update URL as well as browser history.
 }
 
 // Enable client-side routing for all links on the page
@@ -182,23 +187,26 @@ document.querySelectorAll('a').forEach(link => link.addEventListener('click', go
 </script>
 ```
 
+
 ## Properly inject the `rel="canonical"` link tag
 
  While we don't recommend using JavaScript for this, it is possible to inject a [`rel="canonical"` link tag](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls#rel-canonical-link-method) with JavaScript.
  Google Search will pick up the injected canonical URL when rendering the page. Here is an example to inject a `rel="canonical"` link tag with JavaScript:
 
+
 ```
 fetch('/api/cats/' + id)
- .then(function (response) { return response.json(); })
- .then(function (cat) {
- // creates a canonical link tag and dynamically builds the URL
- // e.g. https://example.com/cats/simba
- const linkTag = document.createElement('link');
- linkTag.setAttribute('rel', 'canonical');
- linkTag.href = 'https://example.com/cats/' + cat.urlFriendlyName;
- document.head.appendChild(linkTag);
- });
+  .then(function (response) { return response.json(); })
+  .then(function (cat) {
+    // creates a canonical link tag and dynamically builds the URL
+    // e.g. https://example.com/cats/simba
+    const linkTag = document.createElement('link');
+    linkTag.setAttribute('rel', 'canonical');
+    linkTag.href = 'https://example.com/cats/' + cat.urlFriendlyName;
+    document.head.appendChild(linkTag);
+  });
 ```
+
 
  When using JavaScript to inject the `rel="canonical"` link tag, make sure that this is the only `rel="canonical"` link tag on the page.
  Incorrect implementations might create multiple `rel="canonical"` link tag or change an existing `rel="canonical"` link tag.
@@ -209,37 +217,41 @@ fetch('/api/cats/' + id)
  You can prevent Google from indexing a page or following links through the robots `meta` tag.
  For example, adding the following `meta` tag to the top of your page blocks Google from indexing the page:
 
+
 ```
 <!-- Google won't index this page or follow links on this page -->
 <meta name="robots" content="noindex, nofollow">
 ```
 
+
  You can use JavaScript to add a robots `meta` tag to a page or change its content.
  The following example code shows how to change the robots `meta` tag with JavaScript to prevent indexing of the current page if an API call doesn't return content.
 
+
 ```
 fetch('/api/products/' + productId)
- .then(function (response) { return response.json(); })
- .then(function (apiResponse) {
- if (apiResponse.isError) {
- // get the robots meta tag
- var metaRobots = document.querySelector('meta[name="robots"]');
- // if there was no robots meta tag, add one
- if (!metaRobots) {
- metaRobots = document.createElement('meta');
- metaRobots.setAttribute('name', 'robots');
- document.head.appendChild(metaRobots);
- }
- // tell Google to exclude this page from the index
- metaRobots.setAttribute('content', 'noindex');
- // display an error message to the user
- errorMsg.textContent = 'This product is no longer available';
- return;
- }
- // display product information
- // ...
- });
+  .then(function (response) { return response.json(); })
+  .then(function (apiResponse) {
+    if (apiResponse.isError) {
+      // get the robots meta tag
+      var metaRobots = document.querySelector('meta[name="robots"]');
+      // if there was no robots meta tag, add one
+      if (!metaRobots) {
+        metaRobots = document.createElement('meta');
+        metaRobots.setAttribute('name', 'robots');
+        document.head.appendChild(metaRobots);
+      }
+      // tell Google to exclude this page from the index
+      metaRobots.setAttribute('content', 'noindex');
+      // display an error message to the user
+      errorMsg.textContent = 'This product is no longer available';
+      return;
+    }
+    // display product information
+    // ...
+  });
 ```
+
 
  When Google encounters the `noindex` tag, it may skip rendering and JavaScript
  execution, which means using JavaScript to change or remove the robots
@@ -268,29 +280,31 @@ fetch('/api/products/' + productId)
  The following example creates a web component that displays its light DOM content inside its shadow DOM.
  One way to make sure both light DOM and shadow DOM content is displayed in the rendered HTML is to use a [Slot](https://developers.google.com/web/fundamentals/web-components/shadowdom#slots) element.
 
+
 ```
 <script>
- class MyComponent extends HTMLElement {
- constructor() {
- super();
- this.attachShadow({ mode: 'open' });
- }
+  class MyComponent extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: 'open' });
+    }
 
- connectedCallback() {
- let p = document.createElement('p');
- p.innerHTML = 'Hello World, this is shadow DOM content. Here comes the light DOM: <slot></slot>';
- this.shadowRoot.appendChild(p);
- }
- }
+    connectedCallback() {
+      let p = document.createElement('p');
+      p.innerHTML = 'Hello World, this is shadow DOM content. Here comes the light DOM: <slot></slot>';
+      this.shadowRoot.appendChild(p);
+    }
+  }
 
- window.customElements.define('my-component', MyComponent);
+  window.customElements.define('my-component', MyComponent);
 </script>
 
 <my-component>
- <p>This is light DOM content. It's projected into the shadow DOM.</p>
- <p>WRS renders this content as well as the shadow DOM content.</p>
+  <p>This is light DOM content. It's projected into the shadow DOM.</p>
+  <p>WRS renders this content as well as the shadow DOM content.</p>
 </my-component>
 ```
+
 
 After rendering, Google can index this content:
 
@@ -298,12 +312,12 @@ After rendering, Google can index this content:
 
 ```
 <my-component>
- Hello World, this is shadow DOM content. Here comes the light DOM:
- <p>This is light DOM content. It's projected into the shadow DOM<p>
- <p>WRS renders this content as well as the shadow DOM content.</p>
+  Hello World, this is shadow DOM content. Here comes the light DOM:
+  <p>This is light DOM content. It's projected into the shadow DOM<p>
+  <p>WRS renders this content as well as the shadow DOM content.</p>
 </my-component>
- 
 ```
+
 
 ## Fix images and lazy-loaded content
 

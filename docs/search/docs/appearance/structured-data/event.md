@@ -147,58 +147,59 @@ Here's an example of standard `Event` in JSON-LD. A standard event means that th
 
 ```
 <html>
- <head>
- <title>The Adventures of Kira and Morrison</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Event",
- "name": "The Adventures of Kira and Morrison",
- "startDate": "2025-07-21T19:00-05:00",
- "endDate": "2025-07-21T23:00-05:00",
- "eventStatus": "https://schema.org/EventScheduled",
- "location": {
- "@type": "Place",
- "name": "Snickerpark Stadium",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "100 West Snickerpark Dr",
- "addressLocality": "Snickertown",
- "postalCode": "19019",
- "addressRegion": "PA",
- "addressCountry": "US"
- }
- },
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/event_offer/12345_202403180430",
- "price": 30,
- "priceCurrency": "USD",
- "availability": "https://schema.org/InStock",
- "validFrom": "2024-05-21T12:00"
- },
- "performer": {
- "@type": "PerformingGroup",
- "name": "Kira and Morrison"
- },
- "organizer": {
- "@type": "Organization",
- "name": "Kira and Morrison Music",
- "url": "https://kiraandmorrisonmusic.com"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Adventures of Kira and Morrison</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "The Adventures of Kira and Morrison",
+      "startDate": "2025-07-21T19:00-05:00",
+      "endDate": "2025-07-21T23:00-05:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Snickerpark Stadium",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "100 West Snickerpark Dr",
+          "addressLocality": "Snickertown",
+          "postalCode": "19019",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        }
+      },
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.com/event_offer/12345_202403180430",
+        "price": 30,
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-05-21T12:00"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "Kira and Morrison"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Kira and Morrison Music",
+        "url": "https://kiraandmorrisonmusic.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
+
 
 ### Event with an updated status
 
@@ -270,56 +271,56 @@ Here's an example of standard `Event` in JSON-LD. A standard event means that th
 
 ```
 <html>
- <head>
- <title>The Adventures of Kira and Morrison</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Event",
- "name": "The Adventures of Kira and Morrison",
- "startDate": "2025-07-21T19:00-05:00",
- "endDate": "2025-07-21T23:00-05:00",
- "eventStatus": "https://schema.org/EventCancelled",
- "location": {
- "@type": "Place",
- "name": "Snickerpark Stadium",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "100 West Snickerpark Dr",
- "addressLocality": "Snickertown",
- "postalCode": "19019",
- "addressRegion": "PA",
- "addressCountry": "US"
- }
- },
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/event_offer/12345_202403180430",
- "price": 30,
- "priceCurrency": "USD",
- "availability": "https://schema.org/InStock",
- "validFrom": "2024-05-21T12:00"
- },
- "performer": {
- "@type": "PerformingGroup",
- "name": "Kira and Morrison"
- },
- "organizer": {
- "@type": "Organization",
- "name": "Kira and Morrison Music",
- "url": "https://kiraandmorrisonmusic.com"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Adventures of Kira and Morrison</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "The Adventures of Kira and Morrison",
+      "startDate": "2025-07-21T19:00-05:00",
+      "endDate": "2025-07-21T23:00-05:00",
+      "eventStatus": "https://schema.org/EventCancelled",
+      "location": {
+        "@type": "Place",
+        "name": "Snickerpark Stadium",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "100 West Snickerpark Dr",
+          "addressLocality": "Snickertown",
+          "postalCode": "19019",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        }
+      },
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.com/event_offer/12345_202403180430",
+        "price": 30,
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-05-21T12:00"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "Kira and Morrison"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Kira and Morrison Music",
+        "url": "https://kiraandmorrisonmusic.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -392,57 +393,57 @@ Here's an example of standard `Event` in JSON-LD. A standard event means that th
 
 ```
 <html>
- <head>
- <title>The Adventures of Kira and Morrison</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Event",
- "name": "The Adventures of Kira and Morrison",
- "startDate": "2025-07-21T19:00-05:00",
- "endDate": "2025-07-21T23:00-05:00",
- "eventStatus": "https://schema.org/EventRescheduled",
- "previousStartDate": "2025-03-21T19:00-05:00",
- "location": {
- "@type": "Place",
- "name": "Snickerpark Stadium",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "100 West Snickerpark Dr",
- "addressLocality": "Snickertown",
- "postalCode": "19019",
- "addressRegion": "PA",
- "addressCountry": "US"
- }
- },
- "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
- ],
- "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
- "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/event_offer/12345_202403180430",
- "price": 30,
- "priceCurrency": "USD",
- "availability": "https://schema.org/InStock",
- "validFrom": "2024-05-21T12:00"
- },
- "performer": {
- "@type": "PerformingGroup",
- "name": "Kira and Morrison"
- },
- "organizer": {
- "@type": "Organization",
- "name": "Kira and Morrison Music",
- "url": "https://kiraandmorrisonmusic.com"
- }
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>The Adventures of Kira and Morrison</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "The Adventures of Kira and Morrison",
+      "startDate": "2025-07-21T19:00-05:00",
+      "endDate": "2025-07-21T23:00-05:00",
+      "eventStatus": "https://schema.org/EventRescheduled",
+      "previousStartDate": "2025-03-21T19:00-05:00",
+      "location": {
+        "@type": "Place",
+        "name": "Snickerpark Stadium",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "100 West Snickerpark Dr",
+          "addressLocality": "Snickertown",
+          "postalCode": "19019",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        }
+      },
+      "image": [
+        "https://example.com/photos/1x1/photo.jpg",
+        "https://example.com/photos/4x3/photo.jpg",
+        "https://example.com/photos/16x9/photo.jpg"
+       ],
+      "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance.",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.example.com/event_offer/12345_202403180430",
+        "price": 30,
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2024-05-21T12:00"
+      },
+      "performer": {
+        "@type": "PerformingGroup",
+        "name": "Kira and Morrison"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "Kira and Morrison Music",
+        "url": "https://kiraandmorrisonmusic.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -453,86 +454,25 @@ Here's an example of standard `Event` in JSON-LD. A standard event means that th
 We are excited to bring the event search experience on Google to more regions around the world. The experience is available in the following regions and languages.
 
  
- Region | 
- Available languages | 
+| Region | Available languages |
  
-
+| Australia | English |
  
+| Brazil | Portuguese |
  
- Australia
- | 
+| Canada | English |
  
- English
- | 
+| Germany | German |
  
-
+| India | English |
  
+| Latin America | Spanish |
  
- Brazil
- | 
+| Spain | Spanish |
  
- Portuguese
- | 
+| United Kingdom | English |
  
-
- 
- 
- Canada
- | 
- 
- English
- | 
- 
-
- 
- Germany | 
- German | 
- 
-
- 
- 
- India
- | 
- 
- English
- | 
- 
-
- 
- 
- Latin America
- | 
- 
- Spanish
- | 
- 
-
- 
- 
- Spain
- | 
- 
- Spanish
- | 
- 
-
- 
- 
- United Kingdom
- | 
- 
- English
- | 
- 
-
- 
- 
- United States
- | 
- 
- English
- | 
- 
+| United States | English |
 
 ## Guidelines
 
@@ -633,6 +573,7 @@ Specify the timezone by including the UTC or GMT time offset. If the event start
  indicate the time if you don't know the time.
  Recommended
 
+
 ```
 "startDate": "2019-07-01T10:00:00-05:00",
 "endDate": "2019-07-26T17:00:00-05:00"
@@ -648,6 +589,7 @@ Specify the timezone by including the UTC or GMT time offset. If the event start
 ```
 
  Not recommended
+
 
 ```
 "startDate": "2019-07-01T00:00:00+00:00",
@@ -686,41 +628,15 @@ Specify the timezone by including the UTC or GMT time offset. If the event start
  
  
  
- Start date and time interpretations | 
+| Start date and time interpretations |
  
-
+| `2019-08-15T00:00:00+00:00` | Google interprets the `startTime` to be `2019-08-14T17:00:00-07:00` (if `location` is set to California) or `2019-08-15T09:00:00` (if `location` is set to Korea). |
  
- `2019-08-15T00:00:00+00:00` | 
+| `2019-08-15T23:59:59+00:00` | This doesn't mean the end of `2019-08-15` unless the event happens in the GMT timezone. Google interprets the `startTime` to be `2019-08-15T16:59:59-07:00` (if `location` is set to California) or `2019-08-16T08:59:59` (if `location` is set to Korea). |
  
- Google interprets the `startTime` to be
- `2019-08-14T17:00:00-07:00` (if `location` is set to California) or
- `2019-08-15T09:00:00` (if `location` is set to Korea).
- | 
+| `2019-07-10` | This means the date regardless of the timezone. When used in `startDate`, it means the event starts in the `location` from sometime in that day. When used in `endDate`, it means the event ends in the `location` from sometime in that day. |
  
-
- 
- `2019-08-15T23:59:59+00:00` | 
- This doesn't mean the end of `2019-08-15` unless the event happens in
- the GMT timezone. Google interprets the `startTime` to be
- `2019-08-15T16:59:59-07:00` (if `location` is set to California) or
- `2019-08-16T08:59:59` (if `location` is set to Korea). | 
- 
-
- 
- `2019-07-10` | 
- This means the date regardless of the timezone. When used in `startDate`,
- it means the event starts in the `location` from sometime in that day. When used in
- `endDate`, it means the event ends in the `location` from sometime in that
- day. | 
- 
-
- 
- `2019-07-20T00:00:00` | 
- This means midnight on `2019-07-20` for the timezone where the
- event happens. This is also likely wrong unless the event was meant to start at
- midnight. | 
- 
-
+| `2019-07-20T00:00:00` | This means midnight on `2019-07-20` for the timezone where the event happens. This is also likely wrong unless the event was meant to start at midnight. |
  
 
 ## Structured data type definitions
@@ -734,260 +650,95 @@ You must include the required properties for your content to be eligible for dis
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
+| `location` | ` Place ` The location of the event. Set the `@type` to `Place`. Add the `location.address` and `location.name` properties. |
  
- `location`
- | 
- 
- `[Place](https://schema.org/Place)`
-
- The location of the event. Set the `@type` to `Place`. Add the [`location.address`](https://developers.google.com#location-address) and
- [`location.name`](https://developers.google.com#location-name) properties.
-
- | 
- 
-
- 
- 
- `location.address`
- | 
- 
- `[PostalAddress](https://schema.org/PostalAddress)`
-
- The venue's detailed street address. 
-
- Not recommended: Sydney
-
- Recommended: Bennelong Point,
- Sydney NSW 2000, Australia
-
- United States example
-
- 
-
+| `location.address` | ` PostalAddress ` The venue's detailed street address. Not recommended : Sydney Recommended : Bennelong Point, Sydney NSW 2000, Australia United States example 
 ```
 "location": {
- "@type": "Place",
- "name": "Snickerpark Stadium",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "100 West Snickerpark Dr",
- "addressLocality": "Snickertown",
- "postalCode": "19019",
- "addressRegion": "PA",
- "addressCountry": "US"
- }
+  "@type": "Place",
+  "name": "Snickerpark Stadium",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "100 West Snickerpark Dr",
+    "addressLocality": "Snickertown",
+    "postalCode": "19019",
+    "addressRegion": "PA",
+    "addressCountry": "US"
+  }
 }
 ```
-
- Japan examples
-
- 
- You can write addresses for Japan in different ways, and Google still understands the
- address. Here's an example with the street address, locality, and country in
- different fields.
- 
-
- 
-
+ Japan examples You can write addresses for Japan in different ways, and Google still understands the address. Here's an example with the street address, locality, and country in different fields. 
 ```
 "location": {
- "@type": "Place",
- "name": "ダイバーシティ東京",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "江東区青海1-10",
- "addressLocality": "東京",
- "addressCountry": "日本"
- }
+  "@type": "Place",
+  "name": "ダイバーシティ東京",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "江東区青海1-10",
+    "addressLocality": "東京",
+    "addressCountry": "日本"
+  }
 }
 ```
-
- 
- Here's an example of the street address and address country in different fields.
- 
-
- 
-
+ Here's an example of the street address and address country in different fields. 
 ```
 "location": {
- "@type": "Place",
- "name": "ダイバーシティ東京",
- "address": {
- "@type": "PostalAddress",
- "streetAddress": "東京都江東区青海1-10",
- "addressCountry": "日本"
- }
+  "@type": "Place",
+  "name": "ダイバーシティ東京",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "東京都江東区青海1-10",
+    "addressCountry": "日本"
+  }
 }
 ```
-
-Here's an example of the entire address on one line.
-
+ Here's an example of the entire address on one line. 
 ```
 "location": {
- "@type": "Place",
- "name": "ダイバーシティ東京",
- "address": {
- "@type": "PostalAddress",
- "name": "東京都江東区青海 1-1-10 ダイバーシティ東京プラザ"
- }
+  "@type": "Place",
+  "name": "ダイバーシティ東京",
+  "address": {
+    "@type": "PostalAddress",
+    "name": "東京都江東区青海 1-1-10 ダイバーシティ東京プラザ"
+   }
 }
 ```
-
- Best practices for addresses:
-
+ Best practices for addresses : If the event happens across several streets, define the starting location and mention the full details in description. If the event happens without a well-defined location, use the city name or the most representative location. If the event happens at multiple locations at the same time, create different events for each location. |
  
+| `name` | ` Text ` The full title of the event. DO NOT put the name of the event location. Instead, use `location.name` to specify the name of the location where the event is being held. Not recommended : Bill Graham Civic Auditorium Not recommended : **LIMITED TIME SALE - Kesha and Macklemore Concert - $25** Recommended : The Adventures of Kesha and Macklemore Recommended : Meet and Greet: Kesha and Macklemore Best practices : Don't use the type of event as the name of the event. For example, "Concert" is not a descriptive name for an event. Don't include extraneous information like URLs, prices, or performers. Instead, use the appropriate properties for those values. Highlight a unique aspect of the event in the title. This helps users make faster decisions (for example, "feat. Q&A with the artist"). Don't add short-term promotions (for example, "buy your tickets now"). |
  
-- If the event happens across several streets, define the starting location and mention
- the full details in description.
- 
-- If the event happens without a well-defined location, use the city name or the most
- representative location.
- 
-- If the event happens at multiple locations at the same time, create different events for
- each location.
- 
-
- | 
- 
-
- 
- 
- `name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The full title of the event.
-
- DO NOT put the name of the event location. Instead, use
- [`location.name`](https://developers.google.com#location-name) to specify the name of the location
- where the event is being held.
- Not recommended: Bill Graham Civic Auditorium
-
- Not recommended: **LIMITED TIME SALE -
- Kesha and Macklemore Concert - $25**
-
- Recommended: The Adventures of Kesha and
- Macklemore
-
- Recommended: Meet and Greet: Kesha and
- Macklemore
-
- Best practices:
-
- 
- 
-- Don't use the type of event as the name of the event. For example, "Concert" is not
- a descriptive name for an event.
- 
-- Don't include extraneous information like URLs, prices, or performers. Instead, use
- the appropriate properties for those values.
- 
-- Highlight a unique aspect of the event in the title. This helps users make faster
- decisions (for example, "feat. Q&A with the artist").
- 
-- Don't add short-term promotions (for example, "buy your tickets now").
- 
-
- | 
- 
-
- 
- `startDate` | 
- 
- `[DateTime](https://schema.org/DateTime)`
-
- The start date and start time of the event in
- [ISO-8601 format](https://en.wikipedia.org/wiki/ISO_8601).
- Add both the date and time so users can find events that fit into their
- schedule.
-
- 
- Make sure to follow the [Date and time guidelines](https://developers.google.com#date-time-best-guidelines).
- 
- 
-
+| `startDate` | ` DateTime ` The start date and start time of the event in ISO-8601 format . Add both the date and time so users can find events that fit into their schedule. Make sure to follow the Date and time guidelines . 
 ```
 "startDate": "2025-07-21T19:00"
 ```
-
- | 
- 
-
+ |
  
  
 
  
  
  
- Recommended properties | 
-
+ 
+| Recommended properties |
  
  
  
- 
- `description`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- Description of the event. Describe all details of the event to make it easier for
- users to understand and attend the event.
-
- 
- Best practices:
- 
-
- 
- 
-- Add a clear and concise description of the specific event.
- 
-- Focus on the event details and not your site's features. 
- 
-- Don't repeat other facts like date and location; instead, add that information to the
- respective properties.
- 
-
- 
-
+| `description` | ` Text ` Description of the event. Describe all details of the event to make it easier for users to understand and attend the event. Best practices : Add a clear and concise description of the specific event. Focus on the event details and not your site's features. Don't repeat other facts like date and location; instead, add that information to the respective properties. 
 ```
 "description": "The Adventures of Kira and Morrison is coming to Snickertown in a can't miss performance."
 ```
-
- Google only shows a snippet of the full description.
- | 
+ Google only shows a snippet of the full description. |
  
-
- 
- 
- `endDate`
- | 
- 
- `[DateTime](https://schema.org/DateTime)`
-
- The end date and end time of the event in
- [ISO-8601 format](https://en.wikipedia.org/wiki/ISO_8601).
- Use the same format as `[startDate](https://developers.google.com#startdate)`. Add both the
- date and time so users can find events that fit into their schedule.
-
- 
- Make sure to follow the [Date and time
- guidelines](https://developers.google.com#date-time-best-guidelines).
- 
- 
-
+| `endDate` | ` DateTime ` The end date and end time of the event in ISO-8601 format . Use the same format as ` startDate `. Add both the date and time so users can find events that fit into their schedule. Make sure to follow the Date and time guidelines . 
 ```
 "endDate": "2025-07-21T23:00"
 ```
-
- | 
- 
-
+ |
  
  `eventStatus`
  | 
@@ -1006,454 +757,145 @@ Here's an example of the entire address on one line.
  
  
  
- [`EventCancelled`](https://schema.org/EventCancelled) | 
  
- 
- The event has been canceled.
-
- Don't remove or change other properties (for
- example, don't remove `startDate` or `location`);
- instead, keep all values as the same as they were before the cancelation, and
- update the `eventStatus` to `EventCancelled`. 
-
- 
-
- Why? Properties like `startDate` and
- `location` help identify the unique event and
- make sure people understand the new status of the event.
- 
-
+| `EventCancelled` | The event has been canceled. Don't remove or change other properties (for example, don't remove `startDate` or `location`); instead, keep all values as the same as they were before the cancelation, and update the `eventStatus` to `EventCancelled`. Why? Properties like `startDate` and `location` help identify the unique event and make sure people understand the new status of the event. 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Event",
- "eventStatus": "https://schema.org/EventCancelled",
- "startDate": "2020-07-21T19:00"
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventCancelled",
+  "startDate": "2020-07-21T19:00"
 }
 ```
-
- | 
-
- [`EventPostponed`](https://schema.org/EventPostponed) | 
+ |
  
- 
- The event has been postponed to a later date, but the date isn't known yet. Keep the
- original date in the [`startDate`](https://developers.google.com#startdate) of the event
- until you know when the event will take place. Once you know the new date information,
- change the `eventStatus` to `EventRescheduled` and update the
- [`startDate`](https://developers.google.com#startdate) and [`endDate`](https://developers.google.com#enddate)
- with the new date information.
- 
-
- Don't remove or change other properties (for
- example, don't remove the `startDate` or `location`);
- instead, keep all values as the same as they were before the postponement, and
- update the `eventStatus` to `EventPostponed`. 
-
- 
-
- Why? Properties like `startDate` and
- `location` help identify the unique event and
- make sure people understand the new status of the event.
- 
-
+| `EventPostponed` | The event has been postponed to a later date, but the date isn't known yet. Keep the original date in the `startDate` of the event until you know when the event will take place. Once you know the new date information, change the `eventStatus` to `EventRescheduled` and update the `startDate` and `endDate` with the new date information. Don't remove or change other properties (for example, don't remove the `startDate` or `location`); instead, keep all values as the same as they were before the postponement, and update the `eventStatus` to `EventPostponed`. Why? Properties like `startDate` and `location` help identify the unique event and make sure people understand the new status of the event. 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Event",
- "eventStatus": "https://schema.org/EventPostponed",
- "startDate": "2020-07-21T19:00"
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventPostponed",
+  "startDate": "2020-07-21T19:00"
 }
 ```
-
- | 
-
- [`EventRescheduled`](https://schema.org/EventRescheduled) | 
+ |
  
- 
- The event has been rescheduled to a later date. Update the
- [`startDate`](https://developers.google.com#startdate) and [`endDate`](https://developers.google.com#enddate)
- with the relevant new dates. Optionally, you can also mark the `eventStatus`
- field as rescheduled and add the `[previousStartDate](https://developers.google.com#previous-start-date)`.
- 
-
- 
-
+| `EventRescheduled` | The event has been rescheduled to a later date. Update the `startDate` and `endDate` with the relevant new dates. Optionally, you can also mark the `eventStatus` field as rescheduled and add the ` previousStartDate `. 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Event",
- "eventStatus": "https://schema.org/EventRescheduled",
- "startDate": "2020-07-21T19:00",
- "endDate": "2025-07-21T23:00",
- "previousStartDate": "2025-03-21T19:00"
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventRescheduled",
+  "startDate": "2020-07-21T19:00",
+  "endDate": "2025-07-21T23:00",
+  "previousStartDate": "2025-03-21T19:00"
 }
 ```
-
- | 
-
- [`EventScheduled`](https://schema.org/EventScheduled) | 
+ |
  
- 
- The event is scheduled to happen. This value is the default status for events. If you
- don't set `eventStatus`, Google understands the event to be happening on schedule.
- 
-
- 
-
+| `EventScheduled` | The event is scheduled to happen. This value is the default status for events. If you don't set `eventStatus`, Google understands the event to be happening on schedule. 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Event",
- "eventStatus": "https://schema.org/EventScheduled",
- "startDate": "2020-07-21T19:00"
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "startDate": "2020-07-21T19:00"
 }
 ```
-
- | 
-
+ |
  
  
 
  | 
 
  
- 
- `image`
- | 
- 
- Repeated `[ImageObject](https://schema.org/ImageObject)` or
- `[URL](https://schema.org/URL)`
-
- URL of an image or logo for the event or tour. Including an image helps users
- understand and engage with your event. We recommend that images are 1920px wide
- (the minimum width is 720px).
-
- 
-Additional image guidelines:
- 
- 
-- Image URLs must be crawlable and indexable. To check if Google can access your URLs, use
- the [URL Inspection tool](https://support.google.com/webmasters/answer/9012289).
- 
-- Images must represent the marked up content.
- 
-- Images must be in a file format that's [supported by Google Images](https://developers.google.com/search/docs/appearance/google-images#supported-image-formats).
- 
-- For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when
- multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1.
- 
-
- For example:
-
- 
-
+| `image` | Repeated ` ImageObject ` or ` URL ` URL of an image or logo for the event or tour. Including an image helps users understand and engage with your event. We recommend that images are 1920px wide (the minimum width is 720px). Additional image guidelines: Image URLs must be crawlable and indexable. To check if Google can access your URLs, use the URL Inspection tool . Images must represent the marked up content. Images must be in a file format that's supported by Google Images . For best results, we recommend providing multiple high-resolution images (minimum of 50K pixels when multiplying width and height) with the following aspect ratios: 16x9, 4x3, and 1x1. For example: 
 ```
 "image": [
- "https://example.com/photos/1x1/photo.jpg",
- "https://example.com/photos/4x3/photo.jpg",
- "https://example.com/photos/16x9/photo.jpg"
+  "https://example.com/photos/1x1/photo.jpg",
+  "https://example.com/photos/4x3/photo.jpg",
+  "https://example.com/photos/16x9/photo.jpg"
 ]
 ```
-
+ |
  
- | 
+| `location.name` | ` Text ` The detailed name of the place or venue where the event is being held. This property is only recommended for events that take place at a physical location. DO NOT put the title of the event in this field. Instead, use `name` to specify the name of the event. Not recommended : San Francisco, CA Recommended : Bill Graham Civic Auditorium Best practices : Don't include a city name unless it is a city-wide event. The `location.name` property must be the name of the venue or location, not a repeat of the title of the event. If you don't know the name of the location, don't use this property. |
  
-
+| `offers` | ` Offer ` A nested ` Offer `, one for each ticket type. |
  
- 
- `location.name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The detailed name of the place or venue where the event is being held. This property
- is only recommended for events that take place at a physical location.
-
- DO NOT put the title of the event in this field. Instead, use
- [`name`](https://developers.google.com#event-name) to specify the name of the event.
- Not recommended: San Francisco, CA
-
- Recommended: Bill Graham Civic Auditorium
-
- 
- Best practices:
- 
-
- 
- 
-- Don't include a city name unless it is a city-wide event.
- 
-- The `location.name` property must be the name of the venue or location, not a repeat of
- the title of the event. If you don't know the name of the location, don't use this property.
- 
-
- | 
- 
-
- 
- 
- `offers`
- | 
- 
- `[Offer](https://schema.org/Offer)`
-
- A nested `[Offer](https://schema.org/Offer)`, one for each ticket
- type.
- | 
- 
-
- 
- 
- `offers.availability`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- One of the following:
-
- 
- 
-- `[InStock](https://schema.org/InStock)`: Event tickets are in stock.
- 
-- `[SoldOut](https://schema.org/SoldOut)`: Event tickets are sold out.
- 
-- `[PreOrder](https://schema.org/PreOrder)`: Event tickets are available for preorder.
- 
-
- 
-
+| `offers.availability` | ` Text ` One of the following: ` InStock `: Event tickets are in stock. ` SoldOut `: Event tickets are sold out. ` PreOrder `: Event tickets are available for preorder. 
 ```
 "offers": {
- "@type": "Offer",
- "availability": "https://schema.org/InStock"
+  "@type": "Offer",
+  "availability": "https://schema.org/InStock"
 }
 ```
-
- Note: If the ticket is not yet on sale to the general public, you can
- omit availability and specify `validFrom`.
- | 
+ Note: If the ticket is not yet on sale to the general public, you can omit availability and specify `validFrom`. |
  
-
- 
- 
- `offers.price`
- | 
- 
- `[Number](https://schema.org/Number)`
-
- The lowest available price available for your tickets, including service charges and
- fees. Don't forget to update it as prices change or tickets sell out.
-
- 
- If the event is available without payment, fees, or service charges, set the `price` to `0`.
- 
-
- 
-
+| `offers.price` | ` Number ` The lowest available price available for your tickets, including service charges and fees. Don't forget to update it as prices change or tickets sell out. If the event is available without payment, fees, or service charges, set the `price` to `0`. 
 ```
 "offers": {
- "@type": "Offer",
- "price": 30
+  "@type": "Offer",
+  "price": 30
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `offers.priceCurrency`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The 3-letter ISO 4217 currency code.
-
- 
-
+| `offers.priceCurrency` | ` Text ` The 3-letter ISO 4217 currency code. 
 ```
 "offers": {
- "@type": "Offer",
- "priceCurrency": "USD"
+  "@type": "Offer",
+  "priceCurrency": "USD"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `offers.validFrom`
- | 
- 
- `[DateTime](https://schema.org/DateTime)`
-
- The date and time when tickets go on sale (only required on date-restricted offers), in
- [ISO-8601 format](https://en.wikipedia.org/wiki/ISO_8601).
-
- 
-
+| `offers.validFrom` | ` DateTime ` The date and time when tickets go on sale (only required on date-restricted offers), in ISO-8601 format . 
 ```
 "offers": {
- "@type": "Offer",
- "validFrom": "2024-05-21T12:00"
+  "@type": "Offer",
+  "validFrom": "2024-05-21T12:00"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `offers.url`
- | 
- 
- [URL](https://schema.org/URL)
-
- The URL of a page providing the ability to buy tickets. 
-
- 
-
+| `offers.url` | URL The URL of a page providing the ability to buy tickets. 
 ```
 "offers": {
- "@type": "Offer",
- "url": "https://www.example.com/event_offer/12345_201803180430"
+  "@type": "Offer",
+  "url": "https://www.example.com/event_offer/12345_201803180430"
 }
 ```
-
- This URL must meet the following requirements:
-
+ This URL must meet the following requirements: Direct to a landing page that clearly and predominantly provides the opportunity to buy a ticket offering admittance to that specific event to any user from the general public. Be a link that a user could click the web page that contains the event. Be crawlable by Googlebot (not blocked by robots.txt). |
  
+| `organizer` | ` Organization ` or ` Person ` The person or organization that is hosting the event. If you include `organizer`, we encourage you to add the following properties: `organizer.name` `organizer.url` |
  
-- Direct to a landing page that clearly and predominantly provides the opportunity to buy
- a ticket offering admittance to that specific event to any user from the general
- public.
+| `organizer.name` | ` Text ` The name of the person or organization that's hosting the event. |
  
-- Be a link that a user could click the web page that contains the event.
+| `organizer.url` | ` URL ` The event host's domain URL. |
  
-- Be crawlable by Googlebot (not blocked by robots.txt).
+| `performer` | ` Person ` The participants performing at the event, such as artists and comedians. Use a nested ` PerformingGroup ` or ` Person `, one for each performer. |
  
-
- | 
- 
-
- 
- 
- `organizer`
- | 
- 
- `[Organization](https://schema.org/Organization)`
- or `[Person](https://schema.org/Person)`
-
- The person or organization that is hosting the event. If you include `organizer`,
- we encourage you to add the following properties:
-
- 
- 
-- [`organizer.name`](https://developers.google.com#organizer-name)
- 
-- [`organizer.url`](https://developers.google.com#organizer-url)
- 
-
- | 
- 
-
- 
- 
- `organizer.name`
- | 
- 
- `[Text](https://schema.org/Text)`
-
- The name of the person or organization that's hosting the event.
-
- | 
- 
-
- 
- 
- `organizer.url`
- | 
- 
- `[URL](https://schema.org/URL)`
-
- The event host's domain URL.
-
- | 
- 
-
- 
- 
- `performer`
- | 
- 
- `[Person](https://schema.org/Person)`
-
- The participants performing at the event, such as artists and comedians. Use a nested
- `[PerformingGroup](https://schema.org/PerformingGroup)` or
- `[Person](https://schema.org/Person)`, one for each performer.
-
- | 
- 
-
- 
- 
- `performer.name`
- | 
- 
- [Text](https://schema.org/Text)
-
- The name of the participant performing at the event, such as the name of the artist or
- comedian.
-
- 
-
+| `performer.name` | Text The name of the participant performing at the event, such as the name of the artist or comedian. 
 ```
 "performer": {
- "@type": "PerformingGroup",
- "name": "Kira and Morrison"
+  "@type": "PerformingGroup",
+  "name": "Kira and Morrison"
 }
 ```
-
- | 
+ |
  
-
- 
- 
- `previousStartDate`
- | 
- 
- [DateTime](https://schema.org/DateTime)
-
- The previously scheduled start date for the event if an event has been rescheduled. If
- you add `previousStartDate`, you must also add the [`eventStatus`](https://developers.google.com#eventstatus)
- property and set the `eventStatus` to `EventRescheduled`. Don't use other event statuses.
-
- 
- Make sure to follow the [Date and time guidelines](https://developers.google.com#date-time-best-guidelines).
- 
- 
- For rescheduled events, the [`startDate`](https://developers.google.com#startdate)
- property must only be used for the newly scheduled start date. In the (rare) case of an
- event that has been postponed and rescheduled multiple times, this field may be repeated.
- 
-
- 
-
+| `previousStartDate` | DateTime The previously scheduled start date for the event if an event has been rescheduled. If you add `previousStartDate`, you must also add the `eventStatus` property and set the `eventStatus` to `EventRescheduled`. Don't use other event statuses. Make sure to follow the Date and time guidelines . For rescheduled events, the `startDate` property must only be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated. 
 ```
 {
- "@context": "https://schema.org",
- "@type": "Event",
- "previousStartDate": ["2020-03-21T19:00-05:00", "2020-03-20T19:00-05:00", "2020-03-21T19:00-05:00"],
- "eventStatus": "https://schema.org/EventRescheduled",
- "startDate": "2020-07-21T19:00-05:00"
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "previousStartDate": ["2020-03-21T19:00-05:00", "2020-03-20T19:00-05:00", "2020-03-21T19:00-05:00"],
+  "eventStatus": "https://schema.org/EventRescheduled",
+  "startDate": "2020-07-21T19:00-05:00"
 }
 ```
-
- | 
- 
-
+ |
  
  
 

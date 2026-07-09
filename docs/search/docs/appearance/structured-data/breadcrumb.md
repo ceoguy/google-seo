@@ -120,32 +120,32 @@ If there is only one breadcrumb trail that can lead to the page, the page could 
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "Books",
- "item": "https://example.com/books"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "Science Fiction",
- "item": "https://example.com/books/sciencefiction"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "Award Winners"
- }]
- }
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Award Winners</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Books",
+        "item": "https://example.com/books"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Science Fiction",
+        "item": "https://example.com/books/sciencefiction"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Award Winners"
+      }]
+    }
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -190,31 +190,31 @@ If there is only one breadcrumb trail that can lead to the page, the page could 
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol vocab="https://schema.org/" typeof="BreadcrumbList">
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/books">
- <span property="name">Books</span></a>
- <meta property="position" content="1">
- </li>
- ›
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/books/sciencefiction">
- <span property="name">Science Fiction</span></a>
- <meta property="position" content="2">
- </li>
- ›
- <li property="itemListElement" typeof="ListItem">
- <span property="name">Award Winners</span>
- <meta property="position" content="3">
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol vocab="https://schema.org/" typeof="BreadcrumbList">
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/books">
+          <span property="name">Books</span></a>
+        <meta property="position" content="1">
+      </li>
+      ›
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/books/sciencefiction">
+          <span property="name">Science Fiction</span></a>
+        <meta property="position" content="2">
+      </li>
+      ›
+      <li property="itemListElement" typeof="ListItem">
+        <span property="name">Award Winners</span>
+        <meta property="position" content="3">
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -262,34 +262,34 @@ If there is only one breadcrumb trail that can lead to the page, the page could 
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol itemscope itemtype="https://schema.org/BreadcrumbList">
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemprop="item" href="https://example.com/books">
- <span itemprop="name">Books</span></a>
- <meta itemprop="position" content="1" />
- </li>
- ›
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemscope itemtype="https://schema.org/WebPage"
- itemprop="item" itemid="https://example.com/books/sciencefiction"
- href="https://example.com/books/sciencefiction">
- <span itemprop="name">Science Fiction</span></a>
- <meta itemprop="position" content="2" />
- </li>
- ›
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <span itemprop="name">Award winners</span>
- <meta itemprop="position" content="3" />
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://example.com/books">
+            <span itemprop="name">Books</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemscope itemtype="https://schema.org/WebPage"
+           itemprop="item" itemid="https://example.com/books/sciencefiction"
+           href="https://example.com/books/sciencefiction">
+          <span itemprop="name">Science Fiction</span></a>
+        <meta itemprop="position" content="2" />
+      </li>
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <span itemprop="name">Award winners</span>
+        <meta itemprop="position" content="3" />
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -305,22 +305,22 @@ If there is only one breadcrumb trail that can lead to the page, the page could 
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol>
- <li>
- <a href="https://www.example.com/books">Books</a>
- </li>
- <li>
- <a href="https://www.example.com/sciencefiction">Science Fiction</a>
- </li>
- <li>
- Award Winners
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol>
+      <li>
+        <a href="https://www.example.com/books">Books</a>
+      </li>
+      <li>
+        <a href="https://www.example.com/sciencefiction">Science Fiction</a>
+      </li>
+      <li>
+        Award Winners
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -395,46 +395,46 @@ If there are multiple ways to navigate to a page on your site, you can specify m
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- <script type="application/ld+json">
- [{
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "Books",
- "item": "https://example.com/books"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "Science Fiction",
- "item": "https://example.com/books/sciencefiction"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "Award Winners"
- }]
- },
- {
- "@context": "https://schema.org",
- "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "Literature",
- "item": "https://example.com/literature"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "Award Winners"
- }]
- }]
- </script>
- </head>
- <body>
- </body>
+  <head>
+    <title>Award Winners</title>
+    <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Books",
+        "item": "https://example.com/books"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Science Fiction",
+        "item": "https://example.com/books/sciencefiction"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Award Winners"
+      }]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Literature",
+        "item": "https://example.com/literature"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Award Winners"
+      }]
+    }]
+    </script>
+  </head>
+  <body>
+  </body>
 </html>
 ```
 
@@ -494,46 +494,46 @@ If there are multiple ways to navigate to a page on your site, you can specify m
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol vocab="https://schema.org/" typeof="BreadcrumbList">
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/books">
- <span property="name">Books</span></a>
- <meta property="position" content="1">
- </li>
- ›
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/books/sciencefiction">
- <span property="name">Science Fiction</span></a>
- <meta property="position" content="2">
- </li>
- ›
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/books/sciencefiction/awardwinners">
- <span property="name">Award Winners</span></a>
- <meta property="position" content="3">
- </li>
- </ol>
- <ol vocab="https://schema.org/" typeof="BreadcrumbList">
- <li property="itemListElement" typeof="ListItem">
- <a property="item" typeof="WebPage"
- href="https://example.com/literature">
- <span property="name">Literature</span></a>
- <meta property="position" content="1">
- </li>
- ›
- <li property="itemListElement" typeof="ListItem">
- <span property="name">Award Winners</span>
- <meta property="position" content="2">
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol vocab="https://schema.org/" typeof="BreadcrumbList">
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/books">
+          <span property="name">Books</span></a>
+        <meta property="position" content="1">
+      </li>
+      ›
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/books/sciencefiction">
+          <span property="name">Science Fiction</span></a>
+        <meta property="position" content="2">
+      </li>
+      ›
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/books/sciencefiction/awardwinners">
+          <span property="name">Award Winners</span></a>
+        <meta property="position" content="3">
+      </li>
+    </ol>
+    <ol vocab="https://schema.org/" typeof="BreadcrumbList">
+      <li property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage"
+            href="https://example.com/literature">
+          <span property="name">Literature</span></a>
+        <meta property="position" content="1">
+      </li>
+      ›
+      <li property="itemListElement" typeof="ListItem">
+        <span property="name">Award Winners</span>
+        <meta property="position" content="2">
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -596,49 +596,49 @@ If there are multiple ways to navigate to a page on your site, you can specify m
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol itemscope itemtype="https://schema.org/BreadcrumbList">
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemprop="item" href="https://example.com/books">
- <span itemprop="name">Books</span></a>
- <meta itemprop="position" content="1" />
- </li>
- ›
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemscope itemtype="https://schema.org/WebPage"
- itemprop="item" itemid="https://example.com/books/sciencefiction"
- href="https://example.com/books/sciencefiction">
- <span itemprop="name">Science Fiction</span></a>
- <meta itemprop="position" content="2" />
- </li>
- ›
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemprop="item" href="https://example.com/books/sciencefiction/awardwinners">
- <span itemprop="name">Award Winners</span></a>
- <meta itemprop="position" content="3" />
- </li>
- </ol>
- <ol itemscope itemtype="https://schema.org/BreadcrumbList">
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <a itemprop="item" href="https://example.com/literature">
- <span itemprop="name">Literature</span></a>
- <meta itemprop="position" content="1" />
- </li>
- ›
- <li itemprop="itemListElement" itemscope
- itemtype="https://schema.org/ListItem">
- <span itemprop="name">Award Winners</span>
- <meta itemprop="position" content="2" />
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://example.com/books">
+            <span itemprop="name">Books</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemscope itemtype="https://schema.org/WebPage"
+           itemprop="item" itemid="https://example.com/books/sciencefiction"
+           href="https://example.com/books/sciencefiction">
+          <span itemprop="name">Science Fiction</span></a>
+        <meta itemprop="position" content="2" />
+      </li>
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://example.com/books/sciencefiction/awardwinners">
+          <span itemprop="name">Award Winners</span></a>
+        <meta itemprop="position" content="3" />
+      </li>
+    </ol>
+    <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="https://example.com/literature">
+          <span itemprop="name">Literature</span></a>
+        <meta itemprop="position" content="1" />
+      </li>
+      ›
+      <li itemprop="itemListElement" itemscope
+          itemtype="https://schema.org/ListItem">
+        <span itemprop="name">Award Winners</span>
+        <meta itemprop="position" content="2" />
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -654,30 +654,30 @@ If there are multiple ways to navigate to a page on your site, you can specify m
 
 ```
 <html>
- <head>
- <title>Award Winners</title>
- </head>
- <body>
- <ol>
- <li>
- <a href="https://www.example.com/books">Books</a>
- </li>
- <li>
- <a href="https://www.example.com/books/sciencefiction">Science Fiction</a>
- </li>
- <li>
- Award Winners
- </li>
- </ol>
- <ol>
- <li>
- <a href="https://www.example.com/literature">Literature</a>
- </li>
- <li>
- Award Winners
- </li>
- </ol>
- </body>
+  <head>
+    <title>Award Winners</title>
+  </head>
+  <body>
+    <ol>
+      <li>
+        <a href="https://www.example.com/books">Books</a>
+      </li>
+      <li>
+        <a href="https://www.example.com/books/sciencefiction">Science Fiction</a>
+      </li>
+      <li>
+        Award Winners
+      </li>
+    </ol>
+    <ol>
+      <li>
+        <a href="https://www.example.com/literature">Literature</a>
+      </li>
+      <li>
+        Award Winners
+      </li>
+    </ol>
+  </body>
 </html>
 ```
 
@@ -723,44 +723,35 @@ Data-vocabulary.org markup is no longer
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `itemListElement` | 
- `[ListItem](https://schema.org/ListItem)`
-
- An array of breadcrumbs listed in a specific order. Specify each breadcrumb with a
- [`ListItem`](https://developers.google.com#list-item). For example:
-
- 
-
+| `itemListElement` | ` ListItem ` An array of breadcrumbs listed in a specific order. Specify each breadcrumb with a `ListItem` . For example: 
 ```
 {
 "@context": "https://schema.org",
 "@type": "BreadcrumbList",
- "itemListElement": [{
- "@type": "ListItem",
- "position": 1,
- "name": "Books",
- "item": "https://example.com/books"
- },{
- "@type": "ListItem",
- "position": 2,
- "name": "Authors",
- "item": "https://example.com/books/authors"
- },{
- "@type": "ListItem",
- "position": 3,
- "name": "Ann Leckie",
- "item": "https://example.com/books/authors/annleckie"
- }]
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Books",
+    "item": "https://example.com/books"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Authors",
+    "item": "https://example.com/books/authors"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Ann Leckie",
+    "item": "https://example.com/books/authors/annleckie"
+  }]
 }
 ```
- | 
- 
-
+ |
  
 
 ### `ListItem`
@@ -773,72 +764,20 @@ Data-vocabulary.org markup is no longer
 
  
  
- Required properties | 
-
+ 
+| Required properties |
  
  
  
- `item` | 
- `[URL](https://schema.org/URL)` or a
- subtype of `[Thing](https://schema.org/Thing)`
-
- The URL to the webpage that represents the breadcrumb. There are two ways to specify
- `item`:
-
- 
- 
-- `URL`: Specify the URL of the page. For example:
- 
-
+| `item` | ` URL ` or a subtype of ` Thing ` The URL to the webpage that represents the breadcrumb. There are two ways to specify `item`: `URL`: Specify the URL of the page. For example: 
 ```
 "item": "https://example.com/books"
 ```
-
+ `Thing`: Use an id to specify the URL based on the markup format you're using: JSON-LD : Use `@id` to specify the URL. Microdata : You can use `href` or `itemid` to specify the URL. RDFa : You can use `about`, `href`, or `resource` to specify the URL. If the breadcrumb is the last item in the breadcrumb trail, `item` is not required. If `item` isn't included for the last item, Google uses the URL of the containing page. |
  
+| `name` | ` Text ` The title of the breadcrumb displayed for the user. If you're using a `Thing` with a `name` instead of a `URL` to specify `item`, then `name` is not required. |
  
-- `Thing`: Use an id to specify the URL based on the markup format
- you're using:
- 
- 
-- JSON-LD: Use `@id` to specify the URL.
- 
-- Microdata: You can use `href` or `itemid`
- to specify the URL.
- 
-- RDFa: You can use `about`, `href`,
- or `resource` to specify the URL.
- 
-
- 
- 
-
- 
- If the breadcrumb is the last item in the breadcrumb trail, `item` is not
- required. If `item` isn't included for the last item, Google uses the URL
- of the containing page.
- 
-
- | 
- 
-
- 
- `name` | 
- `[Text](https://schema.org/Text)`
-
- The title of the breadcrumb displayed for the user. If you're using a
- `Thing` with a `name` instead of a `URL` to specify `item`, then `name` is not required.
- | 
- 
-
- 
- `position` | 
- `[Integer](https://schema.org/Integer)`
-
- The position of the breadcrumb in the breadcrumb trail. Position 1 signifies
- the beginning of the trail.
- | 
- 
-
+| `position` | ` Integer ` The position of the breadcrumb in the breadcrumb trail. Position 1 signifies the beginning of the trail. |
  
  
 
