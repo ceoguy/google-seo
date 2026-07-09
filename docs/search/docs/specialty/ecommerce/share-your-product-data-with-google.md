@@ -1,0 +1,214 @@
+---
+source: https://developers.google.com/search/docs/specialty/ecommerce/share-your-product-data-with-google
+title: "Share Your Product Data With Google"
+fetched: 2026-07-08
+---
+
+# Share your product data with Google
+
+ 
+ 
+ To increase eligibility for
+ [richer appearances and on more surfaces across Google](https://developers.google.com/search/docs/specialty/ecommerce/where-ecommerce-data-can-appear-on-google)
+ that can bring more relevant traffic to your site, share your ecommerce product data with
+ Google. To take advantage of these benefits, Google recommends that you do the following:
+ 
+
+ 
+ 
+- 
+ Include structured data in your site's product pages.
+ Learn more about the benefits of
+ [adding structured data to your web pages](https://developers.google.com#add-structured-data).
+ 
+ 
+- 
+ Tell Google directly which products you want to show on Google
+ by uploading a feed to
+ [Google Merchant Center](https://support.google.com/merchants/answer/188924).
+ Google Merchant Center is a Google service that has a deeper understanding of commerce data.
+ Learn more about the [benefits of Google Merchant Center](https://developers.google.com#upload-product-data).
+ 
+ 
+
+ 
+## Add product structured data to web pages
+
+ 
+ Where feasible, add structured data to your product pages. While structured data isn't
+ required to appear in Google Search results, it can help Google understand your page better
+ and display it as a rich result. For example:
+ 
+
+ 
+ 
+- 
+ Structured data increases eligibility for
+ [Product rich results](https://developers.google.com/search/docs/appearance/structured-data/product).
+ 
+ 
+- 
+ Structured data can improve the accuracy of Google's understanding of content such as price,
+ discount, and shipping costs on a page (this can also help the accuracy of Google Merchant
+ Center verification of product feeds against your site).
+ 
+ 
+
+ 
+ Ready to start implementing? Check out
+ [Include structured data relevant to ecommerce](https://developers.google.com/search/docs/specialty/ecommerce/include-structured-data-relevant-to-ecommerce)
+ for more information.
+ 
+
+ 
+ Google may at times use other approaches to extract data from pages. If you want to explicitly
+ tell Google not to use content on a page to form a snippet, add a
+ [`data-nosnippet` attribute](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#data-nosnippet-attr)
+ to that HTML element.
+ 
+
+ 
+## Upload data to Google Merchant Center
+
+ 
+ While uploading product data to Google Merchant Center isn't mandatory to appear in Google
+ search results, it can enhance Google's understanding of your products. Participation in Google
+ Merchant Center is mandatory for some Google surfaces, such as listings in the
+ Google Shopping tab.
+ 
+
+ What is Product Data? Product data describes various attributes of
+ products, such as its title, description, color, pricing, and availability.
+ 
+ For smaller sites that are updated less frequently, you can use an
+ [automated feed to build your product data](https://support.google.com/merchants/answer/7538732)
+ from crawled web content (structured data can help improve the accuracy of data extraction).
+ This approach can also be useful to get started with less effort.
+ 
+
+ 
+ For larger sites or sites with frequently changing content, periodically
+ [upload new data feed files](https://support.google.com/merchants/answer/188477)
+ to Google Merchant Center (or for immediate updates use the
+ [Content API](https://developers.google.com/shopping-content/guides/quickstart)).
+ This gives you greater control over your data in Google. Benefits of uploading feed files include:
+ 
+
+ 
+ 
+- 
+ Increase confidence Google knows all of your products.
+ Web crawling is not guaranteed to find all products on your site.
+ 
+ 
+- 
+ Gain greater control over the timing of updates.
+ Google does not guarantee how long it takes before changes on your site will be processed through crawling. Feeds
+ can be used for weekly, daily, or even hourly updates, at your time of choice. The Content
+ API allows immediate content updates, which is particularly useful for stock level updates.
+ 
+ 
+- 
+ Share data that's not present on your website.
+ You may decide some information is not appropriate to include on your web site, such as
+ physical store level inventory data. Feeds and the Content API let you share this data with
+ Google without it being present on your website.
+ 
+ 
+
+ 
+ Learn more about how to
+ [Sign up for Google Merchant Center](https://support.google.com/merchants/answer/188924).
+ 
+
+ 
+## How Google uses structured data and Google Merchant Center data
+
+ 
+ The following are examples of how Google uses structured data embedded in web pages and Google Merchant Center data
+ for different experiences. Note that experiences may vary by country, device, and other
+ factors.
+ 
+
+ 
+ 
+ Experience | Structured Data | Google Merchant Center | 
+
+ 
+ Product rich results in Google Search | 
+ Google Search uses [Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product) to display product rich results. | 
+ Google Search may use Google Merchant Center data to display product rich results. | 
+ 
+
+ 
+ Google Images results with product annotations | 
+ Google Images uses [Product structured data](https://developers.google.com/search/docs/appearance/structured-data/product) to display product annotations on images. | 
+ Google Images uses images listed in Google Merchant Center. | 
+ 
+
+ 
+ Google Shopping tab | 
+ Adding structured data can help Google Merchant Center in some cases (for example, during data verification). | 
+ Participation in Google Merchant Center is required to appear in the Google Shopping tab. | 
+ 
+
+ 
+ Google Lens image search results | 
+ Google Lens uses [image structured data properties](https://developers.google.com/search/docs/appearance/structured-data/sd-policies#images) where available. | 
+ Google Images uses images listed in Google Merchant Center. | 
+ 
+
+ 
+ 
+
+ 
+## Resolving update delay issues
+
+ 
+ When Google combines data from your website and Google Merchant Center feeds, it can lead to
+ data inconsistency issues due to lag. For example, if a product sells out, your website would
+ typically immediately mark it as unavailable for purchase, but Google Merchant
+ Center may not be updated until some time later, especially if you're using feeds.
+ 
+
+ 
+ To avoid this potential conflict in pricing and stock availability data (a common cause of
+ synchronization issues), tell Google Merchant Center
+ [to automatically update its copy of your product data](https://support.google.com/merchants/answer/3246284)
+ based on the website contents, when such a discrepancy is noticed.
+ 
+
+ 
+ To learn more about how Googlebot and Google Merchant Center work together, see
+ [How to get your products into Search](https://www.youtube.com/watch?v=UQtdv_hoGuM)
+ from the Search Central Lightning talk series.
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Send feedback

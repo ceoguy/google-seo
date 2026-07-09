@@ -1,0 +1,476 @@
+---
+source: https://developers.google.com/search/docs/appearance/visual-elements-gallery
+title: "Visual Elements Gallery of Google Search"
+fetched: 2026-07-08
+---
+
+# Visual Elements gallery of Google Search
+
+ 
+
+ Visual elements are the building blocks of the Google Search results page that a user can
+ perceive or interact with. The Visual Elements gallery is an illustrated guide to the most
+ common UI elements of Google web search: it explains what the elements look like, what they're
+ called, and whether you can optimize your website for each element.
+
+## Anatomy of a Google Search results page
+
+ 
+ 
+
+ The Google Search results page contains a set of different types of search result visual
+ elements, and each search result has its own set of possible child visual elements. For example,
+ a text result is a visual element in its own right, and it has various child visual
+ elements, such as attribution, title link, and snippet.
+
+ How the visual elements look can change over time, and a given result can be displayed
+ differently depending on whether you're using a desktop computer or a phone, what country
+ you're in, the language of your search query, and many other factors. Here are the most
+ common types of search result visual elements that you might see in Google Search:
+
+ Common types of search result visual elements | 
+
+ 
+ 
+ 
+ Text result
+ 
+
+ | 
+ 
+ 
+ A result in Google Search that's based on the textual content of the page. Learn more
+ about the [text result visual elements](https://developers.google.com#text-result).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+ Rich result
+ 
+
+ | 
+ 
+ 
+ A result that typically relies on structured data in the markup of your page to display
+ graphical elements or interactive experiences. Explore the
+ [list of structured data features](https://developers.google.com/search/docs/appearance/structured-data/search-gallery).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+ Image result
+ 
+
+ | 
+ 
+ 
+ A result that's based on an image that's embedded on that web page. An image result is
+ more likely to show for image-seeking queries. Learn more about the [image result visual elements](https://developers.google.com#image-result).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+ Video result
+ 
+
+ | 
+ 
+ 
+ A result that's based on a video that's embedded on that web page. A video result is
+ more likely to show for video-seeking queries. Learn more about the [video result visual elements](https://developers.google.com#video-result).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+ Exploration features
+ 
+
+ | 
+ 
+ 
+ A feature that helps searchers expand and refine their initial search. Learn more about
+ [exploration features](https://developers.google.com#exploration).
+ 
+
+ | 
+ 
+
+ 
+
+## Attribution
+
+ Attribution describes the source of a search result, and can appear for a variety of search
+ result types, including text, image, and video results. Attribution can include various
+ aspects of the source, such as the name of the site, favicon, and URL to the web page.
+
+ Attribution visual elements | 
+
+ 
+ 
+ 
+### Favicon
+
+ | 
+ 
+ 
+ The small icon that's associated with the site. Learn how to [provide a favicon](https://developers.google.com/search/docs/appearance/favicon-in-search).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Site name
+
+ | 
+ 
+ 
+ The name of the site. Learn how to [provide a site name with structured data](https://developers.google.com/search/docs/appearance/site-names).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Visible URL
+
+ | 
+ 
+ 
+ The URL of the page that's shown in a readable format. A visible URL has two parts: domain and breadcrumb.
+ 
+
+ 
+ 
+ 
+ 
+### Domain
+
+ | 
+ 
+ 
+ The site address as defined by the domain name. This is the name you chose when setting up the website (for example, example.com).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Breadcrumb
+
+ | 
+ 
+ 
+ The trail that shows the page's position within the site's hierarchy. Learn how to specify
+ the trail with [Breadcrumb structured data](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb).
+ 
+
+ | 
+ 
+
+ 
+
+ | 
+ 
+
+ 
+
+## Text result
+
+ A text result (formerly known as a "web result" or "plain blue link") is a result in
+ Google Search that's based on the textual content of the
+ page. It includes visual elements such as attribution, title link, and snippet.
+
+ A text result may also include additional visual elements like rich attributes or a
+ sitelinks group; keep in mind that a given text result may display differently depending on
+ a variety of factors, like what device you're using, what you searched for, or what language
+ you're using. You won't see a text result that includes all of the possible visual elements.
+
+ Text result visual elements | 
+
+ 
+ 
+ 
+### Attribution
+
+ | 
+ 
+ 
+ The source information for the web page. Learn [how to control attribution](https://developers.google.com#attribution).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Title link
+
+ | 
+ 
+ 
+ The title of a search result on Google Search and other properties (for example,
+ Google News) that links to the web page. Learn how to [influence title links](https://developers.google.com/search/docs/appearance/title-link).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Snippet
+
+ | 
+ 
+ 
+ The description or summary part of the search result on Google Search and other
+ properties (for example, Google News). Learn [how to control snippets](https://developers.google.com/search/docs/appearance/snippet).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Byline date
+
+ | 
+ 
+ 
+ The date that Google estimates the web page was updated or published. Learn
+ [how to provide a byline date](https://developers.google.com/search/docs/appearance/publication-dates).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Sitelinks group
+
+ | 
+ 
+ 
+ Two or more links from the same domain or its [localized variations](https://developers.google.com/search/docs/specialty/international/localized-versions)
+ that are clustered together under a text result. For example, the links could be other
+ pages on that domain, headings, or anchors within that page.
+ 
+
+ A sitelinks group contains two or more sitelinks:
+ 
+
+ 
+ 
+ 
+ 
+### Sitelink
+
+ | 
+ 
+ 
+ A single link within a sitelinks group. While sitelinks are automated, there are some
+ [best practices you can follow for improving the quality](https://developers.google.com/search/docs/appearance/sitelinks#sitelinks-best-practices).
+ 
+
+ | 
+ 
+
+ 
+
+ | 
+ 
+
+ 
+
+### Text result image
+
+ A text result image is the most relevant image from that particular web page for the given query. Tapping it takes the user to the web
+ page that's embedding the image. A text result image is more likely to appear for image-seeking
+ queries.
+
+ To optimize for a text result image, follow the [Image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
+
+### Rich attributes
+
+ Rich attributes are one or more lines of additional information about the web page,
+ such as review stars and recipe information. This information is typically powered by
+ [structured data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data),
+ provided by you.
+
+## Image result
+
+ An image result is a result that's based on an image that's embedded on a web page.
+ It's more likely to appear for image-seeking queries. To optimize your image for image results, follow
+ the [image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
+
+ Image result visual elements | 
+
+ 
+ 
+ 
+### Image thumbnail
+
+ | 
+ 
+ 
+ An image thumbnail for the indexed image that's embedded on a web page. Tapping or clicking
+ it takes the user to the image. To optimize your image for image results, follow the
+ [image SEO best practices](https://developers.google.com/search/docs/appearance/google-images).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Attribution
+
+ | 
+ 
+ 
+ The source information for the web page that's embedding the image. Learn [how to control attribution](https://developers.google.com#attribution).
+ 
+
+ | 
+ 
+
+ 
+
+## Video result
+
+ A video result is a result that's based on a video that's embedded on a web page. It's
+ more likely to appear for video-seeking queries. To optimize your video for video results,
+ follow the [video best practices](https://developers.google.com/search/docs/appearance/video).
+
+ Video result visual elements | 
+
+ 
+ 
+ 
+### Video thumbnail
+
+ | 
+ 
+ 
+ A video thumbnail for the indexed video that's embedded on a web page. Tapping or clicking
+ it takes the user to the web page that's embedding the video. Learn how to
+ [specify a video thumbnail](https://developers.google.com/search/docs/appearance/video#video-thumbnail).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Title link
+
+ | 
+ 
+ 
+ The title link for the video landing page. Learn how to [influence title links](https://developers.google.com/search/docs/appearance/title-link).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Attribution
+
+ | 
+ 
+ 
+ The source information for the video landing page. Learn [how to control attribution](https://developers.google.com#attribution).
+ 
+
+ | 
+ 
+
+ 
+ 
+ 
+### Upload date
+
+ | 
+ 
+ 
+ The date that the video was published as provided in its metadata. Learn
+ [optimize your videos](https://developers.google.com/search/docs/appearance/video).
+ 
+
+ | 
+ 
+
+ 
+
+## Exploration features
+
+ Exploration features help searchers explore more questions or searches that are related to
+ their original search query (also known as "People also ask"). While you can't control what
+ shows up here, it can be helpful to pay attention to the related search queries when you're
+ thinking about topics you could write about for your site.
+
+### Related searches group
+
+ A related searches group is a cluster of related searches that other people have done. Tapping or clicking a related search takes
+ the user to another search results page. These searches are automatically generated based on
+ the initial query and other things people have searched for.
+
+### Related questions group
+
+ A related questions group is a cluster of questions that are related to what the user initially searched for (also known as
+ "People Also Ask"). When a user expands the question, they're shown a featured snippet.
+ Learn how to [manage featured snippets](https://developers.google.com/search/docs/appearance/featured-snippets).
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Send feedback
