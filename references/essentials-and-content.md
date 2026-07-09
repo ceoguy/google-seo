@@ -65,7 +65,7 @@ Key clarifications inside these policies (exact quotes):
 - Scaled content abuse explicitly includes AI: "Using generative AI tools or other similar tools to generate many pages without adding value for users" — `docs/search/docs/essentials/spam-policies.md`
 - Cloaking carve-out for paywalls: "If you operate a paywall or a content-gating mechanism, we don't consider this to be cloaking if Google can see the full content of what's behind the paywall just like any person who has access to the gated material and if you follow our Flexible Sampling general guidance." — `docs/search/docs/essentials/spam-policies.md`
 - Hidden-text NON-violations: "Accordion or tabbed content that toggle between hiding and showing additional content" and "Text that's only accessible to screen readers ... intended to improve the experience for those using screen readers" — `docs/search/docs/essentials/spam-policies.md`
-- Link spam is not blanket-banned: "It's not a violation of our policies to have such links as long as they are qualified with a `rel=\"nofollow\"` or `rel=\"sponsored\"` attribute value to the `<a>` tag." — `docs/search/docs/essentials/spam-policies.md`
+- Link spam is not blanket-banned: "It's not a violation of our policies to have such links as long as they are qualified with a `rel=\"nofollow\"` or `rel=\"sponsored\"` attribute value to the `<a>` tag." — `docs/search/docs/essentials/spam-policies.md`. (This spam-policies line names only two values; the definitive outbound-links page lists **three** — `sponsored`, `ugc`, `nofollow` — see "Qualifying outbound links" below.)
 - Legitimate (non-sneaky) redirects: "Moving your site to a new address", "Consolidating several pages into one", "Redirecting users to an internal page once they are logged in" — `docs/search/docs/essentials/spam-policies.md`
 
 Other practices that can lead to demotion or removal (`docs/search/docs/essentials/spam-policies.md`):
@@ -76,6 +76,23 @@ Other practices that can lead to demotion or removal (`docs/search/docs/essentia
 - Scam and fraud: "Scam and fraud come in many forms, including but not limited to impersonating an official business or service through imposter sites, intentionally displaying false information about a business or service, or otherwise attracting users to a site on false pretenses." — `docs/search/docs/essentials/spam-policies.md`
 
 Enforcement mechanism: "We detect policy-violating practices both through automated systems and, as needed, human review that can result in a manual action." — `docs/search/docs/essentials/spam-policies.md`
+
+## Qualifying outbound links: `sponsored` / `ugc` / `nofollow`
+
+The definitive page is `docs/search/docs/crawling-indexing/qualify-outbound-links.md`, which documents **three** `rel` values (not two). For regular links you want fetched and parsed, add no `rel` attribute. Use one or more of the following otherwise:
+
+| Value | When it applies (exact quote) | Source |
+|---|---|---|
+| `rel="sponsored"` | "Mark links that are advertisements or paid placements (commonly called paid links ) with the `sponsored` value." | `docs/search/docs/crawling-indexing/qualify-outbound-links.md` |
+| `rel="ugc"` | "We recommend marking user-generated content (UGC) links, such as comments and forum posts, with the `ugc` value." | `docs/search/docs/crawling-indexing/qualify-outbound-links.md` |
+| `rel="nofollow"` | "Use the `nofollow` value when other values don't apply, and you'd rather Google not associate your site with, or crawl the linked page from, your site. For links within your own site, use the robots.txt `disallow` rule." | `docs/search/docs/crawling-indexing/qualify-outbound-links.md` |
+
+- `sponsored` supersedes `nofollow` for paid links: "The `nofollow` attribute was previously recommended for these types of links and is still an acceptable way to flag them, though `sponsored` is preferred." — `docs/search/docs/crawling-indexing/qualify-outbound-links.md`
+- `ugc` can be relaxed for trusted users: "If you want to recognize and reward trustworthy contributors, you might remove this attribute from links posted by members or users who have consistently made high-quality contributions over time." — `docs/search/docs/crawling-indexing/qualify-outbound-links.md`
+- Combine values: "You may specify multiple `rel` values as a space- or comma-separated list." Examples: `rel="ugc nofollow"`, `rel="ugc,nofollow"`. — `docs/search/docs/crawling-indexing/qualify-outbound-links.md`
+- Only `nofollow` also exists as a robots directive: "These `rel` attributes are used only in `<a>` elements that Google can crawl, except `nofollow`, which is also available as robots `meta` tag." — `docs/search/docs/crawling-indexing/qualify-outbound-links.md`
+
+**`nofollow` status — hint vs directive:** The qualify-outbound-links page does not use the exact words "hint" or "directive" — the explicit "nofollow is a hint, not a directive" framing is `UNKNOWN — not stated in corpus` on that page. The corpus does, however, treat it as a hint rather than an absolute rule: (a) links so marked "will generally not be followed. Remember that the linked pages may be found through other means, such as sitemaps or links from other sites, and thus they may still be crawled." — `docs/search/docs/crawling-indexing/qualify-outbound-links.md`; and (b) another page literally calls it a hint: "you can join a `nofollow` hint with a `noindex` rule" — `docs/search/docs/crawling-indexing/block-indexing.md`. (Contrast: `noindex` is enforced — see the Hard requirements above — while `nofollow` "generally" is not, and the link may still be crawled.)
 
 ## E-E-A-T and the self-assessment
 
@@ -162,7 +179,7 @@ Who / How / Why —
 5. `[render]` Compare content served to a Googlebot user-agent vs a normal browser UA; any material difference is potential cloaking. Source: `docs/search/docs/essentials/spam-policies.md`.
 6. `[auto]` Grep for hidden-text patterns: `font-size:0`, `opacity:0`, `text-indent:-9999px`, white-on-white, off-screen positioning of keyword blocks. Source: `docs/search/docs/essentials/spam-policies.md`.
 7. `[auto]` Detect keyword stuffing: repeated city/keyword lists, unnatural repetition, phone-number blocks with no added value. Source: `docs/search/docs/essentials/spam-policies.md`.
-8. `[auto]` Check outbound/UGC/paid links carry `rel="nofollow"` or `rel="sponsored"` where a link was exchanged for money/goods or is user-generated. Source: `docs/search/docs/essentials/spam-policies.md`, `docs/search/docs/fundamentals/seo-starter-guide.md`.
+8. `[auto]` Check outbound links carry the right `rel` value: `sponsored` for ads/paid placements, `ugc` for user-generated links (comments, forum posts), `nofollow` when the others don't apply (`nofollow` is still an acceptable fallback for paid links, but `sponsored` is preferred); multiple values may be combined (`rel="ugc nofollow"`). Source: `docs/search/docs/crawling-indexing/qualify-outbound-links.md`, `docs/search/docs/essentials/spam-policies.md`, `docs/search/docs/fundamentals/seo-starter-guide.md`.
 9. `[handoff]` Scaled-content review: is content mass-generated (incl. AI) across many pages without added value? Human judgment required against the scaled-content-abuse definition. Source: `docs/search/docs/essentials/spam-policies.md`, `docs/search/docs/fundamentals/using-gen-ai-content.md`.
 10. `[handoff]` Run the E-E-A-T self-assessment questions against sample pages (original info? first-hand expertise? clear authorship/byline? factual errors?). Source: `docs/search/docs/fundamentals/creating-helpful-content.md`.
 11. `[auto]` Confirm no reliance on meta keywords, exact-match TLD/domain keywords, or a target word count as an SEO tactic — these are documented non-signals. Source: `docs/search/docs/fundamentals/seo-starter-guide.md`.

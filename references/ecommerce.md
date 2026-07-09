@@ -81,3 +81,14 @@ Tags: `[auto]` = static HTML/source or robots/sitemap check; `[render]` = needs 
 17. `[handoff]` Launch checklist completed (verify ownership, request indexing, track Page Indexing report, establish business details if physical).
 18. `[handoff]` Add-to-cart remains enabled even during "not yet purchasable" launch states; unavailability handled via feed `excluded_destination`, not by disabling cart.
 19. `[handoff]` Review content shows first-hand evidence, expertise, and comparisons (quality, not length); affiliate links follow paid-links guidance.
+
+## Where ecommerce data can appear
+
+Organic product results come from your pages; the Shopping tab and Lens come from a feed.
+
+- **Shopping tab / Google Lens need Merchant Center, not markup.** "If you want your products to be
+  found in the Google Shopping tab, upload your products to Google Merchant Center." Same for Lens:
+  "make sure your product details are uploaded to Google Merchant Center."
+  — `docs/search/docs/specialty/ecommerce/where-ecommerce-data-can-appear-on-google.md`
+- Practical consequence: perfect `Product` structured data will **not** put you in the Shopping tab.
+  A missing Merchant Center feed is a `[handoff]` finding, never an `[auto]` fix.

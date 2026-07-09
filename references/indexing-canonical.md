@@ -47,6 +47,22 @@ Reference for controlling indexing (noindex / X-Robots-Tag), choosing canonical 
 - HTTPS canonicalization is broken by bad certs / HTTP redirects: "Avoid bad TLS/SSL certificates and HTTPS-to-HTTP redirects because they cause Google to prefer HTTP very strongly." — `docs/search/docs/crawling-indexing/consolidate-duplicate-urls.md`
 - `data-nosnippet` only on `span`/`div`/`section`: "This can be done on an HTML-element level with the `data-nosnippet` HTML attribute on `span`, `div`, and `section` elements." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
 
+## Robots directives — full valid-rules catalog (verbatim)
+
+Every rule below works in BOTH the robots `meta` tag and the `X-Robots-Tag` HTTP header: "Any rule that can be used in a robots `meta` tag can also be specified as an `X-Robots-Tag`." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`. Rules are case-insensitive and combinable (comma-separated or multiple tags). The earlier facts already cover `noindex`, `nofollow`, `none` (= `noindex, nofollow`), `nosnippet`, `max-snippet`, and `all` (default). The directives the sheet previously omitted:
+
+- `all`: "There are no restrictions for indexing or serving. This rule is the default value and has no effect if explicitly listed." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `max-image-preview:[setting]`: "Set the maximum size of an image preview for this page in search results. If you don't specify the `max-image-preview` rule, Google may show an image preview of the default size. Accepted [setting] values: `none`: No image preview is to be shown. `standard`: A default image preview may be shown. `large`: A larger image preview, up to the width of the viewport, may be shown." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `max-video-preview:[number]`: "Use a maximum of [number] seconds as a video snippet for videos on this page in search results. ... Special values: `0`: At most, a static image may be used, in accordance to the `max-image-preview` setting. `-1`: There is no limit." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `unavailable_after:[date/time]`: "Do not show this page in search results after the specified date/time. The date/time must be specified in a widely adopted format including, but not limited to RFC 822 , RFC 850 , and ISO 8601 . The rule is ignored if no valid date/time is specified. By default there is no expiration date for content." Plus: "Googlebot will decrease the crawl rate of the URL considerably after the specified date and time." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `indexifembedded`: "Google is allowed to index the content of a page if it's embedded in another page through `iframes` or similar HTML tags, in spite of a `noindex` rule. `indexifembedded` only has an effect if it's accompanied by `noindex`." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `noimageindex`: "Do not index images on this page. If you don't specify this value, images on the page may be indexed and shown in search results." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`
+- `notranslate`: "Don't offer translation of this page in search results. If you don't specify this rule, Google may provide a translation of the title link and snippet of a search result for results that aren't in the language of the search query. If the user clicks the translated title link, all further user interaction with the page is through Google Translate, which will automatically translate any links followed." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`. (Also documented as a standalone tag, typically scoped to `googlebot`: `<meta name="googlebot" content="notranslate">` — `docs/search/docs/crawling-indexing/special-tags.md`.)
+- `nopagereadaloud` — NOT a `robots` value; it is a `google`-scoped `meta` tag: `<meta name="google" content="nopagereadaloud">` — "Prevents various Google text-to-speech services from reading aloud web pages using text-to-speech (TTS)." — `docs/search/docs/crawling-indexing/special-tags.md`
+- `rating` meta tag (SafeSearch adult label) — `<meta name="rating" content="adult">`: "Labels a page as containing sexually-explicit adult content, to signal that it be filtered by SafeSearch results." — `docs/search/docs/crawling-indexing/special-tags.md`. Guidance: "To mark a particular page as explicit, add rating markup with the `adult` value either as a `meta` tag or an HTTP response header. We recommend adding this tag to any page with sexually explicit content." and "Google also recognizes `<meta name="rating" content="RTA-5042-1996-1400-1577-RTA">` as an equivalent way to identify pages with sexually explicit content. Either tag is fine; it's not required to add both tags." — `docs/search/docs/specialty/explicit/guidelines.md`. (Also: group explicit pages on a separate domain/subdomain, and allow Googlebot to crawl without an age gate, or the whole site risks being auto-classified explicit — same source.)
+
+Conflict-resolution rule (restated for this catalog): "In the case of conflicting robots rules, the more restrictive rule applies. For example, if a page has both `max-snippet:50` and `nosnippet` rules, the `nosnippet` rule will apply." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`. And when multiple crawlers are named with different rules, "the search engine will use the sum of the negative rules" — `docs/search/docs/crawling-indexing/robots-meta-tag.md`. `none` is shorthand: "Equivalent to `noindex, nofollow`." — `docs/search/docs/crawling-indexing/robots-meta-tag.md`.
+
 ## Ignored / myths
 
 - meta keywords do nothing: "The meta-keyword tag is not used by Google Search, and it has no effect on indexing and ranking at all." — `docs/search/docs/crawling-indexing/special-tags.md`
@@ -73,3 +89,17 @@ Reference for controlling indexing (noindex / X-Robots-Tag), choosing canonical 
 10. `[auto]` `data-nosnippet` only on `span`/`div`/`section` elements. Maps to `data-nosnippet` element rule.
 11. `[auto]` Robots directives don't conflict silently; if both `nosnippet` and `max-snippet:N` present, note `nosnippet` wins. Maps to "most restrictive wins."
 12. `[handoff]` Compare mobile vs desktop (separate-URL/dynamic-serving) fetches for identical robots `meta`, canonical/alternate pairing, content, and title/description. Maps to mobile-first requirements.
+13. `[auto]` Validate every robots value against the catalog (`all`, `noindex`, `nofollow`, `none`, `nosnippet`, `indexifembedded`, `max-snippet:N`, `max-image-preview:none|standard|large`, `max-video-preview:N`, `notranslate`, `noimageindex`, `unavailable_after:<date>`); flag `unavailable_after`/`max-*` with an unparseable value (rule is ignored) and `indexifembedded` not accompanied by `noindex` (no effect). Maps to valid-rules catalog.
+14. `[auto]` Confirm directive placement/scope: `nopagereadaloud` uses `<meta name="google" ...>` (not `robots`); `rating` uses `<meta name="rating" content="adult">` (or the `RTA-5042-1996-1400-1577-RTA` token) or an HTTP header on sexually-explicit pages. Flag pages that also require an age gate for Googlebot or mix explicit and non-explicit content on one domain. Maps to `nopagereadaloud` + SafeSearch `rating` rules.
+
+## The `rating` meta tag trap (SafeSearch)
+
+- `<meta name="rating" content="adult">` labels a page as sexually explicit. Google honors the label
+  over its own classifier: "SafeSearch filters out all pages that use the adult rating `meta` tag,
+  regardless of their content."
+  — `docs/search/docs/specialty/explicit/troubleshooting.md`
+- So applying it site-wide "just in case" removes the whole site from SafeSearch-on results — which
+  is the default for a large share of users. Google names this as a common self-inflicted mistake:
+  "Adding the adult rating `meta` tag to content that's not sexually explicit."
+  — `docs/search/docs/specialty/explicit/troubleshooting.md`
+- `[auto]` Flag the adult `rating` meta on any page whose content is not explicit.
