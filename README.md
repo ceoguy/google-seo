@@ -115,8 +115,20 @@ ratings for human verification, because fabricating them is a manual-action offe
 validate required properties per feature type — use `references/structured-data.md` and Google's
 Rich Results Test for that.
 
-**Crawling** — `<a>` elements with no crawlable `href` (`javascript:`, `#`, or missing); soft 404s
-(a nonexistent URL answering `200`); non-HTTPS origins.
+**Crawling** — `<a>` elements with no crawlable `href` (`javascript:`, `#`, or missing); non-HTTPS
+origins; and soft 404s — a nonexistent URL answering `200`.
+
+Soft-404 behaviour is **path-dependent** the moment a host has rewrite rules, so the tool probes one
+nonexistent URL under *each* path prefix in your sitemap, not just at the site root. A static host
+that rewrites `/product/:slug` to `/product/:slug/index.html` answers an unknown slug with an **empty
+200** — an indexable page that cannot even carry a `noindex` — while the app's catch-all `404`s
+correctly everywhere else. Google counts an empty page as a soft 404, so an empty `200` is
+`critical`, whether probed or listed in your sitemap. If the site root *also* answers `200` (an SPA),
+no prefix is blamed: the root finding already covers it.
+
+That check found, on a live site, that every deleted or renamed product, post and article URL had
+become an indexable empty page — and on `cloudflare.com`, that `/policies/<anything>` serves a real
+`200` page while the root correctly `404`s.
 
 **JavaScript (`--render`)** — the raw-vs-rendered delta for `<title>`, canonical, hreflang, JSON-LD,
 and `<h1>`.

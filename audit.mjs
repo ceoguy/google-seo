@@ -371,11 +371,11 @@ async function auditSitemapBody(url, body, headers, depth, ancestors) {
   // for minutes with no output. Cap, and SAY what was skipped (a silent cap reads as "all clear").
   const children = [...new Set(top)];
   const all = [];
-  let fetchedHere = 0, dupHere = 0;   // count what really happened; the cap alone does not know
+  let fetchedHere = 0;
   for (const child of children) {
     if (sitemapsFetched >= MAX_SITEMAPS) break;   // reported once, accurately, after the loop
     if (ancestors.has(child)) { add('high', 'sitemap', 'auto-fix', child, 'sitemap index cycle: this sitemap is reachable from itself. Google would fetch it once; the loop wastes crawl budget', 'sitemaps/large-sitemaps'); continue; }
-    if (fetchedSitemaps.has(child)) { dupHere++; continue; }   // a diamond, not a loop: its pages were audited via the other parent
+    if (fetchedSitemaps.has(child)) continue;   // a diamond, not a loop: its pages were audited via the other parent
     sitemapsFetched++; fetchedHere++;
     const r = await get(child);
     if (r.status !== 200) {
@@ -403,8 +403,10 @@ async function auditSitemapBody(url, body, headers, depth, ancestors) {
     validateLocs(locs, child);
     for (const l of locs) all.push(l);   // NOT all.push(...locs) -- spreading 40k args overflows the stack
   }
-  // A child skipped as a diamond WAS audited (via its other parent); only budget skips lose pages.
-  const unfetched = children.length - fetchedHere - dupHere;
+  // A child's pages were audited iff we fetched it here (it is in fetchedSitemaps by now), another
+  // parent already fetched it (same set), or it is an ancestor (fetched further up this chain). Ask
+  // that, rather than subtracting counters the mid-loop `break` leaves stale.
+  const unfetched = children.filter((c) => !fetchedSitemaps.has(c) && !ancestors.has(c)).length;
   if (unfetched > 0) add('low', 'sitemap', 'handoff', url, `sitemap index lists ${children.length} children; ${fetchedHere} fetched, ${unfetched} NOT fetched (--max-sitemaps=${MAX_SITEMAPS} budget, shared across the whole tree). Pages under the unfetched children were not audited.`, 'sitemaps/large-sitemaps');
   const dupes = all.filter((l, i) => all.indexOf(l) !== i);
   if (dupes.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(dupes).size} duplicate <loc> entries across children`, 'sitemaps/build-sitemap');
@@ -654,6 +656,13 @@ async function siteProbes() {
   ghostIs200 = r.status === 200;
   ghostFinal = r.finalUrl && norm(r.finalUrl) !== norm(GHOST) ? r.finalUrl : '';
   if (!ghostIs200) return;
+  // An empty 200 is the same defect wherever it happens, and --render cannot rescue it: there is no
+  // HTML to carry a noindex. Report it at the same severity as the per-prefix case, before the
+  // render pass gets a chance to defer.
+  if (!String(r.body || '').trim()) {
+    add('critical', 'crawling', 'auto-fix', GHOST, 'a nonexistent URL returns HTTP 200 with an EMPTY body. Google counts "a page with no main content or empty page" as a soft 404, and an empty response cannot carry a noindex.', 'crawling-indexing/troubleshoot-crawling-errors');
+    return;
+  }
   if (/\bnoindex\b/i.test(metaC(clean(r.body), 'name', 'robots'))) return; // already handled in source
 
   // A client-routed SPA usually CANNOT return 404 -- Google's sanctioned remedy is a JS-injected
@@ -669,11 +678,12 @@ async function siteProbes() {
 // Soft-404 behavior is PATH-DEPENDENT the moment a host has rewrite rules. A static host that
 // rewrites `/property/:slug` -> `/property/:slug/index.html` serves an EMPTY 200 for unknown slugs,
 // while the SPA catch-all 404s correctly everywhere else. One probe at the site root cannot see it.
-// Google counts an empty page as a soft 404: a 200 where "in some cases, it might be a page with no
-// main content or empty page". Probe one nonexistent URL under each path prefix the sitemap uses.
+// Google counts an empty page as a soft 404: a 200 serving "a page with no main content or empty
+// page". Probe one nonexistent URL under each path prefix the sitemap uses.
 async function prefixGhostProbes(urls) {
   const prefixes = new Set();
   for (const u of urls) {
+    if (!sameSite(u)) continue;   // a prefix that exists only on ANOTHER host must not be probed here
     try {
       const seg = new URL(u).pathname.split('/').filter(Boolean);
       if (seg.length > 1) prefixes.add('/' + seg[0]);   // only nested prefixes can carry a rewrite
@@ -688,7 +698,7 @@ async function prefixGhostProbes(urls) {
     if (r.status !== 200) continue;                     // a real 404/410 here is correct
     const body = String(r.body || '');
     if (!body.trim()) {
-      add('critical', 'crawling', 'auto-fix', ghost, `an unknown URL under ${pre}/ returns HTTP 200 with an EMPTY body. Google treats that as a soft 404 — "in some cases, it might be a page with no main content or empty page" — and an empty response cannot even carry a noindex. A rewrite rule for ${pre}/:slug is resolving to a missing file instead of 404ing or falling through. Every deleted or renamed URL under ${pre}/ is now an indexable empty page.`, 'crawling-indexing/troubleshoot-crawling-errors');
+      add('critical', 'crawling', 'auto-fix', ghost, `an unknown URL under ${pre}/ returns HTTP 200 with an EMPTY body. Google treats that as a soft 404 — it counts "a page with no main content or empty page" — and an empty response cannot even carry a noindex. A rewrite rule for ${pre}/:slug is resolving to a missing file instead of 404ing or falling through. Every deleted or renamed URL under ${pre}/ is now an indexable empty page.`, 'crawling-indexing/troubleshoot-crawling-errors');
       continue;
     }
     if (/\bnoindex\b/i.test(metaC(clean(body), 'name', 'robots'))) continue;   // handled in source

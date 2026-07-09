@@ -867,6 +867,58 @@ t('[e2e] when the ROOT also 200s (an SPA), the root soft-404 is reported once', 
 t('[e2e]  ...and no prefix is falsely blamed for "shadowing the 404 path"', !spF.some((f) => /shadowing the 404 path/.test(f.message)));
 t('[e2e]  ...but an EMPTY 200 under a prefix is STILL critical (no HTML can carry the SPA noindex)', spF.some((f) => f.severity === 'critical' && /unknown URL under \/e\/ returns HTTP 200 with an EMPTY body/.test(f.message)));
 
+// A prefix that exists only on ANOTHER host must not be probed against OUR origin. The prefix set was
+// built from every <loc> before the sameSite filter, so a foreign /ext/ produced a finding whose
+// provenance was a lie. A same-site prefix must still be probed, or this test proves only that the
+// probe is broken.
+const xh = createServer((req, res) => {
+  const P = xh.address().port, B = `http://localhost:${P}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${B}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${B}/p/real</loc></url><url><loc>http://other.example.com/ext/x</loc></url></urlset>`); }
+  if (u === '/p/real') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Real', `<meta name="description" content="A real page under a same-site prefix.">`)); }
+  // this origin ALSO serves an empty 200 under /ext/ — but /ext/ is a foreign prefix, so never probed
+  if (u.startsWith('/ext/') || u.startsWith('/p/')) { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(''); }
+  res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
+});
+await new Promise((r) => xh.listen(0, 'localhost', r));
+const XH = `http://localhost:${xh.address().port}`;
+const OUTXH = path.join(HERE, '.test-findings-xh.json');
+if (existsSync(OUTXH)) unlinkSync(OUTXH);   // a stale file would mask a crash
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), XH, '--json', OUTXH, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+xh.close();
+const xhF = JSON.parse(readFileSync(OUTXH, 'utf8')).findings; unlinkSync(OUTXH);
+
+t('[e2e] a prefix seen only on a FOREIGN host is not probed against our origin', !xhF.some((f) => /unknown URL under \/ext\//.test(f.message)));
+t('[e2e]  ...while a same-site prefix IS still probed (proves the probe ran at all)', xhF.some((f) => f.severity === 'critical' && /unknown URL under \/p\/ returns HTTP 200 with an EMPTY body/.test(f.message)));
+
+// An empty 200 at the ROOT is the same defect as an empty 200 under a prefix. It used to be a medium
+// handoff deferred to --render, but --render cannot rescue it: there is no HTML to carry a noindex.
+const er = createServer((req, res) => {
+  const P = er.address().port, B = `http://localhost:${P}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${B}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${B}/only</loc></url></urlset>`); }
+  if (u === '/only') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Only', `<meta name="description" content="The one real page on this site.">`)); }
+  res.writeHead(200, { 'content-type': 'text/html' }); res.end('   ');   // every unknown URL: whitespace-only 200
+});
+await new Promise((r) => er.listen(0, 'localhost', r));
+const ER = `http://localhost:${er.address().port}`;
+const OUTER = path.join(HERE, '.test-findings-er.json');
+if (existsSync(OUTER)) unlinkSync(OUTER);   // a stale file would mask a crash
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), ER, '--json', OUTER, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+er.close();
+const erF = JSON.parse(readFileSync(OUTER, 'utf8')).findings; unlinkSync(OUTER);
+
+t('[e2e] an EMPTY 200 at the site root is critical, not a medium deferred to --render', erF.some((f) => f.severity === 'critical' && /nonexistent URL returns HTTP 200 with an EMPTY body/.test(f.message)));
+t('[e2e]  ...and a whitespace-only body counts as empty', !erF.some((f) => /a nonexistent URL returns HTTP 200 \(soft 404\)\./.test(f.message)));
+
+// `unfetched` used to be children - fetchedHere - dupHere, which counted a CYCLE child as a page we
+// failed to audit. m2.xml lists m1.xml, which is its own ancestor: its pages were audited on the way
+// down, so nothing under m2 is unfetched.
+t('[e2e] a cycle child is not counted as a sitemap we failed to fetch', !diD.findings.some((f) => /m2\.xml/.test(String(f.where)) && /NOT fetched/.test(f.message)));
+
+
 
 // M8 (R17 engine, code correct but unguarded): key() strips a trailing slash, so a page at /slash/
 // whose canonical is /slash is the SAME page -- a LOW form difference, never a HIGH mismatch.
