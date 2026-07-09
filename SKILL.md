@@ -124,6 +124,11 @@ rating you marked up is real. Those surface as `handoff`.
 | `references/page-experience.md` | Core Web Vitals, interstitials, titles, snippets, AI features |
 | `references/essentials-and-content.md` | Search Essentials, spam policies, E-E-A-T, gen-AI content |
 | `references/monitoring-and-analytics.md` | Search Console, traffic-drop triage, GSC vs Analytics |
+| `references/lifecycle-and-amp.md` | site moves, AMP, removals/redaction, pausing a site, A/B testing |
+| `references/appearance-features.md` | snippets, sitelinks, favicons, site names, Discover, images/video, Web Stories |
+| `references/ecommerce.md` | ecommerce URL structure, product data feeds, ecommerce structured data, pagination |
+| `references/security-and-abuse.md` | malware, hacked content, social engineering, Safe Browsing repeat offenders |
+| `references/COVERAGE.md` | which corpus pages the sheets cover (generated mechanically) |
 | `docs/` | the full 158-page Google Search Central fork (grep it; it is the source of truth) |
 
 Refresh the corpus: `python3 scripts/fetch-docs.py` (URL list is scraped from the live nav).

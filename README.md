@@ -89,7 +89,7 @@ de-indexes an entire site.
 
 **On-page** — missing/duplicate `<title>` and meta description (grouped by shared value, so one
 template bug is one finding, not two hundred); a missing `<h1>` (as information, not a defect —
-Google states no h1-count rule); images without `alt`;
+the corpus mandates no h1 count); images without `alt`;
 viewport; dead `meta keywords`; `rel=next/prev`.
 
 **International** — hreflang self-reference, `x-default`, and **reciprocity across pages** (Google:
@@ -151,7 +151,8 @@ python3 scripts/fetch-docs.py     # URL list in urls.txt, scraped from the live 
 ```
 SKILL.md                  agent entry point — workflow + hard-won rules
 audit.mjs                 the auditor (Node ≥ 22, zero deps)
-references/*.md           9 distilled rule sheets, every claim quoted + sourced
+references/*.md           13 distilled rule sheets, every claim quoted + sourced
+references/COVERAGE.md    which corpus pages the sheets cover (generated, can't drift)
 docs/                     158-page Google Search Central fork
 DOCS-INDEX.md             index of the fork
 scripts/fetch-docs.py     regenerate the fork
