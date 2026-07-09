@@ -488,10 +488,11 @@ const fmt = createServer((req, res) => {
   const b = `http://127.0.0.1:${fmt.address().port}`;
   const u = req.url.split('?')[0];
   if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${b}/sitemap.xml.gz\n`); }
-  if (u === '/sitemap.xml.gz') { const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/gzpage</loc></url><url><loc>${b}/ratelimited</loc></url><url><loc>${b}/unq-canon</loc></url></urlset>`; res.writeHead(200, { 'content-type': 'application/gzip' }); return res.end(gzipSync(Buffer.from(xml))); }
+  if (u === '/sitemap.xml.gz') { const xml = `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/gzpage</loc></url><url><loc>${b}/ratelimited</loc></url><url><loc>${b}/unq-canon</loc></url><url><loc>${b}/multitok-canon</loc></url></urlset>`; res.writeHead(200, { 'content-type': 'application/gzip' }); return res.end(gzipSync(Buffer.from(xml))); }
   if (u === '/gzpage') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Gz page', '<meta name="description" content="Reached only if the gz sitemap decompressed.">')); }
   if (u === '/ratelimited') { res.writeHead(429, { 'retry-after': '0' }); return res.end('rate limited'); }
   if (u === '/unq-canon') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(`<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Unquoted canonical</title><meta name="description" content="Its canonical points elsewhere, unquoted."><link rel=canonical href=${b}/elsewhere></head><body><h1>H</h1></body></html>`); }
+  if (u === '/multitok-canon') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(`<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Multi-token rel canonical</title><meta name="description" content="Canonical is the last token of a multi-value rel here."><link rel="alternate canonical" href="${b}/somewhere-else"></head><body><h1>H</h1></body></html>`); }
   res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
 });
 await new Promise((r) => fmt.listen(0, '127.0.0.1', r));
@@ -504,6 +505,7 @@ t('[e2e] a gzipped sitemap is decompressed (its 429 page is reached, proving the
 t('[e2e] a gzipped sitemap does not fire a false Content-Type finding', !fmtFindings.some((f) => /expected a sitemap format/.test(f.message)));
 t('[e2e] a 429 is a transient handoff, not a critical de-index', fmtFindings.some((f) => /temporarily 429/.test(f.message) && f.class === 'handoff') && !fmtFindings.some((f) => /429/.test(f.message) && f.severity === 'critical'));
 t('[e2e] an UNQUOTED canonical pointing elsewhere is flagged, not silently missed', fmtFindings.some((f) => /\/unq-canon/.test(String(f.where)) && /canonical points at a different URL/.test(f.message)));
+t('[e2e] canonical as the LAST token of a multi-value rel is detected', fmtFindings.some((f) => /\/multitok-canon/.test(String(f.where)) && /canonical points at a different URL/.test(f.message)));
 
 // --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
 const allRedir = createServer((req, res) => {
