@@ -103,7 +103,7 @@ node audit.mjs <baseUrl> [--render] [--json out.json] [--max-pages N] [--max-ren
   auto-found) and diffs raw vs rendered `<head>`. Needs Node ≥ 22. Only the first `--max-render`
   pages (default 25) are rendered; the rest are audited raw-only and the report says which.
 - Exit `0` = no code-fixable findings (handoff items may still print) · `1` = auto-fix findings
-  remain · `2` = crawl/setup error.
+  remain · `2` = usage error (missing/invalid base URL).
 - Coverage is capped by `--max-pages` (default 100) and **logs what it skipped** — a partial crawl
   that reads as "all clear" is the worst possible output.
 

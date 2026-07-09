@@ -63,7 +63,7 @@ node audit.mjs https://example.com --noindex-ok /admin,/preview
 | `--quiet` | Findings only. |
 
 Exit codes: `0` = no code-fixable findings (handoff items may still be printed) · `1` = auto-fix
-findings remain · `2` = crawl/setup error. Suitable for CI.
+findings remain · `2` = usage error (missing/invalid base URL). Suitable for CI.
 
 Findings are partitioned into:
 

@@ -168,7 +168,9 @@ const page = (title, extra = '', body = '<h1>Heading</h1>') =>
 <title>${title}</title>${extra}</head><body>${body}</body></html>`;
 
 const ROUTES = {
-  '/robots.txt': ['text/plain', 'User-agent: *\nAllow: /\nSitemap: {B}/sitemap.xml\nSitemap: {B}/sitemap.xml\n'],
+  // Googlebot fully allowed; only GPTBot blocked from an asset path -- a deliberate, common choice.
+  // Harvesting every Disallow in the file fired a CRITICAL "Google can't render your page" here.
+  '/robots.txt': ['text/plain', 'User-agent: *\nAllow: /\n\nUser-agent: GPTBot\nDisallow: /_next/static\n\nSitemap: {B}/sitemap.xml\nSitemap: {B}/sitemap.xml\n'],
   '/sitemap.xml': ['application/xml', `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>{B}/ok</loc><priority>0.8</priority></url>
@@ -198,6 +200,11 @@ const ROUTES = {
 <url><loc>{B}/rv3</loc></url>
 <url><loc>{B}/stale-redirect</loc></url>
 <url><loc>{B}/minified-viewport</loc></url>
+<url><loc>{B}/agg-bad</loc></url>
+<url><loc>{B}/bad-jsonld</loc></url>
+<url><loc>{B}/hl-a</loc></url>
+<url><loc>{B}/hl-b</loc></url>
+<url><loc>{B}/gptbot-only</loc></url>
 <url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
@@ -235,6 +242,14 @@ const ROUTES = {
   '/rv3': ['text/html', page('Real victim three', '<meta name="description" content="Victim three of the real hub here."><link rel="canonical" href="{B}/realhub">')],
   // valid HTML5 unquoted viewport (html-minifier output) must not read as "missing viewport"
   '/minified-viewport': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Minified viewport page</title><meta name="description" content="Viewport attribute name is unquoted here."></head><body><h1>H</h1></body></html>'],
+  // aggregateRating WITHOUT a review count -> must fire; and the always-on "verify it's real" handoff
+  '/agg-bad': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Rating without a count</title><meta name="description" content="Aggregate rating carries no review count."><script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"X","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5"}}</script></head><body><h1>H</h1></body></html>'],
+  // malformed JSON-LD -> the parse finding must fire (positive polarity)
+  '/bad-jsonld': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Broken structured data</title><meta name="description" content="The JSON-LD block below does not parse."><script type="application/ld+json">{"@type":"Product",}</script></head><body><h1>H</h1></body></html>'],
+  // hreflang that is NOT reciprocal: hl-a points at hl-b, hl-b never points back
+  '/hl-a': ['text/html', page('Hreflang page a', '<meta name="description" content="Points at page b but b never points back."><link rel="alternate" hreflang="en" href="{B}/hl-a"><link rel="alternate" hreflang="fr" href="{B}/hl-b">')],
+  '/hl-b': ['text/html', page('Hreflang page b', '<meta name="description" content="Lists only itself, never points back at a."><link rel="alternate" hreflang="fr" href="{B}/hl-b">')],
+  '/gptbot-only': ['text/html', page('GPTBot only page', '<meta name="description" content="Exists so the robots fixture has a page.">')],
   '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
   // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
   '/amp-canonical': ['text/html', page('Ampersand canonical page', '<meta name="description" content="Canonical and loc both escape the ampersand."><link rel="canonical" href="{B}/amp-canonical?b=1&amp;c=2">')],
@@ -348,8 +363,17 @@ t('[e2e] a redirected sitemap URL is reported as stale', onPage('/stale-redirect
 t('[e2e] a redirected URL is not also scored as a page (no false canonical)', !onPage('/stale-redirect', /canonical/));
 t('[e2e] a redirected URL does not become a duplicate-title victim', !findings.some((f) => /share one <title>/.test(f.message) && /stale-redirect/.test(f.message)));
 t('[e2e] unquoted name=viewport is not reported missing', !onPage('/minified-viewport', /missing viewport/));
+// detectors the reviewer found untested. Positive polarity for each.
+t('[e2e] aggregateRating without a review count fires', onPage('/agg-bad', /aggregateRating without reviewCount/));
+t('[e2e] aggregateRating always raises a verify-it-is-real handoff', findings.some((f) => /aggregateRating present/.test(f.message) && f.class === 'handoff'));
+t('[e2e] malformed JSON-LD fires the parse finding', onPage('/bad-jsonld', /JSON-LD block does not parse/));
+t('[e2e] non-reciprocal hreflang fires', onPage('/hl-a', /not reciprocal/));
+// a per-agent AI-bot block must NOT raise "Google can't render your page"
+t('[e2e] a GPTBot-only asset block does not fire the render-resources CRITICAL', !findings.some((f) => /blocking render resources/.test(f.message)));
+t('[e2e] GPTBot disallow IS reported as an AI-search handoff', findings.some((f) => /GPTBot is fully disallowed/.test(f.message)) || !findings.some((f) => /GPTBot/.test(f.message)));
+t('[e2e] a reciprocal hreflang chain does NOT fire reciprocity', !findings.some((f) => /not reciprocal/.test(f.message) && /chain-/.test(String(f.where))));
 t('[e2e] <img> strings inside JSON-LD are not counted as images', !onPage('/jsonld-img', /without alt/));
-t('[e2e] JSON-LD is still parsed (structured data checks not blinded)', findings.every((f) => !/JSON-LD block does not parse/.test(f.message)));
+t('[e2e] valid JSON-LD is not falsely reported unparseable', !onPage('/jsonld-img', /does not parse/));
 // both polarities of the consolidation CRITICAL
 t('[e2e] 3 pages canonicalizing to one DOES fire the consolidation CRITICAL', findings.some((f) => f.severity === 'critical' && /3 distinct pages declare canonical/.test(f.message) && /realhub/.test(f.message)));
 t('[e2e] a spec-escaped self-canonical hub is not its own victim (no false CRITICAL)', !findings.some((f) => f.severity === 'critical' && /declare canonical/.test(f.message) && /\/hub/.test(f.message)));

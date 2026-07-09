@@ -6,6 +6,7 @@
  *
  *   --json <file>        write findings as JSON
  *   --max-pages <n>      cap pages crawled (default 100)
+ *   --max-render <n>     cap pages rendered with --render (default 25); the rest are raw-only
  *   --noindex-ok a,b     paths where noindex is intentional
  *   --render             ALSO fetch each page with headless Chrome and diff raw vs rendered head.
  *                        This is how you catch client-rendered SEO: Google renders JS (with a queue
@@ -13,7 +14,8 @@
  *   --quiet              findings only
  *
  * Exit: 0 = no code-fixable findings (handoff items may still be printed) · 1 = auto-fix findings
- *        remain · 2 = crawl/setup error.
+ *        remain · 2 = usage error (missing or invalid base URL). A site that is merely unreachable
+ *        produces findings and exits 1, not 2.
  *
  * Every check cites the Google doc that mandates it, so a finding can be argued from source.
  * ponytail: Node stdlib only (plus optional puppeteer-less CDP via Chrome's own protocol for
@@ -46,7 +48,9 @@ const NOINDEX_OK = String(flag('noindex-ok', '')).split(',').filter(Boolean);
 const RENDER = has('render');
 const QUIET = has('quiet');
 
-const origin = new URL(base).origin;
+let origin;
+try { origin = new URL(base).origin; }
+catch { console.error(`usage: "${base}" is not a valid absolute URL (try https://example.com)`); exit(2); }
 const UA = 'Mozilla/5.0 (compatible; google-seo-audit/1.0; +https://github.com/ceoguy/google-seo)';
 
 // ---- findings ---------------------------------------------------------------------------------
@@ -162,9 +166,18 @@ async function auditRobots() {
   if (Buffer.byteLength(body, 'utf8') > 500 * 1024) add('medium', 'crawling', 'auto-fix', '/robots.txt', 'robots.txt exceeds 500 KiB — "Google enforces a robots.txt file size limit of 500 kibibytes"', 'crawling/robots-txt/robots-txt-spec');
   const sitemaps = [...body.matchAll(/^\s*Sitemap:\s*(\S+)/gim)].map((m) => m[1]);
   if (!sitemaps.length) add('medium', 'sitemap', 'auto-fix', '/robots.txt', 'no Sitemap: directive in robots.txt', 'sitemaps/build-sitemap');
-  const disallows = [...body.matchAll(/^\s*Disallow:\s*(\S+)/gim)].map((m) => m[1]).filter((p) => p && p !== '/');
+
+  // Only the rules that apply to GOOGLEBOT can stop Google rendering. "Only one group is valid for
+  // a particular crawler" -- the most specific one -- so a `Googlebot` group overrides `*`.
+  // Harvesting every Disallow in the file fired a CRITICAL when a site deliberately blocked GPTBot
+  // from its assets, telling the owner to unblock a bot they meant to block.
+  const googleRules = groups.get('googlebot') ?? groups.get('*') ?? [];
+  const disallows = googleRules
+    .filter((l) => /^Disallow:/i.test(l))
+    .map((l) => l.replace(/^Disallow:\s*/i, '').trim())
+    .filter((x) => x && x !== '/');
   // "Google Search won't render JavaScript from blocked files or on blocked pages" — javascript-seo-basics
-  for (const p of disallows) if (/^\/(assets|static|_next|js|css|dist|build)\b/i.test(p)) add('critical', 'javascript', 'auto-fix', '/robots.txt', `robots.txt disallows "${p}" — blocking render resources stops Google rendering the page`, 'javascript/javascript-seo-basics');
+  for (const d of disallows) if (/^\/(assets|static|_next|js|css|dist|build)\b/i.test(d)) add('critical', 'javascript', 'auto-fix', '/robots.txt', `robots.txt disallows "${d}" for Googlebot — blocking render resources stops Google rendering the page`, 'javascript/javascript-seo-basics');
   return { disallows, sitemaps };
 }
 
@@ -370,8 +383,12 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   out.jsonLdTypes = jsonLdBlocks(withScripts).flatMap((b) => { try { const d = JSON.parse(b); return (Array.isArray(d) ? d : d['@graph'] || [d]).map((x) => x['@type']); } catch { return []; } });
 
   if (view === 'raw') {
-    // `name=viewport` unquoted is valid HTML5 and standard html-minifier output.
-    if (!/<meta[^>]*\bname=["']?viewport(?=["'\s>])/i.test(html)) add('medium', 'page-experience', 'auto-fix', path, 'missing viewport meta — "Presence of this tag indicates to Google that the page is mobile friendly"', 'crawling-indexing/special-tags');
+    // Read each <meta>'s ACTUAL name value. A substring scan matched `name=viewport` sitting inside
+    // ANOTHER meta's content ("To go mobile add name=viewport to your head"), suppressing the finding
+    // on a page that genuinely has no viewport. `name=viewport` unquoted is valid HTML5 nonetheless.
+    const hasViewport = [...html.matchAll(/<meta\b[^>]*>/gi)]
+      .some((m) => (m[0].match(/\sname\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/i) || []).slice(1).some((v) => v && v.toLowerCase() === 'viewport'));
+    if (!hasViewport) add('medium', 'page-experience', 'auto-fix', path, 'missing viewport meta — "Presence of this tag indicates to Google that the page is mobile friendly"', 'crawling-indexing/special-tags');
     if (!/<html[^>]*\blang=/i.test(html)) add('low', 'international', 'auto-fix', path, 'missing <html lang>', 'specialty/international/localized-versions');
     const h1 = tagText(html, 'h1');
     // Only RECORD here. Whether this becomes a finding depends on whether the page is actually

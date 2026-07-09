@@ -2,7 +2,8 @@
 """Generate references/COVERAGE.md: which corpus pages the rule sheets actually cite.
 
 Mechanical, so the skill can never quietly overclaim its own coverage again.
-Exit 1 if the summary in README.md disagrees with reality.
+Always exits 0: it regenerates the report rather than gating on it. Run it twice and diff
+COVERAGE.md to detect drift.
 """
 import pathlib, re, sys, collections
 

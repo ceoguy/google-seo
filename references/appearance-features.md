@@ -64,7 +64,7 @@ Recommended/best-practice items ("recommend", "consider", "avoid"), plus opt-in/
 - **Unique, descriptive meta description per page.** "Identical or similar descriptions on every page of a site aren't helpful ... create descriptions that accurately describe the specific page." — `docs/search/docs/appearance/snippet.md`
 - **Programmatic descriptions are fine for large sites.** "programmatic generation of the descriptions can be appropriate and are encouraged. Good descriptions are human-readable and diverse." — `docs/search/docs/appearance/snippet.md`
 - **Control snippet display via robots directives.** `nosnippet` (prevent), `max-snippet:[number]` (length cap), `data-nosnippet` (per-element). — `docs/search/docs/appearance/snippet.md`
-- **"Read more" deep links: keep content immediately visible; don't hijack scroll/hash.** "Make sure content is immediately visible on the page to a human (and not hidden behind an expandable section or tabbed interface)." — `docs/search/docs/appearance/snippet.md`
+- **"Read more" deep links: keep content immediately visible; don't hijack scroll/hash.** "Make sure content is immediately visible on the page to a human (and not hidden behind an expandable section or tabbed interface, for example)." — `docs/search/docs/appearance/snippet.md`
 
 ### Featured snippets
 - **Opt out via `nosnippet` (all) or lower `max-snippet` (featured only).** "To block all snippets ... add the `nosnippet` rule". "If you want to retain snippets in regularly-formatted search results, but you don't want to appear in featured snippets, experiment with setting the `max-snippet` rule to lower lengths." — `docs/search/docs/appearance/featured-snippets.md`
