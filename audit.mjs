@@ -612,7 +612,12 @@ if (RENDER) {
   const batch = audited.slice(0, Math.min(audited.length, RENDER_CAP));
   if (audited.length > batch.length) console.error(`[audit] NOTE: rendering only ${batch.length} of ${audited.length} pages (--max-render to raise). The rest are audited raw-only.`);
   if (ghostIs200) batch.push(GHOST); // settle the soft-404 question in the same Chrome session
-  const rendered = await renderedHtml(batch);
+  // Every sitemap URL could have redirected or 404'd. Don't spawn Chrome to render nothing -- but
+  // DO still say so, or a --render run that rendered zero pages reads exactly like a clean one.
+  if (!batch.length) {
+    console.error('[audit] NOTE: --render requested but no page had a raw baseline to diff (all sitemap URLs redirected or failed). Chrome was not started.');
+  }
+  const rendered = batch.length ? await renderedHtml(batch) : new Map();
 
   if (ghostIs200) {
     const gh = rendered.get(GHOST);

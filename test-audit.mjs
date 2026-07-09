@@ -316,6 +316,30 @@ spa.close();
 const spaFindings = JSON.parse(readFileSync(OUT2, 'utf8')).findings;
 unlinkSync(OUT2);
 t('[e2e] a catch-all 200 site IS reported as a soft 404', spaFindings.some((f) => /soft 404/i.test(f.message)));
+
+// --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
+const allRedir = createServer((req, res) => {
+  const b = `http://127.0.0.1:${allRedir.address().port}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${b}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/a</loc></url></urlset>`); }
+  if (u === '/a') { res.writeHead(301, { location: `${b}/dest` }); return res.end(); }
+  if (u === '/dest') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Destination', '<meta name="description" content="The destination of the redirect here.">')); }
+  res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
+});
+await new Promise((r) => allRedir.listen(0, '127.0.0.1', r));
+const AR = `http://127.0.0.1:${allRedir.address().port}`;
+const arStart = Date.now();
+const arOut = await new Promise((resolve) => {
+  let buf = '';
+  const pr = spawn('node', [path.join(HERE, 'audit.mjs'), AR, '--render'], { stdio: ['ignore', 'pipe', 'pipe'] });
+  pr.stdout.on('data', (d) => (buf += d)); pr.stderr.on('data', (d) => (buf += d));
+  const kill = setTimeout(() => { pr.kill(); resolve('TIMEOUT'); }, 45000);
+  pr.on('close', () => { clearTimeout(kill); resolve(buf); });
+});
+allRedir.close();
+t('[e2e] --render with an all-redirect sitemap does not hang', arOut !== 'TIMEOUT' && Date.now() - arStart < 40000);
+t('[e2e] --render with no renderable page says so instead of silently reporting 0', /Chrome was not started/.test(arOut));
 t('[e2e] an out-of-range entity does not abort the audit', findings.length > 0 && !onPage('/bad-entity', /could not parse/));
 t('[e2e] a correctly-escaped &amp; canonical is NOT called a different URL', !onPage('/amp-canonical', /points at a different URL/));
 t('[e2e] a <title> inside a <script> does not create a phantom duplicate', !findings.some((f) => /Fake Script Title/.test(f.message)));
