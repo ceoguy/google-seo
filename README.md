@@ -5,9 +5,11 @@ remember it.
 
 It ships three things:
 
-1. **`docs/`** — a local fork of all **158 pages** of [Google Search Central](https://developers.google.com/search/docs), converted to Markdown, each file stamped with its source URL and fetch date.
-2. **`references/`** — those 158 pages distilled into 9 dense rule sheets. Every rule carries an **exact quote** and a path back into `docs/`. Anything Google doesn't actually say is marked `UNKNOWN — not stated in corpus`, never guessed.
-3. **`audit.mjs`** — a dependency-free auditor that crawls a live site and reports findings, each citing the Google doc that mandates it.
+1. **`docs/`** — a local fork of all **158 pages** of [Google Search Central](https://developers.google.com/search/docs), converted to Markdown, each file stamped with its source URL and fetch date. This is complete.
+2. **`references/`** — dense rule sheets distilling the pages that matter for auditing a typical site. Every rule carries an **exact quote** and a path back into `docs/`. Anything Google doesn't actually say is marked `UNKNOWN — not stated in corpus`, never guessed. **They do not cover all 158 pages** — [`references/COVERAGE.md`](references/COVERAGE.md) lists exactly which pages are summarized and which aren't, and it's generated mechanically so it can't drift.
+3. **`audit.mjs`** — a dependency-free auditor that crawls a live site and reports findings, each citing the Google doc that mandates it. It implements a subset of the checks the sheets identify as auditable; the rest are documented, not automated.
+
+The corpus is the source of truth. When a question falls outside the sheets, grep `docs/`.
 
 ## Why this exists
 
@@ -88,7 +90,12 @@ template bug is one finding, not two hundred); missing `<h1>`; images without `a
 **International** — hreflang self-reference and `x-default`; `<html lang>`.
 
 **Structured data** — JSON-LD parses; `aggregateRating` without a review count; and it always flags
-ratings for human verification, because fabricating them is a manual-action offense.
+ratings for human verification, because fabricating them is a manual-action offense. It does **not**
+validate required properties per feature type — use `references/structured-data.md` and Google's
+Rich Results Test for that.
+
+**Crawling** — `<a>` elements with no crawlable `href` (`javascript:`, `#`, or missing); soft 404s
+(a nonexistent URL answering `200`); non-HTTPS origins.
 
 **JavaScript (`--render`)** — the raw-vs-rendered delta for `<title>`, canonical, hreflang, JSON-LD,
 and `<h1>`.
@@ -99,6 +106,11 @@ Core Web Vitals field data, manual actions, backlink quality, whether your conte
 helpful, and whether a rating you marked up is real. These are `handoff` findings. A tool that
 claimed to pass them would be lying to you.
 
+It also does not yet implement every check the reference sheets identify as mechanically auditable
+(AMP `rel=amphtml` pairing, per-type structured-data validation, pagination canonicals, sitemap
+extension limits, and others). The sheets say *auditable*, not *audited*. `COVERAGE.md` and each
+sheet's own `## Auditable checks` section are the honest list.
+
 ## The rules, in short
 
 Distilled from `references/`. Each is quoted and sourced in full there.
@@ -106,8 +118,9 @@ Distilled from `references/`. Each is quoted and sourced in full there.
 - **A wrong `rel=canonical` is worse than none.** Google calls `rel=canonical` "A strong signal" and sitemap inclusion "A weak signal." Google's own escape hatch: *"If you can't set the canonical URL in the HTML source code, leave it out and only set it with JavaScript."*
 - **`Disallow` is not `noindex`.** robots.txt "is not a mechanism for keeping a web page out of Google" — and a disallowed page can't be seen to carry your `noindex`.
 - **`<priority>` and `<changefreq>` are dead.** Include `<lastmod>` only when it's truthfully accurate.
-- **Sitemap `<loc>` must byte-match the page's canonical** — scheme, host, trailing slash, query. `/foo` and `/foo/` are different URLs.
-- **hreflang has exactly three sanctioned homes:** HTML `<head>`, HTTP header, or sitemap. Each version "must list itself as well as all other language versions." Canonicals must stay in-language.
+- **List only canonical URLs in a sitemap**, verbatim. Google warns: *"don't specify one URL in a sitemap, but a different URL for that same page using `rel="canonical"`."*
+- **hreflang has exactly three sanctioned homes:** HTML `<head>`, HTTP header, or sitemap. Each version "must list itself as well as all other language versions," and *"If two pages don't both point to each other, the tags will be ignored."* Canonicals must stay in-language.
+- **A soft 404 is an indexable error page.** In a client-routed SPA, *"Add a `<meta name="robots" content="noindex">` to error pages using JavaScript."*
 - **`?lang=xx` is the one i18n URL structure Google marks "Not recommended."** Prefer ccTLD, subdomain, or subdirectory.
 - **Dynamic rendering is "a workaround and not a recommended solution."** Use SSR, static rendering, or hydration.
 - **Never fabricate `aggregateRating` or `Review` markup.** Structured data must describe what's visibly on the page.

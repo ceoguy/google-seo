@@ -3,8 +3,9 @@ name: google-seo
 description: >
   Build, audit, and fix a site's SEO strictly against Google's official Search Central
   documentation. Use when asked to audit SEO, fix indexing/canonical/sitemap/robots problems,
-  set up SEO for a new site, check why pages aren't ranking or aren't indexed, validate structured
-  data, diagnose a traffic drop, verify hreflang/i18n, or make a JavaScript/SPA site crawlable.
+  set up SEO for a new site, check why pages aren't ranking or aren't indexed, look up what a
+  structured-data feature requires, diagnose a traffic drop, verify hreflang/i18n, or make a
+  JavaScript/SPA site crawlable.
   Ships a runnable auditor (audit.mjs) that diffs raw HTML against the rendered DOM — the check
   that catches client-rendered SEO, which Google renders (eventually) but AI crawlers never do.
   Every rule cites the Google doc that mandates it. Triggers: "SEO audit", "technical SEO",
@@ -16,6 +17,12 @@ description: >
 
 Do SEO the way Google documents it, not the way blogs remember it. Every rule in `references/`
 carries an exact quote and a path into a local fork of Search Central (158 pages, `docs/`).
+
+**Know what this is and isn't.** `docs/` is the complete corpus — 158 of 158 pages. The
+`references/` sheets summarize the subset that matters for a typical site audit, and
+`audit.mjs` mechanically checks a subset of *those*. When a question falls outside the sheets,
+**grep `docs/` directly** — it is the source of truth, and it is complete. See
+`references/COVERAGE.md` for exactly which pages are summarized and which are not.
 
 ## The one thing most audits miss
 
@@ -62,12 +69,17 @@ Read `references/essentials-and-content.md` first (Search Essentials + spam poli
 - **Never disallow your JS/CSS.** "Google Search won't render JavaScript from blocked files."
 - **`<priority>` and `<changefreq>` are dead.** "Google ignores `<priority>` and `<changefreq>`
   values." A sitemap entry needs `<loc>`, plus `<lastmod>` *only if it is truthfully accurate*.
-- **Sitemap `<loc>` must byte-match the page's canonical** — same scheme, host, trailing-slash
-  form, and query. `/foo` and `/foo/` are different URLs (at the domain root only, the slash is
-  insignificant).
+- **List only canonical URLs in the sitemap.** Google "generally shows the canonical URLs in its
+  search results, which you can influence with sitemaps," and warns: "don't specify one URL in a
+  sitemap, but a different URL for that same page using `rel="canonical"`." So a `<loc>` should be
+  character-for-character the URL that page self-canonicalizes to.
+  (The often-repeated "`/foo` and `/foo/` are different URLs, but at the domain root the slash is
+  insignificant" is **not stated anywhere in this corpus** — it comes from Google's 2010 blog post
+  *To slash or not to slash*. Treat it as folklore-with-a-source, not documented policy.)
 - **hreflang has exactly three sanctioned homes**: HTML `<head>`, HTTP header, or sitemap. Each
   version "must list itself as well as all other language versions," plus `x-default`. A canonical
-  must point at a page **in the same language**.
+  must point at a page **in the same language**. Reciprocity is enforced: "If two pages don't both
+  point to each other, the tags will be ignored."
 - **`?lang=xx` locale URLs are the one i18n structure Google calls "Not recommended."** Prefer
   ccTLD, subdomain, or subdirectory.
 - **Never fabricate `aggregateRating`/`Review` markup.** Structured data must describe content

@@ -12,7 +12,8 @@
  *                        delay), most AI crawlers do not. Requires CHROME env or a system Chrome.
  *   --quiet              findings only
  *
- * Exit: 0 clean · 1 findings remain · 2 crawl/setup error.
+ * Exit: 0 = no code-fixable findings (handoff items may still be printed) · 1 = auto-fix findings
+ *        remain · 2 = crawl/setup error.
  *
  * Every check cites the Google doc that mandates it, so a finding can be argued from source.
  * ponytail: Node stdlib only (plus optional puppeteer-less CDP via Chrome's own protocol for
@@ -41,7 +42,15 @@ const findings = [];
 const add = (sev, area, cls, where, msg, doc) => findings.push({ severity: sev, area, class: cls, where, message: msg, doc });
 
 const SEV_ORDER = { critical: 0, high: 1, medium: 2, low: 3 };
-const norm = (u) => { try { const x = new URL(u, origin); x.hash = ''; return x.href.replace(/\/$/, x.pathname === '/' ? '/' : ''); } catch { return u; } };
+// Strip a trailing slash from the PATH only. Operating on the full href would eat the slash inside
+// a query value (`?path=/a/b/`), collapsing two genuinely distinct URLs into one.
+const norm = (u) => {
+  try {
+    const x = new URL(u, origin);
+    const path = x.pathname === '/' ? '/' : x.pathname.replace(/\/$/, '');
+    return x.origin + path + x.search;
+  } catch { return u; }
+};
 
 async function get(url) {
   try {
@@ -56,10 +65,14 @@ async function get(url) {
 // "2 canonical tags" on the very first run.
 const decomment = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
 const tagText = (h, t) => [...h.matchAll(new RegExp(`<${t}\\b[^>]*>([\\s\\S]*?)</${t}>`, 'gi'))].map((m) => m[1].replace(/<[^>]+>/g, '').trim());
-const metaC = (h, attr, key) => h.match(new RegExp(`<meta[^>]*${attr}=["']${key}["'][^>]*content=["']([^"']*)["']`, 'i'))?.[1]
-  ?? h.match(new RegExp(`<meta[^>]*content=["']([^"']*)["'][^>]*${attr}=["']${key}["']`, 'i'))?.[1] ?? '';
-const linkHref = (h, rel) => h.match(new RegExp(`<link[^>]*rel=["']${rel}["'][^>]*href=["']([^"']*)["']`, 'i'))?.[1]
-  ?? h.match(new RegExp(`<link[^>]*href=["']([^"']*)["'][^>]*rel=["']${rel}["']`, 'i'))?.[1] ?? '';
+// Delimit attribute values by a BACKREFERENCE to the opening quote. A `["']([^"']*)["']` class ends
+// the capture at the first apostrophe, so content="it's great" captured "it" -- which then read as a
+// missing description, or grouped every contraction-sharing page as a "duplicate".
+const ATTR = (name) => `${name}=(["'])((?:(?!\\1).)*)\\1`;
+const metaC = (h, attr, key) => h.match(new RegExp(`<meta[^>]*${attr}=["']${key}["'][^>]*${ATTR('content')}`, 'i'))?.[2]
+  ?? h.match(new RegExp(`<meta[^>]*${ATTR('content')}[^>]*${attr}=["']${key}["']`, 'i'))?.[2] ?? '';
+const linkHref = (h, rel) => h.match(new RegExp(`<link[^>]*rel=["']${rel}["'][^>]*${ATTR('href')}`, 'i'))?.[2]
+  ?? h.match(new RegExp(`<link[^>]*${ATTR('href')}[^>]*rel=["']${rel}["']`, 'i'))?.[2] ?? '';
 const allCanonicals = (h) => [...h.matchAll(/<link[^>]*rel=["']canonical["'][^>]*>/gi)].map((m) => m[0]);
 const hreflangs = (h) => [...h.matchAll(/<link[^>]*rel=["']alternate["'][^>]*>/gi)]
   .map((m) => ({ lang: m[0].match(/hreflang=["']([^"']+)["']/i)?.[1], href: m[0].match(/href=["']([^"']+)["']/i)?.[1] }))
@@ -69,12 +82,38 @@ const jsonLdBlocks = (h) => [...h.matchAll(/<script[^>]*type=["']application\/ld
 // ---- robots.txt -------------------------------------------------------------------------------
 // "it is not a mechanism for keeping a web page out of Google" — robots/intro
 const AI_BOTS = ['GPTBot', 'ClaudeBot', 'PerplexityBot', 'OAI-SearchBot', 'Google-Extended'];
+// Consecutive `User-agent:` lines SHARE the rule block that follows them. Parse into
+// agent -> rules[]; a lazy "until the next User-agent line" regex gives the first agent in a
+// stacked group zero rules, so `User-agent: *\nUser-agent: Googlebot\nDisallow: /` reads as
+// "nothing is blocked" when in fact everything is.
+function robotsGroups(body) {
+  const groups = new Map(); // lowercased agent -> array of rule lines
+  let pending = [];
+  let current = [];
+  for (const raw of body.split(/\r?\n/)) {
+    const line = raw.replace(/#.*$/, '').trim();
+    if (!line) continue;
+    const ua = line.match(/^User-agent:\s*(\S+)/i);
+    if (ua) {
+      if (current.length) { pending = []; current = []; }   // a rule block ended; start a new stack
+      pending.push(ua[1].toLowerCase());
+      if (!groups.has(ua[1].toLowerCase())) groups.set(ua[1].toLowerCase(), []);
+      continue;
+    }
+    if (!pending.length) continue;                           // rule outside any group
+    current.push(line);
+    for (const a of pending) groups.get(a).push(line);
+  }
+  return groups;
+}
+
 async function auditRobots() {
   const { status, body } = await get(origin + '/robots.txt');
   if (status !== 200) { add('high', 'crawling', 'auto-fix', '/robots.txt', `robots.txt returns ${status}`, 'robots/intro'); return { disallows: [], sitemaps: [] }; }
-  const group = (ua) => (body.match(new RegExp(`User-agent:\\s*${ua}[\\s\\S]*?(?=\\nUser-agent:|$)`, 'i')) || [''])[0];
-  if (/^\s*Disallow:\s*\/\s*$/im.test(group('\\*'))) add('critical', 'crawling', 'auto-fix', '/robots.txt', 'robots.txt blocks all crawlers (User-agent: * / Disallow: /)', 'robots/intro');
-  for (const b of AI_BOTS) { const g = group(b); if (g && /^\s*Disallow:\s*\/\s*$/im.test(g)) add('medium', 'ai-search', 'handoff', '/robots.txt', `${b} is fully disallowed — that engine cannot cite this site`, 'robots/intro'); }
+  const groups = robotsGroups(body);
+  const blocksAll = (agent) => (groups.get(agent.toLowerCase()) || []).some((l) => /^Disallow:\s*\/\s*$/i.test(l));
+  if (blocksAll('*')) add('critical', 'crawling', 'auto-fix', '/robots.txt', 'robots.txt blocks all crawlers (User-agent: * / Disallow: /)', 'robots/intro');
+  for (const b of AI_BOTS) { if (blocksAll(b)) add('medium', 'ai-search', 'handoff', '/robots.txt', `${b} is fully disallowed — that engine cannot cite this site`, 'robots/intro'); }
   const sitemaps = [...body.matchAll(/^\s*Sitemap:\s*(\S+)/gim)].map((m) => m[1]);
   if (!sitemaps.length) add('medium', 'sitemap', 'auto-fix', '/robots.txt', 'no Sitemap: directive in robots.txt', 'sitemaps/build-sitemap');
   const disallows = [...body.matchAll(/^\s*Disallow:\s*(\S+)/gim)].map((m) => m[1]).filter((p) => p && p !== '/');
@@ -85,51 +124,77 @@ async function auditRobots() {
 
 // ---- sitemap ----------------------------------------------------------------------------------
 const W3C_DATE = /^\d{4}-\d{2}-\d{2}([T ]\d{2}:\d{2}(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:\d{2})?)?$/;
+const MAX_URLS = 50000, MAX_BYTES = 50 * 1024 * 1024;
+
+// Checks that apply to ONE sitemap file, whether it is a standalone sitemap or an index child.
+// Running these only on the index (as an earlier version did) means an oversized 60,000-URL child
+// sails through -- and index-using sites are exactly the large sites that need auditing.
+function auditOneSitemap(url, body, headers, { isIndex }) {
+  const ctype = headers.get?.('content-type') || '';
+  if (!/xml/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, `Content-Type is "${ctype}" (expected XML)`, 'sitemaps/build-sitemap');
+  if (!/encoding=["']UTF-8["']/i.test(body) && !/charset=utf-8/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, 'does not declare UTF-8 encoding', 'sitemaps/build-sitemap');
+
+  const bytes = Buffer.byteLength(body, 'utf8');
+  if (bytes > MAX_BYTES) add('critical', 'sitemap', 'auto-fix', url, `${(bytes / 1048576).toFixed(1)}MB (limit 50MB uncompressed)`, 'sitemaps/large-sitemaps');
+
+  const locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((m) => m[1].trim());
+  if (locs.length > MAX_URLS) {
+    add('critical', 'sitemap', 'auto-fix', url,
+      `${locs.length} ${isIndex ? 'child sitemaps' : 'URLs'} in one file (limit 50,000)`, 'sitemaps/large-sitemaps');
+  }
+  if (/<priority>/i.test(body)) add('low', 'sitemap', 'auto-fix', url, '<priority> present — "Google ignores <priority> and <changefreq> values"', 'sitemaps/build-sitemap');
+  if (/<changefreq>/i.test(body)) add('low', 'sitemap', 'auto-fix', url, '<changefreq> present — Google ignores it', 'sitemaps/build-sitemap');
+
+  const lastmods = [...body.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map((m) => m[1].trim());
+  const bad = lastmods.filter((d) => !W3C_DATE.test(d));
+  if (bad.length) add('medium', 'sitemap', 'auto-fix', url, `${bad.length} <lastmod> not W3C Datetime (e.g. "${bad[0]}")`, 'sitemaps/build-sitemap');
+  if (!isIndex && !lastmods.length && locs.length) add('low', 'sitemap', 'auto-fix', url, 'no <lastmod> anywhere — add it where you can compute it accurately', 'sitemaps/build-sitemap');
+  return locs;
+}
+
+function validateLocs(locs, where) {
+  for (const l of locs) {
+    if (!/^https?:\/\//i.test(l)) { add('high', 'sitemap', 'auto-fix', where, `<loc> not absolute: ${l}`, 'sitemaps/build-sitemap'); continue; }
+    if (/&(?!amp;|lt;|gt;|quot;|apos;|#)/.test(l)) add('high', 'sitemap', 'auto-fix', where, `<loc> has unescaped & : ${l}`, 'sitemaps/build-sitemap');
+    if (l.includes('#')) add('medium', 'sitemap', 'auto-fix', where, `<loc> contains a fragment: ${l}`, 'consolidate-duplicate-urls');
+    try { if (new URL(l).origin !== origin) add('medium', 'sitemap', 'handoff', where, `<loc> is cross-origin (${l}) — valid only if submitted in GSC or referenced from that host's robots.txt`, 'sitemaps/build-sitemap'); }
+    catch { add('high', 'sitemap', 'auto-fix', where, `<loc> is not a valid URL: ${l}`, 'sitemaps/build-sitemap'); }
+  }
+}
+
 async function auditSitemap(smUrls) {
   const url = smUrls[0] || origin + '/sitemap.xml';
   const { status, body, headers } = await get(url);
   if (status !== 200) { add('high', 'sitemap', 'auto-fix', '/sitemap.xml', `sitemap not 200 (got ${status})`, 'sitemaps/build-sitemap'); return []; }
 
-  const ctype = headers.get('content-type') || '';
-  if (!/xml/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, `sitemap Content-Type is "${ctype}" (expected XML)`, 'sitemaps/build-sitemap');
-  // "The sitemap file must be UTF-8 encoded."
-  if (!/encoding=["']UTF-8["']/i.test(body) && !/charset=utf-8/i.test(ctype)) add('medium', 'sitemap', 'auto-fix', url, 'sitemap does not declare UTF-8 encoding', 'sitemaps/build-sitemap');
-  // "All formats limit a single sitemap to 50MB (uncompressed) or 50,000 URLs."
-  const bytes = Buffer.byteLength(body, 'utf8');
-  if (bytes > 50 * 1024 * 1024) add('critical', 'sitemap', 'auto-fix', url, `sitemap is ${(bytes / 1048576).toFixed(1)}MB (limit 50MB) — split with a sitemap index`, 'sitemaps/large-sitemaps');
+  const isIndex = /<sitemapindex/i.test(body);
+  const top = auditOneSitemap(url, body, headers, { isIndex });
 
-  let locs = [...body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((m) => m[1].trim());
-  if (/<sitemapindex/i.test(body)) {
-    const nested = [];
-    for (const sm of locs.slice(0, 50)) { const r = await get(sm); nested.push(...[...r.body.matchAll(/<loc>([^<]+)<\/loc>/gi)].map((m) => m[1].trim())); }
-    locs = nested;
-  } else if (locs.length > 50000) {
-    add('critical', 'sitemap', 'auto-fix', url, `${locs.length} URLs in one sitemap (limit 50,000) — use a sitemap index`, 'sitemaps/large-sitemaps');
+  if (!isIndex) {
+    validateLocs(top, url);
+    const d = top.filter((l, i) => top.indexOf(l) !== i);
+    if (d.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(d).size} duplicate <loc> entries`, 'sitemaps/build-sitemap');
+    return [...new Set(top)];
   }
 
-  // "Google ignores <priority> and <changefreq> values."
-  if (/<priority>/i.test(body)) add('low', 'sitemap', 'auto-fix', url, '<priority> present — "Google ignores <priority> and <changefreq> values"', 'sitemaps/build-sitemap');
-  if (/<changefreq>/i.test(body)) add('low', 'sitemap', 'auto-fix', url, '<changefreq> present — Google ignores it', 'sitemaps/build-sitemap');
-
-  // "Use fully-qualified, absolute URL in your sitemaps." + entity escaping
-  for (const l of locs.slice(0, 500)) {
-    if (!/^https?:\/\//i.test(l)) add('high', 'sitemap', 'auto-fix', url, `<loc> not absolute: ${l}`, 'sitemaps/build-sitemap');
-    if (/&(?!amp;|lt;|gt;|quot;|apos;|#)/.test(l)) add('high', 'sitemap', 'auto-fix', url, `<loc> has unescaped & : ${l}`, 'sitemaps/build-sitemap');
-    if (l.includes('#')) add('medium', 'sitemap', 'auto-fix', url, `<loc> contains a fragment: ${l}`, 'consolidate-duplicate-urls');
-    try { if (new URL(l).origin !== origin) add('medium', 'sitemap', 'handoff', url, `<loc> is cross-origin (${l}) — only valid if submitted in GSC or referenced via robots.txt`, 'sitemaps/build-sitemap'); } catch { add('high', 'sitemap', 'auto-fix', url, `<loc> is not a valid URL: ${l}`, 'sitemaps/build-sitemap'); }
+  // Index: every child gets the full per-file treatment. No silent truncation.
+  const all = [];
+  for (const child of top) {
+    const r = await get(child);
+    if (r.status !== 200) { add('high', 'sitemap', 'auto-fix', child, `child sitemap not 200 (got ${r.status})`, 'sitemaps/large-sitemaps'); continue; }
+    const locs = auditOneSitemap(child, r.body, r.headers, { isIndex: /<sitemapindex/i.test(r.body) });
+    validateLocs(locs, child);
+    all.push(...locs);
   }
-  const lastmods = [...body.matchAll(/<lastmod>([^<]+)<\/lastmod>/gi)].map((m) => m[1].trim());
-  const badDates = lastmods.filter((d) => !W3C_DATE.test(d));
-  if (badDates.length) add('medium', 'sitemap', 'auto-fix', url, `${badDates.length} <lastmod> not W3C Datetime (e.g. "${badDates[0]}")`, 'sitemaps/build-sitemap');
-  if (!lastmods.length && locs.length) add('low', 'sitemap', 'auto-fix', url, 'no <lastmod> anywhere — add it where you can compute it accurately', 'sitemaps/build-sitemap');
-
-  const dupes = locs.filter((l, i) => locs.indexOf(l) !== i);
-  if (dupes.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(dupes).size} duplicate <loc> entries`, 'sitemaps/build-sitemap');
-  return [...new Set(locs)];
+  const dupes = all.filter((l, i) => all.indexOf(l) !== i);
+  if (dupes.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(dupes).size} duplicate <loc> entries across children`, 'sitemaps/build-sitemap');
+  return [...new Set(all)];
 }
 
 // ---- per page ---------------------------------------------------------------------------------
 const seenTitle = new Map(), seenDesc = new Map(), canonicalTargets = new Map();
+const hreflangGraph = new Map();   // url -> Set(alternate urls it declares)
+const canonicalByUrl = new Map();  // exact sitemap url -> exact canonical string (raw, unnormalized)
 
 function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   const html = decomment(rawHtml);
@@ -160,7 +225,12 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
     if (view === 'raw') {
       const t = norm(canonical);
       canonicalTargets.set(t, [...(canonicalTargets.get(t) || []), path]);
+      canonicalByUrl.set(url, canonical);
       if (t !== norm(url)) add('high', 'canonical', 'auto-fix', path, `canonical points at a different URL: ${canonical}`, 'consolidate-duplicate-urls');
+      // BYTE-match, not normalized match. norm() deliberately collapses trailing slashes, so a
+      // sitemap listing /foo/ while the page canonicalizes to /foo would otherwise slip through --
+      // and "don't specify one URL in a sitemap, but a different URL ... using rel=canonical".
+      else if (canonical !== url) add('low', 'sitemap', 'auto-fix', path, `sitemap <loc> "${url}" and canonical "${canonical}" differ only in form (slash/scheme/case). List the canonical verbatim.`, 'sitemaps/build-sitemap');
     }
   } else if (view === 'raw') {
     // Not automatically a defect: "If you can't set the canonical URL in the HTML source code,
@@ -171,16 +241,18 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   // robots meta / X-Robots-Tag
   const robots = metaC(html, 'name', 'robots') || metaC(html, 'name', 'googlebot') || '';
   const xrobots = headers?.get?.('x-robots-tag') || '';
-  if (/noindex/i.test(robots + ' ' + xrobots) && !NOINDEX_OK.includes(new URL(url).pathname)) {
-    add('critical', 'indexing', 'auto-fix', path, `${tag}page is noindex ("${robots || xrobots}") — confirm intentional`, 'crawling-indexing/block-indexing');
+  // "none" is equivalent to "noindex, nofollow" — a page carrying it is fully blocked.
+  if (/\b(noindex|none)\b/i.test(robots + ' ' + xrobots) && !NOINDEX_OK.includes(new URL(url).pathname)) {
+    add('critical', 'indexing', 'handoff', path, `${tag}page is noindex ("${robots || xrobots}") — a human must confirm this is intentional`, 'crawling-indexing/block-indexing');
   }
 
-  // hreflang reciprocity is cross-page; collect here
   out.hreflang = hreflangs(html);
   if (out.hreflang.length) {
     const selfListed = out.hreflang.some((h) => norm(h.href) === norm(url));
     if (!selfListed) add('high', 'international', view === 'raw' ? 'auto-fix' : 'render', path, `${tag}hreflang set does not list itself — "Each language version must list itself as well as all other language versions"`, 'specialty/international/localized-versions');
     if (!out.hreflang.some((h) => h.lang.toLowerCase() === 'x-default')) add('low', 'international', 'auto-fix', path, `${tag}no x-default hreflang`, 'specialty/international/localized-versions');
+    // reciprocity is a CROSS-page property; record the graph and check it after the crawl
+    if (view === 'raw') hreflangGraph.set(norm(url), new Set(out.hreflang.filter((h) => h.lang.toLowerCase() !== 'x-default').map((h) => norm(h.href))));
   }
 
   // structured data
@@ -208,6 +280,26 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
     const imgs = [...html.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
     const noAlt = imgs.filter((t) => !/\balt=/i.test(t)).length;
     if (noAlt) add('low', 'on-page', 'auto-fix', path, `${noAlt}/${imgs.length} <img> without alt`, 'appearance/google-images');
+
+    // "Link: <...>; rel=canonical" — the only canonical method for PDFs/non-HTML, and a silent
+    // conflict source when it disagrees with the HTML tag.
+    const linkHdr = headers?.get?.('link') || '';
+    const hdrCanon = linkHdr.match(/<([^>]+)>\s*;\s*rel=["']?canonical/i)?.[1];
+    if (hdrCanon && canonical && norm(hdrCanon) !== norm(canonical)) {
+      add('high', 'canonical', 'auto-fix', path, `Link: rel=canonical header (${hdrCanon}) disagrees with the HTML canonical (${canonical})`, 'consolidate-duplicate-urls');
+    }
+
+    // Crawlable links: "use <a> tags with href attributes". onclick/javascript: nav is not crawled.
+    const fakeNav = [...html.matchAll(/<a\b[^>]*>/gi)].map((m) => m[0])
+      .filter((a) => !/\bhref\s*=/i.test(a) || /href\s*=\s*["']\s*(javascript:|#)\s*["']/i.test(a)).length;
+    if (fakeNav >= 3) add('medium', 'crawling', 'auto-fix', path, `${fakeNav} <a> elements without a crawlable href (missing href, or javascript:/# only)`, 'crawling-indexing/links-crawlable');
+
+    // Robots directives that gate previews/AI surfaces and that most audits never look at.
+    const rb = (metaC(html, 'name', 'robots') + ' ' + (headers?.get?.('x-robots-tag') || '')).toLowerCase();
+    if (/\bnoimageindex\b/.test(rb)) add('medium', 'indexing', 'handoff', path, 'noimageindex — images on this page cannot be indexed', 'crawling-indexing/robots-meta-tag');
+    if (/\bunavailable_after\b/.test(rb)) add('low', 'indexing', 'handoff', path, 'unavailable_after set — page will drop out of the index on that date', 'crawling-indexing/robots-meta-tag');
+    if (/\bnosnippet\b/.test(rb) && /\bmax-snippet\b/.test(rb)) add('low', 'indexing', 'auto-fix', path, 'both nosnippet and max-snippet present — the most restrictive wins; drop one', 'crawling-indexing/robots-meta-tag');
+    if (/<meta[^>]*name=["']keywords["']/i.test(html)) add('low', 'on-page', 'auto-fix', path, 'meta keywords present — Google does not use it', 'crawling-indexing/special-tags');
   }
   return out;
 }
@@ -255,7 +347,19 @@ async function cdpHtml(wsUrl) {
   });
 }
 
+// ---- site-level probes --------------------------------------------------------------------------
+async function siteProbes() {
+  if (new URL(base).protocol !== 'https:') add('high', 'page-experience', 'auto-fix', origin, 'site is not served over HTTPS', 'appearance/page-experience');
+
+  // Soft 404: a URL that cannot exist must not answer 200. Google treats a 200 error page as a
+  // "soft 404" and it wastes crawl budget on pages that should never be indexed.
+  const ghost = origin + '/__google-seo-audit-probe-404__';
+  const r = await get(ghost);
+  if (r.status === 200) add('high', 'crawling', 'auto-fix', ghost, 'a nonexistent URL returns HTTP 200 (soft 404) — return a real 404/410', 'crawling-indexing/troubleshoot-crawling-errors');
+}
+
 // ---- main -------------------------------------------------------------------------------------
+await siteProbes();
 const { sitemaps } = await auditRobots();
 let urls = await auditSitemap(sitemaps);
 if (!urls.length) urls = [origin + '/'];
@@ -276,6 +380,20 @@ for (const u of pages) {
 for (const [target, srcs] of canonicalTargets) {
   const others = srcs.filter((p) => norm(origin + p) !== target);
   if (others.length >= 3) add('critical', 'canonical', 'auto-fix', target, `${others.length} distinct pages declare canonical -> ${target}. rel=canonical is "A strong signal"; this de-indexes them into one page.`, 'consolidate-duplicate-urls');
+}
+
+// cross-page: hreflang reciprocity. "If two pages don't both point to each other, the tags will be
+// ignored." Only assert on pages we actually fetched — a missing return link from an unfetched page
+// is unknown, not broken.
+for (const [u, alts] of hreflangGraph) {
+  for (const alt of alts) {
+    if (alt === u || !hreflangGraph.has(alt)) continue;
+    if (!hreflangGraph.get(alt).has(u)) {
+      add('high', 'international', 'auto-fix', new URL(u).pathname + new URL(u).search,
+        `hreflang is not reciprocal: this page points to ${alt}, which does not point back. "If two pages don't both point to each other, the tags will be ignored."`,
+        'specialty/international/localized-versions');
+    }
+  }
 }
 
 // cross-page: duplicate <title>/<description> reported once per shared value, listing victims.
@@ -320,6 +438,9 @@ if (!QUIET) {
     console.log('');
   }
   if (!findings.length) console.log('CLEAN — no findings.\n');
+  else if (!autoFix.length) console.log(`No code-fixable defects. ${handoff.length} item(s) need a human — exiting 0.\n`);
 }
 if (flag('json')) writeFileSync(String(flag('json')), JSON.stringify({ origin, pages: pages.length, rendered: RENDER, findings }, null, 2));
-exit(findings.length ? (autoFix.length ? 1 : 0) : 0);
+// 1 only when a CODE change can close something. Handoff findings (a human must verify a rating is
+// real, a bot is deliberately blocked) would otherwise wedge CI red forever with no fix available.
+exit(autoFix.length ? 1 : 0);
