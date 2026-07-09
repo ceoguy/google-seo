@@ -92,7 +92,7 @@ async function get(url, tries = 2) {
       const buf = Buffer.from(await r.arrayBuffer());
       const gz = buf.length > 2 && buf[0] === 0x1f && buf[1] === 0x8b;
       let body;
-      try { body = gz ? gunzipSync(buf).toString('utf8') : buf.toString('utf8'); }
+      try { body = gz ? gunzipSync(buf, { maxOutputLength: 60 * 1024 * 1024 }).toString('utf8') : buf.toString('utf8'); }
       catch { body = buf.toString('utf8'); }
       return { status: r.status, body, headers: r.headers, finalUrl: r.url };
     } catch (e) { if (i >= tries) return { status: 0, body: '', headers: new Headers(), finalUrl: url, error: String(e.message || e) }; await sleep(300); }
@@ -149,7 +149,7 @@ const metaC = (h, attr, key) => decodeEnts(metaCRaw(h, attr, key));
 // href=...`). meta already handled this; the link helpers didn't, so a minified site's canonical
 // went undetected -- every canonical check silently skipped in raw mode, or a false "only after JS"
 // under --render. REL/AV accept quoted OR unquoted values.
-const REL = (rel) => `rel=["']?${rel}(?=["'\\s>])`;
+const REL = (rel) => `rel=["']?(?:[^"'>]*\\s)?${rel}(?=["'\\s>])`;
 const AV = (name) => `${name}=(?:"([^"]*)"|'([^']*)'|([^\\s"'>]+))`;
 const avOf = (m) => (m ? (m[1] ?? m[2] ?? m[3] ?? '') : '');  // AV has 3 alternation groups
 const linkHref = (h, rel) => decodeEnts(avOf(

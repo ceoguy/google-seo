@@ -68,6 +68,12 @@ t("unquoted <link rel=canonical href=...> is read", linkHref2('<link rel=canonic
 t("quoted <link> canonical still read", linkHref2('<link rel="canonical" href="https://x.com/q">', 'canonical') === 'https://x.com/q');
 t("reversed unquoted <link> order", linkHref2('<link href=https://x.com/s rel=canonical>', 'canonical') === 'https://x.com/s');
 t("rel=canonical-x is NOT canonical", linkHref2('<link rel=canonical-x href=y>', 'canonical') === '');
+// canonical as ANY token in a multi-value rel (canonical-first OR canonical-last)
+const REL2 = (rel) => `rel=["']?(?:[^"'>]*\\s)?${rel}(?=["'\\s>])`;
+const hasCanon = (h) => new RegExp(`<link[^>]*${REL2('canonical')}`, 'i').test(h);
+t("rel=\"canonical alternate\" is canonical", hasCanon('<link rel="canonical alternate" href=x>'));
+t("rel=\"alternate canonical\" (canonical last) is canonical", hasCanon('<link rel="alternate canonical" href=x>'));
+t("rel=alternate alone is NOT canonical", !hasCanon('<link rel=alternate href=x>'));
 const looksGz = (b) => b.length > 2 && b[0] === 0x1f && b[1] === 0x8b;
 t("plain-XML bytes are not treated as gzip", !looksGz(Buffer.from('<?xml ...')));
 t("real gzip magic is detected", looksGz(gzipSync(Buffer.from('x'))));
