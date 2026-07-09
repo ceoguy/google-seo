@@ -42,6 +42,11 @@ t("content= inside ANOTHER attribute's value is not captured", metaC('<meta name
 t("empty content is still 'missing'", metaC('<meta name="description" content="">', 'name', 'description') === '');
 t("unquoted KEY attribute (name=description)", metaC('<meta name=description content=RealDesc>', 'name', 'description') === 'RealDesc');
 t("a longer key (descriptionX) does not match 'description'", metaC('<meta name=descriptionX content=Nope>', 'name', 'description') === '');
+// `name=viewport` unquoted is valid HTML5 and is what html-minifier emits
+const hasViewport = (h) => /<meta[^>]*\bname=["']?viewport(?=["'\s>])/i.test(h);
+t("unquoted name=viewport is detected", hasViewport('<meta name=viewport content="width=device-width">'));
+t("quoted name=\"viewport\" is detected", hasViewport('<meta name="viewport" content="width=device-width">'));
+t("name=viewportx is NOT viewport", !hasViewport('<meta name=viewportx content=x>'));
 
 function robotsGroups(body) {
   const g = new Map(); let pending = [], current = [];
@@ -191,6 +196,8 @@ const ROUTES = {
 <url><loc>{B}/rv1</loc></url>
 <url><loc>{B}/rv2</loc></url>
 <url><loc>{B}/rv3</loc></url>
+<url><loc>{B}/stale-redirect</loc></url>
+<url><loc>{B}/minified-viewport</loc></url>
 <url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
@@ -226,6 +233,8 @@ const ROUTES = {
   '/rv1': ['text/html', page('Real victim one', '<meta name="description" content="Victim one of the real hub here."><link rel="canonical" href="{B}/realhub">')],
   '/rv2': ['text/html', page('Real victim two', '<meta name="description" content="Victim two of the real hub here."><link rel="canonical" href="{B}/realhub">')],
   '/rv3': ['text/html', page('Real victim three', '<meta name="description" content="Victim three of the real hub here."><link rel="canonical" href="{B}/realhub">')],
+  // valid HTML5 unquoted viewport (html-minifier output) must not read as "missing viewport"
+  '/minified-viewport': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Minified viewport page</title><meta name="description" content="Viewport attribute name is unquoted here."></head><body><h1>H</h1></body></html>'],
   '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
   // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
   '/amp-canonical': ['text/html', page('Ampersand canonical page', '<meta name="description" content="Canonical and loc both escape the ampersand."><link rel="canonical" href="{B}/amp-canonical?b=1&amp;c=2">')],
@@ -233,8 +242,10 @@ const ROUTES = {
 
 const server = createServer((req, res) => {
   const url = req.url.split('?')[0];
-  const hit = ROUTES[url];
   const base = `http://127.0.0.1:${server.address().port}`;
+  // a stale sitemap entry that 301s to a real page which correctly self-canonicalizes
+  if (url === '/stale-redirect') { res.writeHead(301, { location: `${base}/ok` }); return res.end(); }
+  const hit = ROUTES[url];
   if (!hit) { res.writeHead(404, { 'content-type': 'text/html' }); return res.end('<h1>404</h1>'); }
   res.writeHead(200, { 'content-type': hit[0] });
   res.end(hit[1].replaceAll('{B}', base));
@@ -270,7 +281,10 @@ t(`[meta] no orphan fixture pages (unreachable => vacuous assertions)${orphans.l
 t('[e2e] exits 1 when auto-fix findings remain', code === 1);
 t('[e2e] `data-note="content=noindex"` is NOT reported as noindex', !onPage('/trap', /is noindex/i));
 t('[e2e] unquoted `content=` is not reported as a missing description', count(/missing meta description/) === 0);
-t('[e2e] a canonical inside an HTML comment is not counted as a tag', !has(/rel=canonical tags/));
+// A commented-out canonical must be invisible. If decomment() breaks, /commented reads the
+// commented href and reports "canonical points at a different URL" -- THAT is the fireable signal.
+// (The old assertion checked for a ">1 canonical tags" message no fixture can produce: vacuous.)
+t('[e2e] a canonical inside an HTML comment is not read as the page canonical', !onPage('/commented', /canonical/));
 t('[e2e] the dup-a/dup-b shared title is reported exactly once', findings.filter((f) => /share one <title>/.test(f.message) && f.message.includes('"Shared Title')).length === 1);
 t('[e2e] distinct descriptions are not called duplicates', !has(/share one meta description/));
 t('[e2e] <priority> is flagged as ignored by Google', has(/<priority> present/));
@@ -305,6 +319,11 @@ t('[e2e] a catch-all 200 site IS reported as a soft 404', spaFindings.some((f) =
 t('[e2e] an out-of-range entity does not abort the audit', findings.length > 0 && !onPage('/bad-entity', /could not parse/));
 t('[e2e] a correctly-escaped &amp; canonical is NOT called a different URL', !onPage('/amp-canonical', /points at a different URL/));
 t('[e2e] a <title> inside a <script> does not create a phantom duplicate', !findings.some((f) => /Fake Script Title/.test(f.message)));
+// a redirected sitemap URL gets the redirect notice and NOTHING else
+t('[e2e] a redirected sitemap URL is reported as stale', onPage('/stale-redirect', /redirects to/));
+t('[e2e] a redirected URL is not also scored as a page (no false canonical)', !onPage('/stale-redirect', /canonical/));
+t('[e2e] a redirected URL does not become a duplicate-title victim', !findings.some((f) => /share one <title>/.test(f.message) && /stale-redirect/.test(f.message)));
+t('[e2e] unquoted name=viewport is not reported missing', !onPage('/minified-viewport', /missing viewport/));
 t('[e2e] <img> strings inside JSON-LD are not counted as images', !onPage('/jsonld-img', /without alt/));
 t('[e2e] JSON-LD is still parsed (structured data checks not blinded)', findings.every((f) => !/JSON-LD block does not parse/.test(f.message)));
 // both polarities of the consolidation CRITICAL

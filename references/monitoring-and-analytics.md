@@ -52,7 +52,7 @@ The documented cause categories (each with its Search Console tell), quotes from
 
 Note: the fork lists no separately-headed "disruptive changes" category — `UNKNOWN — not stated in corpus`.
 
-Algorithmic-drop nuance: "there might not be anything fundamentally wrong with your content." Small vs large: "A small drop in position is when there's a small shift in position in the top results (for example, dropping from position 2 to 4)"; "A large drop in position is when you see a notable drop out of the top results for a wide range of terms." — `docs/search/docs/monitor-debug/debugging-search-traffic-drops.md`
+Algorithmic-drop nuance: "there might not be anything fundamentally wrong with your content." Small vs large: "A small drop in position is when there's a small shift in position in the top results (for example, dropping from position 2 to 4 for a search query)"; "A large drop in position is when you see a notable drop out of the top results for a wide range of terms." — `docs/search/docs/monitor-debug/debugging-search-traffic-drops.md`
 
 ## Rich Results Test vs URL Inspection (which is authoritative)
 
@@ -118,7 +118,7 @@ Source of truth (`docs/search/docs/monitor-debug/google-analytics-search-console
 
 ## Auditable checks
 
-1. `[handoff]` Confirm the property is verified in Search Console (ownership) before any diagnostic — required "to get access to all of the information Search Console makes available." Source: `docs/search/docs/monitor-debug/search-console-start.md`.
+1. `[handoff]` Confirm the property is verified in Search Console (ownership) before any diagnostic — required "Get access to all of the information Search Console makes available" Source: `docs/search/docs/monitor-debug/search-console-start.md`.
 2. `[handoff]` Traffic drop: open Performance report, set 16-month range, and split impressions vs clicks before assigning a cause (title/snippet issue vs demand vs indexing). Source: `docs/search/docs/monitor-debug/debugging-search-traffic-drops.md`.
 3. `[handoff]` Traffic drop: check Data Anomalies + Manual Actions + Security Issues + Crawl stats/Page indexing reports to rule out reporting glitch, penalty, security, and technical causes. Source: `docs/search/docs/monitor-debug/debugging-search-traffic-drops.md`.
 4. `[handoff]` Traffic drop: for a suspected external cause, filter to top queries and cross-check on Google Trends to separate site-specific drops from web-wide demand shifts. Source: `docs/search/docs/monitor-debug/debugging-search-traffic-drops.md`.

@@ -370,7 +370,8 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   out.jsonLdTypes = jsonLdBlocks(withScripts).flatMap((b) => { try { const d = JSON.parse(b); return (Array.isArray(d) ? d : d['@graph'] || [d]).map((x) => x['@type']); } catch { return []; } });
 
   if (view === 'raw') {
-    if (!/<meta[^>]*name=["']viewport["']/i.test(html)) add('medium', 'page-experience', 'auto-fix', path, 'missing viewport meta — "Presence of this tag indicates to Google that the page is mobile friendly"', 'crawling-indexing/special-tags');
+    // `name=viewport` unquoted is valid HTML5 and standard html-minifier output.
+    if (!/<meta[^>]*\bname=["']?viewport(?=["'\s>])/i.test(html)) add('medium', 'page-experience', 'auto-fix', path, 'missing viewport meta — "Presence of this tag indicates to Google that the page is mobile friendly"', 'crawling-indexing/special-tags');
     if (!/<html[^>]*\blang=/i.test(html)) add('low', 'international', 'auto-fix', path, 'missing <html lang>', 'specialty/international/localized-versions');
     const h1 = tagText(html, 'h1');
     // Only RECORD here. Whether this becomes a finding depends on whether the page is actually
@@ -510,7 +511,13 @@ for (const u of pages) {
   const { status, body, headers, finalUrl } = await get(u);
   const path = new URL(u).pathname;
   if (status !== 200) { add('critical', 'indexing', 'auto-fix', path, `sitemap URL returns ${status}`, 'sitemaps/build-sitemap'); continue; }
-  if (norm(finalUrl) !== norm(u)) add('medium', 'indexing', 'auto-fix', path, `sitemap URL redirects to ${finalUrl} — list the final URL`, 'crawling-indexing/301-redirects');
+  if (norm(finalUrl) !== norm(u)) {
+    // The body belongs to the DESTINATION. Auditing it under the source URL invents a second page:
+    // its (correct) canonical looks like it "points elsewhere", and its title/description collide
+    // with the real page. Report the stale sitemap entry and move on.
+    add('medium', 'indexing', 'auto-fix', path, `sitemap URL redirects to ${finalUrl} — list the final URL`, 'crawling-indexing/301-redirects');
+    continue;
+  }
   // One malformed page must never abort the crawl. Report it and keep going -- a crash exits 1,
   // which is indistinguishable from "findings remain", so CI would read it as an ordinary red.
   try { rawViews.set(u, auditHtml(body, u, 'raw', headers)); }
@@ -599,8 +606,11 @@ for (const [label, map, sev, doc] of [['<title>', seenTitle, 'high', 'appearance
 // raw-vs-rendered delta: the AI-crawler blind spot
 if (RENDER) {
   const RENDER_CAP = num('max-render', 25);
-  const batch = pages.slice(0, Math.min(pages.length, RENDER_CAP));
-  if (pages.length > batch.length) console.error(`[audit] NOTE: rendering only ${batch.length} of ${pages.length} pages (--max-render to raise). The rest are audited raw-only.`);
+  // Only pages with a raw baseline can be diffed. Redirected/failed URLs are in `pages` but not in
+  // `rawViews`; rendering them would make every delta ("exists only after JS runs") fire spuriously.
+  const audited = [...rawViews.keys()];
+  const batch = audited.slice(0, Math.min(audited.length, RENDER_CAP));
+  if (audited.length > batch.length) console.error(`[audit] NOTE: rendering only ${batch.length} of ${audited.length} pages (--max-render to raise). The rest are audited raw-only.`);
   if (ghostIs200) batch.push(GHOST); // settle the soft-404 question in the same Chrome session
   const rendered = await renderedHtml(batch);
 

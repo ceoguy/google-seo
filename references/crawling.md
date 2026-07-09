@@ -78,5 +78,5 @@ Reference for how Googlebot discovers, fetches, and is controlled on a site. Gro
 10. `[auto]` HTML document transfer size < 2MB and PDFs < 64MB (uncompressed) so content isn't truncated. Maps to Googlebot fetch caps.
 11. `[auto]` Removed/nonexistent pages return `404`/`410`, not `200` with an error body (soft-404 detection). Maps to soft-404 recommendation.
 12. `[auto]` No reserved/non-ASCII characters left unencoded in emitted `href` values. Maps to percent-encoding requirement.
-13. `[handoff]` Confirm robots.txt does not block CSS/JS resources needed to render primary content (needs render comparison / GSC URL Inspection). Maps to: "block only non-critical resources—that is, resources that aren't important to the content of the page" (`docs/search/docs/crawling-indexing/troubleshoot-crawling-errors.md`).
+13. `[handoff]` Confirm robots.txt does not block CSS/JS resources needed to render primary content (needs render comparison / GSC URL Inspection). Google: "block only non-critical resources—that is, resources that aren't important to understanding the meaning of the page (such as decorative images)" — `docs/search/docs/crawling-indexing/troubleshoot-crawling-errors.md`
 14. `[handoff]` Confirm a request claiming to be Googlebot passes reverse+forward DNS to an approved Google domain. Maps to verification recommendation.
