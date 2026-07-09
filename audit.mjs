@@ -32,7 +32,15 @@ const has = (n) => args.includes('--' + n);
 // crawl a single page while reporting nothing amiss.
 // `--max-pages` with no value makes flag() return the boolean true, and Number(true) === 1 --
 // finite, so a NaN guard passes it through and we silently crawl a single page. Reject the type.
-const num = (n, d) => { const raw = flag(n, d); if (typeof raw === 'boolean') return d; const v = Number(raw); return Number.isFinite(v) ? v : d; };
+// Must be a POSITIVE INTEGER. `--max-pages 0` audited nothing and exited 0 -- a clean bill of health
+// for zero work. `--max-pages -5` silently dropped the last five pages via slice(0,-5).
+const num = (n, d) => {
+  const raw = flag(n, d);
+  if (typeof raw === 'boolean') return d;
+  const v = Number(raw);
+  if (!Number.isFinite(v) || v < 1) { if (raw !== d) console.error(`[audit] --${n} must be a positive integer; using ${d}`); return d; }
+  return Math.floor(v);
+};
 const MAX_PAGES = num('max-pages', 100);
 const NOINDEX_OK = String(flag('noindex-ok', '')).split(',').filter(Boolean);
 const RENDER = has('render');
@@ -72,9 +80,12 @@ const decomment = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
 // Chrome hands back a DECODED DOM (`&#8217;` -> `’`), while a raw fetch keeps the entity. Compare
 // like with like or every static page whose title contains an entity is falsely reported as
 // "differs raw vs rendered -- prerender your head". WordPress emits &#8217; for apostrophes.
+// U+10FFFF is the last valid code point; String.fromCodePoint throws RangeError beyond it, and a
+// single malformed entity on one page would abort the whole audit (and write no JSON).
+const cp = (n) => (Number.isInteger(n) && n >= 0 && n <= 0x10FFFF ? String.fromCodePoint(n) : '\uFFFD');
 const decodeEnts = (s) => s
-  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => cp(parseInt(n, 16)))
+  .replace(/&#(\d+);/g, (_, n) => cp(Number(n)))
   .replace(/&quot;/g, '"').replace(/&apos;/g, "'")
   .replace(/&nbsp;/g, '\u00a0').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
   .replace(/&amp;/g, '&');   // last: never resurrect an entity we just produced
@@ -285,13 +296,17 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
     if (!/^https?:\/\//i.test(canonical)) add('medium', 'canonical', 'auto-fix', path, `${tag}canonical is relative ("${canonical}") — "Use absolute paths rather than relative paths"`, 'consolidate-duplicate-urls');
     if (canonical.includes('#')) add('high', 'canonical', 'auto-fix', path, `${tag}canonical contains a fragment — "Google generally doesn't support URL fragments"`, 'consolidate-duplicate-urls');
     if (view === 'raw') {
+      // linkHref() decodes entities, so the sitemap <loc> (which is entity-ESCAPED per spec) must be
+      // decoded too. Comparing decoded-canonical against raw-loc reported `?b=1&amp;c=2` as pointing
+      // somewhere else than `?b=1&c=2` -- a false finding on a perfectly correct site.
+      const durl = decodeEnts(url);
       const t = norm(canonical);
       canonicalTargets.set(t, [...(canonicalTargets.get(t) || []), path]);
-      if (t !== norm(url)) add('high', 'canonical', 'auto-fix', path, `canonical points at a different URL: ${canonical}`, 'consolidate-duplicate-urls');
+      if (t !== norm(durl)) add('high', 'canonical', 'auto-fix', path, `canonical points at a different URL: ${canonical}`, 'consolidate-duplicate-urls');
       // BYTE-match, not normalized match. norm() deliberately collapses trailing slashes, so a
       // sitemap listing /foo/ while the page canonicalizes to /foo would otherwise slip through --
       // and "don't specify one URL in a sitemap, but a different URL ... using rel=canonical".
-      else if (canonical !== url) add('low', 'sitemap', 'auto-fix', path, `sitemap <loc> "${url}" and canonical "${canonical}" differ only in form (slash/scheme/case). List the canonical verbatim.`, 'sitemaps/build-sitemap');
+      else if (canonical !== durl) add('low', 'sitemap', 'auto-fix', path, `sitemap <loc> "${url}" and canonical "${canonical}" differ only in form (slash/scheme/case). List the canonical verbatim.`, 'sitemaps/build-sitemap');
     }
   } else if (view === 'raw') {
     // Not automatically a defect: "If you can't set the canonical URL in the HTML source code,
@@ -481,7 +496,10 @@ for (const u of pages) {
   const path = new URL(u).pathname;
   if (status !== 200) { add('critical', 'indexing', 'auto-fix', path, `sitemap URL returns ${status}`, 'sitemaps/build-sitemap'); continue; }
   if (norm(finalUrl) !== norm(u)) add('medium', 'indexing', 'auto-fix', path, `sitemap URL redirects to ${finalUrl} — list the final URL`, 'crawling-indexing/301-redirects');
-  rawViews.set(u, auditHtml(body, u, 'raw', headers));
+  // One malformed page must never abort the crawl. Report it and keep going -- a crash exits 1,
+  // which is indistinguishable from "findings remain", so CI would read it as an ordinary red.
+  try { rawViews.set(u, auditHtml(body, u, 'raw', headers)); }
+  catch (e) { add('medium', 'crawling', 'handoff', path, `could not parse this page (${e.message}); it was skipped`, 'crawling-indexing/troubleshoot-crawling-errors'); }
 }
 
 // cross-page: many pages sharing one canonical target == the homepage-canonical trap
@@ -577,7 +595,9 @@ if (RENDER) {
 
   for (const [u, html] of rendered) {
     if (!html) continue;
-    const rv = auditHtml(html, u, 'rendered');
+    let rv;
+    try { rv = auditHtml(html, u, 'rendered'); }
+    catch (e) { add('medium', 'crawling', 'handoff', new URL(u).pathname, `could not parse the rendered DOM (${e.message}); skipped`, 'crawling-indexing/troubleshoot-crawling-errors'); continue; }
     const raw = rawViews.get(u) || {};
     const path = new URL(u).pathname + new URL(u).search; // ?lang= variants are distinct URLs
     if (raw.title && rv.title && raw.title !== rv.title) add('high', 'javascript', 'auto-fix', path, `<title> differs raw vs rendered — non-rendering crawlers (most AI engines) see "${raw.title.slice(0, 50)}", Google-after-render sees "${rv.title.slice(0, 50)}". Prerender or SSR the head.`, 'javascript/dynamic-rendering');

@@ -84,6 +84,12 @@ t("&#8217; (curly) decodes", decodeEnts('It&#8217;s') === 'It\u2019s');
 t("&quot; decodes", decodeEnts('Say &quot;hi&quot;') === 'Say "hi"');
 t("&amp;amp; does not resurrect an entity", decodeEnts('A &amp;amp; B') === 'A &amp; B');
 t("raw-vs-rendered title compare is entity-insensitive", decodeEnts('It&#39;s a Test') === decodeEnts("It's a Test"));
+// an out-of-range code point must degrade, not throw: one bad page killed the entire audit
+const cp = (n) => (Number.isInteger(n) && n >= 0 && n <= 0x10FFFF ? String.fromCodePoint(n) : '\ufffd');
+t("&#1114112; (> U+10FFFF) degrades instead of throwing", cp(1114112) === '\ufffd');
+t("a valid code point still decodes", cp(39) === "'");
+// decoded canonical must be compared against a decoded <loc>, not the raw escaped one
+t("escaped &amp; in <loc> matches the decoded canonical", decodeEnts('https://x/p?b=1&amp;c=2') === 'https://x/p?b=1&c=2');
 
 // googlebot-specific noindex must not be hidden by a generic robots meta
 const combined = (h) => [metaC(h, 'name', 'robots'), metaC(h, 'name', 'googlebot')].filter(Boolean).join(' ');
@@ -101,8 +107,13 @@ t("a real link does not count", fakeNav('<a href="/page">x</a>') === 0);
 
 // --max-pages with no value must fall back to the default, not Number(true)===1
 const numFallback = (v, d) => { if (typeof v === 'boolean') return d; const x = Number(v); return Number.isFinite(x) ? x : d; };
-t("--max-pages with no value falls back to the default", numFallback(true, 100) === 100);
-t("--max-pages 500 is honored", numFallback('500', 100) === 500);
+const numGuard = (raw, d) => { if (typeof raw === 'boolean') return d; const v = Number(raw); if (!Number.isFinite(v) || v < 1) return d; return Math.floor(v); };
+t("--max-pages with no value falls back to the default", numGuard(true, 100) === 100);
+t("--max-pages 500 is honored", numGuard('500', 100) === 500);
+t("--max-pages 0 falls back (0 audited nothing and exited clean)", numGuard('0', 100) === 100);
+t("--max-pages -5 falls back (slice(0,-5) dropped the last 5 pages)", numGuard('-5', 100) === 100);
+t("--max-pages 3.7 floors to 3", numGuard('3.7', 100) === 3);
+t("--max-pages abc falls back", numGuard('abc', 100) === 100);
 
 // connected components must not depend on iteration order (hub-and-spoke: A~B, B~C, A!~C)
 const graph = new Map([['B', new Set(['A', 'C'])], ['A', new Set(['B'])], ['C', new Set(['B'])]]);
@@ -134,6 +145,8 @@ const ROUTES = {
 <url><loc>{B}/no-h1</loc></url>
 <url><loc>{B}/entity-title</loc></url>
 <url><loc>{B}/gbot-noindex</loc></url>
+<url><loc>{B}/bad-entity</loc></url>
+<url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
   '/trap': ['text/html', page('Trap page', '<meta name="robots" data-note="content=noindex"><meta name="description" content="This page is not actually noindexed at all.">')],
@@ -147,6 +160,10 @@ const ROUTES = {
   '/two-h1': ['text/html', page('Page with two headings', '<meta name="description" content="Two headings, which Google does not forbid.">', '<h1>One</h1><h1>Two</h1>')],
   '/entity-title': ['text/html', page('It&#39;s an entity title', '<meta name="description" content="Title carries an HTML entity apostrophe.">')],
   '/gbot-noindex': ['text/html', page('Googlebot noindex page', '<meta name="robots" content="all"><meta name="googlebot" content="noindex"><meta name="description" content="Noindexed for Googlebot only.">')],
+  // a code point above U+10FFFF used to throw RangeError and abort the whole audit
+  '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
+  // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
+  '/amp-canonical': ['text/html', page('Ampersand canonical page', '<meta name="description" content="Canonical and loc both escape the ampersand."><link rel="canonical" href="{B}/amp-canonical?b=1&amp;c=2">')],
 };
 
 const server = createServer((req, res) => {
@@ -207,6 +224,8 @@ spa.close();
 const spaFindings = JSON.parse(readFileSync(OUT2, 'utf8')).findings;
 unlinkSync(OUT2);
 t('[e2e] a catch-all 200 site IS reported as a soft 404', spaFindings.some((f) => /soft 404/i.test(f.message)));
+t('[e2e] an out-of-range entity does not abort the audit', findings.length > 0 && !onPage('/bad-entity', /could not parse/));
+t('[e2e] a correctly-escaped &amp; canonical is NOT called a different URL', !onPage('/amp-canonical', /points at a different URL/));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);
