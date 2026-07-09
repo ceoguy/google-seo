@@ -135,6 +135,28 @@ function clusterCount(urls) {
 t("cluster count is order-independent", clusterCount(['A', 'B', 'C']) === 1 && clusterCount(['B', 'A', 'C']) === 1 && clusterCount(['C', 'A', 'B']) === 1);
 t("an unrelated page forms its own cluster", clusterCount(['A', 'B', 'C', 'D']) === 2);
 
+// The MESSAGE count must equal the GATE count. Greedy direct-adjacency splits an A~B~C chain into
+// two reps (A and C aren't directly linked) while the component count is 1.
+function components(urls) {
+  const seen = new Set(); const reps = [];
+  for (const s0 of urls) { if (seen.has(s0)) continue; reps.push(s0); const q = [s0]; seen.add(s0);
+    while (q.length) { const c = q.pop(); for (const o of urls) if (!seen.has(o) && areAlt(c, o)) { seen.add(o); q.push(o); } } }
+  return reps;
+}
+const greedy = (urls) => { const r = []; for (const u of urls) if (!r.some((x) => areAlt(x, u))) r.push(u); return r; };
+t("components() yields one rep per component on an A~B~C chain", components(['A', 'B', 'C', 'D']).length === clusterCount(['A', 'B', 'C', 'D']));
+t("greedy adjacency overcounts the same chain (the bug)", greedy(['A', 'B', 'C', 'D']).length === 3);
+
+// JSON-LD string values are DATA, not markup: emptying every script body is what makes that true.
+const descriptAll = (h) => h.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '<script></script>');
+const imgCount = (h) => [...h.matchAll(/<img\b[^>]*>/gi)].length;
+t("an <img> string inside JSON-LD is not counted as an image", imgCount(descriptAll('<script type="application/ld+json">{"t":"<img src=a><img src=b>"}</script>')) === 0);
+
+// canonicalTargets self-exclusion must decode before comparing
+const decEnt = (x) => x.replace(/&amp;/g, '&');
+const normX = (u) => { const p = new URL(u, 'https://x.com'); const q = p.pathname === '/' ? '/' : p.pathname.replace(/\/$/, ''); return p.origin + q + p.search; };
+t("a spec-escaped self-canonical hub excludes itself", normX(decEnt('https://x.com' + '/h?a=1&amp;b=2')) === normX(decEnt('https://x.com/h?a=1&amp;b=2')));
+
 // ------------------------------------------------------- integration: the real audit.mjs --------
 const page = (title, extra = '', body = '<h1>Heading</h1>') =>
   `<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width">
@@ -157,6 +179,14 @@ const ROUTES = {
 <url><loc>{B}/bad-entity</loc></url>
 <url><loc>{B}/script-title</loc></url>
 <url><loc>{B}/two-h1</loc></url>
+<url><loc>{B}/jsonld-img</loc></url>
+<url><loc>{B}/chain-a</loc></url>
+<url><loc>{B}/chain-b</loc></url>
+<url><loc>{B}/chain-c</loc></url>
+<url><loc>{B}/chain-d</loc></url>
+<url><loc>{B}/hub?a=1&amp;b=2</loc></url>
+<url><loc>{B}/vic1</loc></url>
+<url><loc>{B}/vic2</loc></url>
 <url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
@@ -174,6 +204,18 @@ const ROUTES = {
   '/gbot-noindex': ['text/html', page('Googlebot noindex page', '<meta name="robots" content="all"><meta name="googlebot" content="noindex"><meta name="description" content="Noindexed for Googlebot only.">')],
   // a code point above U+10FFFF used to throw RangeError and abort the whole audit
   '/script-title': ['text/html', '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width"><script>var t = "<title>Fake Script Title</title>";</script><title>The Real Title Here</title><meta name="description" content="A title string hides inside a script body."></head><body><h1>H</h1></body></html>'],
+  // JSON-LD carrying <img> strings must not be scanned as markup (it has NO real images)
+  // hreflang CHAIN: a<->b, b<->c, but a and c are NOT directly linked. All four share one <title>.
+  // components() sees {a,b,c} + {d} = 2. Greedy direct-adjacency wrongly reports 3.
+  '/chain-a': ['text/html', page('Chained Shared Title', '<meta name="description" content="Chain page a with its own description."><link rel="alternate" hreflang="en" href="{B}/chain-a"><link rel="alternate" hreflang="fr" href="{B}/chain-b">')],
+  '/chain-b': ['text/html', page('Chained Shared Title', '<meta name="description" content="Chain page b with its own description."><link rel="alternate" hreflang="fr" href="{B}/chain-b"><link rel="alternate" hreflang="en" href="{B}/chain-a"><link rel="alternate" hreflang="de" href="{B}/chain-c">')],
+  '/chain-c': ['text/html', page('Chained Shared Title', '<meta name="description" content="Chain page c with its own description."><link rel="alternate" hreflang="de" href="{B}/chain-c"><link rel="alternate" hreflang="fr" href="{B}/chain-b">')],
+  '/chain-d': ['text/html', page('Chained Shared Title', '<meta name="description" content="Unrelated page d with its own description.">')],
+  '/jsonld-img': ['text/html', '<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width"><title>JSON-LD image strings</title><meta name="description" content="Images appear only inside a JSON-LD string value."><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","text":"<img src=a.png><img src=b.png><img src=c.png>"}</script></head><body><h1>H</h1></body></html>'],
+  // a spec-correct self-canonical hub whose loc escapes & as &amp;, plus ONE victim (below the >=3 threshold)
+  '/hub': ['text/html', page('Hub page', '<meta name="description" content="A hub that correctly self canonicalizes."><link rel="canonical" href="{B}/hub?a=1&amp;b=2">')],
+  '/vic1': ['text/html', page('Victim one', '<meta name="description" content="This page canonicalizes to the hub, victim one."><link rel="canonical" href="{B}/hub?a=1&amp;b=2">')],
+  '/vic2': ['text/html', page('Victim two', '<meta name="description" content="This page canonicalizes to the hub, victim two."><link rel="canonical" href="{B}/hub?a=1&amp;b=2">')],
   '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
   // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
   '/amp-canonical': ['text/html', page('Ampersand canonical page', '<meta name="description" content="Canonical and loc both escape the ampersand."><link rel="canonical" href="{B}/amp-canonical?b=1&amp;c=2">')],
@@ -219,7 +261,7 @@ t('[e2e] exits 1 when auto-fix findings remain', code === 1);
 t('[e2e] `data-note="content=noindex"` is NOT reported as noindex', !onPage('/trap', /is noindex/i));
 t('[e2e] unquoted `content=` is not reported as a missing description', count(/missing meta description/) === 0);
 t('[e2e] a canonical inside an HTML comment is not counted as a tag', !has(/rel=canonical tags/));
-t('[e2e] two real pages sharing a <title> are reported exactly once', count(/share one <title>/) === 1);
+t('[e2e] the dup-a/dup-b shared title is reported exactly once', findings.filter((f) => /share one <title>/.test(f.message) && f.message.includes('"Shared Title')).length === 1);
 t('[e2e] distinct descriptions are not called duplicates', !has(/share one meta description/));
 t('[e2e] <priority> is flagged as ignored by Google', has(/<priority> present/));
 t('[e2e] duplicate `Sitemap:` directives do not double-report', count(/<priority> present/) === 1);
@@ -253,6 +295,12 @@ t('[e2e] a catch-all 200 site IS reported as a soft 404', spaFindings.some((f) =
 t('[e2e] an out-of-range entity does not abort the audit', findings.length > 0 && !onPage('/bad-entity', /could not parse/));
 t('[e2e] a correctly-escaped &amp; canonical is NOT called a different URL', !onPage('/amp-canonical', /points at a different URL/));
 t('[e2e] a <title> inside a <script> does not create a phantom duplicate', !findings.some((f) => /Fake Script Title/.test(f.message)));
+t('[e2e] <img> strings inside JSON-LD are not counted as images', !onPage('/jsonld-img', /without alt/));
+t('[e2e] JSON-LD is still parsed (structured data checks not blinded)', findings.every((f) => !/JSON-LD block does not parse/.test(f.message)));
+t('[e2e] a spec-escaped self-canonical hub is not its own victim (no false CRITICAL)', !findings.some((f) => f.severity === 'critical' && /declare canonical/.test(f.message)));
+// the chain shares one <title>: 3 language variants + 1 unrelated page = 2 distinct pages, not 3
+const chainMsg = findings.find((f) => /Chained Shared Title/.test(f.message))?.message ?? '';
+t('[e2e] an hreflang chain counts as ONE page, so the message says 2 distinct pages', /^2 distinct pages share one <title>/.test(chainMsg));
 
 console.log(`\n${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

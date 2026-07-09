@@ -81,7 +81,9 @@ const decomment = (h) => h.replace(/<!--[\s\S]*?-->/g, '');
 // otherwise wins over the real <title> (tagText takes the first match) and invents duplicates.
 // Keep JSON-LD: it is read separately, by type, and stripping it would blind the structured-data
 // checks. Replace with a same-length-ish placeholder so offsets stay sane.
-const descript = (h) => h.replace(/<script\b(?![^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, '<script></script>')
+// Empty EVERY script body for markup scans, JSON-LD included: a `"text": "<img src=a.png>"` string
+// inside a JSON-LD block is DATA, not three real images. jsonLdBlocks() reads the untouched HTML.
+const descript = (h) => h.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '<script></script>')
   .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '<style></style>');
 const clean = (h) => descript(decomment(h));
 // Chrome hands back a DECODED DOM (`&#8217;` -> `’`), while a raw fetch keeps the entity. Compare
@@ -277,7 +279,8 @@ const hreflangGraph = new Map();   // url -> Set(alternate urls it declares)
 const sitemapAlts = new Map();     // url -> [{lang, href}] declared via <xhtml:link> in the sitemap
 
 function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
-  const html = clean(rawHtml);
+  const html = clean(rawHtml);          // markup scans: every script body emptied
+  const withScripts = decomment(rawHtml); // structured data: script bodies intact
   const path = new URL(url).pathname + new URL(url).search;
   const tag = view === 'rendered' ? '[rendered] ' : '';
   const out = {};
@@ -349,7 +352,7 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   // structured data. Rendered view only re-checks when raw carried NO JSON-LD at all, otherwise
   // every block is reported twice.
   const skipSd = view === 'rendered' && (rawViews.get(url)?.jsonLdBlockCount ?? 0) > 0;
-  for (const blk of (skipSd ? [] : jsonLdBlocks(html))) {
+  for (const blk of (skipSd ? [] : jsonLdBlocks(withScripts))) {
     try {
       const data = JSON.parse(blk);
       const nodes = Array.isArray(data) ? data : data['@graph'] || [data];
@@ -363,8 +366,8 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
       }
     } catch { add('high', 'structured-data', view === 'raw' ? 'auto-fix' : 'render', path, `${tag}JSON-LD block does not parse`, 'structured-data/intro-structured-data'); }
   }
-  out.jsonLdBlockCount = jsonLdBlocks(html).length;   // an INVALID block still counts as present
-  out.jsonLdTypes = jsonLdBlocks(html).flatMap((b) => { try { const d = JSON.parse(b); return (Array.isArray(d) ? d : d['@graph'] || [d]).map((x) => x['@type']); } catch { return []; } });
+  out.jsonLdBlockCount = jsonLdBlocks(withScripts).length;   // an INVALID block still counts as present
+  out.jsonLdTypes = jsonLdBlocks(withScripts).flatMap((b) => { try { const d = JSON.parse(b); return (Array.isArray(d) ? d : d['@graph'] || [d]).map((x) => x['@type']); } catch { return []; } });
 
   if (view === 'raw') {
     if (!/<meta[^>]*name=["']viewport["']/i.test(html)) add('medium', 'page-experience', 'auto-fix', path, 'missing viewport meta — "Presence of this tag indicates to Google that the page is mobile friendly"', 'crawling-indexing/special-tags');
@@ -413,8 +416,12 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
     const u = new URL(url);
     const pageParam = [...u.searchParams.keys()].find((k) => /^page$/i.test(k));
     if (pageParam && Number(u.searchParams.get(pageParam)) > 1 && canonical) {
-      const c = new URL(canonical, origin);
-      if (!c.searchParams.has(pageParam)) add('high', 'canonical', 'auto-fix', path, `paginated page canonicalizes to page 1 (${canonical}) — "give each page its own canonical URL"`, 'specialty/ecommerce/pagination-and-incremental-page-loading');
+      // A malformed canonical (href="http://") throws here. It is already reported as a bad
+      // canonical elsewhere; do not let it abort the page and strand half-written global state.
+      try {
+        const c = new URL(canonical, origin);
+        if (!c.searchParams.has(pageParam)) add('high', 'canonical', 'auto-fix', path, `paginated page canonicalizes to page 1 (${canonical}) — "give each page its own canonical URL"`, 'specialty/ecommerce/pagination-and-incremental-page-loading');
+      } catch { add('medium', 'canonical', 'auto-fix', path, `canonical is not a valid URL: "${canonical}"`, 'consolidate-duplicate-urls'); }
     }
 
     // AMP pairing: the canonical page must point at its AMP page and vice-versa.
@@ -511,7 +518,10 @@ for (const u of pages) {
 
 // cross-page: many pages sharing one canonical target == the homepage-canonical trap
 for (const [target, srcs] of canonicalTargets) {
-  const others = srcs.filter((p) => norm(origin + p) !== target);
+  // `target` came from linkHref (entities decoded); `p` is the raw sitemap path, where XML mandates
+  // `&amp;`. Compare decoded-to-decoded or a self-canonical hub counts as its own victim -- a false
+  // CRITICAL on any URL with two query params.
+  const others = srcs.filter((p) => norm(decodeEnts(origin + p)) !== target);
   if (others.length >= 3) add('critical', 'canonical', 'auto-fix', target, `${others.length} distinct pages declare canonical -> ${target}. rel=canonical is "A strong signal"; this de-indexes them into one page.`, 'consolidate-duplicate-urls');
 }
 
@@ -554,12 +564,15 @@ const shortPath = (u) => { try { const x = new URL(u); return x.pathname + x.sea
 // Count CONNECTED COMPONENTS of the alternate relation, not a greedy first-fit over
 // representatives. With hub-and-spoke hreflang (A~B, B~C, A!~C) greedy first-fit reports a
 // duplicate for crawl order [A,B,C] and stays silent for [B,A,C] -- same site, same graph.
-function clusterCount(urls) {
+// Returns ONE representative per connected component. `areAlternates` is not transitive, so a
+// greedy "not directly adjacent to any rep" loop splits an A~B~C chain into two reps while the
+// component count is one -- the message then claims more distinct pages than the gate found.
+function components(urls) {
   const seen = new Set();
-  let n = 0;
+  const reps = [];
   for (const start of urls) {
     if (seen.has(start)) continue;
-    n++;
+    reps.push(start);
     const queue = [start];
     seen.add(start);
     while (queue.length) {
@@ -567,7 +580,7 @@ function clusterCount(urls) {
       for (const other of urls) if (!seen.has(other) && areAlternates(cur, other)) { seen.add(other); queue.push(other); }
     }
   }
-  return n;
+  return reps;
 }
 
 for (const [label, map, sev, doc] of [['<title>', seenTitle, 'high', 'appearance/title-link'], ['meta description', seenDesc, 'medium', 'appearance/snippet']]) {
@@ -575,10 +588,8 @@ for (const [label, map, sev, doc] of [['<title>', seenTitle, 'high', 'appearance
   for (const [u, v] of map) byValue.set(v, [...(byValue.get(v) || []), u]);
   for (const [v, urls] of byValue) {
     if (urls.length < 2) continue;
-    if (clusterCount(urls) < 2) continue;   // one page, N languages — not a duplicate
-    // one representative per component, for the message
-    const reps = [];
-    for (const u of urls) if (!reps.some((r) => areAlternates(r, u))) reps.push(u);
+    const reps = components(urls);
+    if (reps.length < 2) continue;   // one page, N languages — not a duplicate
     const paths = reps.map(shortPath);
     add(sev, 'on-page', 'auto-fix', paths[0], `${paths.length} distinct pages share one ${label} ("${v.slice(0, 50)}…") — e.g. ${paths.slice(0, 4).join(', ')}${paths.length > 4 ? ` +${paths.length - 4} more` : ''}. If these are client-rendered, the raw HTML is an unrendered shell.`, doc);
   }
