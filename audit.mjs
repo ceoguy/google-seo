@@ -328,21 +328,25 @@ function validateLocs(locs, where) {
 // Google tolerates them in practice. Refusing to recurse audited ZERO pages on those sites — and "a
 // partial crawl that reads as all clear is the worst possible output". So: report it, then follow it.
 // Bounded three ways, because recursion adds failure modes a flat loop could not have:
-//   depth   — a chain of indexes can't drag us down forever
-//   budget  — MAX_SITEMAPS is a cap on fetches across the WHOLE tree, not per level
-//   seen    — an index that lists itself (or an ancestor) is a cycle, not a sitemap
+//   depth     — a chain of indexes can't drag us down forever
+//   budget    — MAX_SITEMAPS is a cap on fetches across the WHOLE tree, not per level
+//   ancestors — an index reachable from ITSELF is a cycle
+// A cycle is a property of the recursion PATH, not of global visitation. Two sibling `Sitemap:`
+// directives may legitimately list the same child; that is a diamond, not a loop. Conflating the two
+// reported a false HIGH cycle on a perfectly legal layout.
 const MAX_SITEMAP_DEPTH = 3;
-const seenSitemaps = new Set();
+const fetchedSitemaps = new Set();   // fetched once anywhere: skip the refetch, do NOT call it a cycle
 let sitemapsFetched = 0;
 
 async function auditSitemapTree(url) {
-  seenSitemaps.add(url);
+  if (fetchedSitemaps.has(url)) return [];   // robots.txt listed the same sitemap twice
+  fetchedSitemaps.add(url);
   const { status, body, headers } = await get(url);
   if (status !== 200) { add(isTransient(status) ? 'medium' : 'high', 'sitemap', isTransient(status) ? 'handoff' : 'auto-fix', url, isTransient(status) ? `sitemap temporarily ${status} (transient; re-run slower)` : `sitemap not 200 (got ${status})`, 'sitemaps/build-sitemap'); return []; }
-  return auditSitemapBody(url, body, headers, 0);
+  return auditSitemapBody(url, body, headers, 0, new Set([url]));
 }
 
-async function auditSitemapBody(url, body, headers, depth) {
+async function auditSitemapBody(url, body, headers, depth, ancestors) {
   const isIndex = /<sitemapindex/i.test(body);
   const top = auditOneSitemap(url, body, headers, { isIndex });
 
@@ -362,8 +366,9 @@ async function auditSitemapBody(url, body, headers, depth) {
   const all = [];
   for (const child of capped) {
     if (sitemapsFetched >= MAX_SITEMAPS) { add('low', 'sitemap', 'handoff', url, `child-sitemap budget (${MAX_SITEMAPS}) exhausted; the remaining children of this index were NOT fetched (--max-sitemaps to raise)`, 'sitemaps/large-sitemaps'); break; }
-    if (seenSitemaps.has(child)) { add('high', 'sitemap', 'auto-fix', child, 'sitemap index cycle: this sitemap is reachable from itself. Google would fetch it once; the loop wastes crawl budget', 'sitemaps/large-sitemaps'); continue; }
-    seenSitemaps.add(child); sitemapsFetched++;
+    if (ancestors.has(child)) { add('high', 'sitemap', 'auto-fix', child, 'sitemap index cycle: this sitemap is reachable from itself. Google would fetch it once; the loop wastes crawl budget', 'sitemaps/large-sitemaps'); continue; }
+    if (fetchedSitemaps.has(child)) continue;   // a diamond, not a loop: its pages were audited via the other parent
+    fetchedSitemaps.add(child); sitemapsFetched++;
     const r = await get(child);
     if (r.status !== 200) { add(isTransient(r.status) ? 'medium' : 'high', 'sitemap', isTransient(r.status) ? 'handoff' : 'auto-fix', child, isTransient(r.status) ? `child sitemap temporarily ${r.status} (transient; re-run slower)` : `child sitemap not 200 (got ${r.status})`, 'sitemaps/large-sitemaps'); continue; }
 
@@ -374,7 +379,7 @@ async function auditSitemapBody(url, body, headers, depth) {
       if (depth + 1 >= MAX_SITEMAP_DEPTH) { add('low', 'sitemap', 'handoff', child, `nested sitemap indexes deeper than ${MAX_SITEMAP_DEPTH} levels were not followed — the pages below this point were NOT audited`, 'sitemaps/large-sitemaps'); continue; }
       // Follow it anyway. Never treat the grandchild sitemap URLs as pages -- they'd be fetched and
       // scored as HTML ("missing <title>" on an .xml file) while the real pages go unaudited.
-      for (const l of await auditSitemapBody(child, r.body, r.headers, depth + 1)) all.push(l);
+      for (const l of await auditSitemapBody(child, r.body, r.headers, depth + 1, new Set([...ancestors, child]))) all.push(l);
       continue;
     }
 

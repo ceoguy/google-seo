@@ -678,6 +678,36 @@ t('[e2e] nesting deeper than the depth cap is followed no further, and SAYS so',
 t('[e2e] pages below the depth cap are not silently claimed as audited', !nsD.findings.some((f) => /\/toodeep/.test(String(f.where))));
 t('[e2e] grandchild .xml sitemaps are never scored as HTML pages', !nsD.findings.some((f) => /\.xml$/.test(String(f.where)) && /missing (<title>|meta description)/.test(f.message)));
 
+// A cycle is a property of the recursion PATH, not of global visitation. robots.txt may list several
+// sibling `Sitemap:` directives, and two indexes may legitimately share a child — a diamond, not a
+// loop. The first cycle guard used one global `seen` set for both jobs and fired a false HIGH here.
+// A real cycle is mutual (A -> B -> A), not just self-listing.
+const dia = createServer((req, res) => {
+  const P = dia.address().port, B = `http://localhost:${P}`;
+  const u = req.url.split('?')[0];
+  const xml = (b) => { res.writeHead(200, { 'content-type': 'application/xml' }); res.end(b); };
+  const index = (k) => `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${k.map((x) => `<sitemap><loc>${B}${x}</loc></sitemap>`).join('')}</sitemapindex>`;
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${B}/a-index.xml\nSitemap: ${B}/b-index.xml\nSitemap: ${B}/m1.xml\n`); }
+  if (u === '/a-index.xml') return xml(index(['/shared.xml']));   // diamond: both parents list /shared.xml
+  if (u === '/b-index.xml') return xml(index(['/shared.xml']));
+  if (u === '/shared.xml') return xml(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${B}/dpg</loc></url></urlset>`);
+  if (u === '/m1.xml') return xml(index(['/m2.xml']));            // true mutual cycle: m1 -> m2 -> m1
+  if (u === '/m2.xml') return xml(index(['/m1.xml']));
+  if (u === '/dpg') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Diamond page', `<meta name="description" content="Listed by two sibling sitemap indexes through a shared child.">`)); }
+  res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
+});
+await new Promise((r) => dia.listen(0, 'localhost', r));
+const DI = `http://localhost:${dia.address().port}`;
+const OUTDI = path.join(HERE, '.test-findings-di.json');
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), DI, '--json', OUTDI, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+dia.close();
+const diD = JSON.parse(readFileSync(OUTDI, 'utf8')); unlinkSync(OUTDI);
+const diCyc = diD.findings.filter((f) => /sitemap index cycle/.test(f.message));
+
+t('[e2e] two sibling sitemaps sharing a child is a diamond, not a cycle', !diCyc.some((f) => /shared\.xml/.test(String(f.where))));
+t('[e2e]  ...and the shared child\'s page is still audited', diD.pages >= 1 && !diD.findings.some((f) => /\/dpg/.test(String(f.where)) && /returns \d/.test(f.message)));
+t('[e2e] a MUTUAL cycle (a -> b -> a) is still reported', diCyc.some((f) => /m1\.xml/.test(String(f.where))));
+
 // --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
 const allRedir = createServer((req, res) => {
   const b = `http://127.0.0.1:${allRedir.address().port}`;
