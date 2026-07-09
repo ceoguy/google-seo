@@ -16,7 +16,7 @@
  */
 import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
-import { readFileSync, unlinkSync } from 'node:fs';
+import { readFileSync, unlinkSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -58,6 +58,23 @@ const hasViewport = (h) => /<meta[^>]*\bname=["']?viewport(?=["'\s>])/i.test(h);
 t("unquoted name=viewport is detected", hasViewport('<meta name=viewport content="width=device-width">'));
 t("quoted name=\"viewport\" is detected", hasViewport('<meta name="viewport" content="width=device-width">'));
 t("name=viewportx is NOT viewport", !hasViewport('<meta name=viewportx content=x>'));
+
+// D2: max-image-preview:none is not noindex
+const isNoindex = (r) => /\bnoindex\b|(?<![:\w-])none\b/i.test(r);
+t("standalone 'none' is noindex", isNoindex('none'));
+t("max-image-preview:none is NOT noindex", !isNoindex('max-image-preview:none, max-snippet:-1'));
+t("real noindex still detected", isNoindex('noindex, nofollow'));
+// D3: render-resource path match is directory-anchored
+const isRenderRes = (d) => /^\/(assets|static|_next|js|css|dist|build)(\/|$)/i.test(d);
+t("/build-guide is NOT a render resource", !isRenderRes('/build-guide'));
+t("/css-tricks is NOT a render resource", !isRenderRes('/css-tricks'));
+t("/build IS a render resource", isRenderRes('/build'));
+t("/assets/app.js IS a render resource", isRenderRes('/assets/app.js'));
+// D4: bare alt is not "missing alt"
+const missingAlt = (t2) => !/(^|\s)alt(\s|=|>|\/)/i.test(t2);
+t("bare alt attribute counts as present", !missingAlt('<img src=x.jpg alt loading=lazy>'));
+t("alt= counts as present", !missingAlt('<img src=x alt="a">'));
+t("no alt at all counts as missing", missingAlt('<img src=x.jpg>'));
 
 function robotsGroups(body) {
   const g = new Map(); let pending = [], current = [];
@@ -217,6 +234,8 @@ const ROUTES = {
 <url><loc>{B}/hl-b</loc></url>
 <url><loc>{B}/gptbot-only</loc></url>
 <url><loc>{B}/no-viewport</loc></url>
+<url><loc>{B}/img-preview</loc></url>
+<url><loc>{B}/bare-alt</loc></url>
 <url><loc>{B}/amp-canonical?b=1&amp;c=2</loc></url>
 </urlset>`],
   '/ok': ['text/html', page('Unique OK page', '<meta name="description" content="A page that is fine and it&#39;s quoted properly here.">')],
@@ -263,6 +282,10 @@ const ROUTES = {
   '/hl-b': ['text/html', page('Hreflang page b', '<meta name="description" content="Lists only itself, never points back at a."><link rel="alternate" hreflang="fr" href="{B}/hl-b">')],
   '/gptbot-only': ['text/html', page('GPTBot only page', '<meta name="description" content="Exists so the robots fixture has a page.">')],
   // NO viewport meta at all -> the missing-viewport finding must fire (positive polarity for emission)
+  // max-image-preview:none is fully indexable -- must NOT raise a noindex CRITICAL
+  '/img-preview': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><meta name="robots" content="max-image-preview:none, max-snippet:-1"><title>Image preview limited</title><meta name="description" content="This page limits image preview but is indexable."></head><body><h1>H</h1></body></html>'],
+  // a bare alt attribute is present, not missing
+  '/bare-alt': ['text/html', '<!doctype html><html lang=en><head><meta name=viewport content="width=device-width"><title>Bare alt page</title><meta name="description" content="Its image carries a bare alt attribute."></head><body><h1>H</h1><img src="/decorative.png" alt loading="lazy"></body></html>'],
   '/no-viewport': ['text/html', '<!doctype html><html lang=en><head><title>No viewport page</title><meta name="description" content="This page has no viewport meta tag at all."></head><body><h1>H</h1></body></html>'],
   '/bad-entity': ['text/html', page('Bad&#1114112;Entity Title', '<meta name="description" content="Title carries an out of range character reference.">')],
   // a spec-correct page: both the sitemap <loc> and the canonical escape & as &amp;
@@ -363,6 +386,57 @@ const gfFindings = JSON.parse(readFileSync(OUT3, 'utf8')).findings;
 unlinkSync(OUT3);
 t('[e2e] a full GPTBot disallow raises the AI-search handoff', gfFindings.some((f) => /GPTBot is fully disallowed/.test(f.message) && f.class === 'handoff'));
 
+// D3: a Googlebot content-path disallow (/build-guide) must NOT raise the render-resource CRITICAL.
+const contentBlock = createServer((req, res) => {
+  const b = `http://127.0.0.1:${contentBlock.address().port}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nDisallow: /build-guide\n\nSitemap: ${b}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/p</loc></url></urlset>`); }
+  res.writeHead(200, { 'content-type': 'text/html' }); res.end(page('Content-block page', '<meta name="description" content="Its robots.txt blocks a content path only.">'));
+});
+await new Promise((r) => contentBlock.listen(0, '127.0.0.1', r));
+const CB = `http://127.0.0.1:${contentBlock.address().port}`;
+const OUTC = path.join(HERE, '.test-findings-cb.json');
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), CB, '--json', OUTC, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+contentBlock.close();
+const cbFindings = JSON.parse(readFileSync(OUTC, 'utf8')).findings; unlinkSync(OUTC);
+t('[e2e] a Googlebot content-path disallow (/build-guide) is not a render-resource CRITICAL', !cbFindings.some((f) => /blocking render resources/.test(f.message)));
+
+// D5: a Sitemap: line sandwiched between stacked User-agents must be IGNORED, keeping * blocked.
+const stacked = createServer((req, res) => {
+  const b = `http://127.0.0.1:${stacked.address().port}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nSitemap: ${b}/sitemap.xml\nUser-agent: Googlebot\nDisallow: /\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${b}/p</loc></url></urlset>`); }
+  res.writeHead(200, { 'content-type': 'text/html' }); res.end(page('Stacked page', '<meta name="description" content="Stacked user-agents with a sitemap line between.">'));
+});
+await new Promise((r) => stacked.listen(0, '127.0.0.1', r));
+const ST = `http://127.0.0.1:${stacked.address().port}`;
+const OUTS = path.join(HERE, '.test-findings-st.json');
+await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), ST, '--json', OUTS, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+stacked.close();
+const stFindings = JSON.parse(readFileSync(OUTS, 'utf8')).findings; unlinkSync(OUTS);
+t('[e2e] a Sitemap: line between stacked user-agents does not break "blocks all crawlers"', stFindings.some((f) => /blocks all crawlers/.test(f.message)));
+
+// A sitemap index yielding >114k URLs must not crash: push(...bigArray) overflowed the arg stack.
+const big = createServer((req, res) => {
+  const b = `http://127.0.0.1:${big.address().port}`;
+  const u = req.url.split('?')[0];
+  if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${b}/sitemap.xml\n`); }
+  if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[0, 1, 2].map((i) => `<sitemap><loc>${b}/c-${i}.xml</loc></sitemap>`).join('')}</sitemapindex>`); }
+  const m = u.match(/^\/c-(\d+)\.xml$/);
+  if (m) { res.writeHead(200, { 'content-type': 'application/xml' }); let out = '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'; for (let i = 0; i < 40000; i++) out += `<url><loc>${b}/p/${m[1]}/${i}</loc></url>`; return res.end(out + '</urlset>'); }
+  res.writeHead(200, { 'content-type': 'text/html' }); res.end(page('Big-site page', '<meta name="description" content="A page on a very large site here.">'));
+});
+await new Promise((r) => big.listen(0, '127.0.0.1', r));
+const BIG = `http://127.0.0.1:${big.address().port}`;
+const OUTB = path.join(HERE, '.test-findings-big.json');
+const bigExit = await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), BIG, '--json', OUTB, '--quiet', '--max-pages', '2'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+big.close();
+const bigWrote = existsSync(OUTB);
+if (bigWrote) unlinkSync(OUTB);
+t('[e2e] a 120k-URL sitemap index does not crash the audit', bigWrote && bigExit !== null);
+
 // --render when EVERY sitemap URL redirects: must not spawn Chrome, must not hang, must say so.
 const allRedir = createServer((req, res) => {
   const b = `http://127.0.0.1:${allRedir.address().port}`;
@@ -395,6 +469,8 @@ t('[e2e] a redirected URL is not also scored as a page (no false canonical)', !o
 t('[e2e] a redirected URL does not become a duplicate-title victim', !findings.some((f) => /share one <title>/.test(f.message) && /stale-redirect/.test(f.message)));
 t('[e2e] unquoted name=viewport is not reported missing', !onPage('/minified-viewport', /missing viewport/));
 t('[e2e] a page with NO viewport meta IS reported missing', onPage('/no-viewport', /missing viewport/));
+t('[e2e] max-image-preview:none is NOT reported as noindex', !onPage('/img-preview', /is noindex/));
+t('[e2e] a bare alt attribute is not counted as missing alt', !onPage('/bare-alt', /without alt/));
 // detectors the reviewer found untested. Positive polarity for each.
 t('[e2e] aggregateRating without a review count fires', onPage('/agg-bad', /aggregateRating without reviewCount/));
 t('[e2e] aggregateRating always raises a verify-it-is-real handoff', findings.some((f) => /aggregateRating present/.test(f.message) && f.class === 'handoff'));

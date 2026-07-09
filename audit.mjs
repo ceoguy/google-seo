@@ -150,6 +150,7 @@ function robotsGroups(body) {
       continue;
     }
     if (!pending.length) continue;                           // rule outside any group
+    if (!/^(Dis)?allow:/i.test(line)) continue;              // spec: non-(dis)allow lines don't split a stacked group
     current.push(line);
     for (const a of pending) groups.get(a).push(line);
   }
@@ -177,7 +178,7 @@ async function auditRobots() {
     .map((l) => l.replace(/^Disallow:\s*/i, '').trim())
     .filter((x) => x && x !== '/');
   // "Google Search won't render JavaScript from blocked files or on blocked pages" — javascript-seo-basics
-  for (const d of disallows) if (/^\/(assets|static|_next|js|css|dist|build)\b/i.test(d)) add('critical', 'javascript', 'auto-fix', '/robots.txt', `robots.txt disallows "${d}" for Googlebot — blocking render resources stops Google rendering the page`, 'javascript/javascript-seo-basics');
+  for (const d of disallows) if (/^\/(assets|static|_next|js|css|dist|build)(\/|$)/i.test(d)) add('critical', 'javascript', 'auto-fix', '/robots.txt', `robots.txt disallows "${d}" for Googlebot — blocking render resources stops Google rendering the page`, 'javascript/javascript-seo-basics');
   return { disallows, sitemaps };
 }
 
@@ -268,7 +269,7 @@ async function auditSitemapTree(url) {
       continue;
     }
     validateLocs(locs, child);
-    all.push(...locs);
+    for (const l of locs) all.push(l);
   }
   const dupes = all.filter((l, i) => all.indexOf(l) !== i);
   if (dupes.length) add('low', 'sitemap', 'auto-fix', url, `${new Set(dupes).size} duplicate <loc> entries across children`, 'sitemaps/build-sitemap');
@@ -282,7 +283,7 @@ async function auditSitemap(smUrls) {
   // sitemap-level finding twice.
   const list = [...new Set(smUrls.length ? smUrls : [origin + '/sitemap.xml'])];
   const all = [];
-  for (const sm of list) all.push(...await auditSitemapTree(sm));
+  for (const sm of list) { const r = await auditSitemapTree(sm); for (const u of r) all.push(u); }
   return [...new Set(all)];
 }
 
@@ -345,7 +346,8 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
   // "none" is equivalent to "noindex, nofollow" — a page carrying it is fully blocked.
   // Raw view only: the rendered pass would re-report the identical tag with a [rendered] prefix.
   // A noindex that ONLY appears after JS is caught by the raw-vs-rendered delta instead.
-  if (view === 'raw' && /\b(noindex|none)\b/i.test(robots + ' ' + xrobots) && !NOINDEX_OK.includes(new URL(url).pathname)) {
+  // `none` alone == noindex,nofollow, but `none` inside `max-image-preview:none` is NOT noindex.
+  if (view === 'raw' && /\bnoindex\b|(?<![:\w-])none\b/i.test(robots + ' ' + xrobots) && !NOINDEX_OK.includes(new URL(url).pathname)) {
     add('critical', 'indexing', 'handoff', path, `${tag}page is noindex ("${robots || xrobots}") — a human must confirm this is intentional`, 'crawling-indexing/block-indexing');
   }
 
@@ -399,7 +401,7 @@ function auditHtml(rawHtml, url, view /* 'raw' | 'rendered' */, headers) {
     // reported as information for a human, never as a defect.
     if (!h1.length) out.noRawH1 = true;
     const imgs = [...html.matchAll(/<img\b[^>]*>/gi)].map((m) => m[0]);
-    const noAlt = imgs.filter((t) => !/\balt=/i.test(t)).length;
+    const noAlt = imgs.filter((t) => !/(^|\s)alt(\s|=|>|\/)/i.test(t)).length;
     if (noAlt) add('low', 'on-page', 'auto-fix', path, `${noAlt}/${imgs.length} <img> without alt`, 'appearance/google-images');
 
     // "Link: <...>; rel=canonical" — the only canonical method for PDFs/non-HTML, and a silent
