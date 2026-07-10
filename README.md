@@ -34,8 +34,33 @@ pointing at the homepage — quietly telling Google that every page was a duplic
 git clone https://github.com/ceoguy/google-seo.git ~/.claude/skills/google-seo
 ```
 
-Claude Code discovers it automatically. Or just run the auditor standalone — it needs **Node ≥ 22**
-and nothing else.
+Claude Code discovers it automatically as a **skill**. Or just run the auditor standalone — it needs
+**Node ≥ 22** and nothing else (Chrome only for `--render`).
+
+## Using it in Claude Code
+
+**As a skill (zero setup).** Once it's in `~/.claude/skills/`, the agent loads it on its own when your
+request matches — "audit the SEO of https://example.com", "why isn't this page indexed?", "check my
+hreflang", "set up SEO for a new site". Auto-triggering is driven by the skill's description, so it's
+reliable but not guaranteed; if you want certainty, either **name it** ("use the google-seo skill to…")
+or **pin it** in your `CLAUDE.md` (`For any SEO task, use the google-seo skill.`).
+
+**As slash commands (guaranteed).** For SEO work you do often, the four commands in [`commands/`](commands/)
+remove all doubt — invoking one *is* the instruction to load the skill. Install them once:
+
+```bash
+cp ~/.claude/skills/google-seo/commands/*.md ~/.claude/commands/
+```
+
+| Command | What it does |
+|---|---|
+| `/google-seo-audit <url>` | Read-only audit of a live site. Runs the auditor, groups findings by root cause, splits auto-fix vs handoff. |
+| `/google-seo-fix [url]` | Run from inside the site's repo: audit → fix the auto-fix findings in code → re-audit until two clean runs. |
+| `/google-seo-plan <topic\|url>` | A sequenced SEO plan in the skill's build-order, every recommendation citing the Google doc. |
+| `/google-seo` | Catch-all — audit, fix, plan, or look up a rule; routes by what you type. |
+
+Every command grounds its answer in the local corpus, never in blog folklore. New commands and skills
+show up in a **new** Claude Code session (the list loads at startup).
 
 ## Usage
 
@@ -57,7 +82,8 @@ node audit.mjs https://example.com --noindex-ok /admin,/preview
 |---|---|
 | `--render` | Drive headless Chrome (DevTools Protocol) and diff raw vs rendered `<head>`. Set `CHROME=/path/to/chrome` if not auto-found. |
 | `--max-render <n>` | How many pages to actually render (default **25**). Rendering is slow; the rest are audited raw-only and say so. |
-| `--max-sitemaps <n>` | How many child sitemaps to fetch from an index (default **50**). A 2000-child news index would otherwise fetch every one. |
+| `--max-sitemaps <n>` | How many child sitemaps to fetch from an index (default **50**), across the whole tree. A 2000-child news index would otherwise fetch every one. |
+| `--max-prefix-probes <n>` | How many sitemap path prefixes to probe for soft 404s (default **8**). |
 | `--json <file>` | Write findings as JSON. |
 | `--max-pages <n>` | Cap pages crawled (default 100). The tool **logs what it skipped** — a partial crawl that reads "all clear" is the worst possible output. |
 | `--noindex-ok a,b` | Paths where `noindex` is deliberate. |
@@ -160,26 +186,31 @@ Distilled from `references/`. Each is quoted and sourced in full there.
 - **Rich results can be gated.** `VacationRental` needs a Google Technical Account Manager and Hotel Center access. Check before promising a client a rich result they cannot have.
 - **Don't write separate content "for AI."** Google calls that scaled content abuse; AI Overviews run on core Search ranking and need no special markup.
 
-## Refreshing the corpus
-
-Google updates these pages. The fork is reproducible:
+## Maintenance scripts
 
 ```bash
-python3 scripts/fetch-docs.py     # URL list in urls.txt, scraped from the live nav
+python3 scripts/fetch-docs.py       # regenerate the 158-page fork (URL list scraped from the live nav)
+python3 scripts/coverage.py         # which corpus pages the rule sheets cover -> references/COVERAGE.md
+python3 scripts/verify-quotes.py    # check every quoted string against the corpus; --self-test proves the checker
 ```
 
-`fetch-report.json` records any failures. It never silently skips a page.
+`fetch-docs.py` writes `fetch-report.json` and never silently skips a page. `coverage.py` is generated,
+so `COVERAGE.md` can't drift. `verify-quotes.py` is how the "every rule is a real Google quote" claim
+stays true — run it before trusting a new rule sheet.
 
 ## Layout
 
 ```
 SKILL.md                  agent entry point — workflow + hard-won rules
 audit.mjs                 the auditor (Node ≥ 22, zero deps)
+commands/*.md             optional Claude Code slash commands (copy to ~/.claude/commands/)
 references/*.md           13 distilled rule sheets, every claim quoted + sourced
 references/COVERAGE.md    which corpus pages the sheets cover (generated, can't drift)
 docs/                     158-page Google Search Central fork
 DOCS-INDEX.md             index of the fork
 scripts/fetch-docs.py     regenerate the fork
+scripts/coverage.py       regenerate COVERAGE.md
+scripts/verify-quotes.py  verify every quote against the corpus
 urls.txt                  the page list
 ```
 
