@@ -762,6 +762,33 @@ for (const u of pages) {
   catch (e) { add('medium', 'crawling', 'handoff', path, `could not parse this page (${e.message}); it was skipped`, 'crawling-indexing/troubleshoot-crawling-errors'); }
 }
 
+// ---- favicon (site-level; Google reads it from the HOME page) ---------------------------------
+// "Define a favicon to show in search results": the <link rel="icon"> must sit on the home page,
+// Googlebot-Image must be able to crawl the file, and "The favicon URL must be stable (don't
+// change the URL frequently)." Framework icon conventions that append a per-build hash to the
+// favicon href (e.g. Next.js app-router app/icon.* -> /icon.png?icon.<hash>.png) violate
+// stability on EVERY deploy -- Google never locks on and shows the generic globe. This audit
+// previously passed two sites CLEAN while their SERP favicon was broken exactly this way.
+// Fetched independently of the crawl so it runs even when the homepage is not in the sitemap.
+{
+  const home = await get(origin + '/');
+  if (home.status === 200 && home.body) {
+    const headHtml = String(home.body).split(/<\/head/i)[0];
+    const iconLinks = [...headHtml.matchAll(/<link\b[^>]*>/gi)].map((m) => m[0])
+      .filter((t) => /rel=["']?(?:shortcut\s+)?icon["'\s]|rel=["']?apple-touch-icon/i.test(t));
+    const hrefs = iconLinks.map((t) => (t.match(/href=["']([^"']+)["']/i) || [])[1]).filter(Boolean);
+    for (const href of hrefs) {
+      if (href.includes('?')) add('medium', 'appearance', 'auto-fix', '/', `favicon link href carries a query string (${href}) — if it changes per deploy (a framework build hash does), it violates "The favicon URL must be stable"; serve the icon from a fixed extensionless-query path instead`, 'appearance/favicon-in-search');
+      let iconUrl; try { iconUrl = new URL(href, origin + '/').href; } catch { continue; }
+      const r = await get(iconUrl);
+      if (r.status !== 200) add('medium', 'appearance', 'auto-fix', shortPath(iconUrl), `favicon link target returns ${r.status} — Googlebot-Image "must be able to crawl the favicon file"`, 'appearance/favicon-in-search');
+    }
+    const fav = await get(origin + '/favicon.ico');
+    if (!hrefs.length && fav.status !== 200) add('medium', 'appearance', 'auto-fix', '/', `no <link rel="icon"> on the home page AND /favicon.ico returns ${fav.status} — the site has no crawlable favicon at all; search results show the generic globe`, 'appearance/favicon-in-search');
+    else if (fav.status === 404) add('low', 'appearance', 'auto-fix', '/favicon.ico', `/favicon.ico returns 404 — not required when a <link rel="icon"> exists, but it is the fallback path many crawlers try first; serve a real multi-size .ico here`, 'appearance/favicon-in-search');
+  }
+}
+
 // cross-page: many pages sharing one canonical target == the homepage-canonical trap
 for (const [target, srcs] of canonicalTargets) {
   // `target` came from linkHref (entities decoded); `p` is the raw sitemap path, where XML mandates

@@ -94,6 +94,24 @@ Read `references/essentials-and-content.md` first (Search Essentials + spam poli
   and AI Mode need no special markup — they run on core Search ranking.
 - **HTML comments are not markup.** A comment that mentions a tag is not that tag; strip comments
   before you regex. (`audit.mjs` learned this the hard way on its first run.)
+- **Framework icon conventions break favicon stability.** Google: "The favicon URL must be
+  stable (don't change the URL frequently)." Next.js app-router `app/icon.*` file conventions
+  emit a per-build hash query (`/icon.png?icon.<hash>.png`) — on a frequently-deployed site
+  Google never locks onto the favicon and shows the generic globe. Serve icons from `public/`
+  with explicit `metadata.icons`, and always serve a real multi-size `/favicon.ico` (the
+  fallback path crawlers try first). `audit.mjs` now checks both. This audit passed two live
+  sites CLEAN while their SERP favicon was broken exactly this way.
+- **`notFound()` in a streaming app returns HTTP 200.** Once the shell flushes (a root
+  `loading.tsx`, dynamic rendering), the status is committed; Next serves the not-found UI with
+  200 plus an injected `noindex` meta. A real 404 status requires the decision BEFORE streaming:
+  a middleware rewrite of known-bad URLs (malformed ids, unknown slugs) to a path that matches
+  no route, which serves `not-found.tsx` with a true 404. Always verify with
+  `curl -o /dev/null -w '%{http_code}'` — the rendered "not found" UI proves nothing.
+- **Fix soft-404s in two layers, and never 404 on transient errors.** Hard-404 only definitive
+  misses (backend said 404, or the id is malformed — decidable in middleware for free); when the
+  backend lookup fails transiently, keep serving 200 but with `robots: { index: false }` fallback
+  metadata, so a backend outage never mass-de-indexes real pages and no generic duplicate shell
+  gets indexed either.
 
 ## audit.mjs
 

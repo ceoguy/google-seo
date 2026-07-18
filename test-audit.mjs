@@ -1048,6 +1048,44 @@ t('[e2e] a spec-escaped self-canonical hub is not its own victim (no false CRITI
 const chainMsg = findings.find((f) => /Chained Shared Title/.test(f.message))?.message ?? '';
 t('[e2e] an hreflang chain counts as ONE page, so the message says 2 distinct pages', /^2 distinct pages share one <title>/.test(chainMsg));
 
+// ---- favicon: site-level, read from the HOME page independent of the sitemap -------------------
+// Failing repro that motivated the check: two live sites passed this audit CLEAN while their SERP
+// showed the generic globe — a per-build hash query on the icon href (Next.js app/icon.*) plus a
+// 404ing /favicon.ico. Both polarities are asserted: each defect fires, and a healthy site is silent.
+const favSrv = (iconHead, icons = {}) => {
+  const s = createServer((req, res) => {
+    const B = `http://localhost:${s.address().port}`;
+    const u = req.url.split('?')[0];
+    if (u === '/robots.txt') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end(`User-agent: *\nAllow: /\nSitemap: ${B}/sitemap.xml\n`); }
+    if (u === '/sitemap.xml') { res.writeHead(200, { 'content-type': 'application/xml' }); return res.end(`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${B}/</loc></url></urlset>`); }
+    if (u === '/') { res.writeHead(200, { 'content-type': 'text/html' }); return res.end(page('Favicon fixture', `<meta name="description" content="Favicon fixture home page.">${iconHead}`)); }
+    if (icons[u]) { res.writeHead(200, { 'content-type': icons[u] }); return res.end('x'); }
+    res.writeHead(404, { 'content-type': 'text/html' }); res.end('<h1>404</h1>');
+  });
+  return s;
+};
+const favRun = async (srv) => {
+  await new Promise((r) => srv.listen(0, 'localhost', r));
+  const out = path.join(HERE, '.test-findings-fav.json');
+  if (existsSync(out)) unlinkSync(out);   // a stale file would mask a crash
+  await new Promise((resolve) => spawn('node', [path.join(HERE, 'audit.mjs'), `http://localhost:${srv.address().port}`, '--json', out, '--quiet'], { stdio: ['ignore', 'ignore', 'ignore'] }).on('close', resolve));
+  srv.close();
+  const f = JSON.parse(readFileSync(out, 'utf8')).findings; unlinkSync(out);
+  return f;
+};
+
+// the broken shape seen live: hashed icon href (file still serves), dead apple-touch icon, no .ico
+const fh = await favRun(favSrv(`<link rel="icon" href="/icon.png?icon.abc123.png"><link rel="apple-touch-icon" href="/apple-icon.png">`, { '/icon.png': 'image/png' }));
+t('[e2e] a build-hash query on the favicon href fires the stability finding', fh.some((f) => /favicon link href carries a query string/.test(f.message)));
+t('[e2e] an icon link whose target 404s is reported', fh.some((f) => /favicon link target returns 404/.test(f.message)));
+t('[e2e] /favicon.ico 404 with an icon link present is the LOW fallback finding', fh.some((f) => f.severity === 'low' && /\/favicon\.ico returns 404/.test(f.message)));
+
+const fn = await favRun(favSrv(''));
+t('[e2e] no icon link AND /favicon.ico 404 = "no crawlable favicon at all"', fn.some((f) => /no crawlable favicon at all/.test(f.message)));
+
+const fg = await favRun(favSrv(`<link rel="icon" href="/favicon.ico" sizes="48x48">`, { '/favicon.ico': 'image/x-icon' }));
+t('[e2e] a stable icon link with a 200 favicon.ico yields ZERO favicon findings', !fg.some((f) => /favicon/i.test(f.message)));
+
 console.log(`\nSUITE COMPLETE`);
 console.log(`${pass} passed, ${fail} failed${skipped ? `, ${skipped} skipped` : ''}`);
 process.exit(fail ? 1 : 0);

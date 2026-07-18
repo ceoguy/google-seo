@@ -141,6 +141,13 @@ ratings for human verification, because fabricating them is a manual-action offe
 validate required properties per feature type — use `references/structured-data.md` and Google's
 Rich Results Test for that.
 
+**Favicon** — read from the home page, independently of the sitemap: an icon `href` carrying a
+query string (a framework's per-build hash violates Google's "The favicon URL must be stable");
+an icon link whose target doesn't answer `200`; a `404`ing `/favicon.ico` fallback; and a site
+with no crawlable favicon at all — the case where search results show the generic globe. This
+check exists because the audit once passed two live sites CLEAN while their SERP favicon was
+broken exactly this way (Next.js `app/icon.*` emits a new hash query every deploy).
+
 **Crawling** — `<a>` elements with no crawlable `href` (`javascript:`, `#`, or missing); non-HTTPS
 origins; and soft 404s — a nonexistent URL answering `200`.
 
